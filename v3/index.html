@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CYN Medical — Medical Marketing That Builds Trust</title>
+    <meta name="description" content="CYN Medical ช่วยคลินิกและแบรนด์การแพทย์สร้างภาพลักษณ์ที่น่าเชื่อถือ พร้อมกลยุทธ์การตลาดที่วัดผลได้จริง" />
+    <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: {
+            fontFamily: {
+                sans:['IBM Plex Sans Thai','Inter','system-ui','sans-serif'],
+                display:['Cormorant Garamond','IBM Plex Sans Thai','Georgia','serif']
+            },
+            colors: {
+                ink:    { 50:'#F7F8FB',100:'#EEF1F6',200:'#D9DFE9',300:'#B4BECF',400:'#7F8DA8',500:'#536685',600:'#384962',700:'#1F2D44',800:'#0F1B30',900:'#070F1E' },
+                royal:  { 100:'#E8EDF8',200:'#C7D2EE',300:'#94A6DB',400:'#5A75C5',500:'#3554B3',600:'#2C4CAA',700:'#23408F',800:'#1B3375',900:'#15295E' },
+                cobalt: '#2D4DB1'
+            }
+        }}};
+    </script>
+    <style>
+        html{scroll-behavior:smooth} body{font-family:'IBM Plex Sans Thai','Inter',system-ui,sans-serif;background:#FFFFFF;color:#0F1B30;font-weight:400;-webkit-font-smoothing:antialiased}
+        .font-display{font-family:'Cormorant Garamond','IBM Plex Sans Thai',Georgia,serif;letter-spacing:-0.015em;font-weight:400}
+        .italic-serif{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400}
+        .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
+        .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s ease}
+        .pill-dark{background:#0F1B30;color:#FFF}
+        .pill-dark:hover{background:#1F2D44}
+        .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}
+        .pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
+        .pill-outline-light{background:transparent;color:#FFF;border:1px solid rgba(255,255,255,.3)}
+        .pill-outline-light:hover{background:#FFF;color:#0F1B30}
+        .card-hover{transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+        .card-hover:hover{transform:translateY(-4px)}
+        .scroll-bounce{animation:bounce 2.5s ease-in-out infinite}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+        ::selection{background:#2C4CAA;color:#FFF}
+
+        /* Placeholder visuals (no real images yet) */
+        .ph-clinic{background:linear-gradient(180deg,#F7F8FB 0%,#E8EDF8 60%,#D9DFE9 100%);position:relative;overflow:hidden}
+        .ph-clinic::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:55%;aspect-ratio:1;background:radial-gradient(circle at 50% 30%,#FFF 0%,rgba(255,255,255,0) 60%),linear-gradient(180deg,#FFF 0%,#EEF1F6 100%);border-radius:50% 50% 4px 4px}
+        .ph-clinic::after{content:'';position:absolute;left:0;right:0;top:62%;height:1px;background:linear-gradient(to right,transparent,rgba(15,27,48,.15),transparent)}
+        .ph-clinic-dark{background:linear-gradient(135deg,#1F2D44 0%,#0F1B30 100%);position:relative;overflow:hidden}
+        .ph-clinic-dark::before{content:'';position:absolute;inset:10% 15%;background:linear-gradient(180deg,rgba(94,117,197,.18) 0%,rgba(255,255,255,.04) 100%);border-radius:8px;border:1px solid rgba(255,255,255,.08)}
+        .ph-clinic-dark::after{content:'';position:absolute;left:50%;top:55%;transform:translateX(-50%);width:30%;aspect-ratio:1;background:radial-gradient(circle,rgba(94,117,197,.35) 0%,transparent 70%);border-radius:50%}
+        .ph-article{background:linear-gradient(135deg,#EEF1F6 0%,#D9DFE9 100%);position:relative;overflow:hidden}
+        .ph-article::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.6),transparent 50%),radial-gradient(circle at 70% 70%,rgba(45,77,177,.08),transparent 50%)}
+
+        /* phone mockup */
+        .phone{width:100%;aspect-ratio:9/19;background:#0F1B30;border-radius:38px;padding:6px;box-shadow:0 30px 60px -25px rgba(15,27,48,.22),0 0 0 1px rgba(15,27,48,.08)}
+        .phone-screen{width:100%;height:100%;background:#FFF;border-radius:32px;overflow:hidden;position:relative}
+        .phone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#EEF1F6}
+        .phone-grid > div{aspect-ratio:1;background-size:cover;background-position:center}
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-200/60">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+            <a href="/v3/" class="flex items-center gap-2"><img src="/assets/cyn-logo.webp" alt="CYN Medical" class="h-14 w-auto" /></a>
+            <nav class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700">
+                <a href="/v3/services.html" class="hover:text-cobalt transition">Services</a>
+                <a href="/v3/work.html" class="hover:text-cobalt transition">Work</a>
+                <a href="/v3/insights.html" class="hover:text-cobalt transition">Insights</a>
+                <a href="/v3/about.html" class="hover:text-cobalt transition">About Us</a>
+            </nav>
+            <div class="flex items-center gap-3">
+                <a href="/" class="text-xs tracking-[0.15em] uppercase text-ink-500 hover:text-cobalt transition hidden md:inline">V1</a>
+                <a href="/v2/" class="text-xs tracking-[0.15em] uppercase text-ink-500 hover:text-cobalt transition hidden md:inline">V2</a>
+                <a href="#contact" class="pill-btn pill-dark text-[11px]">Consultation
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative pt-28 lg:pt-32 pb-12 lg:pb-20 bg-ink-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+                <!-- LEFT -->
+                <div class="py-12 lg:py-20">
+                    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-ink-800">
+                        Medical Marketing<br/>
+                        That Builds Trust<br/>
+                        <span class="italic-serif text-cobalt">and Drives Growth</span>
+                    </h1>
+                    <div class="mt-8 max-w-md">
+                        <p class="text-[15px] font-medium text-ink-600 uppercase tracking-[0.15em] mb-2">CYN Medical ช่วยคลินิกและแบรนด์การแพทย์</p>
+                        <p class="text-[15px] text-ink-600 leading-relaxed">สร้างภาพลักษณ์ที่น่าเชื่อถือ พร้อมกลยุทธ์การตลาดที่วัดผลได้จริง</p>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-3">
+                        <a href="#contact" class="pill-btn pill-dark">Schedule Consultation</a>
+                        <a href="/v3/work.html" class="pill-btn pill-outline">View Our Work</a>
+                    </div>
+                    <div class="mt-16 lg:mt-24 flex items-center gap-3 text-ink-500">
+                        <span class="w-8 h-8 rounded-full border border-ink-300 flex items-center justify-center scroll-bounce">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                        </span>
+                        <span class="label">Scroll to Explore</span>
+                    </div>
+                </div>
+
+                <!-- RIGHT — Placeholder + metric card -->
+                <div class="relative">
+                    <div class="aspect-[5/5] rounded-2xl overflow-hidden relative ph-clinic shadow-[0_40px_80px_-30px_rgba(15,27,48,0.18)]">
+                        <div class="absolute bottom-6 left-6 label text-ink-400">Clinic Interior Image</div>
+                    </div>
+                    <!-- Floating metric card -->
+                    <div class="absolute -bottom-4 -left-4 lg:-left-12 bg-white rounded-xl p-6 lg:p-7 shadow-[0_30px_60px_-20px_rgba(15,27,48,0.25)] w-[280px] lg:w-[320px]">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-ink-500 font-medium">Lead Growth</span>
+                            <div class="flex items-center gap-1 text-[11px] text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">This Month
+                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+                            </div>
+                        </div>
+                        <div class="font-display text-5xl lg:text-6xl text-cobalt tracking-tight font-medium mb-3">+248%</div>
+                        <svg viewBox="0 0 220 60" class="w-full h-12 mb-5">
+                            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2C4CAA" stop-opacity="0.18"/><stop offset="100%" stop-color="#2C4CAA" stop-opacity="0"/></linearGradient></defs>
+                            <path d="M0 50 L25 47 L50 45 L75 38 L100 35 L125 26 L150 22 L175 14 L200 8 L220 4" fill="none" stroke="#2C4CAA" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M0 50 L25 47 L50 45 L75 38 L100 35 L125 26 L150 22 L175 14 L200 8 L220 4 L220 60 L0 60 Z" fill="url(#g1)"/>
+                        </svg>
+                        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-ink-100">
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Leads</div><div class="font-display text-lg text-ink-800 font-medium leading-none">1,286</div><div class="text-[10px] text-cobalt font-medium mt-1">↑ 32%</div></div>
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">ROAS</div><div class="font-display text-lg text-ink-800 font-medium leading-none">5.2<span class="italic-serif text-ink-400">x</span></div><div class="text-[10px] text-cobalt font-medium mt-1">↑ 18%</div></div>
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Cost per Lead</div><div class="font-display text-lg text-ink-800 font-medium leading-none">-28%</div><div class="text-[10px] text-cobalt font-medium mt-1">↓ 12%</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <section class="py-16 lg:py-20 bg-white border-b border-ink-200/60">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <p class="text-center label text-ink-500 mb-10">Trusted by Leading Clinics &amp; Healthcare Brands</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-x-8 gap-y-8 items-center justify-items-center">
+                <div class="text-center">
+                    <div class="font-display italic-serif text-2xl text-ink-700">The</div>
+                    <div class="font-display text-xl tracking-[0.2em] text-ink-800 font-medium -mt-1">KLINIQUE</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display italic-serif text-2xl text-ink-700">Romrawin</div>
+                    <div class="text-[9px] tracking-[0.25em] text-ink-500 font-medium mt-1">FOR THE BETTER YOU</div>
+                </div>
+                <div class="text-center">
+                    <svg width="28" height="28" viewBox="0 0 32 32" class="mx-auto text-ink-700 mb-1.5"><path d="M16 4l3 6 6 1-4.5 4.5L21.5 22 16 19l-5.5 3L11.5 15.5 7 11l6-1z" fill="currentColor"/></svg>
+                    <div class="font-display text-base tracking-[0.2em] text-ink-800 font-medium">MASTERPIECE</div>
+                    <div class="text-[8px] tracking-[0.3em] text-ink-500 font-medium">HOSPITAL</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display italic-serif text-base text-ink-500 mb-0.5">THE</div>
+                    <div class="font-display text-2xl tracking-[0.25em] text-ink-800 font-medium">ASTELL</div>
+                    <div class="text-[8px] tracking-[0.4em] text-ink-500 font-medium mt-0.5">CLINIC</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-2xl tracking-tight text-ink-800 font-medium">meko</div>
+                    <div class="text-[9px] tracking-[0.3em] text-ink-500 font-medium uppercase">clinic</div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display italic-serif text-2xl text-ink-700">V <span class="not-italic">Square</span></div>
+                </div>
+                <div class="text-center">
+                    <div class="font-display text-2xl tracking-[0.18em] text-ink-800 font-medium">LBC</div>
+                    <div class="text-[8px] tracking-[0.35em] text-ink-500 font-medium">CLINIC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Our Services</div>
+            <div class="grid lg:grid-cols-12 gap-8 mb-20">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] text-ink-800">
+                        Integrated Marketing Solutions<br/>for Medical Brands
+                    </h2>
+                </div>
+                <div class="lg:col-span-5 lg:col-start-8 lg:pt-3">
+                    <p class="text-base text-ink-600 leading-relaxed">เรารวมกลยุทธ์ แบรนด์คอนเทนต์ และการตลาด<br/>เพื่อสร้างการเติบโตที่วัดผลได้จริง</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+                <div class="group">
+                    <div class="flex items-baseline gap-5 mb-7">
+                        <span class="italic-serif text-3xl text-cobalt font-medium">01</span>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Brand Strategy</h3>
+                    </div>
+                    <ul class="space-y-3 text-ink-600 mb-8">
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Brand Positioning</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Identity Design</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Marketing Strategy</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Customer Journey</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-6 border-t border-ink-200">
+                        <span class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><path d="M12 2l9 4-9 4-9-4 9-4z"/><path d="M3 6v6c0 4.97 4 9 9 9s9-4.03 9-9V6"/></svg>
+                        </span>
+                        <a href="#" class="w-10 h-10 rounded-full border border-ink-200 flex items-center justify-center text-ink-600 hover:bg-ink-800 hover:text-white hover:border-ink-800 transition">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="flex items-baseline gap-5 mb-7">
+                        <span class="italic-serif text-3xl text-cobalt font-medium">02</span>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Content Production</h3>
+                    </div>
+                    <ul class="space-y-3 text-ink-600 mb-8">
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Photo &amp; Video Production</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Medical Content</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Social Media Content</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Creative Campaign</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-6 border-t border-ink-200">
+                        <span class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                        </span>
+                        <a href="#" class="w-10 h-10 rounded-full border border-ink-200 flex items-center justify-center text-ink-600 hover:bg-ink-800 hover:text-white hover:border-ink-800 transition">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <div class="flex items-baseline gap-5 mb-7">
+                        <span class="italic-serif text-3xl text-cobalt font-medium">03</span>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Performance Marketing</h3>
+                    </div>
+                    <ul class="space-y-3 text-ink-600 mb-8">
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Paid Advertising</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Lead Generation</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Conversion Optimization</li>
+                        <li class="flex items-center gap-3"><span class="w-1 h-1 rounded-full bg-ink-400"></span>Analytics &amp; Reporting</li>
+                    </ul>
+                    <div class="flex items-center justify-between pt-6 border-t border-ink-200">
+                        <span class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+                        </span>
+                        <a href="#" class="w-10 h-10 rounded-full border border-ink-200 flex items-center justify-center text-ink-600 hover:bg-ink-800 hover:text-white hover:border-ink-800 transition">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="py-24 lg:py-32 bg-ink-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Our Work</div>
+            <div class="grid lg:grid-cols-12 gap-8 mb-16">
+                <div class="lg:col-span-6">
+                    <h2 class="font-display text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] text-ink-800">
+                        Social Media That<br/>Builds Trust &amp; Engagement
+                    </h2>
+                </div>
+                <div class="lg:col-span-5 lg:col-start-8 lg:pt-3">
+                    <p class="text-base text-ink-600 leading-relaxed">เราออกแบบและดูแลโซเชียลมีเดียให้กับคลินิกและแบรนด์การแพทย์<br/>ด้วยคอนเทนต์ที่ลึกซึ้ง น่าเชื่อถือ และสร้างผลลัพธ์ได้จริง</p>
+                </div>
+            </div>
+
+            <!-- Phone mockups (placeholder content, no real images) -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
+                <div class="card-hover">
+                    <div class="phone">
+                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-ink-100"></div><span class="font-medium text-ink-800">theklinique</span></div>
+                            </div>
+                            <div class="flex gap-3 text-center text-ink-700"><div><div class="font-semibold text-ink-800">1,428</div><div class="text-ink-500" style="font-size:7px">followers</div></div><div><div class="font-semibold text-ink-800">136K</div><div class="text-ink-500" style="font-size:7px">posts</div></div></div>
+                            <div class="phone-grid mt-1">
+                                <div style="background:linear-gradient(135deg,#1F2D44,#384962)"></div>
+                                <div style="background:linear-gradient(135deg,#D9DFE9,#EEF1F6)"></div>
+                                <div style="background:linear-gradient(135deg,#94A6DB,#2C4CAA)"></div>
+                                <div style="background:linear-gradient(135deg,#0F1B30,#1F2D44)"></div>
+                                <div style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)"></div>
+                                <div style="background:linear-gradient(135deg,#2C4CAA,#1B3375)"></div>
+                                <div style="background:linear-gradient(135deg,#384962,#536685)"></div>
+                                <div style="background:linear-gradient(135deg,#C7D2EE,#94A6DB)"></div>
+                                <div style="background:linear-gradient(135deg,#1F2D44,#0F1B30)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover">
+                    <div class="phone">
+                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
+                            <div class="font-display italic-serif text-cobalt text-base text-center">Romrawin</div>
+                            <div class="text-[7px] text-center tracking-widest text-ink-500">FOR THE BETTER YOU</div>
+                            <div class="aspect-square rounded-md overflow-hidden relative mt-1" style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)">
+                                <div class="absolute inset-x-3 bottom-3 bg-white/80 backdrop-blur-sm p-2 rounded"><div class="font-display italic-serif text-cobalt text-sm">Filler</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover">
+                    <div class="phone">
+                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-royal-200"></div><span class="font-medium text-ink-800">mekoclinic</span></div>
+                            </div>
+                            <div class="flex gap-3 text-center"><div><div class="font-semibold text-ink-800">1,098</div><div class="text-ink-500" style="font-size:7px">followers</div></div><div><div class="font-semibold text-ink-800">87.1K</div><div class="text-ink-500" style="font-size:7px">posts</div></div></div>
+                            <div class="phone-grid mt-1">
+                                <div style="background:linear-gradient(135deg,#384962,#1F2D44)"></div>
+                                <div style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)"></div>
+                                <div style="background:linear-gradient(135deg,#2C4CAA,#23408F)"></div>
+                                <div style="background:linear-gradient(135deg,#94A6DB,#5A75C5)"></div>
+                                <div style="background:linear-gradient(135deg,#0F1B30,#1F2D44)"></div>
+                                <div style="background:linear-gradient(135deg,#C7D2EE,#94A6DB)"></div>
+                                <div style="background:linear-gradient(135deg,#1B3375,#15295E)"></div>
+                                <div style="background:linear-gradient(135deg,#D9DFE9,#EEF1F6)"></div>
+                                <div style="background:linear-gradient(135deg,#384962,#536685)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover">
+                    <div class="phone">
+                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
+                            <div class="text-center">
+                                <div class="font-display italic-serif text-base text-ink-500">THE</div>
+                                <div class="font-display tracking-[0.25em] text-base text-ink-800 font-medium -mt-1">ASTELL</div>
+                                <div class="text-[6px] tracking-[0.3em] text-ink-500">CLINIC</div>
+                            </div>
+                            <div class="flex-1 rounded-md overflow-hidden relative" style="background:linear-gradient(180deg,#EEF1F6 0%,#D9DFE9 100%)">
+                                <div class="absolute bottom-3 inset-x-3 text-center">
+                                    <div class="font-display italic-serif text-cobalt text-sm">Ultherapy</div>
+                                    <div class="font-display italic-serif text-ink-500" style="font-size:9px">Prime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover">
+                    <div class="phone">
+                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-cobalt"></div><span class="font-medium text-ink-800">vsquare_clinic</span></div>
+                            </div>
+                            <div class="flex gap-3 text-center"><div><div class="font-semibold text-ink-800">2,326</div><div class="text-ink-500" style="font-size:7px">followers</div></div><div><div class="font-semibold text-ink-800">240K</div><div class="text-ink-500" style="font-size:7px">posts</div></div></div>
+                            <div class="phone-grid mt-1">
+                                <div style="background:linear-gradient(135deg,#1F2D44,#0F1B30)"></div>
+                                <div style="background:linear-gradient(135deg,#C7D2EE,#94A6DB)"></div>
+                                <div style="background:linear-gradient(135deg,#2C4CAA,#1B3375)"></div>
+                                <div style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)"></div>
+                                <div style="background:linear-gradient(135deg,#384962,#1F2D44)"></div>
+                                <div style="background:linear-gradient(135deg,#5A75C5,#3554B3)"></div>
+                                <div style="background:linear-gradient(135deg,#0F1B30,#070F1E)"></div>
+                                <div style="background:linear-gradient(135deg,#D9DFE9,#B4BECF)"></div>
+                                <div style="background:linear-gradient(135deg,#2C4CAA,#23408F)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <a href="#" class="pill-btn pill-outline">View All Work
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CYN MEDICAL -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-12">Why CYN Medical</div>
+            <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
+                <div class="flex items-start gap-6">
+                    <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">01</span>
+                    <div>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Specialized in<br/>Medical Industry</h3>
+                        <p class="text-sm text-ink-600 leading-relaxed">เข้าใจธุรกิจการแพทย์อย่างลึกซึ้ง<br/>วางกลยุทธ์ที่ตรงจุด</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">02</span>
+                    <div>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Data-Driven<br/>Strategy</h3>
+                        <p class="text-sm text-ink-600 leading-relaxed">ใช้ข้อมูลจริงในการวิเคราะห์<br/>วางแผนและเพิ่มประสิทธิภาพ</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-6">
+                    <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">03</span>
+                    <div>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Creative That<br/>Builds Trust</h3>
+                        <p class="text-sm text-ink-600 leading-relaxed">สื่อสารอย่างสร้างสรรค์<br/>สร้างความน่าเชื่อถือให้แบรนด์</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED CASE STUDY -->
+    <section class="bg-ink-800 text-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-20 lg:py-24">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-6">
+                    <div class="label text-royal-300 mb-6">Featured Case Study</div>
+                    <h3 class="font-display text-5xl md:text-6xl tracking-tight text-white mb-4 leading-[1.05]">THE KLINIQUE</h3>
+                    <p class="text-white/70 leading-relaxed mb-12 max-w-md">ยกระดับแบรนด์คลินิกสู่ตลาดความงามระดับพรีเมียม</p>
+                    <div class="grid grid-cols-3 gap-6 mb-12 max-w-lg">
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">+312<span class="italic-serif text-royal-300">%</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Lead Growth</div></div>
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">5.2<span class="italic-serif text-royal-300">x</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">ROAS</div></div>
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">+67<span class="italic-serif text-royal-300">%</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Increase in Revenue</div></div>
+                    </div>
+                    <a href="#" class="pill-btn pill-outline-light">View Case Study
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+                <div class="lg:col-span-6 relative">
+                    <div class="aspect-[5/3.5] rounded-lg overflow-hidden ph-clinic-dark relative">
+                        <div class="absolute bottom-6 left-6 font-display tracking-[0.15em] text-white/80 text-xl font-medium z-10">
+                            <span class="italic-serif font-light">The</span> KLINIQUE
+                        </div>
+                        <div class="absolute top-6 right-6 label text-white/40">Clinic Image</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR PROCESS -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Our Process</div>
+            <h2 class="font-display text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] text-ink-800 mb-20">From Strategy to Sustainable Growth</h2>
+            <div class="relative grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+                <div class="hidden md:block absolute top-2 left-[12.5%] right-[12.5%] h-px bg-ink-200"></div>
+                <div class="relative">
+                    <div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div>
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Discover</h3>
+                    <p class="text-sm text-ink-600 leading-relaxed">วิเคราะห์ธุรกิจและกลุ่มเป้าหมาย</p>
+                </div>
+                <div class="relative">
+                    <div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div>
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Strategy</h3>
+                    <p class="text-sm text-ink-600 leading-relaxed">วางกลยุทธ์การตลาดที่เหมาะสม</p>
+                </div>
+                <div class="relative">
+                    <div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div>
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Production</h3>
+                    <p class="text-sm text-ink-600 leading-relaxed">สร้างสรรค์คอนเทนต์คุณภาพ</p>
+                </div>
+                <div class="relative">
+                    <div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div>
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Growth</h3>
+                    <p class="text-sm text-ink-600 leading-relaxed">เพิ่มประสิทธิภาพและต่อยอดการเติบโต</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSIGHTS & ARTICLES -->
+    <section id="insights" class="py-24 lg:py-32 bg-ink-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Insights &amp; Articles</div>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <h2 class="font-display text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] text-ink-800">Knowledge That Drives Growth</h2>
+                <a href="#" class="pill-btn pill-outline self-start md:self-auto">View All Insights
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <a href="#" class="group card-hover bg-white rounded-xl overflow-hidden border border-ink-200/50">
+                    <div class="aspect-[4/3] ph-article"></div>
+                    <div class="p-7">
+                        <div class="label text-cobalt mb-4">Marketing Strategy</div>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-6">Why Most Clinics Fail<br/>at Branding</h3>
+                        <div class="flex justify-end"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-ink-600 group-hover:text-cobalt group-hover:translate-x-1 transition-all"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+                    </div>
+                </a>
+                <a href="#" class="group card-hover bg-white rounded-xl overflow-hidden border border-ink-200/50">
+                    <div class="aspect-[4/3] ph-article"></div>
+                    <div class="p-7">
+                        <div class="label text-cobalt mb-4">Branding</div>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-6">The Psychology of<br/>Premium Healthcare Design</h3>
+                        <div class="flex justify-end"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-ink-600 group-hover:text-cobalt group-hover:translate-x-1 transition-all"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+                    </div>
+                </a>
+                <a href="#" class="group card-hover bg-white rounded-xl overflow-hidden border border-ink-200/50">
+                    <div class="aspect-[4/3] ph-article"></div>
+                    <div class="p-7">
+                        <div class="label text-cobalt mb-4">Content Marketing</div>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-6">Building Trust Through<br/>Medical Content</h3>
+                        <div class="flex justify-end"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="text-ink-600 group-hover:text-cobalt group-hover:translate-x-1 transition-all"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CTA -->
+    <section id="contact" class="bg-ink-800 text-white relative overflow-hidden">
+        <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
+            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7">
+                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white">
+                        Build a Medical Brand<br/>
+                        People <span class="italic-serif text-royal-300">Trust</span>
+                    </h2>
+                    <p class="mt-6 text-white/65 max-w-md leading-relaxed">ให้ CYN Medical ช่วยวางกลยุทธ์และสร้างการเติบโต<br/>ที่ยั่งยืนให้กับแบรนด์ของคุณ</p>
+                </div>
+                <div class="lg:col-span-5 flex lg:justify-end">
+                    <a href="tel:+66877803463" class="pill-btn pill-outline-light">Start Your Project
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Giant background text -->
+            <div class="absolute bottom-0 right-0 pointer-events-none opacity-[0.08] select-none">
+                <div class="font-display text-[8rem] md:text-[14rem] lg:text-[18rem] leading-none tracking-tight text-white whitespace-nowrap">CYN</div>
+                <div class="text-[2rem] md:text-[3.5rem] lg:text-[4.5rem] tracking-[0.3em] text-white text-right -mt-8 lg:-mt-16 font-medium">MEDICAL</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="about" class="bg-ink-900 text-white py-10 lg:py-12 border-t border-white/5">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <img src="/assets/cyn-logo.webp" alt="CYN Medical" class="h-10 w-auto brightness-0 invert opacity-90" />
+                <nav class="flex items-center gap-8 text-xs tracking-[0.15em] uppercase font-medium text-white/70">
+                    <a href="#services" class="hover:text-white transition">Services</a>
+                    <a href="#work" class="hover:text-white transition">Work</a>
+                    <a href="#insights" class="hover:text-white transition">Insights</a>
+                    <a href="#about" class="hover:text-white transition">About</a>
+                </nav>
+                <div class="text-xs text-white/40">© 2026 CYN Medical Digital Agency</div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

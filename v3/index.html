@@ -8,13 +8,13 @@
     <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { theme: { extend: {
             fontFamily: {
-                sans:['IBM Plex Sans Thai','Inter','system-ui','sans-serif'],
-                display:['Cormorant Garamond','IBM Plex Sans Thai','Georgia','serif']
+                sans:['Anuphan','Inter','system-ui','sans-serif'],
+                display:['Cormorant Garamond','Anuphan','Georgia','serif']
             },
             colors: {
                 ink:    { 50:'#F7F8FB',100:'#EEF1F6',200:'#D9DFE9',300:'#B4BECF',400:'#7F8DA8',500:'#536685',600:'#384962',700:'#1F2D44',800:'#0F1B30',900:'#070F1E' },
@@ -23,10 +23,10 @@
             }
         }}};
     </script>
-    <style>
-        html{scroll-behavior:smooth} body{font-family:'IBM Plex Sans Thai','Inter',system-ui,sans-serif;background:#FFFFFF;color:#0F1B30;font-weight:400;-webkit-font-smoothing:antialiased}
-        .font-display{font-family:'Cormorant Garamond','IBM Plex Sans Thai',Georgia,serif;letter-spacing:-0.015em;font-weight:400}
-        .italic-serif{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400}
+    <style>@font-face{font-family:'NumSans';src:local('Inter'),local('Helvetica Neue'),local('Arial');unicode-range:U+0030-0039,U+002B,U+0025,U+002E,U+002C} .usfx{font-family:'Inter','Anuphan',system-ui,sans-serif !important;font-style:normal !important;font-variant-numeric:tabular-nums lining-nums} .num{font-family:'Inter','Anuphan',system-ui,sans-serif;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums} 
+        html{scroll-behavior:smooth} body{font-family:'Anuphan','Inter',system-ui,sans-serif;background:#FFFFFF;color:#0F1B30;font-weight:400;-webkit-font-smoothing:antialiased}
+        .font-display{font-family:'NumSans','Cormorant Garamond','Anuphan',Georgia,serif;letter-spacing:-0.015em;font-weight:400}
+        .italic-serif{font-family:'NumSans','Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400}
         .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
         .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s ease}
         .pill-dark{background:#0F1B30;color:#FFF}
@@ -124,7 +124,7 @@
                         <div class="font-display text-5xl lg:text-6xl text-cobalt tracking-tight font-medium mb-3">+250%</div>
                         <p class="text-xs text-ink-500 mb-5">ยอดจองคลินิกเพิ่มขึ้น<br/>หลังวางคอนเทนต์เน้นความเชี่ยวชาญแพทย์</p>
                         <div class="grid grid-cols-2 gap-3 pt-4 border-t border-ink-100">
-                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Engagement</div><div class="font-display text-lg text-ink-800 font-medium leading-none">300K<span class="italic-serif text-ink-400">+</span></div><div class="text-[10px] text-ink-500 mt-1">ต่อโพสต์</div></div>
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Engagement</div><div class="font-display text-lg text-ink-800 font-medium leading-none">300K<span class="usfx text-ink-400">+</span></div><div class="text-[10px] text-ink-500 mt-1">ต่อโพสต์</div></div>
                             <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Channel</div><div class="font-display text-lg text-ink-800 font-medium leading-none">Meta</div><div class="text-[10px] text-ink-500 mt-1">FB + IG</div></div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
             <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
                 <div class="group">
                     <div class="flex items-baseline gap-5 mb-7">
-                        <span class="italic-serif text-3xl text-cobalt font-medium">01</span>
+                        <span class="usfx text-3xl text-cobalt font-medium">01</span>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Brand Strategy</h3>
                     </div>
                     <ul class="space-y-3 text-ink-600 mb-8">
@@ -199,7 +199,7 @@
 
                 <div class="group">
                     <div class="flex items-baseline gap-5 mb-7">
-                        <span class="italic-serif text-3xl text-cobalt font-medium">02</span>
+                        <span class="usfx text-3xl text-cobalt font-medium">02</span>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Content Production</h3>
                     </div>
                     <ul class="space-y-3 text-ink-600 mb-8">
@@ -220,7 +220,7 @@
 
                 <div class="group">
                     <div class="flex items-baseline gap-5 mb-7">
-                        <span class="italic-serif text-3xl text-cobalt font-medium">03</span>
+                        <span class="usfx text-3xl text-cobalt font-medium">03</span>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Performance Marketing</h3>
                     </div>
                     <ul class="space-y-3 text-ink-600 mb-8">
@@ -405,21 +405,21 @@
             <div class="label text-cobalt mb-12">Why CYN Medical</div>
             <div class="grid md:grid-cols-3 gap-12 lg:gap-16">
                 <div class="flex items-start gap-6">
-                    <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">01</span>
+                    <span class="usfx text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">01</span>
                     <div>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Specialized in<br/>Medical Industry</h3>
                         <p class="text-sm text-ink-600 leading-relaxed">ทีมประกอบด้วย strategist บุคลากรการแพทย์ และ creative<br/>ที่เข้าใจตลาดและคนไข้จริง</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6">
-                    <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">02</span>
+                    <span class="usfx text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">02</span>
                     <div>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Our Own<br/>Measurement Tools</h3>
                         <p class="text-sm text-ink-600 leading-relaxed">ใช้เครื่องมือวัดผลของเราเอง<br/>ติดตามตั้งแต่ลีดจนถึงการจอง</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6">
-                    <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">03</span>
+                    <span class="usfx text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">03</span>
                     <div>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Punctuality is<br/>Our DNA</h3>
                         <p class="text-sm text-ink-600 leading-relaxed">ธุรกิจของคุณเดินทุกวัน<br/>การส่งงานตรงเวลาคือ DNA ของทีมเรา</p>
@@ -438,7 +438,7 @@
                     <h3 class="font-display text-5xl md:text-6xl tracking-tight text-white mb-4 leading-[1.05]">CSIDE</h3>
                     <p class="text-white/70 leading-relaxed mb-12 max-w-md">กลยุทธ์คอนเทนต์เจาะกลุ่มบุคลากรการแพทย์ + ยิงแอดแบบ precision สำหรับธุรกิจ B2B อุปกรณ์การแพทย์</p>
                     <div class="grid grid-cols-3 gap-6 mb-12 max-w-lg">
-                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">10<span class="italic-serif text-royal-300">x</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">ROAS</div></div>
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">10<span class="usfx text-royal-300">x</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">ROAS</div></div>
                         <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">B2B</div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Precision Targeting</div></div>
                         <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">Medical</div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Equipment Sector</div></div>
                     </div>

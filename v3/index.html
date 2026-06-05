@@ -56,6 +56,10 @@
         .phone-screen{width:100%;height:100%;background:#FFF;border-radius:32px;overflow:hidden;position:relative}
         .phone-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#EEF1F6}
         .phone-grid > div{aspect-ratio:1;background-size:cover;background-position:center}
+        /* work category tabs + cards */
+        .work-tab{padding:.6rem 1.25rem;border-radius:9999px;font-size:.875rem;font-weight:500;border:1px solid #E2E6EE;background:#FFF;color:#536685;transition:all .2s;cursor:pointer}
+        .work-tab.is-active{background:#0F1B30;color:#FFF;border-color:#0F1B30}
+        .work-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.15),rgba(15,27,48,.05) 45%,rgba(15,27,48,.82))}
     </style>
 </head>
 <body class="antialiased">
@@ -63,7 +67,7 @@
     <!-- NAVBAR -->
     <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-200/60">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-            <a href="/v3/" class="flex items-center gap-2"><img src="/assets/cyn-logo.webp" alt="CYN Medical" class="h-14 w-auto" /></a>
+            <a href="/v3/" class="flex items-center gap-2"><img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto" /></a>
             <nav class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700">
                 <a href="/v3/services.html" class="hover:text-cobalt transition">Services</a>
                 <a href="/v3/work.html" class="hover:text-cobalt transition">Work</a>
@@ -71,8 +75,6 @@
                 <a href="/v3/about.html" class="hover:text-cobalt transition">About Us</a>
             </nav>
             <div class="flex items-center gap-3">
-                <a href="/" class="text-xs tracking-[0.15em] uppercase text-ink-500 hover:text-cobalt transition hidden md:inline">V1</a>
-                <a href="/v2/" class="text-xs tracking-[0.15em] uppercase text-ink-500 hover:text-cobalt transition hidden md:inline">V2</a>
                 <a href="#contact" class="pill-btn pill-dark text-[11px]">Consultation
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                 </a>
@@ -112,24 +114,17 @@
                     <div class="aspect-[5/5] rounded-2xl overflow-hidden relative ph-clinic shadow-[0_40px_80px_-30px_rgba(15,27,48,0.18)]">
                         <div class="absolute bottom-6 left-6 label text-ink-400">Clinic Interior Image</div>
                     </div>
-                    <!-- Floating metric card -->
+                    <!-- Floating metric card — real case -->
                     <div class="absolute -bottom-4 -left-4 lg:-left-12 bg-white rounded-xl p-6 lg:p-7 shadow-[0_30px_60px_-20px_rgba(15,27,48,0.25)] w-[280px] lg:w-[320px]">
                         <div class="flex items-center justify-between mb-4">
-                            <span class="text-xs text-ink-500 font-medium">Lead Growth</span>
-                            <div class="flex items-center gap-1 text-[11px] text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">This Month
-                                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                            </div>
+                            <span class="text-xs text-ink-500 font-medium">Varinpat Clinic</span>
+                            <div class="text-[11px] text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">Case Study</div>
                         </div>
-                        <div class="font-display text-5xl lg:text-6xl text-cobalt tracking-tight font-medium mb-3">+248%</div>
-                        <svg viewBox="0 0 220 60" class="w-full h-12 mb-5">
-                            <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2C4CAA" stop-opacity="0.18"/><stop offset="100%" stop-color="#2C4CAA" stop-opacity="0"/></linearGradient></defs>
-                            <path d="M0 50 L25 47 L50 45 L75 38 L100 35 L125 26 L150 22 L175 14 L200 8 L220 4" fill="none" stroke="#2C4CAA" stroke-width="2" stroke-linecap="round"/>
-                            <path d="M0 50 L25 47 L50 45 L75 38 L100 35 L125 26 L150 22 L175 14 L200 8 L220 4 L220 60 L0 60 Z" fill="url(#g1)"/>
-                        </svg>
-                        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-ink-100">
-                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Leads</div><div class="font-display text-lg text-ink-800 font-medium leading-none">1,286</div><div class="text-[10px] text-cobalt font-medium mt-1">↑ 32%</div></div>
-                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">ROAS</div><div class="font-display text-lg text-ink-800 font-medium leading-none">5.2<span class="italic-serif text-ink-400">x</span></div><div class="text-[10px] text-cobalt font-medium mt-1">↑ 18%</div></div>
-                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Cost per Lead</div><div class="font-display text-lg text-ink-800 font-medium leading-none">-28%</div><div class="text-[10px] text-cobalt font-medium mt-1">↓ 12%</div></div>
+                        <div class="font-display text-5xl lg:text-6xl text-cobalt tracking-tight font-medium mb-3">+250%</div>
+                        <p class="text-xs text-ink-500 mb-5">ยอดจองคลินิกเพิ่มขึ้น<br/>หลังวางคอนเทนต์เน้นความเชี่ยวชาญแพทย์</p>
+                        <div class="grid grid-cols-2 gap-3 pt-4 border-t border-ink-100">
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Engagement</div><div class="font-display text-lg text-ink-800 font-medium leading-none">300K<span class="italic-serif text-ink-400">+</span></div><div class="text-[10px] text-ink-500 mt-1">ต่อโพสต์</div></div>
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase mb-1">Channel</div><div class="font-display text-lg text-ink-800 font-medium leading-none">Meta</div><div class="text-[10px] text-ink-500 mt-1">FB + IG</div></div>
                         </div>
                     </div>
                 </div>
@@ -137,40 +132,29 @@
         </div>
     </section>
 
-    <!-- TRUST BAR -->
+    <!-- TRUST BAR — verified clients from real portfolio -->
     <section class="py-16 lg:py-20 bg-white border-b border-ink-200/60">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <p class="text-center label text-ink-500 mb-10">Trusted by Leading Clinics &amp; Healthcare Brands</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-x-8 gap-y-8 items-center justify-items-center">
-                <div class="text-center">
-                    <div class="font-display italic-serif text-2xl text-ink-700">The</div>
-                    <div class="font-display text-xl tracking-[0.2em] text-ink-800 font-medium -mt-1">KLINIQUE</div>
-                </div>
-                <div class="text-center">
-                    <div class="font-display italic-serif text-2xl text-ink-700">Romrawin</div>
-                    <div class="text-[9px] tracking-[0.25em] text-ink-500 font-medium mt-1">FOR THE BETTER YOU</div>
-                </div>
-                <div class="text-center">
-                    <svg width="28" height="28" viewBox="0 0 32 32" class="mx-auto text-ink-700 mb-1.5"><path d="M16 4l3 6 6 1-4.5 4.5L21.5 22 16 19l-5.5 3L11.5 15.5 7 11l6-1z" fill="currentColor"/></svg>
-                    <div class="font-display text-base tracking-[0.2em] text-ink-800 font-medium">MASTERPIECE</div>
-                    <div class="text-[8px] tracking-[0.3em] text-ink-500 font-medium">HOSPITAL</div>
-                </div>
+            <p class="text-center label text-ink-500 mb-4">Clinics &amp; Healthcare Brands We've Worked With</p>
+            <!-- Partner badges -->
+            <div class="flex items-center justify-center gap-6 mb-10">
+                <img src="/assets/meta-partner.webp" alt="Meta Business Partner" class="h-8 w-auto opacity-80" onerror="this.style.display='none'" />
+                <span class="w-px h-6 bg-ink-200"></span>
+                <img src="/assets/tiktok-partner.webp" alt="TikTok Marketing Partner" class="h-8 w-auto opacity-80" onerror="this.style.display='none'" />
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-x-6 gap-y-6 items-center justify-items-center">
                 <div class="text-center">
                     <div class="font-display italic-serif text-base text-ink-500 mb-0.5">THE</div>
-                    <div class="font-display text-2xl tracking-[0.25em] text-ink-800 font-medium">ASTELL</div>
+                    <div class="font-display text-xl tracking-[0.25em] text-ink-800 font-medium">ASTELL</div>
                     <div class="text-[8px] tracking-[0.4em] text-ink-500 font-medium mt-0.5">CLINIC</div>
                 </div>
-                <div class="text-center">
-                    <div class="font-display text-2xl tracking-tight text-ink-800 font-medium">meko</div>
-                    <div class="text-[9px] tracking-[0.3em] text-ink-500 font-medium uppercase">clinic</div>
-                </div>
-                <div class="text-center">
-                    <div class="font-display italic-serif text-2xl text-ink-700">V <span class="not-italic">Square</span></div>
-                </div>
-                <div class="text-center">
-                    <div class="font-display text-2xl tracking-[0.18em] text-ink-800 font-medium">LBC</div>
-                    <div class="text-[8px] tracking-[0.35em] text-ink-500 font-medium">CLINIC</div>
-                </div>
+                <div class="text-center"><div class="font-display italic-serif text-2xl text-ink-700">Varinpat</div><div class="text-[8px] tracking-[0.3em] text-ink-500 font-medium uppercase">Clinic</div></div>
+                <div class="text-center"><div class="font-display text-2xl tracking-[0.05em] text-ink-800 font-medium">Cside</div></div>
+                <div class="text-center"><div class="font-display italic-serif text-2xl text-ink-700">SUB.scrub</div></div>
+                <div class="text-center"><div class="font-display italic-serif text-2xl text-ink-700">The Bloom</div><div class="text-[8px] tracking-[0.3em] text-ink-500 font-medium uppercase">Clinic</div></div>
+                <div class="text-center"><div class="font-display text-xl tracking-[0.05em] text-ink-800 font-medium">Pun Smile</div><div class="text-[8px] tracking-[0.3em] text-ink-500 font-medium uppercase">Dental</div></div>
+                <div class="text-center"><div class="font-display italic-serif text-xl text-ink-700">Natural Joy</div><div class="text-[8px] tracking-[0.3em] text-ink-500 font-medium uppercase">Vision</div></div>
+                <div class="text-center"><div class="font-display text-2xl tracking-[0.05em] text-ink-800 font-medium">Zendori</div></div>
             </div>
         </div>
     </section>
@@ -258,121 +242,160 @@
     </section>
 
     <!-- WORK -->
-    <section id="work" class="py-24 lg:py-32 bg-ink-50">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="label text-cobalt mb-5">Our Work</div>
-            <div class="grid lg:grid-cols-12 gap-8 mb-16">
-                <div class="lg:col-span-6">
-                    <h2 class="font-display text-5xl md:text-6xl leading-[1.05] tracking-[-0.02em] text-ink-800">
-                        Social Media That<br/>Builds Trust &amp; Engagement
-                    </h2>
+    <section id="work" class="py-20 lg:py-28 bg-ink-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 mb-8 lg:mb-10">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                <div>
+                    <div class="label text-cobalt mb-4">Our Work</div>
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-0.02em] text-ink-800">Social Media That<br/>Builds Trust &amp; Engagement</h2>
                 </div>
-                <div class="lg:col-span-5 lg:col-start-8 lg:pt-3">
-                    <p class="text-base text-ink-600 leading-relaxed">เราออกแบบและดูแลโซเชียลมีเดียให้กับคลินิกและแบรนด์การแพทย์<br/>ด้วยคอนเทนต์ที่ลึกซึ้ง น่าเชื่อถือ และสร้างผลลัพธ์ได้จริง</p>
-                </div>
-            </div>
-
-            <!-- Phone mockups (placeholder content, no real images) -->
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-16">
-                <div class="card-hover">
-                    <div class="phone">
-                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-ink-100"></div><span class="font-medium text-ink-800">theklinique</span></div>
-                            </div>
-                            <div class="flex gap-3 text-center text-ink-700"><div><div class="font-semibold text-ink-800">1,428</div><div class="text-ink-500" style="font-size:7px">followers</div></div><div><div class="font-semibold text-ink-800">136K</div><div class="text-ink-500" style="font-size:7px">posts</div></div></div>
-                            <div class="phone-grid mt-1">
-                                <div style="background:linear-gradient(135deg,#1F2D44,#384962)"></div>
-                                <div style="background:linear-gradient(135deg,#D9DFE9,#EEF1F6)"></div>
-                                <div style="background:linear-gradient(135deg,#94A6DB,#2C4CAA)"></div>
-                                <div style="background:linear-gradient(135deg,#0F1B30,#1F2D44)"></div>
-                                <div style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)"></div>
-                                <div style="background:linear-gradient(135deg,#2C4CAA,#1B3375)"></div>
-                                <div style="background:linear-gradient(135deg,#384962,#536685)"></div>
-                                <div style="background:linear-gradient(135deg,#C7D2EE,#94A6DB)"></div>
-                                <div style="background:linear-gradient(135deg,#1F2D44,#0F1B30)"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-hover">
-                    <div class="phone">
-                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
-                            <div class="font-display italic-serif text-cobalt text-base text-center">Romrawin</div>
-                            <div class="text-[7px] text-center tracking-widest text-ink-500">FOR THE BETTER YOU</div>
-                            <div class="aspect-square rounded-md overflow-hidden relative mt-1" style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)">
-                                <div class="absolute inset-x-3 bottom-3 bg-white/80 backdrop-blur-sm p-2 rounded"><div class="font-display italic-serif text-cobalt text-sm">Filler</div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-hover">
-                    <div class="phone">
-                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-royal-200"></div><span class="font-medium text-ink-800">mekoclinic</span></div>
-                            </div>
-                            <div class="flex gap-3 text-center"><div><div class="font-semibold text-ink-800">1,098</div><div class="text-ink-500" style="font-size:7px">followers</div></div><div><div class="font-semibold text-ink-800">87.1K</div><div class="text-ink-500" style="font-size:7px">posts</div></div></div>
-                            <div class="phone-grid mt-1">
-                                <div style="background:linear-gradient(135deg,#384962,#1F2D44)"></div>
-                                <div style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)"></div>
-                                <div style="background:linear-gradient(135deg,#2C4CAA,#23408F)"></div>
-                                <div style="background:linear-gradient(135deg,#94A6DB,#5A75C5)"></div>
-                                <div style="background:linear-gradient(135deg,#0F1B30,#1F2D44)"></div>
-                                <div style="background:linear-gradient(135deg,#C7D2EE,#94A6DB)"></div>
-                                <div style="background:linear-gradient(135deg,#1B3375,#15295E)"></div>
-                                <div style="background:linear-gradient(135deg,#D9DFE9,#EEF1F6)"></div>
-                                <div style="background:linear-gradient(135deg,#384962,#536685)"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-hover">
-                    <div class="phone">
-                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
-                            <div class="text-center">
-                                <div class="font-display italic-serif text-base text-ink-500">THE</div>
-                                <div class="font-display tracking-[0.25em] text-base text-ink-800 font-medium -mt-1">ASTELL</div>
-                                <div class="text-[6px] tracking-[0.3em] text-ink-500">CLINIC</div>
-                            </div>
-                            <div class="flex-1 rounded-md overflow-hidden relative" style="background:linear-gradient(180deg,#EEF1F6 0%,#D9DFE9 100%)">
-                                <div class="absolute bottom-3 inset-x-3 text-center">
-                                    <div class="font-display italic-serif text-cobalt text-sm">Ultherapy</div>
-                                    <div class="font-display italic-serif text-ink-500" style="font-size:9px">Prime</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-hover">
-                    <div class="phone">
-                        <div class="phone-screen p-3 flex flex-col gap-2 text-[8px]">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center gap-1.5"><div class="w-5 h-5 rounded-full bg-cobalt"></div><span class="font-medium text-ink-800">vsquare_clinic</span></div>
-                            </div>
-                            <div class="flex gap-3 text-center"><div><div class="font-semibold text-ink-800">2,326</div><div class="text-ink-500" style="font-size:7px">followers</div></div><div><div class="font-semibold text-ink-800">240K</div><div class="text-ink-500" style="font-size:7px">posts</div></div></div>
-                            <div class="phone-grid mt-1">
-                                <div style="background:linear-gradient(135deg,#1F2D44,#0F1B30)"></div>
-                                <div style="background:linear-gradient(135deg,#C7D2EE,#94A6DB)"></div>
-                                <div style="background:linear-gradient(135deg,#2C4CAA,#1B3375)"></div>
-                                <div style="background:linear-gradient(135deg,#EEF1F6,#D9DFE9)"></div>
-                                <div style="background:linear-gradient(135deg,#384962,#1F2D44)"></div>
-                                <div style="background:linear-gradient(135deg,#5A75C5,#3554B3)"></div>
-                                <div style="background:linear-gradient(135deg,#0F1B30,#070F1E)"></div>
-                                <div style="background:linear-gradient(135deg,#D9DFE9,#B4BECF)"></div>
-                                <div style="background:linear-gradient(135deg,#2C4CAA,#23408F)"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="work-tabs" class="flex flex-wrap gap-2.5">
+                    <button type="button" class="work-tab is-active" data-cat="aesthetics">Aesthetics</button>
+                    <button type="button" class="work-tab" data-cat="dental">Dental</button>
+                    <button type="button" class="work-tab" data-cat="wellness">Healthcare</button>
+                    <button type="button" class="work-tab" data-cat="other">Other services</button>
                 </div>
             </div>
+        </div>
 
-            <div class="flex justify-center">
-                <a href="#" class="pill-btn pill-outline">View All Work
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <div class="w-full">
+            <!-- Aesthetics — verified clients -->
+            <div class="work-panel grid grid-cols-2 md:grid-cols-4" data-cat="aesthetics">
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Varinpat</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Astell</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding · International</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">The Bloom</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Dr. Fern</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Aesthetic Clinic</div>
+                    </div>
+                </a>
+            </div>
+            <!-- Dental — verified clients -->
+            <div class="work-panel grid grid-cols-2 md:grid-cols-4 hidden" data-cat="dental">
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Pun Smile</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Dental Clinic</div>
+                    </div>
+                </a>
+            </div>
+            <!-- Medical / Healthcare — verified clients -->
+            <div class="work-panel grid grid-cols-2 md:grid-cols-4 hidden" data-cat="wellness">
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Natural Joy Vision</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Eye Care Clinic</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">MS Rehab</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Rehabilitation</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Premier Ultrasound</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Medical Imaging</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">MedNinja</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Medical</div>
+                    </div>
+                </a>
+            </div>
+            <!-- Other — verified products & lifestyle -->
+            <div class="work-panel grid grid-cols-2 md:grid-cols-4 hidden" data-cat="other">
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Cside</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Medical Equipment</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">SUB.scrub</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Skincare</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Supersup</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Supplement</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[58vh] md:h-[85vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Zendori</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Cosmetics</div>
+                    </div>
                 </a>
             </div>
         </div>
+
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 mt-12 flex justify-center">
+            <a href="#" class="pill-btn pill-outline">View All Work
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+        </div>
+
+        <script>
+        (function(){
+            var tabs = document.querySelectorAll('#work-tabs .work-tab');
+            var panels = document.querySelectorAll('#work .work-panel');
+            tabs.forEach(function(tab){
+                tab.addEventListener('click', function(){
+                    var cat = tab.getAttribute('data-cat');
+                    tabs.forEach(function(t){ t.classList.toggle('is-active', t === tab); });
+                    panels.forEach(function(p){ p.classList.toggle('hidden', p.getAttribute('data-cat') !== cat); });
+                });
+            });
+        })();
+        </script>
     </section>
 
     <!-- WHY CYN MEDICAL -->
@@ -384,21 +407,21 @@
                     <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">01</span>
                     <div>
                         <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Specialized in<br/>Medical Industry</h3>
-                        <p class="text-sm text-ink-600 leading-relaxed">เข้าใจธุรกิจการแพทย์อย่างลึกซึ้ง<br/>วางกลยุทธ์ที่ตรงจุด</p>
+                        <p class="text-sm text-ink-600 leading-relaxed">ทีมประกอบด้วย strategist บุคลากรการแพทย์ และ creative<br/>ที่เข้าใจตลาดและคนไข้จริง</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6">
                     <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">02</span>
                     <div>
-                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Data-Driven<br/>Strategy</h3>
-                        <p class="text-sm text-ink-600 leading-relaxed">ใช้ข้อมูลจริงในการวิเคราะห์<br/>วางแผนและเพิ่มประสิทธิภาพ</p>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Our Own<br/>Measurement Tools</h3>
+                        <p class="text-sm text-ink-600 leading-relaxed">ใช้เครื่องมือวัดผลของเราเอง<br/>ติดตามตั้งแต่ลีดจนถึงการจอง</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-6">
                     <span class="italic-serif text-7xl lg:text-8xl text-cobalt font-medium leading-none shrink-0">03</span>
                     <div>
-                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Creative That<br/>Builds Trust</h3>
-                        <p class="text-sm text-ink-600 leading-relaxed">สื่อสารอย่างสร้างสรรค์<br/>สร้างความน่าเชื่อถือให้แบรนด์</p>
+                        <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight leading-tight mb-3">Punctuality is<br/>Our DNA</h3>
+                        <p class="text-sm text-ink-600 leading-relaxed">ธุรกิจของคุณเดินทุกวัน<br/>การส่งงานตรงเวลาคือ DNA ของทีมเรา</p>
                     </div>
                 </div>
             </div>
@@ -411,23 +434,21 @@
             <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 <div class="lg:col-span-6">
                     <div class="label text-royal-300 mb-6">Featured Case Study</div>
-                    <h3 class="font-display text-5xl md:text-6xl tracking-tight text-white mb-4 leading-[1.05]">THE KLINIQUE</h3>
-                    <p class="text-white/70 leading-relaxed mb-12 max-w-md">ยกระดับแบรนด์คลินิกสู่ตลาดความงามระดับพรีเมียม</p>
+                    <h3 class="font-display text-5xl md:text-6xl tracking-tight text-white mb-4 leading-[1.05]">CSIDE</h3>
+                    <p class="text-white/70 leading-relaxed mb-12 max-w-md">กลยุทธ์คอนเทนต์เจาะกลุ่มบุคลากรการแพทย์ + ยิงแอดแบบ precision สำหรับธุรกิจ B2B อุปกรณ์การแพทย์</p>
                     <div class="grid grid-cols-3 gap-6 mb-12 max-w-lg">
-                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">+312<span class="italic-serif text-royal-300">%</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Lead Growth</div></div>
-                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">5.2<span class="italic-serif text-royal-300">x</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">ROAS</div></div>
-                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">+67<span class="italic-serif text-royal-300">%</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Increase in Revenue</div></div>
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">10<span class="italic-serif text-royal-300">x</span></div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">ROAS</div></div>
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">B2B</div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Precision Targeting</div></div>
+                        <div><div class="font-display text-4xl lg:text-5xl font-medium text-white tracking-tight">Medical</div><div class="text-xs text-white/50 tracking-widest uppercase mt-2">Equipment Sector</div></div>
                     </div>
-                    <a href="#" class="pill-btn pill-outline-light">View Case Study
+                    <a href="/v3/work.html" class="pill-btn pill-outline-light">View Case Study
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                     </a>
                 </div>
                 <div class="lg:col-span-6 relative">
                     <div class="aspect-[5/3.5] rounded-lg overflow-hidden ph-clinic-dark relative">
-                        <div class="absolute bottom-6 left-6 font-display tracking-[0.15em] text-white/80 text-xl font-medium z-10">
-                            <span class="italic-serif font-light">The</span> KLINIQUE
-                        </div>
-                        <div class="absolute top-6 right-6 label text-white/40">Clinic Image</div>
+                        <div class="absolute bottom-6 left-6 font-display tracking-[0.15em] text-white/80 text-xl font-medium z-10">CSIDE</div>
+                        <div class="absolute top-6 right-6 label text-white/40">Medical Equipment</div>
                     </div>
                 </div>
             </div>
@@ -522,26 +543,35 @@
                     </a>
                 </div>
             </div>
-            <!-- Giant background text -->
-            <div class="absolute bottom-0 right-0 pointer-events-none opacity-[0.08] select-none">
-                <div class="font-display text-[8rem] md:text-[14rem] lg:text-[18rem] leading-none tracking-tight text-white whitespace-nowrap">CYN</div>
-                <div class="text-[2rem] md:text-[3.5rem] lg:text-[4.5rem] tracking-[0.3em] text-white text-right -mt-8 lg:-mt-16 font-medium">MEDICAL</div>
-            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer id="about" class="bg-ink-900 text-white py-10 lg:py-12 border-t border-white/5">
+    <footer id="about" class="bg-ink-900 text-white py-10 border-t border-white/5">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <img src="/assets/cyn-logo.webp" alt="CYN Medical" class="h-10 w-auto brightness-0 invert opacity-90" />
-                <nav class="flex items-center gap-8 text-xs tracking-[0.15em] uppercase font-medium text-white/70">
-                    <a href="#services" class="hover:text-white transition">Services</a>
-                    <a href="#work" class="hover:text-white transition">Work</a>
-                    <a href="#insights" class="hover:text-white transition">Insights</a>
-                    <a href="#about" class="hover:text-white transition">About</a>
-                </nav>
-                <div class="text-xs text-white/40">© 2026 CYN Medical Digital Agency</div>
+            <div class="flex flex-col gap-7">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto brightness-0 invert opacity-90" />
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.facebook.com/cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.02 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96H15.83c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.09 24 12.07z"/></svg></a>
+                        <a href="https://www.instagram.com/cynmedi.digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener noreferrer" aria-label="LINE" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.95 3.54 7.27 8.32 7.89.32.07.76.21.87.49.1.25.07.64.03.89l-.14.83c-.04.25-.2.99.87.54 1.07-.45 5.74-3.38 7.83-5.79C21.27 14.32 22 12.74 22 11c0-4.42-4.48-8-10-8z"/></svg></a>
+                        <a href="https://www.tiktok.com/@cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v12.86a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .53.04.77.12V9.99a5.9 5.9 0 0 0-.77-.05 5.85 5.85 0 1 0 5.85 5.85V9.4a7.43 7.43 0 0 0 4.34 1.39V7.6a4.28 4.28 0 0 1-3.34-1.78z"/></svg></a>
+                        <a href="mailto:cynmedical@gmail.com" aria-label="Email" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></svg></a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10">
+                    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/70">
+                        <a href="tel:+66877803463" class="hover:text-white transition">087-780-3463</a>
+                        <span class="text-white/30">·</span>
+                        <a href="mailto:cynmedical@gmail.com" class="hover:text-white transition">cynmedical@gmail.com</a>
+                        <span class="text-white/30">·</span>
+                        <span>84 ซ.พิบูลสงคราม 22 บางเขน นนทบุรี 11000</span>
+                        <span class="text-white/30">·</span>
+                        <span>จ–ศ 9:30–17:00</span>
+                    </div>
+                    <div class="text-xs text-white/40 whitespace-nowrap">© 2026 CYN Medical Digital Agency</div>
+                </div>
             </div>
         </div>
     </footer>

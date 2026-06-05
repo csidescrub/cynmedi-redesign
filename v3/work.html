@@ -28,22 +28,22 @@
         .filter-pill.active{background:#0F1B30;color:#FFF;border-color:#0F1B30}
         .filter-pill:hover{background:#EEF1F6}
         .filter-pill.active:hover{background:#1F2D44}
+        .work-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.15),rgba(15,27,48,.05) 45%,rgba(15,27,48,.82))}
     </style>
 </head>
 <body class="antialiased">
     <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-200/60">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-            <a href="/v3/" class="flex items-center gap-2"><img src="/assets/cyn-logo.webp" alt="CYN Medical" class="h-14 w-auto" /></a>
-            <nav class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700">
+            <a href="/v3/" class="flex items-center gap-2"><img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto" /></a>
+            <nav class="hidden lg:flex items-center gap-9 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700">
+                <a href="/v3/" class="hover:text-cobalt transition">Home</a>
                 <a href="/v3/services.html" class="hover:text-cobalt transition">Services</a>
                 <a href="/v3/work.html" class="text-cobalt transition">Work</a>
-                <a href="/v3/insights.html" class="hover:text-cobalt transition">Insights</a>
                 <a href="/v3/about.html" class="hover:text-cobalt transition">About Us</a>
+                <a href="/v3/contact.html" class="hover:text-cobalt transition">Contact Us</a>
             </nav>
             <div class="flex items-center gap-3">
-                <a href="/" class="text-xs tracking-[0.15em] uppercase text-ink-500 hover:text-cobalt transition hidden md:inline">V1</a>
-                <a href="/v2/" class="text-xs tracking-[0.15em] uppercase text-ink-500 hover:text-cobalt transition hidden md:inline">V2</a>
-                <a href="#contact" class="pill-btn pill-dark text-[11px]">Consultation</a>
+                <a href="/v3/contact.html" class="pill-btn pill-dark text-[11px]">Consultation</a>
             </div>
         </div>
     </header>
@@ -61,8 +61,8 @@
                 </div>
                 <div class="lg:col-span-4 lg:pb-3">
                     <div class="grid grid-cols-2 gap-6 pt-6 border-t border-ink-200">
-                        <div><div class="font-display text-4xl text-ink-800">28<span class="italic-serif text-ink-400">+</span></div><div class="label text-ink-500 mt-2">Projects</div></div>
-                        <div><div class="font-display text-4xl text-ink-800">120<span class="italic-serif text-ink-400">+</span></div><div class="label text-ink-500 mt-2">Brands</div></div>
+                        <div><div class="font-display text-4xl text-ink-800">16<span class="italic-serif text-ink-400">+</span></div><div class="label text-ink-500 mt-2">Brands Worked With</div></div>
+                        <div><div class="font-display text-4xl text-ink-800">6<span class="italic-serif text-ink-400">+yrs</span></div><div class="label text-ink-500 mt-2">Experience</div></div>
                     </div>
                 </div>
             </div>
@@ -91,136 +91,206 @@
     </section>
 
     <!-- WORK GRID -->
-    <section class="py-16 lg:py-20 bg-white">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative" style="background:linear-gradient(135deg,#1F2D44,#0F1B30);">
-                        <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 30% 30%,#2C4CAA,transparent 60%);"></div>
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-white">
-                            <div class="flex justify-between items-start"><span class="label opacity-70">01 / 28</span><span class="text-[10px] tracking-widest uppercase opacity-70">Medical Equipment</span></div>
-                            <div><div class="font-display text-5xl tracking-tight font-medium mb-1">CSIDE</div><div class="text-royal-300 text-sm font-medium">ROAS 10x</div></div>
-                        </div>
+    <section class="py-14 lg:py-16 bg-white">
+        <div class="w-full">
+            <div class="grid grid-cols-2 md:grid-cols-4">
+                <a href="/v3/work/cside.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Cside</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Performance Ads</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Medical Equipment · 2024</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">CSIDE</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative" style="background:linear-gradient(160deg,#EEF1F6,#C7D2EE);">
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-ink-800">
-                            <div class="flex justify-between items-start"><span class="label opacity-60">02 / 28</span><span class="text-[10px] tracking-widest uppercase opacity-60">Aesthetic</span></div>
-                            <div><div class="font-display italic-serif text-4xl mb-1">The Bloom</div><div class="font-medium text-sm">200K+ Engagement</div></div>
-                        </div>
+                <a href="/v3/work/the-bloom.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">The Bloom</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Aesthetic Clinic · 2024</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">The Bloom Clinic</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative bg-ink-800">
-                        <div class="absolute inset-0" style="background-image:linear-gradient(90deg,transparent 49.5%,rgba(255,255,255,.06) 49.5%,rgba(255,255,255,.06) 50.5%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,rgba(255,255,255,.06) 49.5%,rgba(255,255,255,.06) 50.5%,transparent 50.5%);background-size:48px 48px;"></div>
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-white">
-                            <div class="flex justify-between items-start"><span class="label opacity-70">03 / 28</span><span class="text-[10px] tracking-widest uppercase opacity-70">ASEAN</span></div>
-                            <div><div class="font-display italic-serif text-5xl text-royal-300 mb-1">Astell</div><div class="text-white/60 text-xs tracking-widest uppercase">Singapore Debut</div></div>
-                        </div>
+                <a href="/v3/work/astell.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Astell</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Aesthetic · 2023</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Astell</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative" style="background:linear-gradient(180deg,#2C4CAA,#15295E);">
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-white">
-                            <div class="flex justify-between items-start"><span class="label opacity-70">04 / 28</span><span class="text-[10px] tracking-widest uppercase opacity-70">Social</span></div>
-                            <div><div class="font-display text-7xl mb-1">8x</div><div class="font-medium text-sm">Followers Growth</div></div>
-                        </div>
+                <a href="/v3/work/varinpat.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Varinpat</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Doctor Branding</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Social Media · 2023</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Social Growth</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative bg-white border border-ink-200">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <svg class="w-1/2" viewBox="0 0 200 200" fill="none">
-                                <circle cx="100" cy="100" r="80" stroke="#2C4CAA" stroke-width="1" opacity="0.3"/>
-                                <circle cx="100" cy="100" r="55" stroke="#2C4CAA" stroke-width="1" opacity="0.4"/>
-                                <circle cx="100" cy="100" r="30" stroke="#2C4CAA" stroke-width="1" opacity="0.6"/>
-                                <circle cx="100" cy="100" r="12" fill="#2C4CAA"/>
-                            </svg>
-                        </div>
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-ink-800">
-                            <div class="flex justify-between items-start"><span class="label opacity-60">05 / 28</span><span class="text-[10px] tracking-widest uppercase opacity-60">Eye Clinic</span></div>
-                            <div class="font-display italic-serif text-3xl">Natural<br/>Joy Vision</div>
-                        </div>
+                <a href="/v3/work/natural-joy-vision.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Natural Joy Vision</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Social Media</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Eye Clinic · 2024</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Natural Joy Vision</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative" style="background:linear-gradient(135deg,#94A6DB,#1B3375);">
-                        <div class="absolute inset-0 flex items-center justify-center text-center text-white">
-                            <div><div class="font-display italic-serif text-4xl">Varinpat</div><div class="w-12 h-px bg-white/60 mx-auto my-3"></div><div class="font-display text-xl tracking-[0.2em] uppercase font-medium">Clinic</div></div>
-                        </div>
-                        <div class="absolute inset-0 p-6 flex justify-between items-start text-white">
-                            <span class="label opacity-70">06 / 28</span>
-                            <span class="text-[10px] tracking-widest uppercase opacity-70">Aesthetic</span>
-                        </div>
+                <a href="/v3/work/social-growth.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Social Growth</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Social Media</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Aesthetic · 2023</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Varinpat Clinic</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative bg-ink-900">
-                        <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 80% 80%,#2C4CAA,transparent 60%);"></div>
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-white">
-                            <div class="flex justify-between items-start"><span class="label opacity-70">07 / 28</span><span class="text-[10px] tracking-widest uppercase opacity-70">Real Estate</span></div>
-                            <div><div class="font-display text-5xl mb-1">฿6M</div><div class="text-white/70 text-xs tracking-widest uppercase">Sales in 3 Months</div></div>
-                        </div>
+                <a href="/v3/work/home-369.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Home 369</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Performance Ads</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Real Estate · 2023</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Home 369</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative" style="background:linear-gradient(180deg,#FFF 30%,#2C4CAA 100%);">
-                        <div class="absolute inset-0 flex items-end justify-center"><svg class="w-full -mb-px" viewBox="0 0 200 80" fill="none" preserveAspectRatio="none"><path d="M0 80 L0 60 L20 50 L40 55 L60 40 L80 45 L100 30 L120 38 L140 28 L160 35 L180 25 L200 32 L200 80 Z" fill="#0F1B30" opacity="0.85"/></svg></div>
-                        <div class="absolute top-0 inset-x-0 p-6 flex justify-between items-start text-ink-800">
-                            <span class="label opacity-60">08 / 28</span>
-                            <span class="text-[10px] tracking-widest uppercase opacity-60">Hospitality</span>
-                        </div>
-                        <div class="absolute bottom-6 inset-x-0 text-center text-white">
-                            <div class="font-display italic-serif text-3xl">Resort</div>
-                            <div class="font-display text-xs tracking-[0.2em] uppercase mt-1 font-medium">Fully Booked</div>
-                        </div>
+                <a href="/v3/work/resort-business.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Resort Business</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Hospitality · 2023</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Resort Business</h3>
                 </a>
-                <a href="#" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-lg overflow-hidden mb-5 relative bg-white border border-ink-200">
-                        <div class="absolute inset-0 flex items-center justify-center text-center">
-                            <div><div class="italic-serif text-2xl text-ink-500 mb-2">A study in</div><div class="font-display text-8xl text-ink-800 tracking-tight">5x</div><div class="italic-serif text-2xl text-ink-500 mt-2">growth</div></div>
-                        </div>
-                        <div class="absolute inset-0 p-6 flex justify-between items-start text-ink-800">
-                            <span class="label opacity-60">09 / 28</span>
-                            <span class="text-[10px] tracking-widest uppercase opacity-60">Booking</span>
-                        </div>
+                <a href="/v3/work/online-booking.html" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Online Booking</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Web Design</div>
                     </div>
-                    <div class="label text-ink-500 mb-1">Booking System · 2023</div>
-                    <h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Online Booking 5x</h3>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">The Klinique</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Romrawin</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Meko Clinic</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Performance Ads</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Welcare</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Socksy</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Subscrub</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Zendori</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Dreamist</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Cafe</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Social Media</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">The Bloom INT</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Performance Ads</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Cside International</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori2.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Madam Clinic</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Doctor Branding</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/cside.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Vitalle</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Wellness</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/dental-home.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Renew Clinic</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Content Marketing</div>
+                    </div>
+                </a>
+                <a href="#" class="group block relative h-[52vh] md:h-[72vh] overflow-hidden">
+                    <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
+                    <div class="work-scrim"></div>
+                    <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white">
+                        <div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Aura Aesthetic</div>
+                        <div class="text-[11px] tracking-[0.25em] uppercase font-semibold text-white/90">Branding</div>
+                    </div>
                 </a>
             </div>
-
-            <!-- Pagination -->
-            <div class="mt-20 flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-ink-200">
-                <div class="text-sm text-ink-500">Showing <span class="text-ink-800 font-medium">1 – 9</span> of <span class="text-ink-800 font-medium">28</span> projects</div>
-                <div class="flex items-center gap-2">
-                    <button class="w-10 h-10 rounded-full border border-ink-200 text-ink-700 hover:bg-ink-50 transition flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg></button>
-                    <button class="w-10 h-10 rounded-full bg-ink-800 text-white font-medium text-sm">1</button>
-                    <button class="w-10 h-10 rounded-full border border-ink-200 text-ink-700 hover:bg-ink-50 transition font-medium text-sm">2</button>
-                    <button class="w-10 h-10 rounded-full border border-ink-200 text-ink-700 hover:bg-ink-50 transition font-medium text-sm">3</button>
-                    <span class="text-ink-400 px-1">···</span>
-                    <button class="w-10 h-10 rounded-full border border-ink-200 text-ink-700 hover:bg-ink-50 transition font-medium text-sm">4</button>
-                    <button class="w-10 h-10 rounded-full border border-ink-200 text-ink-700 hover:bg-ink-50 transition flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-                </div>
-            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 mt-16 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-sm text-ink-500">Showing <span class="text-ink-800 font-medium">24</span> of <span class="text-ink-800 font-medium">28</span> projects</div>
+            <a href="#" class="pill-btn pill-outline">Load More<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
     </section>
 
@@ -234,24 +304,32 @@
                 </div>
                 <div class="lg:col-span-5 flex lg:justify-end"><a href="tel:+66877803463" class="pill-btn pill-outline-light">Start Your Project<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
             </div>
-            <div class="absolute bottom-0 right-0 pointer-events-none opacity-[0.08] select-none">
-                <div class="font-display text-[8rem] md:text-[14rem] lg:text-[18rem] leading-none tracking-tight text-white whitespace-nowrap">CYN</div>
-                <div class="text-[2rem] md:text-[3.5rem] lg:text-[4.5rem] tracking-[0.3em] text-white text-right -mt-8 lg:-mt-16 font-medium">MEDICAL</div>
-            </div>
         </div>
     </section>
 
-    <footer class="bg-ink-900 text-white py-10 border-t border-white/5">
+    <footer id="about" class="bg-ink-900 text-white py-10 border-t border-white/5">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                <img src="/assets/cyn-logo.webp" alt="CYN Medical" class="h-10 w-auto brightness-0 invert opacity-90" />
-                <nav class="flex items-center gap-8 text-xs tracking-[0.15em] uppercase font-medium text-white/70">
-                    <a href="/v3/services.html" class="hover:text-white transition">Services</a>
-                    <a href="/v3/work.html" class="hover:text-white transition">Work</a>
-                    <a href="/v3/insights.html" class="hover:text-white transition">Insights</a>
-                    <a href="/v3/about.html" class="hover:text-white transition">About</a>
-                </nav>
-                <div class="text-xs text-white/40">© 2026 CYN Medical Digital Agency</div>
+            <div class="flex flex-col gap-7">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto brightness-0 invert opacity-90" />
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.facebook.com/cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.02 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96H15.83c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.09 24 12.07z"/></svg></a>
+                        <a href="https://www.instagram.com/cynmedi.digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener noreferrer" aria-label="LINE" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.95 3.54 7.27 8.32 7.89.32.07.76.21.87.49.1.25.07.64.03.89l-.14.83c-.04.25-.2.99.87.54 1.07-.45 5.74-3.38 7.83-5.79C21.27 14.32 22 12.74 22 11c0-4.42-4.48-8-10-8z"/></svg></a>
+                        <a href="https://www.tiktok.com/@cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v12.86a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .53.04.77.12V9.99a5.9 5.9 0 0 0-.77-.05 5.85 5.85 0 1 0 5.85 5.85V9.4a7.43 7.43 0 0 0 4.34 1.39V7.6a4.28 4.28 0 0 1-3.34-1.78z"/></svg></a>
+                        <a href="mailto:cynmedical@gmail.com" aria-label="Email" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></svg></a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10">
+                    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/70">
+                        <a href="tel:+66877803463" class="hover:text-white transition">087-780-3463</a>
+                        <span class="text-white/30">·</span>
+                        <a href="mailto:cynmedical@gmail.com" class="hover:text-white transition">cynmedical@gmail.com</a>
+                        <span class="text-white/30">·</span>
+                        <span>84 ซ.พิบูลสงคราม 22 บางเขน นนทบุรี 11000</span>
+                    </div>
+                    <div class="text-xs text-white/40 whitespace-nowrap">© 2026 CYN Medical Digital Agency</div>
+                </div>
             </div>
         </div>
     </footer>

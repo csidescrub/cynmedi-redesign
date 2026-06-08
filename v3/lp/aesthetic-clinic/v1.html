@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>การตลาดสำหรับคลินิกความงาม | CYN Medical — เพิ่มยอดจองอย่างเป็นระบบ</title>
+    <meta name="description" content="เอเจนซี่การตลาดที่โฟกัสคลินิกความงามและธุรกิจการแพทย์ — Brand Strategy, Content, Performance Ads ที่วัดผลได้จริง ภายใต้กรอบโฆษณาทางการแพทย์" />
+    <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Anuphan','Inter','system-ui','sans-serif'],display:['Cormorant Garamond','Anuphan','Georgia','serif']},colors:{ink:{50:'#F7F8FB',100:'#EEF1F6',200:'#D9DFE9',300:'#B4BECF',400:'#7F8DA8',500:'#536685',600:'#384962',700:'#1F2D44',800:'#0F1B30',900:'#070F1E'},royal:{100:'#E8EDF8',200:'#C7D2EE',300:'#94A6DB',400:'#5A75C5',500:'#3554B3',600:'#2C4CAA',700:'#23408F',800:'#1B3375',900:'#15295E'},cobalt:'#2D4DB1'}}}};</script>
+    <style>@font-face{font-family:'NumSans';src:local('Inter'),local('Helvetica Neue'),local('Arial');unicode-range:U+0030-0039,U+002B,U+0025,U+002E,U+002C} .usfx{font-family:'Inter','Anuphan',system-ui,sans-serif !important;font-style:normal !important;font-variant-numeric:tabular-nums lining-nums} 
+        html{scroll-behavior:smooth}
+        body{font-family:'Anuphan','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;
+             -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+             font-feature-settings:'kern' 1,'liga' 1,'calt' 1;
+             font-size:16px;line-height:1.7;text-rendering:optimizeLegibility}
+
+        /* Headings — text balance for Thai/EN mix */
+        h1,h2,h3,h4{text-wrap:balance}
+        p{text-wrap:pretty}
+
+        /* Display serif — better Thai+EN leading */
+        .font-display{font-family:'NumSans','Cormorant Garamond','Anuphan',Georgia,serif;
+                      font-weight:400;letter-spacing:-0.01em;line-height:1.12;
+                      font-feature-settings:'kern' 1,'liga' 1}
+
+        /* Italic serif — works for accent only */
+        .italic-serif{font-family:'NumSans','Cormorant Garamond','Anuphan',Georgia,serif;
+                      font-style:italic;font-weight:400;letter-spacing:0}
+
+        /* Numbers — tabular, well-spaced */
+        .num{font-family:'Inter','Anuphan',sans-serif;font-weight:500;font-style:normal;
+             letter-spacing:-0.02em;
+             font-feature-settings:'tnum' 1,'lnum' 1,'kern' 1;
+             font-variant-numeric:tabular-nums lining-nums}
+
+        /* Labels — uppercase eyebrows (English only) */
+        .label{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;
+               font-family:'Inter',sans-serif;line-height:1.4}
+        /* Form labels — Thai natural reading */
+        .form-label{display:block;font-size:13px;font-weight:500;letter-spacing:0;
+                    text-transform:none;color:#1F2D44;
+                    font-family:'Anuphan','Inter',sans-serif;line-height:1.4}
+        /* Force form elements to use Thai font (no system fallback) */
+        .form-input,.form-textarea,select.form-input{
+            font-family:'Anuphan','Inter',sans-serif;
+            color:#1F2D44;font-size:15px;line-height:1.5}
+        .form-input::placeholder,.form-textarea::placeholder{
+            color:#7F8DA8;font-family:'Anuphan','Inter',sans-serif;font-weight:400}
+
+        /* Body paragraph helper — Thai-friendly leading */
+        .body-th{line-height:1.85;word-spacing:.02em}
+        .body-th-sm{line-height:1.75;word-spacing:.02em}
+
+        /* Pills — separate EN-uppercase from TH-natural */
+        .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+                  padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;
+                  letter-spacing:.16em;text-transform:uppercase;transition:all .3s;line-height:1}
+        .pill-btn-th{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+                     padding:.95rem 1.7rem;border-radius:9999px;font-size:.875rem;font-weight:500;
+                     letter-spacing:.01em;text-transform:none;transition:all .3s;line-height:1.2}
+        .pill-dark{background:#0F1B30;color:#FFF}.pill-dark:hover{background:#1F2D44}
+        .pill-cobalt{background:#2C4CAA;color:#FFF}.pill-cobalt:hover{background:#1B3375}
+        .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}
+        .pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
+        .pill-outline-light{background:transparent;color:#FFF;border:1px solid rgba(255,255,255,.3)}
+        .pill-outline-light:hover{background:#FFF;color:#0F1B30}
+
+        .card-hover{transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .3s}
+        .card-hover:hover{transform:translateY(-3px)}
+
+        .ph-img{background:linear-gradient(135deg,#EEF1F6,#D9DFE9);position:relative;
+                display:flex;align-items:center;justify-content:center}
+        .ph-img-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+                      color:#7F8DA8;font-weight:500}
+
+        .scroll-bounce{animation:bounce 2.5s ease-in-out infinite}
+        @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+        ::selection{background:#2C4CAA;color:#FFF}
+
+        details[open] summary svg{transform:rotate(45deg)}
+        details summary{list-style:none;cursor:pointer}
+        details summary::-webkit-details-marker{display:none}
+        details summary svg{transition:transform .3s}
+
+        input,textarea,select{font-family:inherit;line-height:1.5}
+        .form-input{width:100%;padding:.95rem 1.2rem;border:1px solid rgba(15,27,48,.15);
+                    border-radius:9999px;font-size:14px;background:#FFF;transition:border-color .3s;
+                    font-feature-settings:'kern' 1}
+        .form-input:focus{outline:none;border-color:#2C4CAA}
+        .form-textarea{width:100%;padding:1rem 1.2rem;border:1px solid rgba(15,27,48,.15);
+                       border-radius:18px;font-size:14px;background:#FFF;min-height:120px;
+                       line-height:1.65;transition:border-color .3s;resize:vertical}
+        .form-textarea:focus{outline:none;border-color:#2C4CAA}
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- MINIMAL NAV (no menu for conversion focus) -->
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-ink-200/60">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-24 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2"><img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto" /></a>
+            <div class="flex items-center gap-3">
+                <a href="tel:+66877803463" class="hidden md:flex items-center gap-2 text-sm text-ink-700 font-medium"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>087-780-3463</a>
+                <a href="#contact" class="pill-btn-th pill-cobalt text-[13px]">รับวิเคราะห์คลินิกฟรี</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="relative pt-28 lg:pt-32 pb-16 lg:pb-24 bg-ink-50 overflow-hidden">
+        <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 py-12">
+                    <div class="flex flex-wrap items-center gap-3 mb-8">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-px bg-cobalt"></span>
+                            <span class="label text-cobalt">For Aesthetic Clinics</span>
+                        </div>
+                        <span class="inline-flex items-center gap-2 bg-cobalt/8 text-cobalt rounded-full px-3 py-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cobalt animate-pulse"></span>
+                            <span class="text-xs font-medium">เหลือ 3 คลินิก/เดือนนี้</span>
+                        </span>
+                    </div>
+                    <h1 class="font-display text-5xl md:text-6xl lg:text-7xl text-ink-800" style="line-height:1.12;letter-spacing:-0.005em">
+                        เพิ่มยอดจอง<br/>
+                        คลินิกความงาม<br/>
+                        <span class="text-cobalt"><span class="italic-serif">อย่าง</span><span class="italic-serif">เป็นระบบ</span></span>
+                    </h1>
+                    <p class="mt-10 text-lg text-ink-600 body-th max-w-xl">ระบบการตลาดครบวงจรที่ออกแบบ<span class="text-ink-800 font-medium">เฉพาะคลินิก</span> — ยิงแอด Facebook + Google, ผลิตคอนเทนต์, ทำแลนดิ้งเพจ และติดตามลีดจนถึงการจอง วัดผลด้วยตัวเลขจริงทุกสัปดาห์</p>
+
+                    <!-- Trust bullets -->
+                    <ul class="mt-10 space-y-4 max-w-md">
+                        <li class="flex items-start gap-3.5 text-ink-700 body-th-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span>ไม่ต้องเซ็นสัญญายาว เริ่มทดลองเดือนแรกได้</span></li>
+                        <li class="flex items-start gap-3.5 text-ink-700 body-th-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span>วัดผลด้วย ROAS จริง รายงานทุกสัปดาห์</span></li>
+                        <li class="flex items-start gap-3.5 text-ink-700 body-th-sm"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span>ทีมเข้าใจกฎโฆษณาทางการแพทย์ (อย. / สถานพยาบาล)</span></li>
+                    </ul>
+
+                    <div class="mt-12 flex flex-wrap gap-3">
+                        <a href="#contact" class="pill-btn-th pill-cobalt">รับวิเคราะห์คลินิกฟรี
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="tel:+66877803463" class="pill-btn-th pill-outline">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            087-780-3463
+                        </a>
+                    </div>
+                    <p class="mt-4 text-xs text-ink-500">หรือทักไลน์ <a href="https://line.me/R/ti/p/@139yrwpi" class="text-cobalt font-medium hover:underline">@139yrwpi</a> — ตอบกลับใน 24 ชม.</p>
+
+                    <!-- Proof strip for cold traffic -->
+                    <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
+                        <span class="text-ink-700">โฟกัส <span class="font-semibold text-cobalt">สายการแพทย์</span> โดยเฉพาะ</span>
+                        <span class="hidden sm:block w-px h-4 bg-ink-200"></span>
+                        <span class="text-ink-700">เคสจริงทำ ROAS ได้ <span class="num font-semibold text-cobalt">5x+</span></span>
+                        <span class="hidden sm:block w-px h-4 bg-ink-200"></span>
+                        <span class="text-ink-700">ประสบการณ์ <span class="num font-semibold text-cobalt">6+</span> ปี</span>
+                    </div>
+
+                    <!-- Partners -->
+                    <div class="mt-10 flex items-center gap-5">
+                        <span class="label text-ink-500">รับรองโดย</span>
+                        <img src="/assets/meta-partner.webp" alt="Meta Business Partner" class="h-9 w-auto opacity-90" />
+                        <span class="w-px h-7 bg-ink-200"></span>
+                        <img src="/assets/tiktok-partner.webp" alt="TikTok Marketing Partner" class="h-9 w-auto opacity-90" />
+                    </div>
+                </div>
+
+                <!-- Right: image + floating metric card -->
+                <div class="lg:col-span-5 relative">
+                    <div class="aspect-[4/5] rounded-2xl overflow-hidden relative shadow-[0_40px_80px_-30px_rgba(15,27,48,0.18)] ph-img">
+                        <span class="ph-img-label">[ รูปภาพ — Aesthetic Clinic ]</span>
+                    </div>
+                    <!-- Floating result card -->
+                    <div class="absolute -bottom-6 -left-6 lg:-left-12 bg-white rounded-xl p-6 shadow-[0_30px_60px_-20px_rgba(15,27,48,0.25)] w-[280px]">
+                        <div class="flex items-center justify-between mb-3"><span class="text-xs text-ink-500 font-medium">Varinpat Clinic</span><span class="text-[10px] text-ink-400">Case Study</span></div>
+                        <div class="num text-5xl text-cobalt tracking-tight mb-3" style="font-weight:600">+250%</div>
+                        <div class="text-xs text-ink-500 mb-4">ยอดจองคลินิกเพิ่มขึ้น</div>
+                        <div class="pt-3 border-t border-ink-100 grid grid-cols-2 gap-3">
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase">Engagement</div><div class="num text-lg text-ink-800" style="font-weight:600">300K<span class="text-ink-400 font-light">+</span></div></div>
+                            <div><div class="text-[9px] text-ink-500 tracking-widest uppercase">ต่อโพสต์</div><div class="num text-lg text-ink-800" style="font-weight:600">เฉลี่ย</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Common Challenges</div>
+            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-ink-800 mb-16 max-w-4xl">คลินิกความงามของคุณ <span class="italic-serif text-cobalt">กำลังเจอปัญหาเหล่านี้ใช่ไหม?</span></h2>
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                <div class="flex items-start gap-5 border-t border-ink-200 pt-8"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5" class="mt-1 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div><h3 class="font-display text-2xl text-ink-800 font-medium mb-3" style="line-height:1.25;letter-spacing:-0.005em">ยิงแอดแล้วไม่มีคนมาจอง</h3><p class="text-ink-600 body-th-sm">ลงงบโฆษณาไปเยอะ แต่ Lead ที่ได้มาไม่ qualify หรือไม่ปิดการขาย</p></div></div>
+                <div class="flex items-start gap-5 border-t border-ink-200 pt-8"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5" class="mt-1 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div><h3 class="font-display text-2xl text-ink-800 font-medium mb-3" style="line-height:1.25;letter-spacing:-0.005em">แบรนด์ดูไม่ premium</h3><p class="text-ink-600 body-th-sm">ภาพและคอนเทนต์ดูธรรมดา ไม่สามารถดึงดูดลูกค้าระดับบนได้</p></div></div>
+                <div class="flex items-start gap-5 border-t border-ink-200 pt-8"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5" class="mt-1 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div><h3 class="font-display text-2xl text-ink-800 font-medium mb-3" style="line-height:1.25;letter-spacing:-0.005em">คู่แข่งเยอะ ทำยังไงให้โดดเด่น</h3><p class="text-ink-600 body-th-sm">ตลาดคลินิกความงามแข่งกันด้วยราคา ทำให้กำไรลดลงเรื่อยๆ</p></div></div>
+                <div class="flex items-start gap-5 border-t border-ink-200 pt-8"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5" class="mt-1 shrink-0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div><h3 class="font-display text-2xl text-ink-800 font-medium mb-3" style="line-height:1.25;letter-spacing:-0.005em">เอเจนซี่ไม่เข้าใจวงการแพทย์</h3><p class="text-ink-600 body-th-sm">ทำคอนเทนต์ผิดกฎโฆษณาทางการแพทย์ หรือสื่อสารไม่ตรงกับ insight ของลูกค้าคลินิก</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US — differentiators (close the sale) -->
+    <section class="py-24 lg:py-32 bg-ink-800 text-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-royal-300 mb-5">Why CYN Medical</div>
+            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] mb-14 max-w-4xl">ทำไมคลินิกถึงเลือก <span class="italic-serif text-royal-300">CYN</span></h2>
+            <div class="grid md:grid-cols-2 gap-x-12 gap-y-8">
+                <div class="flex items-start gap-4 border-t border-white/15 pt-8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><div><h3 class="text-lg font-medium mb-1.5">โฟกัสคลินิกความงามอย่างเดียว</h3><p class="text-white/65 body-th-sm text-[15px]">ไม่รับทุกอุตสาหกรรม จึงเข้าใจคนไข้และตลาดของคุณจริง</p></div></div>
+                <div class="flex items-start gap-4 border-t border-white/15 pt-8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><div><h3 class="text-lg font-medium mb-1.5">ยิงครบ Facebook + TikTok + Google</h3><p class="text-white/65 body-th-sm text-[15px]">จบในทีมเดียว ไม่ต้องจ้างหลายเจ้าให้ปวดหัว</p></div></div>
+                <div class="flex items-start gap-4 border-t border-white/15 pt-8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><div><h3 class="text-lg font-medium mb-1.5">มีทีมถ่ายคอนเทนต์เอง</h3><p class="text-white/65 body-th-sm text-[15px]">ถ่าย ตัดต่อ วางคอนเทนต์ ครบในทีม ไม่ต้องหาเพิ่ม</p></div></div>
+                <div class="flex items-start gap-4 border-t border-white/15 pt-8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><div><h3 class="text-lg font-medium mb-1.5">CRM ติดตามลีดถึงการจอง</h3><p class="text-white/65 body-th-sm text-[15px]">ไม่ปล่อยให้ลีดที่ยิงแอดมาหลุดมือไปเฉยๆ</p></div></div>
+                <div class="flex items-start gap-4 border-t border-white/15 pt-8"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><div><h3 class="text-lg font-medium mb-1.5">เข้าใจกฎโฆษณาทางการแพทย์</h3><p class="text-white/65 body-th-sm text-[15px]">อย. / สถานพยาบาล + นโยบาย Meta healthcare — แอดไม่โดนแบน</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDIES — Social Proof right after pain agitation -->
+    <section id="work" class="py-20 lg:py-24 bg-ink-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 lg:mb-12">
+                <div>
+                    <div class="label text-cobalt mb-4">Proven Results · Real Clients</div>
+                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl text-ink-800" style="line-height:1.15;letter-spacing:-0.005em">แบรนด์การแพทย์และความงาม<br/>ที่เราทำให้ <span class="italic-serif text-cobalt">เติบโตจริง</span></h2>
+                </div>
+                <a href="#contact" class="inline-flex items-center gap-2 text-sm text-cobalt font-medium hover:gap-3 transition-all whitespace-nowrap">
+                    ปรึกษาเราฟรี
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
+                <!-- Varinpat Clinic — คลินิกความงาม -->
+                <a href="#contact" class="group card-hover block bg-white rounded-2xl border border-ink-200 overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-ink-800">
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata">
+                            <source src="/assets/zendori2.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(15,27,48,0.25),rgba(15,27,48,0.05) 40%,rgba(15,27,48,0.78));"></div>
+                        <div class="absolute inset-0 p-5 flex flex-col justify-end text-white">
+                            <div class="font-display italic-serif text-4xl mb-1">Varinpat</div>
+                            <div class="text-sm font-light tracking-wide text-white">Aesthetic Clinic</div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-2">Varinpat Clinic</h3>
+                        <p class="text-xs text-ink-600 leading-relaxed mb-3">คลินิกความงาม — คอนเทนต์เน้นความเชี่ยวชาญแพทย์ สื่อสารเข้าถึงง่าย สร้าง trust</p>
+                        <div class="flex gap-4 mb-3 pt-3 border-t border-ink-100">
+                            <div><div class="num text-base font-semibold text-cobalt leading-none">300K+</div><div class="text-[10px] text-ink-500 mt-1">engagement/โพสต์</div></div>
+                            <div><div class="num text-base font-semibold text-cobalt leading-none">+250%</div><div class="text-[10px] text-ink-500 mt-1">ยอดจอง</div></div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] tracking-wide text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">Content Marketing</span>
+                            <span class="text-[10px] tracking-wide text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">Performance Ads</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Astell — Aesthetic Clinic (อินเตอร์) -->
+                <a href="#contact" class="group card-hover block bg-white rounded-2xl border border-ink-200 overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-ink-800">
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata">
+                            <source src="/assets/dental-home.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(15,27,48,0.35),rgba(15,27,48,0.1) 40%,rgba(15,27,48,0.82));"></div>
+                        <div class="absolute inset-0 p-5 flex flex-col justify-end text-white">
+                            <div class="font-display italic-serif text-5xl mb-1">Astell</div>
+                            <div class="text-sm font-light tracking-wide text-white">Rebranding · International</div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-2">Astell Clinic</h3>
+                        <p class="text-xs text-ink-600 leading-relaxed mb-3">คลินิกความงาม — รีแบรนด์และเปลี่ยน platform จาก FB ไป IG เจาะกลุ่มต่างชาติ (สิงคโปร์/อาเซียน)</p>
+                        <div class="flex gap-4 mb-3 pt-3 border-t border-ink-100">
+                            <div><div class="num text-base font-semibold text-cobalt leading-none">50K+</div><div class="text-[10px] text-ink-500 mt-1">engagement/โพสต์</div></div>
+                            <div><div class="num text-base font-semibold text-cobalt leading-none">+200%</div><div class="text-[10px] text-ink-500 mt-1">ยอดจองต่างชาติ</div></div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] tracking-wide text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">Branding</span>
+                            <span class="text-[10px] tracking-wide text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">Content Marketing</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Cside — อุปกรณ์การแพทย์ -->
+                <a href="#contact" class="group card-hover block bg-white rounded-2xl border border-ink-200 overflow-hidden">
+                    <div class="aspect-[9/16] relative overflow-hidden bg-ink-800">
+                        <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline preload="metadata">
+                            <source src="/assets/supersup.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(15,27,48,0.35),rgba(15,27,48,0.1) 40%,rgba(15,27,48,0.82));"></div>
+                        <div class="absolute inset-0 p-5 flex flex-col justify-end text-white">
+                            <div class="font-display italic-serif text-4xl mb-1">Cside</div>
+                            <div class="text-sm font-light tracking-wide text-white">Medical Equipment</div>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-2">Cside</h3>
+                        <p class="text-xs text-ink-600 leading-relaxed mb-3">อุปกรณ์การแพทย์ — กลยุทธ์คอนเทนต์เจาะกลุ่มบุคลากรการแพทย์ + ยิงแอดแบบ precision</p>
+                        <div class="flex gap-4 mb-3 pt-3 border-t border-ink-100">
+                            <div><div class="num text-base font-semibold text-cobalt leading-none">10x</div><div class="text-[10px] text-ink-500 mt-1">ROAS</div></div>
+                            <div><div class="num text-base font-semibold text-cobalt leading-none">B2B</div><div class="text-[10px] text-ink-500 mt-1">ปิดการขายจริง</div></div>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-[10px] tracking-wide text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">Performance Ads</span>
+                            <span class="text-[10px] tracking-wide text-ink-500 border border-ink-200 rounded-full px-2.5 py-1">B2B</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENT WALL — trusted by -->
+    <section class="py-16 lg:py-20 bg-white border-t border-ink-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center">
+            <div class="label text-ink-500 mb-9">คลินิกและแบรนด์ที่เลือกใช้บริการเรา</div>
+            <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-5 text-ink-700">
+                <span class="font-display text-xl font-medium">Astell Clinic</span>
+                <span class="font-display text-xl font-medium">Varinpat Clinic</span>
+                <span class="font-display text-xl font-medium">The Bloom Clinic</span>
+                <span class="font-display text-xl font-medium">Dr.Fern Clinic</span>
+                <span class="font-display text-xl font-medium">Pun Smile Dental</span>
+                <span class="font-display text-xl font-medium">Premier Ultrasound</span>
+                <span class="font-display text-xl font-medium">Natural Joy Vision</span>
+                <span class="font-display text-xl font-medium">MS Rehab Clinic</span>
+                <span class="font-display text-xl font-medium">MedNinja</span>
+                <span class="font-display text-xl font-medium">Zendori</span>
+                <span class="font-display text-xl font-medium">The Crane Rayong</span>
+                <span class="font-display text-xl font-medium">Sanipa Resort</span>
+                <span class="font-display text-xl font-medium">Supersup</span>
+                <span class="font-display text-xl font-medium">SUB.scrub</span>
+                <span class="font-display text-xl font-medium">Home369</span>
+                <span class="font-display text-xl font-medium">Cside</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTION -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Our Services</div>
+            <div class="grid lg:grid-cols-12 gap-8 mb-20">
+                <div class="lg:col-span-7"><h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-ink-800">Marketing Solution<br/>สำหรับ <span class="italic-serif text-cobalt">คลินิกความงาม</span></h2></div>
+                <div class="lg:col-span-4 lg:pt-3"><p class="text-base text-ink-600 leading-relaxed">เลือกบริการที่ตรงกับเป้าหมายของคุณ — เริ่มต้นได้ตั้งแต่ Content Marketing ไปจนถึง Marketing Consultant ครบวงจร</p></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-200 border border-ink-200">
+                <div class="bg-white p-8"><div class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center mb-6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div><h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-3">Content Marketing</h3><p class="text-sm text-ink-600 leading-relaxed mb-4">Market research, content planning, video shooting &amp; editing, caption writing พร้อมโพสต์</p></div>
+                <div class="bg-white p-8"><div class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center mb-6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></div><h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-3">Ads Optimization</h3><p class="text-sm text-ink-600 leading-relaxed mb-4">Campaign setup, performance monitoring, testing &amp; scaling พร้อม report</p></div>
+                <div class="bg-white p-8"><div class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center mb-6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-3">Marketing Consultant</h3><p class="text-sm text-ink-600 leading-relaxed mb-4">วิเคราะห์ธุรกิจ วาง Strategy + Action Plan รายเดือน พร้อมที่ปรึกษาประจำ</p></div>
+                <div class="bg-white p-8"><div class="w-12 h-12 rounded-full bg-royal-100 flex items-center justify-center mb-6"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6"/></svg></div><h3 class="font-display text-xl text-ink-800 font-medium tracking-tight mb-3">Branding</h3><p class="text-sm text-ink-600 leading-relaxed mb-4">Brand strategy, positioning, visual identity &amp; guideline ครบวงจร</p></div>
+            </div>
+            <div class="mt-6 text-center text-sm text-ink-500">นอกจากนี้ยังมี <span class="text-ink-700 font-medium">TikTok Marketing</span> · <span class="text-ink-700 font-medium">Website Development</span> · <span class="text-ink-700 font-medium">Strategy Session</span></div>
+        </div>
+    </section>
+
+    <!-- BIG NUMBERS / PROOF -->
+    <section class="py-20 lg:py-24 bg-ink-800 text-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-4 gap-12 lg:gap-16">
+                <div><div class="num text-6xl md:text-7xl text-white tracking-tight mb-3">10<span class="text-royal-300 font-light">x</span></div><div class="label text-royal-300">ROAS · Cside</div></div>
+                <div><div class="num text-6xl md:text-7xl text-white tracking-tight mb-3">+250<span class="text-royal-300 font-light">%</span></div><div class="label text-royal-300">Booking · Varinpat</div></div>
+                <div><div class="num text-6xl md:text-7xl text-white tracking-tight mb-3">300K<span class="text-royal-300 font-light">+</span></div><div class="label text-royal-300">Engagement / Post</div></div>
+                <div><div class="num text-6xl md:text-7xl text-white tracking-tight mb-3">6<span class="text-royal-300 font-light text-4xl md:text-5xl ml-1">+yrs</span></div><div class="label text-royal-300">Experience</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING / PACKAGES -->
+    <section id="pricing" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Packages &amp; Pricing</div>
+            <div class="grid lg:grid-cols-12 gap-8 mb-16">
+                <div class="lg:col-span-7"><h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-ink-800">โปร่งใส <span class="italic-serif text-cobalt">ทุกแพ็คเกจ</span><br/>ไม่มีค่าใช้จ่ายแฝง</h2></div>
+                <div class="lg:col-span-4 lg:pt-3"><p class="text-base text-ink-600 leading-relaxed">เลือกแพ็คเกจที่เหมาะกับขนาดธุรกิจของคุณ — เริ่มต้นด้วยบริการเดียว หรือผสมหลายบริการ</p></div>
+            </div>
+
+<!-- Quick FAQ before pricing -->
+            <div class="grid md:grid-cols-3 gap-6 mb-14">
+                <div class="border-t-2 border-cobalt pt-5">
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2">เริ่มต้นใช้งบเท่าไร?</h3>
+                    <p class="text-sm text-ink-600 body-th-sm">ค่าบริการเริ่ม <span class="num font-medium text-ink-800">฿30,000</span>/เดือน เลือกแพ็กตามเป้าหมายได้ — งบโฆษณาประเมินแยกตามเป้า</p>
+                </div>
+                <div class="border-t-2 border-cobalt pt-5">
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2">เห็นผลกี่วัน?</h3>
+                    <p class="text-sm text-ink-600 body-th-sm">เริ่มเก็บลีดได้ภายใน <span class="num font-medium text-ink-800">1–2</span> สัปดาห์ · ROAS optimize แล้วเสถียรในเดือนที่ 2–3 พร้อมรายงานทุกสัปดาห์</p>
+                </div>
+                <div class="border-t-2 border-cobalt pt-5">
+                    <h3 class="font-display text-xl text-ink-800 font-medium mb-2">มีทีมถ่ายคอนเทนต์ไหม?</h3>
+                    <p class="text-sm text-ink-600 body-th-sm">มีทีมถ่าย + ตัดต่อเอง อยู่ในแพ็กคอนเทนต์ ไม่ต้องจ้างเพิ่ม</p>
+                </div>
+            </div>
+
+            <!-- Main 3 Packages -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+
+                <!-- CONTENT MARKETING -->
+                <div class="bg-white border border-ink-200 rounded-2xl p-8 card-hover flex flex-col">
+                    <div class="label text-cobalt mb-3">01 · Content Marketing</div>
+                    <h3 class="font-display text-3xl text-ink-800 font-medium tracking-tight mb-6">คอนเทนต์รายเดือน</h3>
+                    <div class="mb-8">
+                        <div class="label text-ink-500 mb-1">เริ่มต้น</div>
+                        <div class="num text-4xl text-ink-800" style="font-weight:600">฿34,900<span class="text-base text-ink-500 font-light ml-1">/mo</span></div>
+                        <div class="text-xs text-ink-600 mt-2">Junior / Senior · 16–20 Credits for Meta รายเดือน</div>
+                        <div class="text-sm text-ink-700 mt-4 pt-4 border-t border-ink-100"><span class="font-medium">เหมาะกับ:</span> คลินิกที่อยากมีคอนเทนต์สม่ำเสมอ แต่ยังไม่มีทีมถ่ายเอง</div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-ink-700 mb-8 flex-1">
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Market research &amp; content planning</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Content strategy &amp; creative direction</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Video shooting &amp; editing</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Caption writing &amp; content posting</li>
+                    </ul>
+                    <a href="#contact" class="pill-btn-th pill-outline w-full">เลือกแพ็คเกจนี้</a>
+                </div>
+
+                <!-- MARKETING CONSULTANT (Featured) -->
+                <div class="bg-ink-800 text-white rounded-2xl p-8 card-hover flex flex-col relative z-10 lg:scale-[1.05] ring-1 ring-cobalt/40 shadow-[0_30px_70px_-20px_rgba(15,27,48,0.55)]">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[10px] tracking-[0.2em] uppercase font-semibold px-3 py-1 rounded-full">Most Popular</div>
+                    <div class="label text-royal-300 mb-3">02 · Marketing Consultant</div>
+                    <h3 class="font-display text-3xl text-white font-medium tracking-tight mb-6">ที่ปรึกษา + วางระบบ</h3>
+                    <div class="mb-8">
+                        <div class="label text-royal-300 mb-1">เริ่มต้น</div>
+                        <div class="num text-4xl text-white" style="font-weight:600">฿39,900<span class="text-base text-white/60 font-light ml-1">/mo</span></div>
+                        <div class="text-xs text-white/65 mt-2">Growth Plan รายเดือน (สัญญา 3–6 เดือน) · หรือ Strategy Session แบบครั้งเดียว</div>
+                        <div class="text-sm text-white/85 mt-4 pt-4 border-t border-white/15"><span class="font-medium">เหมาะกับ:</span> คลินิกที่อยากได้ทั้งระบบ กลยุทธ์ และคนคุมครบในที่เดียว</div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-white/80 mb-8 flex-1">
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>วิเคราะห์ธุรกิจ + คู่แข่งเชิงลึก</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>วาง Strategy + Action Plan รายเดือน</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>เลือก + วางแผน Channel</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94A6DB" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>รายงานความคืบหน้ารายสัปดาห์</li>
+                    </ul>
+                    <a href="#contact" class="pill-btn-th pill-cobalt w-full">เลือกแพ็คเกจนี้</a>
+                </div>
+
+                <!-- BRANDING -->
+                <div class="bg-white border border-ink-200 rounded-2xl p-8 card-hover flex flex-col">
+                    <div class="label text-cobalt mb-3">03 · Branding</div>
+                    <h3 class="font-display text-3xl text-ink-800 font-medium tracking-tight mb-6">สร้าง / รีแบรนด์</h3>
+                    <div class="mb-8">
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <div class="rounded-xl border border-ink-200 p-3">
+                                <div class="text-[10px] text-ink-500 tracking-widest uppercase mb-1">Re-Branding</div>
+                                <div class="num text-2xl text-ink-800" style="font-weight:600">฿49,900</div>
+                                <div class="text-[11px] text-ink-500 mt-1 leading-tight">รีเฟรช/ปรับแบรนด์เดิม</div>
+                            </div>
+                            <div class="rounded-xl border border-cobalt/30 bg-cobalt/5 p-3">
+                                <div class="text-[10px] text-cobalt tracking-widest uppercase mb-1">Branding</div>
+                                <div class="num text-2xl text-ink-800" style="font-weight:600">฿99,900</div>
+                                <div class="text-[11px] text-ink-500 mt-1 leading-tight">แบรนด์ใหม่ครบวงจร</div>
+                            </div>
+                        </div>
+                        <div class="text-sm text-ink-700 mt-4 pt-4 border-t border-ink-100"><span class="font-medium">เหมาะกับ:</span> คลินิกเปิดใหม่ หรืออยากรีแบรนด์ให้ดูพรีเมียมขึ้น</div>
+                    </div>
+                    <ul class="space-y-2 text-sm text-ink-700 mb-8 flex-1">
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Brand discovery &amp; market research</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Strategy, positioning &amp; messaging</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Visual identity &amp; tone of voice</li>
+                        <li class="flex items-start gap-2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.5" class="mt-1 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>Brand guideline สำหรับใช้งานทุกช่องทาง</li>
+                    </ul>
+                    <a href="#contact" class="pill-btn-th pill-outline w-full">เลือกแพ็คเกจนี้</a>
+                </div>
+            </div>
+
+            <!-- Add-on Services -->
+            <div class="bg-ink-50 rounded-2xl p-8 lg:p-10">
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div>
+                        <div class="label text-cobalt mb-3">04 · Ads Optimization</div>
+                        <div class="num text-xl text-ink-800 mb-2" style="font-weight:600">15–20<span class="text-sm text-ink-500 font-light">% of ad spend</span></div>
+                        <p class="text-xs text-ink-600 leading-relaxed">15% (งบ &lt;200K) · 20% (200K–500K) · Campaign management + monitoring</p>
+                    </div>
+                    <div>
+                        <div class="label text-cobalt mb-3">05 · TikTok Marketing</div>
+                        <div class="num text-xl text-ink-800 mb-2" style="font-weight:600"><span class="text-sm text-ink-500 font-light mr-1">เริ่มต้น</span>฿30,000<span class="text-sm text-ink-500 font-light">/mo</span></div>
+                        <p class="text-xs text-ink-600 leading-relaxed">Starter / Growth / Pro · 15–30 credits · Script + Video editing + Hashtag</p>
+                    </div>
+                    <div>
+                        <div class="label text-cobalt mb-3">06 · Website Development</div>
+                        <div class="num text-xl text-ink-800 mb-2" style="font-weight:600"><span class="text-sm text-ink-500 font-light mr-1">เริ่มต้น</span>฿89,000</div>
+                        <p class="text-xs text-ink-600 leading-relaxed">Business · Corporate · E-Commerce · ใบเสนอราคาภายใน 24 ชม.</p>
+                    </div>
+                    <div>
+                        <div class="label text-cobalt mb-3">07 · Strategy Session</div>
+                        <div class="num text-xl text-ink-800 mb-2" style="font-weight:600">Project-based</div>
+                        <p class="text-xs text-ink-600 leading-relaxed">ที่ปรึกษาครั้งเดียว 2–3 ชม. · เหมาะกับผู้เริ่มต้น · สรุป Strategy Report</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROCESS -->
+    <section class="py-24 lg:py-32 bg-ink-50">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">How It Works</div>
+            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-ink-800 mb-20">เริ่มต้นใน <span class="text-cobalt"><span class="num">7</span> <span class="italic-serif">วัน</span></span></h2>
+            <div class="relative grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
+                <div class="hidden md:block absolute top-2 left-[12.5%] right-[12.5%] h-px bg-ink-200"></div>
+                <div class="relative"><div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div><div class="label text-ink-500 mb-2">Day 1–2</div><h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Discovery</h3><p class="text-sm text-ink-600 leading-relaxed">วิเคราะห์คลินิกและกลุ่มเป้าหมาย</p></div>
+                <div class="relative"><div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div><div class="label text-ink-500 mb-2">Day 3–5</div><h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Strategy</h3><p class="text-sm text-ink-600 leading-relaxed">วาง marketing plan ที่ตรงโจทย์</p></div>
+                <div class="relative"><div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div><div class="label text-ink-500 mb-2">Day 6–7</div><h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Launch</h3><p class="text-sm text-ink-600 leading-relaxed">เปิดแคมเปญและเริ่มยิงโฆษณา</p></div>
+                <div class="relative"><div class="w-4 h-4 rounded-full bg-cobalt mb-8 relative z-10"></div><div class="label text-ink-500 mb-2">ต่อเนื่อง</div><h3 class="font-display text-xl text-ink-800 font-medium mb-2 tracking-tight">Optimize</h3><p class="text-sm text-ink-600 leading-relaxed">ปรับและขยายผลทุกสัปดาห์</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1100px] mx-auto px-6 lg:px-10 text-center">
+            <div class="flex items-center justify-center gap-3 mb-10"><span class="w-8 h-px bg-cobalt"></span><span class="label text-cobalt">เสียงจากลูกค้า</span><span class="w-8 h-px bg-cobalt"></span></div>
+            <blockquote class="font-display text-3xl md:text-4xl lg:text-5xl text-ink-800 leading-[1.3] tracking-tight">
+                <span class="italic-serif text-ink-400">"</span>
+                หลังจากทำงานกับ CYN เราย้ายแพลตฟอร์มจาก FB ไป IG และรีแบรนด์ใหม่ <span class="italic-serif text-cobalt">ยอดจองจากต่างชาติเพิ่มขึ้น <span class="num">+200%</span></span> เข้าถึงคนไข้ระดับ premium ในสิงคโปร์และอาเซียนได้จริง
+                <span class="italic-serif text-ink-400">"</span>
+            </blockquote>
+            <div class="mt-10 flex items-center justify-center gap-4">
+                <div class="w-14 h-14 rounded-full bg-cobalt text-white flex items-center justify-center font-display text-xl">A</div>
+                <div class="text-left">
+                    <div class="font-display text-lg text-ink-800 font-medium">Astell Clinic</div>
+                    <div class="italic-serif text-ink-500 text-sm">Aesthetic · International</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-24 lg:py-32 bg-ink-50">
+        <div class="max-w-[1100px] mx-auto px-6 lg:px-10">
+            <div class="label text-cobalt mb-5">Frequently Asked</div>
+            <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-ink-800 mb-16">คำถามที่พบบ่อย</h2>
+            <div class="divide-y divide-ink-200 border-y border-ink-200">
+                <details class="group py-8 px-2"><summary class="flex items-start justify-between gap-6"><h3 class="font-display text-xl lg:text-2xl text-ink-800 font-medium tracking-tight pr-4">แต่ละแพ็คเกจราคาเท่าไหร่?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-600 mt-2 shrink-0"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p class="mt-4 text-ink-600 leading-relaxed pr-12"><strong>Content Marketing</strong> Junior ฿34,900 / Senior ฿39,900 ต่อเดือน · <strong>Marketing Consultant</strong> Growth Plan ฿39,900/เดือน (สัญญา 3–6 เดือน) · <strong>Branding</strong> Re-Branding ฿49,900 / Branding (แบรนด์ใหม่) ฿99,900 · <strong>TikTok Marketing</strong> Starter ฿30,000 / Growth ฿35,000 / Pro ฿45,000 ต่อเดือน · <strong>Website</strong> Business ฿89,000 / Corporate ฿140,000 / E-Commerce ฿222,000 · <strong>Ads Optimization</strong> 15% (งบ &lt;200K) หรือ 20% (200K–500K) ของงบโฆษณา</p></details>
+                <details class="group py-8 px-2"><summary class="flex items-start justify-between gap-6"><h3 class="font-display text-xl lg:text-2xl text-ink-800 font-medium tracking-tight pr-4">ต้องเซ็นสัญญายาวไหม?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-600 mt-2 shrink-0"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p class="mt-4 text-ink-600 leading-relaxed pr-12">Content Marketing &amp; Ads Optimization เป็นรายเดือน ไม่ต้องเซ็นยาว · Marketing Consultant Growth Plan มีสัญญา 3–6 เดือนเพื่อให้เห็นผลจริง · Branding เป็น project-based จ่ายตามงาน</p></details>
+                <details class="group py-8 px-2"><summary class="flex items-start justify-between gap-6"><h3 class="font-display text-xl lg:text-2xl text-ink-800 font-medium tracking-tight pr-4">Credits ของ Content Marketing คืออะไร?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-600 mt-2 shrink-0"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p class="mt-4 text-ink-600 leading-relaxed pr-12">Junior: 16 Credits/เดือน · Senior: 20 Credits/เดือน — 1 Credit = 1 Artwork (ภาพนิ่ง), 2 Credits = 1 Video (วิดีโอ) · คุณเลือกผสมเองได้ตามต้องการ</p></details>
+                <details class="group py-8 px-2"><summary class="flex items-start justify-between gap-6"><h3 class="font-display text-xl lg:text-2xl text-ink-800 font-medium tracking-tight pr-4">ใช้เวลานานแค่ไหนถึงเห็นผล?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-600 mt-2 shrink-0"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p class="mt-4 text-ink-600 leading-relaxed pr-12">เห็น Lead เริ่มเข้าใน 2 สัปดาห์ · ROAS optimize แล้วเสถียรในเดือนที่ 2–3 · สำหรับ Marketing Consultant Growth Plan จะเห็น roadmap 90 วันเป็นรูปธรรม</p></details>
+                <details class="group py-8 px-2"><summary class="flex items-start justify-between gap-6"><h3 class="font-display text-xl lg:text-2xl text-ink-800 font-medium tracking-tight pr-4">Marketing Consultant กับ Strategy Session ต่างกันยังไง?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-600 mt-2 shrink-0"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p class="mt-4 text-ink-600 leading-relaxed pr-12"><strong>Strategy Session</strong> เหมาะกับผู้เริ่มต้นหรือแบรนด์ที่ต้องการทิศทาง — 2–3 ชม. ครั้งเดียว ได้ Strategy Report · <strong>Growth Plan</strong> เหมาะกับธุรกิจที่ต้องการวางระบบเติบโต — รายเดือน 4–6 ชม. ได้ Action Plan + ที่ปรึกษาประจำ</p></details>
+                <details class="group py-8 px-2"><summary class="flex items-start justify-between gap-6"><h3 class="font-display text-xl lg:text-2xl text-ink-800 font-medium tracking-tight pr-4">คอนเทนต์จะถูกต้องตามกฎโฆษณาทางการแพทย์ หรือไม่?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-ink-600 mt-2 shrink-0"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></summary><p class="mt-4 text-ink-600 leading-relaxed pr-12">ทุกคอนเทนต์ผ่านการตรวจของทีมที่เข้าใจกฎโฆษณาทางการแพทย์ของไทย (อย. / สถานพยาบาล) และนโยบาย Healthcare ของ Meta — ช่วยลดความเสี่ยงคอนเทนต์ถูกแบนหรือผิดระเบียบ ไม่ใช่การการันตี 100%</p></details>
+            </div>
+        </div>
+    </section>
+
+    <!-- LEAD FORM -->
+    <section id="contact" class="py-24 lg:py-32 bg-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16">
+                <div class="lg:col-span-5">
+                    <!-- Scarcity badge -->
+                    <div class="inline-flex items-center gap-2 bg-cobalt/8 text-cobalt rounded-full px-4 py-2 mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full bg-cobalt animate-pulse"></span>
+                        <span class="text-xs font-medium">เหลือ 3 คลินิกสำหรับเดือนนี้</span>
+                    </div>
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-ink-800 mb-8">วิเคราะห์คลินิกของคุณ<br/><span class="italic-serif text-cobalt">ฟรี</span> ภายใน 24 ชั่วโมง</h2>
+                    <p class="text-ink-600 body-th mb-10">บอกเราเกี่ยวกับคลินิกของคุณ เราจะวิเคราะห์โอกาส และส่งกลับแผนเพิ่มยอดจองที่เหมาะกับคุณโดยเฉพาะ — <span class="text-ink-800 font-medium">ไม่มีค่าใช้จ่าย ไม่มีสัญญา</span></p>
+                    <ul class="space-y-3.5">
+                        <li class="flex items-start gap-3 text-ink-700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span class="text-[15px]">วิเคราะห์ปัจจุบันของคลินิก + คู่แข่ง</span></li>
+                        <li class="flex items-start gap-3 text-ink-700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span class="text-[15px]">ประเมิน ROAS ที่คุณจะได้ + งบโฆษณาที่เหมาะ</span></li>
+                        <li class="flex items-start gap-3 text-ink-700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span class="text-[15px]">แผน 90 วัน สำหรับเพิ่มยอดจอง</span></li>
+                        <li class="flex items-start gap-3 text-ink-700"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2" class="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg><span class="text-[15px]">ตอบทุกคำถามจริงจัง — ไม่กดดันให้ซื้อ</span></li>
+                    </ul>
+
+                    <!-- Direct contact alternative -->
+                    <div class="mt-12 pt-8 border-t border-ink-200">
+                        <p class="text-sm text-ink-500 mb-4">ไม่อยากกรอกฟอร์ม? ติดต่อโดยตรง</p>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="tel:+66877803463" class="flex items-center gap-3 px-5 py-3.5 border border-ink-200 rounded-full hover:border-cobalt hover:bg-cobalt/5 transition group">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <div class="text-left"><div class="text-[11px] text-ink-500 leading-none mb-0.5">โทร</div><div class="text-sm text-ink-800 font-medium leading-none">087-780-3463</div></div>
+                            </a>
+                            <a href="https://line.me/R/ti/p/@139yrwpi" class="flex items-center gap-3 px-5 py-3.5 border border-ink-200 rounded-full hover:border-cobalt hover:bg-cobalt/5 transition">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="#2C4CAA"><path d="M19.365 9.89c.50 0 .91.41.91.91 0 .5-.41.91-.91.91h-2.54v1.63h2.54c.5 0 .91.41.91.91 0 .51-.41.92-.91.92h-3.45c-.5 0-.91-.41-.91-.92V8.13c0-.5.41-.91.91-.91h3.45c.5 0 .91.41.91.91 0 .51-.41.92-.91.92h-2.54v1.63h2.54v.01zM12 0C5.376 0 0 4.371 0 9.747c0 4.819 4.258 8.857 10.012 9.62.39.083.92.257 1.054.59.121.302.079.775.039 1.082 0 0-.142.85-.171 1.03-.053.302-.241 1.188 1.066.647 1.308-.541 7.022-4.138 9.582-7.085 1.749-1.917 2.589-3.875 2.589-6.038C24 4.371 18.624 0 12 0z"/></svg>
+                                <div class="text-left"><div class="text-[11px] text-ink-500 leading-none mb-0.5">LINE</div><div class="text-sm text-ink-800 font-medium leading-none">@139yrwpi</div></div>
+                            </a>
+                        </div>
+                        <div class="text-xs text-ink-500 mt-4">จันทร์–ศุกร์ · 9:30 – 17:00 · ตอบกลับภายใน 24 ชม.</div>
+                    </div>
+                </div>
+                <div class="lg:col-span-7">
+                    <form class="bg-ink-50 rounded-3xl p-8 lg:p-10 border border-ink-200">
+                        <div class="grid md:grid-cols-2 gap-x-5 gap-y-6">
+                            <div>
+                                <label class="form-label mb-2">ชื่อ-นามสกุล <span class="text-cobalt">*</span></label>
+                                <input type="text" required class="form-input" placeholder="คุณภาวินี" />
+                            </div>
+                            <div>
+                                <label class="form-label mb-2">ชื่อคลินิก <span class="text-ink-400 font-normal">(ถ้ามี)</span></label>
+                                <input type="text" class="form-input" placeholder="The Bloom Clinic" />
+                            </div>
+                            <div>
+                                <label class="form-label mb-2">เบอร์โทรศัพท์ <span class="text-cobalt">*</span></label>
+                                <input type="tel" required class="form-input" placeholder="08X-XXX-XXXX" />
+                            </div>
+                            <div>
+                                <label class="form-label mb-2">LINE ID <span class="text-cobalt">*</span></label>
+                                <input type="text" required class="form-input" placeholder="@yourclinic หรือเบอร์ที่ผูก LINE" />
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="form-label mb-2">งบโฆษณา/เดือน <span class="text-ink-400 font-normal">(ถ้ามี)</span></label>
+                                <select class="form-input">
+                                    <option value="">ยังไม่แน่ใจ</option>
+                                    <option>ต่ำกว่า ฿30,000</option>
+                                    <option>฿30,000 – ฿100,000</option>
+                                    <option>฿100,000 – ฿300,000</option>
+                                    <option>มากกว่า ฿300,000</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="form-label mb-3">เป้าหมายหลัก <span class="text-ink-400 font-normal">(ถ้ามี · เลือกได้มากกว่า 1)</span></label>
+                                <div class="flex flex-wrap gap-2">
+                                    <label class="inline-flex items-center cursor-pointer border border-ink-200 rounded-full px-4 py-2.5 hover:border-cobalt transition has-[:checked]:bg-cobalt has-[:checked]:text-white has-[:checked]:border-cobalt"><input type="checkbox" class="hidden" /><span class="text-sm">เพิ่มยอดจอง</span></label>
+                                    <label class="inline-flex items-center cursor-pointer border border-ink-200 rounded-full px-4 py-2.5 hover:border-cobalt transition has-[:checked]:bg-cobalt has-[:checked]:text-white has-[:checked]:border-cobalt"><input type="checkbox" class="hidden" /><span class="text-sm">สร้างแบรนด์ใหม่</span></label>
+                                    <label class="inline-flex items-center cursor-pointer border border-ink-200 rounded-full px-4 py-2.5 hover:border-cobalt transition has-[:checked]:bg-cobalt has-[:checked]:text-white has-[:checked]:border-cobalt"><input type="checkbox" class="hidden" /><span class="text-sm">ลดต้นทุนต่อ Lead</span></label>
+                                    <label class="inline-flex items-center cursor-pointer border border-ink-200 rounded-full px-4 py-2.5 hover:border-cobalt transition has-[:checked]:bg-cobalt has-[:checked]:text-white has-[:checked]:border-cobalt"><input type="checkbox" class="hidden" /><span class="text-sm">เปิดสาขาใหม่</span></label>
+                                    <label class="inline-flex items-center cursor-pointer border border-ink-200 rounded-full px-4 py-2.5 hover:border-cobalt transition has-[:checked]:bg-cobalt has-[:checked]:text-white has-[:checked]:border-cobalt"><input type="checkbox" class="hidden" /><span class="text-sm">เข้าตลาดต่างประเทศ</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <button type="submit" class="pill-btn-th pill-cobalt w-full text-base" style="padding:1.15rem 1.7rem">รับวิเคราะห์คลินิกฟรี
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </button>
+                            <div class="mt-5 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-ink-500">
+                                <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>ไม่มีค่าใช้จ่าย</span>
+                                <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>ไม่มีสัญญาผูกมัด</span>
+                                <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>ข้อมูลเป็นความลับ</span>
+                                <span class="flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>ตอบกลับใน 24 ชม.</span>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Mini testimonial near form -->
+                    <div class="mt-6 flex items-start gap-4 p-5 bg-white border border-ink-200 rounded-2xl">
+                        <div class="w-10 h-10 rounded-full bg-cobalt text-white flex items-center justify-center text-sm font-medium shrink-0">V</div>
+                        <div>
+                            <p class="text-sm text-ink-700 italic leading-relaxed">"คอนเทนต์ที่ทีมทำให้สื่อสารความเชี่ยวชาญของแพทย์ได้เข้าถึงง่าย ยอดจองเพิ่มขึ้นต่อเนื่อง"</p>
+                            <p class="text-xs text-ink-500 mt-2">— Varinpat Clinic</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA STRIP -->
+    <section class="bg-ink-800 text-white relative overflow-hidden">
+        <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-20">
+            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-7"><h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.12] tracking-[-0.005em] text-white">พร้อมวางระบบการตลาด<br/>ให้คลินิกของคุณ<span class="italic-serif text-royal-300"> เติบโตแล้วหรือยัง?</span></h2></div>
+                <div class="lg:col-span-5 flex lg:justify-end gap-3 flex-wrap">
+                    <a href="tel:+66877803463" class="pill-btn-th pill-outline-light">โทร 087-780-3463</a>
+                    <a href="#contact" class="pill-btn-th pill-cobalt">รับวิเคราะห์คลินิกฟรี</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MINIMAL FOOTER -->
+    <footer class="bg-ink-900 text-white py-10 border-t border-white/5">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-col gap-7">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto brightness-0 invert opacity-90" />
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.facebook.com/cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.02 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96H15.83c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.09 24 12.07z"/></svg></a>
+                        <a href="https://www.instagram.com/cynmedi.digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener noreferrer" aria-label="LINE" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.95 3.54 7.27 8.32 7.89.32.07.76.21.87.49.1.25.07.64.03.89l-.14.83c-.04.25-.2.99.87.54 1.07-.45 5.74-3.38 7.83-5.79C21.27 14.32 22 12.74 22 11c0-4.42-4.48-8-10-8z"/></svg></a>
+                        <a href="https://www.tiktok.com/@cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v12.86a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .53.04.77.12V9.99a5.9 5.9 0 0 0-.77-.05 5.85 5.85 0 1 0 5.85 5.85V9.4a7.43 7.43 0 0 0 4.34 1.39V7.6a4.28 4.28 0 0 1-3.34-1.78z"/></svg></a>
+                        <a href="mailto:cynmedical@gmail.com" aria-label="Email" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6.5 9 6 9-6"/></svg></a>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-6 border-t border-white/10">
+                    <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-white/70">
+                        <a href="tel:+66877803463" class="hover:text-white transition">087-780-3463</a>
+                        <span class="text-white/30">·</span>
+                        <a href="mailto:cynmedical@gmail.com" class="hover:text-white transition">cynmedical@gmail.com</a>
+                        <span class="text-white/30">·</span>
+                        <span>84 ซ.พิบูลสงคราม 22 บางเขน นนทบุรี 11000</span>
+                    </div>
+                    <div class="text-xs text-white/40 whitespace-nowrap">© 2026 CYN Medical Digital Agency</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- ===== CYN Chat Popup Widget ===== -->
+<style>
+  .cyn-chat{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:14px;pointer-events:none;font-family:'Anuphan','Inter',system-ui,sans-serif}
+  .cyn-chat *{box-sizing:border-box}
+  .cyn-stack{position:relative;width:300px;max-width:calc(100vw - 40px);display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(16px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+  .cyn-chat.is-open .cyn-stack{opacity:1;transform:translateY(0);pointer-events:auto}
+  .cyn-dismiss{position:absolute;top:-10px;right:-6px;width:26px;height:26px;border-radius:50%;background:#fff;color:#536685;border:1px solid #E2E6EE;box-shadow:0 4px 14px rgba(15,27,48,.14);font-size:16px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:all .2s}
+  .cyn-dismiss:hover{color:#0F1B30;border-color:#B4BECF}
+  .cyn-row{display:flex;align-items:flex-end;gap:8px;opacity:0;transform:translateY(12px);transition:opacity .45s cubic-bezier(.22,.61,.36,1),transform .45s cubic-bezier(.22,.61,.36,1)}
+  .cyn-row.is-in{opacity:1;transform:translateY(0)}
+  .cyn-av{width:36px;height:36px;border-radius:50%;flex-shrink:0;overflow:hidden;box-shadow:0 2px 8px rgba(15,27,48,.18)}
+  .cyn-av svg{display:block}
+  .cyn-typing{background:#fff;border-radius:16px 16px 16px 4px;padding:12px 14px;box-shadow:0 6px 20px rgba(15,27,48,.12);display:flex;gap:4px;align-items:center}
+  .cyn-typing span{width:6px;height:6px;border-radius:50%;background:#B4BECF;animation:cynBlink 1.2s infinite}
+  .cyn-typing span:nth-child(2){animation-delay:.2s}.cyn-typing span:nth-child(3){animation-delay:.4s}
+  @keyframes cynBlink{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+  .cyn-bubble{display:none;background:#fff;border-radius:16px 16px 16px 4px;padding:11px 15px;box-shadow:0 6px 20px rgba(15,27,48,.12);font-size:14px;line-height:1.5;color:#1F2D44;max-width:230px;animation:cynPop .35s cubic-bezier(.22,.61,.36,1)}
+  .cyn-row.said .cyn-typing{display:none}
+  .cyn-row.said .cyn-bubble{display:block}
+  @keyframes cynPop{from{opacity:0;transform:scale(.92) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  .cyn-options{margin-left:44px;background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(15,27,48,.16);padding:8px;display:flex;flex-direction:column;gap:6px;opacity:0;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
+  .cyn-options.is-in{opacity:1;transform:translateY(0)}
+  .cyn-opt{display:flex;align-items:center;gap:11px;padding:12px 14px;border-radius:11px;border:1px solid #E8EDF8;color:#1F2D44;font-size:13.5px;font-weight:500;text-decoration:none;transition:all .2s;cursor:pointer}
+  .cyn-opt:hover{background:#F7F8FB;border-color:#94A6DB}
+  .cyn-radio{width:18px;height:18px;border-radius:50%;border:2px solid #94A6DB;flex-shrink:0;position:relative;transition:all .2s}
+  .cyn-opt:hover .cyn-radio{border-color:#2C4CAA}
+  .cyn-opt:hover .cyn-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#2C4CAA}
+  .cyn-launcher{position:relative;width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;pointer-events:auto;background:linear-gradient(135deg,#3554B3,#1B3375);box-shadow:0 10px 28px rgba(27,51,117,.45);display:flex;align-items:center;justify-content:center;transition:transform .25s}
+  .cyn-launcher:hover{transform:scale(1.06)}
+  .cyn-launcher::before{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:cynPulse 2.2s ease-out infinite;z-index:-1}
+  .cyn-chat.is-open .cyn-launcher::before{animation:none}
+  @keyframes cynPulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.6);opacity:0}100%{opacity:0}}
+  .cyn-ic{position:absolute;transition:opacity .25s,transform .25s}
+  .cyn-ic-chat{opacity:1;transform:rotate(0) scale(1)}
+  .cyn-ic-close{opacity:0;transform:rotate(-90deg) scale(.6)}
+  .cyn-chat.is-open .cyn-ic-chat{opacity:0;transform:rotate(90deg) scale(.6)}
+  .cyn-chat.is-open .cyn-ic-close{opacity:1;transform:rotate(0) scale(1)}
+  .cyn-badge{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#E2533A;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+  .cyn-chat.is-open .cyn-badge{display:none}
+</style>
+<div class="cyn-chat" id="cynChat" aria-live="polite">
+  <div class="cyn-stack" id="cynStack">
+    <button class="cyn-dismiss" id="cynDismiss" aria-label="ปิด">&times;</button>
+    <div class="cyn-row" data-step>
+      <div class="cyn-av"><svg viewBox="0 0 40 40" width="36" height="36"><defs><linearGradient id="cynAvG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3554B3"/><stop offset="1" stop-color="#1B3375"/></linearGradient></defs><rect width="40" height="40" rx="20" fill="url(#cynAvG)"/><circle cx="20" cy="16.5" r="6" fill="#fff"/><path d="M8.5 33c0-6.2 5.2-9.5 11.5-9.5S31.5 26.8 31.5 33z" fill="#fff"/></svg></div>
+      <div class="cyn-typing"><span></span><span></span><span></span></div>
+      <div class="cyn-bubble">สวัสดีค่ะ ยินดีต้อนรับสู่ CYN Medical 👋</div>
+    </div>
+    <div class="cyn-row" data-step>
+      <div class="cyn-av"><svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="20" fill="url(#cynAvG)"/><circle cx="20" cy="16.5" r="6" fill="#fff"/><path d="M8.5 33c0-6.2 5.2-9.5 11.5-9.5S31.5 26.8 31.5 33z" fill="#fff"/></svg></div>
+      <div class="cyn-typing"><span></span><span></span><span></span></div>
+      <div class="cyn-bubble">ดิฉัน Cyn ผู้ช่วยดูแลคลินิกของคุณค่ะ</div>
+    </div>
+    <div class="cyn-row" data-step>
+      <div class="cyn-av"><svg viewBox="0 0 40 40" width="36" height="36"><rect width="40" height="40" rx="20" fill="url(#cynAvG)"/><circle cx="20" cy="16.5" r="6" fill="#fff"/><path d="M8.5 33c0-6.2 5.2-9.5 11.5-9.5S31.5 26.8 31.5 33z" fill="#fff"/></svg></div>
+      <div class="cyn-typing"><span></span><span></span><span></span></div>
+      <div class="cyn-bubble">สนใจให้เราช่วยด้านไหนคะ?</div>
+    </div>
+    <div class="cyn-options" data-step data-opt>
+      <a href="#contact" class="cyn-opt"><span class="cyn-radio"></span>ลูกค้าใหม่ — อยากปรึกษา</a>
+      <a href="#contact" class="cyn-opt"><span class="cyn-radio"></span>ลูกค้าเดิม — ติดตามงาน</a>
+    </div>
+  </div>
+  <button class="cyn-launcher" id="cynLauncher" aria-label="เปิดแชท">
+    <svg class="cyn-ic cyn-ic-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+    <svg class="cyn-ic cyn-ic-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    <span class="cyn-badge">1</span>
+  </button>
+</div>
+<script>
+(function(){
+  var chat=document.getElementById('cynChat');
+  var launcher=document.getElementById('cynLauncher');
+  var dismiss=document.getElementById('cynDismiss');
+  var stack=document.getElementById('cynStack');
+  var steps=stack.querySelectorAll('[data-step]');
+  var open=false, played=false;
+  function play(i){
+    if(i>=steps.length) return;
+    var el=steps[i];
+    el.classList.add('is-in');
+    if(el.hasAttribute('data-opt')){ setTimeout(function(){play(i+1);},500); return; }
+    var typeMs=650+Math.random()*450;
+    setTimeout(function(){
+      el.classList.add('said');
+      setTimeout(function(){play(i+1);},420);
+    },typeMs);
+  }
+  function show(){
+    chat.classList.add('is-open');
+    if(!played){ played=true; setTimeout(function(){play(0);},300); }
+    open=true;
+  }
+  function hide(){
+    chat.classList.remove('is-open');
+    open=false;
+    try{sessionStorage.setItem('cynChatDismissed','1');}catch(e){}
+  }
+  launcher.addEventListener('click',function(){ open?hide():show(); });
+  dismiss.addEventListener('click',function(e){ e.stopPropagation(); hide(); });
+  stack.querySelectorAll('.cyn-opt').forEach(function(a){ a.addEventListener('click',function(){ setTimeout(hide,200); }); });
+  // Launcher stays collapsed by default; opens only on user click (avoids covering the form/pricing on mobile & laptop)
+})();
+</script>
+<!-- ===== /CYN Chat Popup Widget ===== -->
+
+</body>
+</html>

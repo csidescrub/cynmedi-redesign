@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "watch-prompt": "node scripts/watch-prompt.js"
+  },
+  "devDependencies": {
+    "wrangler": "^4.93.0"
+  }
+}

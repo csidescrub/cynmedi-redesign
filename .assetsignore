@@ -1,0 +1,9 @@
+node_modules
+.git
+.github
+.wrangler
+.cloudcode
+scripts
+package.json
+package-lock.json
+.assetsignore

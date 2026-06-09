@@ -1,0 +1,12 @@
+# dependencies (regenerated via npm install)
+node_modules/
+
+# wrangler / cloudflare build cache
+.wrangler/
+
+# local tooling cache
+.cloudcode/
+
+# macOS
+.DS_Store
+**/.DS_Store

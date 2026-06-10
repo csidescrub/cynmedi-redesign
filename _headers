@@ -1,5 +1,5 @@
-# HTML pages: always revalidate so the latest deploy shows immediately (no stale)
-/*
+# HTML pages (all live pages are under /v3/): always revalidate so latest deploy shows immediately
+/v3/*
   Cache-Control: public, max-age=0, must-revalidate
 
 # Static assets: long cache (versioned via ?v= or stable filenames)

@@ -12,10 +12,10 @@
 /ads.html        /         301
 /case-study.html /         301
 /creative.html   /         301
-# Inner page aliases
-/about-us        /aesthetic-clinic/    301
-/about-us/       /aesthetic-clinic/    301
-/about-us/*      /aesthetic-clinic/    301
-/about-us-2      /aesthetic-clinic/    301
-/about-us-2/     /aesthetic-clinic/    301
-/about-us-2/*    /aesthetic-clinic/    301
+# Inner page aliases — old WordPress about slugs -> real About page
+/about-us        /about    301
+/about-us/       /about    301
+/about-us/*      /about    301
+/about-us-2      /about    301
+/about-us-2/     /about    301
+/about-us-2/*    /about    301

@@ -313,13 +313,13 @@
             </div>
             <script>
             (function(){
-                // All BTS marquee clips play at half speed (0.5x)
+                // BTS marquee clips (this section only) play slightly slowed at 0.9x
                 document.querySelectorAll('video.bts-vid').forEach(function(v){
-                    function slow(){ v.playbackRate = 0.5; }
+                    function slow(){ v.playbackRate = 0.9; }
                     slow();
                     v.addEventListener('loadedmetadata', slow);
                     v.addEventListener('play', slow);
-                    v.addEventListener('ratechange', function(){ if(v.playbackRate !== 0.5) v.playbackRate = 0.5; });
+                    v.addEventListener('ratechange', function(){ if(v.playbackRate !== 0.9) v.playbackRate = 0.9; });
                 });
                 // Clips marked bts-loop20 start at their data-start offset
                 document.querySelectorAll('video.bts-loop20').forEach(function(v){

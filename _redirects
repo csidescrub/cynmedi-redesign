@@ -12,10 +12,5 @@
 /ads.html        /         301
 /case-study.html /         301
 /creative.html   /         301
-# Inner page aliases — old WordPress about slugs -> aesthetic clinic LP
-/about-us        /aesthetic-clinic/    301
-/about-us/       /aesthetic-clinic/    301
-/about-us/*      /aesthetic-clinic/    301
-/about-us-2      /aesthetic-clinic/    301
-/about-us-2/     /aesthetic-clinic/    301
-/about-us-2/*    /aesthetic-clinic/    301
+# NOTE: old WordPress /about-us and /about-us-2 slugs are intentionally NOT
+# redirected — they now 404 so Google drops them. Real About page is /about.

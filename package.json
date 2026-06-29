@@ -2,7 +2,9 @@
   "scripts": {
     "watch-prompt": "node scripts/watch-prompt.js",
     "build:css": "npx tailwindcss@3.4.17 -c tailwind.config.js -i assets/tailwind.src.css -o assets/tailwind.css --minify",
-    "watch:css": "npx tailwindcss@3.4.17 -c tailwind.config.js -i assets/tailwind.src.css -o assets/tailwind.css --watch"
+    "watch:css": "npx tailwindcss@3.4.17 -c tailwind.config.js -i assets/tailwind.src.css -o assets/tailwind.css --watch",
+    "build:html": "node build/includes.js",
+    "build": "npm run build:css && npm run build:html"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.17",

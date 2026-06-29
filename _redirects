@@ -1,0 +1,21 @@
+# Old v3 preview links -> now live at root
+/v3/*            /:splat   301
+# Retired v2 site -> root
+/v2/*            /         301
+# Landing pages moved to root: /lp/* -> /*
+/lp/aesthetic-clinic/*    /aesthetic-clinic/    301
+/lp/aesthetic-clinic      /aesthetic-clinic/    301
+/lp/aesthetic-clinic.html /aesthetic-clinic/    301
+/lp/dental-clinic/*       /dental-clinic/       301
+/lp/dental-clinic         /dental-clinic/       301
+# Retired v1 pages -> root
+/ads.html        /         301
+/case-study.html /         301
+/creative.html   /         301
+# Inner page aliases
+/about-us        /aesthetic-clinic/    301
+/about-us/       /aesthetic-clinic/    301
+/about-us/*      /aesthetic-clinic/    301
+/about-us-2      /aesthetic-clinic/    301
+/about-us-2/     /aesthetic-clinic/    301
+/about-us-2/*    /aesthetic-clinic/    301

@@ -58,6 +58,25 @@
         /* ── CTA glow ── */
         .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
 
+        /* ── Trusted-by logo marquee (reused from home) ── */
+        .logo-marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+        .logo-track{display:flex;align-items:center;width:max-content;animation:logoScroll 40s linear infinite}
+        .logo-marquee:hover .logo-track{animation-play-state:paused}
+        @keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .logo-cell{flex:0 0 auto;width:38vw;height:58px;display:flex;align-items:center;justify-content:center;padding:0 8px}
+        @media(min-width:768px){.logo-cell{width:12vw;height:70px}}
+        .logo-cell img{max-width:100%;max-height:calc(100% - 3px);width:auto;height:auto;object-fit:contain;opacity:.6;filter:grayscale(1);transition:opacity .3s,filter .3s;user-select:none}
+        .logo-cell img:hover{opacity:1;filter:grayscale(0)}
+        @media(prefers-reduced-motion:reduce){.logo-track{animation:none;flex-wrap:wrap;justify-content:center}}
+
+        /* ── "More work" browse links ── */
+        .more-link{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid rgba(148,166,219,.14);color:rgba(255,255,255,.72);font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:-0.01em;transition:color .3s,padding .3s}
+        .more-link:last-child{border-bottom:1px solid rgba(148,166,219,.14)}
+        .more-link .arr{color:#94A6DB;transition:transform .3s;font-family:'Inter',sans-serif;font-size:1rem}
+        .more-link:hover{color:#fff;padding-left:8px}
+        .more-link:hover .arr{transform:translateX(5px)}
+        .more-all{color:#94A6DB}
+
         @media(max-width:768px){
             .hero-banner{height:56vh;min-height:380px;grid-template-columns:1fr 1fr}
             .hero-banner video:nth-child(3){display:none}
@@ -145,6 +164,7 @@
                     <p class="mt-2 text-ink-400 text-sm leading-relaxed">การจองออนไลน์เพิ่มขึ้น</p>
                 </div>
             </div>
+            <p class="mt-12 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน ปี 2024–2025</p>
         </div>
     </section>
 
@@ -155,6 +175,7 @@
                 <div class="lg:col-span-7 reveal">
                     <div class="label text-cobalt mb-6">The Approach</div>
                     <h2 class="font-display text-3xl lg:text-4xl text-ink-800 leading-snug tracking-tight">วางกลยุทธ์คอนเทนต์ใหม่ ดันหมอเป็นแบรนด์<br/><span class="italic-serif text-cobalt">และยิงแอดให้ตรงกลุ่มกำลังซื้อสูง</span></h2>
+                    <p class="mt-6 text-ink-500 leading-relaxed max-w-xl">โจทย์เดิม: คอนเทนต์เข้าถึงกลุ่มราคาประหยัด ไม่ตรงกับแพ็กเกจหัตถการราคาสูงของคลินิก — เราจึงปรับภาพลักษณ์และกลุ่มเป้าหมายใหม่ทั้งหมด</p>
                     <div class="flex flex-wrap gap-2.5 mt-8">
                         <span class="chip">Repositioning</span>
                         <span class="chip">Doctor Branding</span>
@@ -183,22 +204,65 @@
         </div>
     </section>
 
-    <!-- ════════════════ CTA ════════════════ -->
+    <!-- ════════════════ TRUSTED BY ════════════════ -->
+    <section class="py-20 lg:py-24 bg-white border-t border-ink-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center mb-12 lg:mb-14 reveal">
+            <div class="label text-cobalt mb-5">Trusted By</div>
+            <p class="font-display text-2xl lg:text-3xl text-ink-700 max-w-2xl mx-auto leading-snug">ดูแลคอนเทนต์และโฆษณาให้คลินิกและแบรนด์การแพทย์<br class="hidden sm:block"/>กว่า <span class="italic-serif text-cobalt">30 แบรนด์</span> ทั่วประเทศ</p>
+        </div>
+        <div class="logo-marquee reveal reveal-d1">
+            <div class="logo-track">
+                <div class="logo-cell"><img src="/assets/logos/astell.webp" alt="Astell" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/thebloom.webp" alt="The Bloom" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/sanipa.webp" alt="Sanipa" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/lambiance.webp" alt="L'ambiance" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/premier.webp" alt="Premier" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/dr-fern.webp" alt="Dr.Fern" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/punsmile.webp" alt="Pun Smile" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/naturaljoy.webp" alt="Natural Joy Vision" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/home369.webp" alt="Home 369" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/msrehab.webp" alt="MS Rehab" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/medninja.webp" alt="MedNinja" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/chaba.webp" alt="Chaba" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/astell.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/thebloom.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/sanipa.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/lambiance.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/premier.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/dr-fern.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/punsmile.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/naturaljoy.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/home369.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/msrehab.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/medninja.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/chaba.webp" alt="" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════ TALK / BROWSE ════════════════ -->
     <section class="bg-ink-900 text-white relative overflow-hidden">
         <div class="cta-glow"></div>
         <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
-            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 reveal">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start relative z-10 reveal">
                 <div class="lg:col-span-7">
-                    <div class="label mb-6" style="color:#94A6DB">Ready to grow?</div>
-                    <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white">อยากได้ผลลัพธ์<br/><span class="italic-serif" style="color:#94A6DB">แบบนี้?</span></h2>
-                    <p class="mt-6 text-white/50 max-w-md leading-relaxed">มาคุยกัน — ดูว่าเราจะช่วยคลินิกของคุณเติบโตได้อย่างไร</p>
+                    <div class="label mb-6" style="color:#94A6DB">Let's talk</div>
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-[-0.02em] text-white">คุยกันสบายๆ<br/><span class="italic-serif" style="color:#94A6DB">ก่อนตัดสินใจ</span></h2>
+                    <p class="mt-6 text-white/55 max-w-md leading-relaxed">ทักมาปรึกษาได้เลย ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด — เรายินดีช่วยดูทิศทางคอนเทนต์และโฆษณาของคลินิกคุณให้ก่อน</p>
+                    <div class="flex gap-4 flex-wrap mt-8">
+                        <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-line text-[13px]">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.34 8.03.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.02.9.56 1.1-.46 5.93-3.49 8.09-5.98 1.49-1.63 2-3.3 2-5.85C24 5.64 17.52 2 12 2z"/></svg>
+                            ปรึกษาฟรี
+                        </a>
+                        <a href="/contact.html" class="pill-btn pill-outline-light text-[13px]">Contact Us</a>
+                    </div>
                 </div>
-                <div class="lg:col-span-5 flex lg:justify-end gap-4 flex-wrap">
-                    <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-line text-[13px]">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.34 8.03.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.02.9.56 1.1-.46 5.93-3.49 8.09-5.98 1.49-1.63 2-3.3 2-5.85C24 5.64 17.52 2 12 2z"/></svg>
-                        ปรึกษาฟรี
-                    </a>
-                    <a href="/contact.html" class="pill-btn pill-outline-light text-[13px]">Contact Us</a>
+                <div class="lg:col-span-5 lg:pl-12 lg:border-l border-white/10 reveal reveal-d1">
+                    <div class="label mb-2" style="color:rgba(148,166,219,.5)">ผลงานคลินิกอื่นๆ</div>
+                    <a href="/work/astell.html" class="more-link">Astell Clinic <span class="arr">→</span></a>
+                    <a href="/work/the-bloom.html" class="more-link">The Bloom Clinic <span class="arr">→</span></a>
+                    <a href="/work/natural-joy-vision.html" class="more-link">Natural Joy Vision <span class="arr">→</span></a>
+                    <a href="/work.html" class="more-link more-all">ดูผลงานทั้งหมด <span class="arr">→</span></a>
                 </div>
             </div>
         </div>

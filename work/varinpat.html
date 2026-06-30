@@ -6,12 +6,12 @@
     <meta name="description" content="ปรับ Mood & Tone คอนเทนต์คลินิกเสริมความงาม Varinpat Clinic ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูง — Organic Engagement เพิ่มกว่า 100%">
     <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/tailwind.css" />
     <style>
         @font-face{font-family:'NumSans';src:local('Inter'),local('Helvetica Neue'),local('Arial');unicode-range:U+0030-0039,U+002B,U+0025,U+002E,U+002C}
         .usfx{font-family:'Inter','Kanit',system-ui,sans-serif !important;font-style:normal !important;font-variant-numeric:tabular-nums lining-nums}
-        .num{font-family:'Inter','Kanit',system-ui,sans-serif;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums}
+        .num{font-family:'Inter','Kanit',system-ui,sans-serif;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums lining-nums}
         html{scroll-behavior:smooth}
         body{font-family:'Kanit','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;-webkit-font-smoothing:antialiased}
         .font-display{font-family:'NumSans','Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
@@ -30,17 +30,53 @@
         .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,0.72),rgba(6,9,18,0.55) 50%,rgba(2,4,9,0.85))}
         .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
 
-        .reel-card{position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;cursor:pointer}
-        .reel-card video{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-        .reel-card:hover video{transform:scale(1.04)}
-        .reel-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(0,0,0,.6));display:flex;flex-direction:column;justify-content:flex-end;padding:16px;pointer-events:none}
-        .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
-        .reel-card:hover .reel-play{opacity:1}
+        /* Scroll reveal */
+        .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:none}
+        .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+
+        /* KPI counter card */
+        .kpi-card{background:#0B1223;border:1px solid rgba(148,166,219,.12);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .4s,border-color .4s}
+        .kpi-card:hover{transform:translateY(-4px);border-color:rgba(148,166,219,.3)}
+        .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2D4DB1,#94A6DB);opacity:0;transition:opacity .4s}
+        .kpi-card:hover::before{opacity:1}
+        .kpi-num{font-family:'Inter','Kanit',sans-serif;font-size:3.5rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:#FFF;font-variant-numeric:tabular-nums}
+        .kpi-suffix{font-family:'Inter',sans-serif;font-weight:500;color:#94A6DB;font-size:1.5rem;margin-left:2px}
+        .kpi-bar{height:4px;border-radius:9999px;background:rgba(148,166,219,.15);margin-top:16px;overflow:hidden}
+        .kpi-bar-fill{height:100%;border-radius:9999px;background:linear-gradient(90deg,#2D4DB1,#94A6DB);width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+        .kpi-card.visible .kpi-bar-fill{width:var(--bar)}
+        .kpi-delta{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;background:rgba(6,199,85,.12);color:#06C755}
+
+        /* Solution cards */
+        .sol-card{background:#FFF;border:1px solid #E5E9F0;border-radius:16px;padding:36px 32px;transition:all .4s;position:relative;overflow:hidden}
+        .sol-card:hover{border-color:#2D4DB1;box-shadow:0 8px 40px rgba(45,77,177,.08);transform:translateY(-3px)}
+        .sol-num{font-family:'Inter',sans-serif;font-size:72px;font-weight:800;line-height:1;color:rgba(45,77,177,.06);position:absolute;top:-8px;right:16px}
+
+        /* Reel cards */
+        .reel-card{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,.15);transition:transform .5s,box-shadow .5s}
+        .reel-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 48px rgba(0,0,0,.25)}
+        .reel-card video{width:100%;height:100%;object-fit:cover}
+        .reel-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none}
+        .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .3s;border:1px solid rgba(255,255,255,.25)}
+        .reel-card:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
+        .reel-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#FFF;margin-bottom:8px;width:fit-content}
+
+        /* Results metric */
+        .metric-ring{width:120px;height:120px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .metric-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+        .metric-ring circle{fill:none;stroke-width:4}
+        .metric-ring .track{stroke:rgba(148,166,219,.15)}
+        .metric-ring .fill{stroke:#94A6DB;stroke-linecap:round;stroke-dasharray:var(--circ);stroke-dashoffset:var(--circ);transition:stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)}
+        .metric-ring.visible .fill{stroke-dashoffset:var(--offset)}
+
+        /* CTA glow */
+        .cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.15),transparent 70%);top:50%;right:-10%;transform:translateY(-50%);pointer-events:none}
 
         @media(max-width:768px){
             .hero-banner{height:50vh;min-height:360px}
             .hero-banner video:nth-child(3){display:none}
             .hero-banner{grid-template-columns:1fr 1fr}
+            .kpi-num{font-size:2.5rem}
+            .kpi-suffix{font-size:1.1rem}
         }
         @media(max-width:480px){
             .hero-banner video:nth-child(2){display:none}
@@ -51,7 +87,7 @@
 <body class="antialiased">
     <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-200/60"><div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between"><a href="/" class="flex items-center gap-2"><img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto" /></a><nav class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700"><a href="/services.html" class="hover:text-cobalt transition">Services</a><a href="/work.html" class="text-cobalt transition">Work</a><a href="/contact.html" class="hover:text-cobalt transition">Contact Us</a><a href="/about.html" class="hover:text-cobalt transition">About Us</a></nav><div class="flex items-center gap-3"><a href="/contact.html" class="pill-btn pill-dark text-[11px]">Consultation</a></div></div></header>
 
-    <!-- HERO BANNER — 3 portrait clips side by side + dark fade -->
+    <!-- ═══════════════════════ HERO ═══════════════════════ -->
     <section class="hero-banner">
         <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
         <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video>
@@ -66,183 +102,281 @@
         </div>
     </section>
 
-    <!-- KPI STRIP -->
-    <section class="bg-ink-800 border-t border-white/5">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-10">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div><div class="font-display text-4xl lg:text-5xl text-white">1.8<span class="usfx" style="color:#94A6DB">M</span></div><div class="label text-white/50 mt-2">Views</div></div>
-                <div><div class="font-display text-4xl lg:text-5xl text-white">300<span class="usfx" style="color:#94A6DB">K+</span></div><div class="label text-white/50 mt-2">Engagement</div></div>
-                <div><div class="font-display text-4xl lg:text-5xl text-white">100<span class="usfx" style="color:#94A6DB">%+</span></div><div class="label text-white/50 mt-2">Organic Growth</div></div>
-                <div><div class="font-display text-4xl lg:text-5xl text-white">2.5<span class="usfx" style="color:#94A6DB">x</span></div><div class="label text-white/50 mt-2">Online Booking</div></div>
+    <!-- ═══════════════════════ KPI DASHBOARD ═══════════════════════ -->
+    <section class="bg-ink-900 py-20 lg:py-24">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex items-center gap-3 mb-12 reveal">
+                <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                <span class="label text-white/50">Performance Dashboard</span>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+                <div class="kpi-card reveal reveal-d1" data-count="1.8" data-suffix="M" style="--bar:92%">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="label text-white/40">Total Views</span>
+                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>180%</span>
+                    </div>
+                    <div><span class="kpi-num counter" data-target="1.8" data-decimals="1">0</span><span class="kpi-suffix">M</span></div>
+                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
+                </div>
+                <div class="kpi-card reveal reveal-d2" data-count="300" data-suffix="K+" style="--bar:78%">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="label text-white/40">Engagement</span>
+                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>120%</span>
+                    </div>
+                    <div><span class="kpi-num counter" data-target="300" data-decimals="0">0</span><span class="kpi-suffix">K+</span></div>
+                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
+                </div>
+                <div class="kpi-card reveal reveal-d3" data-count="100" data-suffix="%+" style="--bar:100%">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="label text-white/40">Organic Growth</span>
+                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>Viral</span>
+                    </div>
+                    <div><span class="kpi-num counter" data-target="100" data-decimals="0">0</span><span class="kpi-suffix">%+</span></div>
+                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
+                </div>
+                <div class="kpi-card reveal reveal-d4" data-count="2.5" data-suffix="x" style="--bar:65%">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="label text-white/40">Online Booking</span>
+                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>150%</span>
+                    </div>
+                    <div><span class="kpi-num counter" data-target="2.5" data-decimals="1">0</span><span class="kpi-suffix">x</span></div>
+                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- OVERVIEW -->
+    <!-- ═══════════════════════ PROJECT OVERVIEW ═══════════════════════ -->
     <section class="py-24 lg:py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-12">
-                <div class="lg:col-span-4">
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-4 reveal">
                     <div class="label text-cobalt mb-8">Project Overview</div>
-                    <dl class="space-y-6">
-                        <div><dt class="label text-ink-500 mb-2">Client</dt><dd class="font-display text-2xl text-ink-800">Varinpat Clinic</dd></div>
-                        <div><dt class="label text-ink-500 mb-2">Industry</dt><dd class="text-ink-700">Aesthetic Clinic · ศรีราชา</dd></div>
-                        <div><dt class="label text-ink-500 mb-2">Services</dt><dd class="text-ink-700 leading-relaxed">Content Strategy<br/>Doctor Branding<br/>Social Media Ads<br/>Mood & Tone Design</dd></div>
-                    </dl>
-                </div>
-                <div class="lg:col-span-8">
-                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight mb-8">คลินิกที่ต้องการ<span class="italic-serif text-cobalt">สื่อสารความเชี่ยวชาญ</span></h2>
-                    <p class="text-ink-700 leading-relaxed text-[15px]">Varinpat Clinic มีแพทย์ที่มีประสบการณ์สูงด้านเสริมความงาม แต่ภาพลักษณ์คอนเทนต์เดิมไม่ตรงกับกลุ่มเป้าหมายที่มีกำลังซื้อสูง — CYN เข้ามาปรับกลยุทธ์ทั้งหมดตั้งแต่ Mood & Tone ไปจนถึงการวางแผนโฆษณา</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CHALLENGE -->
-    <section class="py-24 lg:py-32 bg-ink-50">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-12">
-                <div class="lg:col-span-3"><div class="label text-cobalt">01 · The Challenge</div></div>
-                <div class="lg:col-span-9">
-                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight mb-8">แข่งขันด้านราคา <span class="italic-serif text-cobalt">ในตลาดที่อิ่มตัว</span></h2>
-                    <p class="text-ink-700 leading-relaxed text-[15px] max-w-3xl mb-8">Varinpat Clinic ตั้งอยู่ในพื้นที่ศรีราชา ซึ่งมีคลินิกเสริมความงามเปิดให้บริการเป็นจำนวนมาก ส่งผลให้การแข่งขันด้านราคาค่อนข้างรุนแรง</p>
-                    <div class="grid sm:grid-cols-2 gap-6">
-                        <div class="border-l-4 border-cobalt pl-5 py-1">
-                            <div class="font-medium text-ink-800 mb-1">คอนเทนต์ไม่ตรงกลุ่ม</div>
-                            <p class="text-ink-600 text-sm leading-relaxed">ภาพลักษณ์ค่อนข้างวัยรุ่น ทั้งที่ต้องการโปรโมตแพ็กเกจหัตถการราคาสูง</p>
+                    <div class="space-y-8">
+                        <div class="border-b border-ink-200 pb-6">
+                            <div class="label text-ink-400 mb-2">Client</div>
+                            <div class="font-display text-2xl text-ink-800">Varinpat Clinic</div>
                         </div>
-                        <div class="border-l-4 border-cobalt pl-5 py-1">
-                            <div class="font-medium text-ink-800 mb-1">Expertise ไม่ถูกสื่อสาร</div>
-                            <p class="text-ink-600 text-sm leading-relaxed">แพทย์มีประสบการณ์สูงแต่ลูกค้าไม่รู้ — ต้องการคอนเทนต์ที่จับต้องได้</p>
+                        <div class="border-b border-ink-200 pb-6">
+                            <div class="label text-ink-400 mb-2">Industry</div>
+                            <div class="text-ink-700">Aesthetic Clinic · ศรีราชา</div>
+                        </div>
+                        <div>
+                            <div class="label text-ink-400 mb-3">Services</div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Content Strategy</span>
+                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Doctor Branding</span>
+                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Social Media Ads</span>
+                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Mood & Tone</span>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="lg:col-span-8 reveal reveal-d1">
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight mb-8">คลินิกที่ต้องการ<br/><span class="italic-serif text-cobalt">สื่อสารความเชี่ยวชาญ</span></h2>
+                    <p class="text-ink-600 leading-relaxed text-[16px] max-w-2xl">Varinpat Clinic มีแพทย์ที่มีประสบการณ์สูงด้านเสริมความงาม แต่ภาพลักษณ์คอนเทนต์เดิมไม่ตรงกับกลุ่มเป้าหมายที่มีกำลังซื้อสูง — CYN เข้ามาปรับกลยุทธ์ทั้งหมดตั้งแต่ Mood & Tone ไปจนถึงการวางแผนโฆษณา</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- SOLUTION -->
+    <!-- ═══════════════════════ CHALLENGE ═══════════════════════ -->
+    <section class="py-24 lg:py-32 bg-gradient-to-b from-ink-50 to-white">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="max-w-3xl mb-16 reveal">
+                <div class="label text-cobalt mb-6">01 · The Challenge</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">แข่งขันด้านราคา<br/><span class="italic-serif text-cobalt">ในตลาดที่อิ่มตัว</span></h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 reveal reveal-d1">
+                <div class="bg-white rounded-2xl border border-ink-200 p-8 lg:p-10 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-400">
+                    <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">คอนเทนต์ไม่ตรงกลุ่มเป้าหมาย</h3>
+                    <p class="text-ink-600 leading-relaxed">ภาพลักษณ์คอนเทนต์ค่อนข้างวัยรุ่น ทั้งที่คลินิกต้องการโปรโมตแพ็กเกจหัตถการขนาดใหญ่ในระดับราคาสูง ไม่สอดคล้องกับกลุ่มลูกค้าที่มีกำลังซื้อ</p>
+                </div>
+                <div class="bg-white rounded-2xl border border-ink-200 p-8 lg:p-10 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-400">
+                    <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">Expertise ไม่ถูกสื่อสาร</h3>
+                    <p class="text-ink-600 leading-relaxed">แพทย์มีประสบการณ์สูงและความเชี่ยวชาญเฉพาะทาง แต่ลูกค้าไม่รับรู้ — คอนเทนต์ไม่ได้สะท้อนความน่าเชื่อถือที่แท้จริงของคลินิก</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════ SOLUTION ═══════════════════════ -->
     <section class="py-24 lg:py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-12 mb-16">
-                <div class="lg:col-span-3"><div class="label text-cobalt">02 · The Solution</div></div>
-                <div class="lg:col-span-9"><h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ปรับ Mood & Tone <span class="italic-serif text-cobalt">ให้ตรงกลุ่มเป้าหมาย</span></h2></div>
+            <div class="max-w-3xl mb-16 reveal">
+                <div class="label text-cobalt mb-6">02 · The Solution</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ปรับ Mood & Tone<br/><span class="italic-serif text-cobalt">ให้ตรงกลุ่มเป้าหมาย</span></h2>
+                <p class="mt-6 text-ink-600 leading-relaxed max-w-2xl">วิเคราะห์และกำหนดกลุ่มเป้าหมายใหม่ให้ชัดเจน พร้อมทั้งปรับรูปแบบคอนเทนต์ให้เหมาะสมกับกลุ่มลูกค้าที่มีกำลังซื้อสูง</p>
             </div>
-            <div class="divide-y divide-ink-200 border-y border-ink-200">
-                <div class="grid lg:grid-cols-12 gap-8 py-10">
-                    <div class="lg:col-span-1"><span class="usfx text-3xl text-cobalt font-medium">01</span></div>
-                    <div class="lg:col-span-4"><h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">กำหนดกลุ่มเป้าหมายใหม่</h3></div>
-                    <div class="lg:col-span-7"><p class="text-ink-700 leading-relaxed">วิเคราะห์และกำหนดกลุ่มเป้าหมายให้ชัดเจน เน้นกลุ่มลูกค้าที่มีกำลังซื้อสูงและพร้อมตัดสินใจ</p></div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="sol-card reveal reveal-d1">
+                    <span class="sol-num">01</span>
+                    <div class="w-12 h-12 rounded-xl bg-cobalt/8 flex items-center justify-center mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4DB1" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">กำหนดกลุ่มเป้าหมายใหม่</h3>
+                    <p class="text-ink-600 leading-relaxed text-[15px]">วิเคราะห์และกำหนดกลุ่มเป้าหมายให้ชัดเจน เน้นกลุ่มลูกค้าที่มีกำลังซื้อสูงและพร้อมตัดสินใจ</p>
                 </div>
-                <div class="grid lg:grid-cols-12 gap-8 py-10">
-                    <div class="lg:col-span-1"><span class="usfx text-3xl text-cobalt font-medium">02</span></div>
-                    <div class="lg:col-span-4"><h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">Doctor as Brand</h3></div>
-                    <div class="lg:col-span-7"><p class="text-ink-700 leading-relaxed">นำเสนอแพทย์เป็น brand voice หลัก สื่อสารความเชี่ยวชาญผ่านคอนเทนต์ที่ดูน่าเชื่อถือและเป็นมืออาชีพ</p></div>
+                <div class="sol-card reveal reveal-d2">
+                    <span class="sol-num">02</span>
+                    <div class="w-12 h-12 rounded-xl bg-cobalt/8 flex items-center justify-center mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4DB1" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">Doctor as Brand</h3>
+                    <p class="text-ink-600 leading-relaxed text-[15px]">นำเสนอแพทย์เป็น brand voice หลัก สื่อสารความเชี่ยวชาญผ่านคอนเทนต์ที่ดูน่าเชื่อถือและเป็นมืออาชีพ</p>
                 </div>
-                <div class="grid lg:grid-cols-12 gap-8 py-10">
-                    <div class="lg:col-span-1"><span class="usfx text-3xl text-cobalt font-medium">03</span></div>
-                    <div class="lg:col-span-4"><h3 class="font-display text-2xl text-ink-800 font-medium tracking-tight">กลยุทธ์โฆษณาตรงจุด</h3></div>
-                    <div class="lg:col-span-7"><p class="text-ink-700 leading-relaxed">วางกลยุทธ์โฆษณาให้คอนเทนต์เข้าถึงกลุ่มลูกค้าที่มีศักยภาพในการตัดสินใจซื้อจริง สะท้อนคุณค่าของแพ็กเกจหัตถการขนาดใหญ่</p></div>
+                <div class="sol-card reveal reveal-d3">
+                    <span class="sol-num">03</span>
+                    <div class="w-12 h-12 rounded-xl bg-cobalt/8 flex items-center justify-center mb-6">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4DB1" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">กลยุทธ์โฆษณาตรงจุด</h3>
+                    <p class="text-ink-600 leading-relaxed text-[15px]">วางกลยุทธ์โฆษณาให้คอนเทนต์เข้าถึงกลุ่มลูกค้าที่มีศักยภาพ สะท้อนคุณค่าของแพ็กเกจหัตถการขนาดใหญ่</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- VIDEO REEL -->
-    <section class="py-24 lg:py-32 bg-ink-50">
+    <!-- ═══════════════════════ CONTENT SHOWCASE ═══════════════════════ -->
+    <section class="py-24 lg:py-32 bg-ink-900 overflow-hidden">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-12 mb-12">
-                <div class="lg:col-span-3"><div class="label text-cobalt">03 · The Content</div></div>
-                <div class="lg:col-span-9"><h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">คอนเทนต์ที่ <span class="italic-serif text-cobalt">สร้าง trust</span></h2></div>
+            <div class="max-w-3xl mb-14 reveal">
+                <div class="label mb-6" style="color:#94A6DB">03 · The Content</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
+                <p class="mt-6 text-white/55 leading-relaxed">คอนเทนต์ที่ออกแบบมาเพื่อสะท้อนความเชี่ยวชาญของแพทย์ สร้างความน่าเชื่อถือ และดึงดูดลูกค้าที่มีกำลังซื้อสูง</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <div class="reel-card" onclick="togglePlay(this)">
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+                <div class="reel-card reveal reveal-d1" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">ความลับคนหน้าเรียวศรีราชา</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Viral</span>
+                        <span class="text-white text-sm font-medium">ความลับคนหน้าเรียวศรีราชา</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card" onclick="togglePlay(this)">
+                <div class="reel-card reveal reveal-d2" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">หมออ้น อัพเดตเทรนความงาม</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Doctor</span>
+                        <span class="text-white text-sm font-medium">หมออ้น อัพเดตเทรนความงาม</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card" onclick="togglePlay(this)">
+                <div class="reel-card reveal reveal-d3" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">ASMR + Testimonial</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Review</span>
+                        <span class="text-white text-sm font-medium">ASMR + Testimonial</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card" onclick="togglePlay(this)">
+                <div class="reel-card reveal reveal-d4" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">ยกยุบอยู่นาน</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Case Study</span>
+                        <span class="text-white text-sm font-medium">ยกยุบอยู่นาน</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card" onclick="togglePlay(this)">
+                <div class="reel-card reveal reveal-d1" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/review-fai.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">รีวิวคุณฝ้าย</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Review</span>
+                        <span class="text-white text-sm font-medium">รีวิวคุณฝ้าย</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card" onclick="togglePlay(this)">
+                <div class="reel-card reveal reveal-d2" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/treatments-2026.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">หัตถการที่ได้ไปต่อ ปี 2026</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Education</span>
+                        <span class="text-white text-sm font-medium">หัตถการที่ได้ไปต่อ ปี 2026</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card" onclick="togglePlay(this)">
+                <div class="reel-card reveal reveal-d3" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/ulthera-age.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium">อายุเท่าไหร่ควรเริ่มทำอัลเทอร่า</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay">
+                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>FAQ</span>
+                        <span class="text-white text-sm font-medium">อายุเท่าไหร่ควรเริ่มทำอัลเทอร่า</span>
+                    </div>
+                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- RESULTS -->
-    <section class="bg-ink-800 text-white py-24 lg:py-32">
+    <!-- ═══════════════════════ RESULTS ═══════════════════════ -->
+    <section class="py-24 lg:py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-12 mb-16">
-                <div class="lg:col-span-3"><div class="label" style="color:#94A6DB">04 · The Results</div></div>
-                <div class="lg:col-span-9"><h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ไวรัล ที่<span class="italic-serif" style="color:#94A6DB">เปลี่ยนเป็น booking</span></h2></div>
+            <div class="max-w-3xl mb-16 reveal">
+                <div class="label text-cobalt mb-6">04 · The Results</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">คอนเทนต์ไวรัล ที่<br/><span class="italic-serif text-cobalt">เปลี่ยนเป็น booking</span></h2>
+                <p class="mt-6 text-ink-600 leading-relaxed max-w-2xl">หลังจากปรับคอนเทนต์และวางกลยุทธ์ใหม่ คอนเทนต์ของ Varinpat Clinic เริ่มถูกแชร์ต่อจนกลายเป็นไวรัล เข้าถึงกลุ่มเป้าหมายได้ตรงขึ้น Organic Engagement เพิ่มขึ้นมากกว่า 100%</p>
             </div>
-            <p class="text-white/70 text-[15px] leading-relaxed max-w-3xl mb-12">หลังจากปรับคอนเทนต์และวางกลยุทธ์ใหม่ คอนเทนต์ของ Varinpat Clinic เริ่มถูกแชร์ต่อจนกลายเป็นไวรัล เข้าถึงกลุ่มเป้าหมายได้ตรงขึ้น Organic Engagement เพิ่มขึ้นมากกว่า 100% เมื่อเทียบกับช่วงก่อนเริ่มทำ</p>
-            <div class="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-                <div class="bg-ink-800 p-10">
-                    <div class="font-display text-6xl text-white mb-3">1.8<span class="usfx" style="color:#94A6DB">M</span></div>
-                    <div class="label" style="color:#94A6DB">Views</div>
-                    <p class="mt-4 text-white/60 text-sm leading-relaxed">คอนเทนต์กลายเป็นไวรัล เข้าถึงกลุ่มเป้าหมายได้ตรง</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="rounded-2xl border border-ink-200 p-8 lg:p-10 text-center hover:shadow-xl hover:border-cobalt/30 transition-all duration-400 reveal reveal-d1">
+                    <div class="metric-ring mx-auto mb-6" style="--circ:339.3;--offset:27.1">
+                        <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="fill" cx="60" cy="60" r="54"/></svg>
+                        <div class="relative z-10">
+                            <div class="num text-3xl text-ink-800">1.8M</div>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl text-ink-800 tracking-tight mb-2">Views</h3>
+                    <p class="text-ink-500 text-sm leading-relaxed">คอนเทนต์กลายเป็นไวรัล<br/>เข้าถึงกลุ่มเป้าหมายได้ตรง</p>
                 </div>
-                <div class="bg-ink-800 p-10">
-                    <div class="font-display text-6xl text-white mb-3">100<span class="usfx" style="color:#94A6DB">%+</span></div>
-                    <div class="label" style="color:#94A6DB">Organic Growth</div>
-                    <p class="mt-4 text-white/60 text-sm leading-relaxed">Organic Engagement เพิ่มขึ้นมากกว่า 100%</p>
+                <div class="rounded-2xl border border-ink-200 p-8 lg:p-10 text-center hover:shadow-xl hover:border-cobalt/30 transition-all duration-400 reveal reveal-d2">
+                    <div class="metric-ring mx-auto mb-6" style="--circ:339.3;--offset:0">
+                        <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="fill" cx="60" cy="60" r="54"/></svg>
+                        <div class="relative z-10">
+                            <div class="num text-3xl text-ink-800">100%+</div>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl text-ink-800 tracking-tight mb-2">Organic Growth</h3>
+                    <p class="text-ink-500 text-sm leading-relaxed">Organic Engagement เพิ่มขึ้น<br/>มากกว่า 100%</p>
                 </div>
-                <div class="bg-ink-800 p-10">
-                    <div class="font-display text-6xl text-white mb-3">2.5<span class="usfx" style="color:#94A6DB">x</span></div>
-                    <div class="label" style="color:#94A6DB">Online Booking</div>
-                    <p class="mt-4 text-white/60 text-sm leading-relaxed">การจองออนไลน์เพิ่มขึ้น 2.5 เท่า</p>
+                <div class="rounded-2xl border border-ink-200 p-8 lg:p-10 text-center hover:shadow-xl hover:border-cobalt/30 transition-all duration-400 reveal reveal-d3">
+                    <div class="metric-ring mx-auto mb-6" style="--circ:339.3;--offset:118.8">
+                        <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="fill" cx="60" cy="60" r="54"/></svg>
+                        <div class="relative z-10">
+                            <div class="num text-3xl text-ink-800">2.5x</div>
+                        </div>
+                    </div>
+                    <h3 class="font-display text-xl text-ink-800 tracking-tight mb-2">Online Booking</h3>
+                    <p class="text-ink-500 text-sm leading-relaxed">การจองออนไลน์เพิ่มขึ้น<br/>2.5 เท่าจากเดิม</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- ═══════════════════════ CTA ═══════════════════════ -->
     <section class="bg-ink-900 text-white relative overflow-hidden">
+        <div class="cta-glow"></div>
         <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
-            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 reveal">
                 <div class="lg:col-span-7">
+                    <div class="label mb-6" style="color:#94A6DB">Ready to grow?</div>
                     <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white">อยากได้ผลลัพธ์<br/><span class="italic-serif" style="color:#94A6DB">แบบนี้?</span></h2>
-                    <p class="mt-6 text-white/65 max-w-md leading-relaxed">มาคุยกัน — ดูว่าเราจะช่วยคลินิกของคุณเติบโตได้อย่างไร</p>
+                    <p class="mt-6 text-white/55 max-w-md leading-relaxed">มาคุยกัน — ดูว่าเราจะช่วยคลินิกของคุณเติบโตได้อย่างไร</p>
                 </div>
                 <div class="lg:col-span-5 flex lg:justify-end gap-4 flex-wrap">
-                    <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-line">
+                    <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-line text-[13px]">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.34 8.03.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.02.9.56 1.1-.46 5.93-3.49 8.09-5.98 1.49-1.63 2-3.3 2-5.85C24 5.64 17.52 2 12 2z"/></svg>
                         ปรึกษาฟรี
                     </a>
-                    <a href="/contact.html" class="pill-btn pill-outline-light">Contact Us</a>
+                    <a href="/contact.html" class="pill-btn pill-outline-light text-[13px]">Contact Us</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
     <footer class="bg-ink-900 text-white py-10 border-t border-white/5">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="flex flex-col gap-7">
@@ -263,6 +397,27 @@
     </footer>
 
     <script>
+    // Scroll reveal
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('kpi-card'))startCount(e.target)}})},{threshold:.15});
+    document.querySelectorAll('.reveal,.kpi-card,.metric-ring').forEach(function(el){io.observe(el)});
+
+    // Count-up animation
+    function startCount(card){
+        var el=card.querySelector('.counter');
+        if(!el||el.dataset.done)return;
+        el.dataset.done='1';
+        var target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.decimals),dur=1800,start=performance.now();
+        function step(now){
+            var p=Math.min((now-start)/dur,1);
+            p=1-Math.pow(1-p,4);
+            var v=p*target;
+            el.textContent=v.toFixed(dec);
+            if(p<1)requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    // Video toggle
     function togglePlay(card){var v=card.querySelector('video');if(v.paused){document.querySelectorAll('.reel-card video').forEach(function(o){if(o!==v){o.pause();o.currentTime=0}});v.play()}else{v.pause()}}
     </script>
 </body>

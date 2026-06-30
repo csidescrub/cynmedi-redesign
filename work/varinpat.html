@@ -13,6 +13,8 @@
         body{font-family:'Kanit','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;-webkit-font-smoothing:antialiased}
         .font-display{font-family:'Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
         .italic-serif{font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-weight:400}
+        /* Thai accent — Kanit (loopless), NEVER italic-serif (serif fallback = looped Thai) */
+        .accent-th{font-family:'Kanit',sans-serif;font-style:normal;font-weight:500}
         .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
         .serif-num{font-family:'Cormorant Garamond',serif;font-variant-numeric:tabular-nums lining-nums;font-weight:500;letter-spacing:-0.01em}
         .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s}
@@ -69,11 +71,19 @@
         .logo-cell img:hover{opacity:1;filter:grayscale(0)}
         @media(prefers-reduced-motion:reduce){.logo-track{animation:none;flex-wrap:wrap;justify-content:center}}
 
-        /* ── Related project cards (adapted from Astell) ── */
+        /* ── Related project cards ── */
         .card-hover{transition:transform .5s cubic-bezier(.22,.61,.36,1)}
-        .card-hover:hover{transform:translateY(-5px)}
+        .card-hover:hover{transform:translateY(-6px)}
         .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}
         .pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
+        .proj-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+        @media(min-width:768px){.proj-grid{grid-template-columns:repeat(3,1fr)}}
+        .proj-card{position:relative;aspect-ratio:4/5;border-radius:18px;background:#0F1B30;border:1px solid rgba(148,166,219,.14);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:24px;transition:border-color .4s}
+        .group:hover .proj-card{border-color:rgba(148,166,219,.42)}
+        .proj-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:60%;max-height:38%;width:auto;object-fit:contain;opacity:.92}
+        .proj-metric{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;color:#94A6DB;font-family:'Inter',sans-serif;font-size:13px;font-weight:500}
+        .proj-metric .arr{transition:transform .3s}
+        .group:hover .proj-metric .arr{transform:translateX(5px)}
 
         @media(max-width:768px){
             .hero-banner{height:56vh;min-height:380px;grid-template-columns:1fr 1fr}
@@ -119,7 +129,7 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-end justify-between mb-12 reveal">
             <div>
                 <div class="label mb-5" style="color:#94A6DB">Selected Work</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
+                <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่ <span class="accent-th" style="color:#94A6DB">สร้าง</span> <span class="italic-serif" style="color:#94A6DB">trust</span></h2>
             </div>
             <span class="hidden md:block label" style="color:rgba(148,166,219,.32)">7 Reels · Content</span>
         </div>
@@ -148,7 +158,7 @@
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="max-w-2xl mb-16 reveal">
                 <div class="label text-cobalt mb-6">The Results</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="italic-serif text-cobalt"> พูดแทนทุกอย่าง</span></h2>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
             </div>
             <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-100 reveal reveal-d1">
                 <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
@@ -177,7 +187,7 @@
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-7 reveal">
                     <div class="label text-cobalt mb-6">The Approach</div>
-                    <h2 class="font-display text-3xl lg:text-4xl text-ink-800 leading-snug tracking-tight">วางกลยุทธ์คอนเทนต์ใหม่ ดันหมอเป็นแบรนด์<br/><span class="italic-serif text-cobalt">และยิงแอดให้ตรงกลุ่มกำลังซื้อสูง</span></h2>
+                    <h2 class="font-display text-3xl lg:text-4xl text-ink-800 leading-snug tracking-tight">วางกลยุทธ์คอนเทนต์ใหม่ ดันหมอเป็นแบรนด์<br/><span class="accent-th text-cobalt">และยิงแอดให้ตรงกลุ่มกำลังซื้อสูง</span></h2>
                     <div class="grid sm:grid-cols-2 gap-4 mt-8 max-w-xl">
                         <div class="rounded-xl border border-ink-200 p-5">
                             <div class="label text-ink-400 mb-3">เดิม</div>
@@ -220,7 +230,7 @@
     <section class="py-20 lg:py-24 bg-white border-t border-ink-100">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center mb-12 lg:mb-14 reveal">
             <div class="label text-cobalt mb-5">Trusted By</div>
-            <p class="font-display text-2xl lg:text-3xl text-ink-700 max-w-2xl mx-auto leading-snug">ดูแลคอนเทนต์และโฆษณาให้คลินิกและแบรนด์การแพทย์<br class="hidden sm:block"/>กว่า <span class="italic-serif text-cobalt">30 แบรนด์</span> ทั่วประเทศ</p>
+            <p class="font-display text-2xl lg:text-3xl text-ink-700 max-w-2xl mx-auto leading-snug">ดูแลคอนเทนต์และโฆษณาให้คลินิกและแบรนด์การแพทย์<br class="hidden sm:block"/>กว่า <span class="accent-th text-cobalt">30 แบรนด์</span> ทั่วประเทศ</p>
         </div>
         <div class="logo-marquee reveal reveal-d1">
             <div class="logo-track">
@@ -258,29 +268,34 @@
             <div class="flex items-end justify-between mb-12 reveal">
                 <div>
                     <div class="label text-cobalt mb-4">More Work</div>
-                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 tracking-tight">ผลงานคลินิก<span class="italic-serif text-cobalt"> อื่นๆ</span></h2>
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 tracking-tight">ผลงานคลินิก<span class="accent-th text-cobalt"> อื่นๆ</span></h2>
                 </div>
                 <a href="/work.html" class="pill-btn pill-outline text-[12px] hidden sm:inline-flex">ดูทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 reveal reveal-d1">
+            <div class="proj-grid reveal reveal-d1">
                 <a href="/work/the-bloom.html" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-xl overflow-hidden mb-5 relative" style="background:linear-gradient(160deg,#EEF1F6,#C7D2EE)">
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-ink-800"><div class="label" style="opacity:.55">Aesthetic Clinic · 2024</div><div><div class="font-display italic-serif text-4xl mb-1">The Bloom</div><div class="font-medium text-sm">200K+ Engagement</div></div></div>
+                    <div class="proj-card">
+                        <span class="label" style="color:rgba(148,166,219,.5)">Aesthetic Clinic · 2024</span>
+                        <img src="/assets/logos/white/thebloom.webp" alt="The Bloom" class="proj-logo" loading="lazy">
+                        <div class="proj-metric"><span>200K+ Engagement</span><span class="arr">→</span></div>
                     </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight">The Bloom Clinic</h3>
+                    <h3 class="font-display text-xl text-ink-800 tracking-tight mt-4">The Bloom Clinic</h3>
                 </a>
                 <a href="/work/astell.html" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-xl overflow-hidden mb-5 relative" style="background:linear-gradient(150deg,#1F2D44,#0F1B30)">
-                        <div class="absolute inset-0" style="opacity:.4;background-image:radial-gradient(circle at 70% 22%,#2C4CAA,transparent 60%)"></div>
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-white"><div class="label" style="opacity:.6">Aesthetic · ASEAN · 2023</div><div><div class="font-display italic-serif text-4xl mb-1" style="color:#94A6DB">Astell</div><div class="text-royal-300 text-sm font-medium">Global Reach</div></div></div>
+                    <div class="proj-card">
+                        <span class="label" style="color:rgba(148,166,219,.5)">Aesthetic · ASEAN · 2023</span>
+                        <img src="/assets/logos/white/astell.webp" alt="Astell" class="proj-logo" loading="lazy">
+                        <div class="proj-metric"><span>Global Reach</span><span class="arr">→</span></div>
                     </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight">Astell</h3>
+                    <h3 class="font-display text-xl text-ink-800 tracking-tight mt-4">Astell</h3>
                 </a>
                 <a href="/work/natural-joy-vision.html" class="group card-hover block">
-                    <div class="aspect-[5/7] rounded-xl overflow-hidden mb-5 relative" style="background:linear-gradient(160deg,#EDF3F1,#C3D8D3)">
-                        <div class="absolute inset-0 p-6 flex flex-col justify-between text-ink-800"><div class="label" style="opacity:.55">Eye Clinic · 2024</div><div><div class="font-display italic-serif text-4xl mb-1">Natural Joy</div><div class="font-medium text-sm">3× Online Booking</div></div></div>
+                    <div class="proj-card">
+                        <span class="label" style="color:rgba(148,166,219,.5)">Eye Clinic · 2024</span>
+                        <img src="/assets/logos/white/naturaljoy.webp" alt="Natural Joy Vision" class="proj-logo" loading="lazy">
+                        <div class="proj-metric"><span>3× Online Booking</span><span class="arr">→</span></div>
                     </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight">Natural Joy Vision</h3>
+                    <h3 class="font-display text-xl text-ink-800 tracking-tight mt-4">Natural Joy Vision</h3>
                 </a>
             </div>
             <a href="/work.html" class="pill-btn pill-outline text-[12px] inline-flex sm:hidden mt-8">ดูผลงานทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
@@ -294,7 +309,7 @@
             <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 reveal">
                 <div class="lg:col-span-7">
                     <div class="label mb-6" style="color:#94A6DB">Let's talk</div>
-                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-[-0.02em] text-white">คุยกันสบายๆ<br/><span class="italic-serif" style="color:#94A6DB">ก่อนตัดสินใจ</span></h2>
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-[-0.02em] text-white">คุยกันสบายๆ<br/><span class="accent-th" style="color:#94A6DB">ก่อนตัดสินใจ</span></h2>
                     <p class="mt-6 text-white/55 max-w-md leading-relaxed">ทักมาปรึกษาได้เลย ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด — เรายินดีช่วยดูทิศทางคอนเทนต์และโฆษณาของคลินิกคุณให้ก่อน</p>
                 </div>
                 <div class="lg:col-span-5 flex lg:justify-end gap-4 flex-wrap">

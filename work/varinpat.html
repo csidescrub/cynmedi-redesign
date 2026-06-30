@@ -21,7 +21,7 @@
         .pill-dark{background:#0F1B30;color:#FFF}.pill-dark:hover{background:#1F2D44}
         .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}.pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
         .pill-outline-light{background:transparent;color:#FFF;border:1px solid rgba(255,255,255,.3)}.pill-outline-light:hover{background:#FFF;color:#0F1B30}
-        .pill-line{background:#06C755;color:#FFF;border:none}.pill-line:hover{background:#05b34c}
+        .pill-line{background:#2D4DB1;color:#FFF;border:none}.pill-line:hover{background:#23408F}
         body .text-cobalt{color:#23408F}
         ::selection{background:#2C4CAA;color:#FFF}
 
@@ -71,6 +71,35 @@
         /* CTA glow */
         .cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.15),transparent 70%);top:50%;right:-10%;transform:translateY(-50%);pointer-events:none}
 
+        /* Dashboard panel */
+        .dash-panel{position:relative;background:#0B1223;border:1px solid rgba(148,166,219,.14);border-radius:24px;overflow:hidden}
+        .dash-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(148,166,219,.12) 1px,transparent 1px);background-size:22px 22px;opacity:.5;pointer-events:none}
+        .corner{position:absolute;width:14px;height:14px;border-color:rgba(148,166,219,.5)}
+        .corner.tl{top:14px;left:14px;border-top:1.5px solid;border-left:1.5px solid}
+        .corner.tr{top:14px;right:14px;border-top:1.5px solid;border-right:1.5px solid}
+        .corner.bl{bottom:14px;left:14px;border-bottom:1.5px solid;border-left:1.5px solid}
+        .corner.br{bottom:14px;right:14px;border-bottom:1.5px solid;border-right:1.5px solid}
+        .live-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:livePulse 2s infinite}
+        @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
+
+        /* Equalizer bar chart */
+        .eq{display:flex;align-items:flex-end;gap:5px;height:140px}
+        .eq-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#94A6DB,#2D4DB1);transform-origin:bottom;transform:scaleY(0);transition:transform 1s cubic-bezier(.16,1,.3,1)}
+        .dash-panel.visible .eq-bar{transform:scaleY(var(--h))}
+        .dash-panel.visible .eq-bar.live{animation:eqLive 1.4s ease-in-out infinite alternate}
+        @keyframes eqLive{from{transform:scaleY(var(--h))}to{transform:scaleY(var(--h2))}}
+
+        /* Line graph draw */
+        .line-path{stroke:#94A6DB;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:600;stroke-dashoffset:600}
+        .dash-panel.visible .line-path{animation:drawLine 2s cubic-bezier(.16,1,.3,1) forwards}
+        @keyframes drawLine{to{stroke-dashoffset:0}}
+        .line-dot{opacity:0}
+        .dash-panel.visible .line-dot{animation:dotIn .4s ease forwards;animation-delay:1.8s}
+        @keyframes dotIn{to{opacity:1}}
+        .area-fill{opacity:0}
+        .dash-panel.visible .area-fill{animation:areaIn 1.2s ease forwards;animation-delay:1s}
+        @keyframes areaIn{to{opacity:1}}
+
         @media(max-width:768px){
             .hero-banner{height:50vh;min-height:360px}
             .hero-banner video:nth-child(3){display:none}
@@ -105,39 +134,116 @@
     <!-- ═══════════════════════ KPI DASHBOARD ═══════════════════════ -->
     <section class="bg-ink-900 py-20 lg:py-24">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="flex items-center gap-3 mb-12 reveal">
-                <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                <span class="label text-white/50">Performance Dashboard</span>
+            <div class="flex items-center justify-between mb-10 reveal">
+                <div class="flex items-center gap-3">
+                    <div class="live-dot"></div>
+                    <span class="label text-white/50">Performance Dashboard</span>
+                </div>
+                <span class="label text-white/30 hidden sm:block">Varinpat Clinic · 2024–2025</span>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-                <div class="kpi-card reveal reveal-d1" data-count="1.8" data-suffix="M" style="--bar:92%">
+
+            <div class="dash-panel reveal reveal-d1 p-6 sm:p-8 lg:p-10">
+                <div class="dash-dots"></div>
+                <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
+
+                <div class="relative grid lg:grid-cols-12 gap-8 lg:gap-10">
+                    <!-- LINE GRAPH — Engagement growth -->
+                    <div class="lg:col-span-7">
+                        <div class="flex items-end justify-between mb-5">
+                            <div>
+                                <div class="label text-white/40 mb-2">Organic Engagement</div>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="num text-3xl lg:text-4xl text-white counter" data-target="100" data-decimals="0">0</span>
+                                    <span class="num text-2xl" style="color:#94A6DB">%+</span>
+                                </div>
+                            </div>
+                            <span class="kpi-delta">▲ Viral</span>
+                        </div>
+                        <svg viewBox="0 0 480 180" class="w-full" preserveAspectRatio="none" style="height:180px">
+                            <defs>
+                                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%" stop-color="#2D4DB1" stop-opacity="0.35"/>
+                                    <stop offset="100%" stop-color="#2D4DB1" stop-opacity="0"/>
+                                </linearGradient>
+                            </defs>
+                            <!-- grid lines -->
+                            <line x1="0" y1="45" x2="480" y2="45" stroke="rgba(148,166,219,.08)"/>
+                            <line x1="0" y1="90" x2="480" y2="90" stroke="rgba(148,166,219,.08)"/>
+                            <line x1="0" y1="135" x2="480" y2="135" stroke="rgba(148,166,219,.08)"/>
+                            <!-- area + line: rising curve -->
+                            <path class="area-fill" d="M0,160 L60,150 L130,135 L200,120 L270,95 L340,70 L410,40 L480,15 L480,180 L0,180 Z" fill="url(#areaGrad)"/>
+                            <path class="line-path" d="M0,160 L60,150 L130,135 L200,120 L270,95 L340,70 L410,40 L480,15"/>
+                            <circle class="line-dot" cx="480" cy="15" r="5" fill="#94A6DB"/>
+                            <circle class="line-dot" cx="480" cy="15" r="9" fill="#94A6DB" opacity="0.25"/>
+                        </svg>
+                        <div class="flex justify-between mt-3 label text-white/25 text-[10px]">
+                            <span>เริ่มทำ</span><span>Q2</span><span>Q3</span><span>Q4</span><span>ปัจจุบัน</span>
+                        </div>
+                    </div>
+
+                    <!-- BAR CHART — Live system / reach -->
+                    <div class="lg:col-span-5 lg:border-l lg:border-white/8 lg:pl-10">
+                        <div class="flex items-center justify-between mb-5">
+                            <div>
+                                <div class="label text-white/40 mb-2">Monthly Reach</div>
+                                <div class="flex items-baseline gap-1">
+                                    <span class="num text-3xl lg:text-4xl text-white counter" data-target="1.8" data-decimals="1">0</span>
+                                    <span class="num text-2xl" style="color:#94A6DB">M</span>
+                                </div>
+                            </div>
+                            <span class="kpi-delta">▲ 180%</span>
+                        </div>
+                        <div class="eq">
+                            <div class="eq-bar" style="--h:.30;--h2:.42"></div>
+                            <div class="eq-bar" style="--h:.45;--h2:.38"></div>
+                            <div class="eq-bar" style="--h:.38;--h2:.52"></div>
+                            <div class="eq-bar live" style="--h:.58;--h2:.70"></div>
+                            <div class="eq-bar" style="--h:.50;--h2:.62"></div>
+                            <div class="eq-bar live" style="--h:.68;--h2:.55"></div>
+                            <div class="eq-bar" style="--h:.62;--h2:.78"></div>
+                            <div class="eq-bar live" style="--h:.80;--h2:.66"></div>
+                            <div class="eq-bar" style="--h:.72;--h2:.88"></div>
+                            <div class="eq-bar live" style="--h:.90;--h2:.76"></div>
+                            <div class="eq-bar" style="--h:.84;--h2:.96"></div>
+                            <div class="eq-bar" style="--h:1;--h2:.88"></div>
+                        </div>
+                        <div class="flex justify-between mt-3 label text-white/25 text-[10px]">
+                            <span>ม.ค.</span><span>มิ.ย.</span><span>ธ.ค.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI counter strip -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mt-5">
+                <div class="kpi-card reveal reveal-d1" style="--bar:92%">
                     <div class="flex items-center justify-between mb-4">
                         <span class="label text-white/40">Total Views</span>
-                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>180%</span>
+                        <span class="kpi-delta">▲ 180%</span>
                     </div>
                     <div><span class="kpi-num counter" data-target="1.8" data-decimals="1">0</span><span class="kpi-suffix">M</span></div>
                     <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
                 </div>
-                <div class="kpi-card reveal reveal-d2" data-count="300" data-suffix="K+" style="--bar:78%">
+                <div class="kpi-card reveal reveal-d2" style="--bar:78%">
                     <div class="flex items-center justify-between mb-4">
                         <span class="label text-white/40">Engagement</span>
-                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>120%</span>
+                        <span class="kpi-delta">▲ 120%</span>
                     </div>
                     <div><span class="kpi-num counter" data-target="300" data-decimals="0">0</span><span class="kpi-suffix">K+</span></div>
                     <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
                 </div>
-                <div class="kpi-card reveal reveal-d3" data-count="100" data-suffix="%+" style="--bar:100%">
+                <div class="kpi-card reveal reveal-d3" style="--bar:100%">
                     <div class="flex items-center justify-between mb-4">
                         <span class="label text-white/40">Organic Growth</span>
-                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>Viral</span>
+                        <span class="kpi-delta">▲ Viral</span>
                     </div>
                     <div><span class="kpi-num counter" data-target="100" data-decimals="0">0</span><span class="kpi-suffix">%+</span></div>
                     <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
                 </div>
-                <div class="kpi-card reveal reveal-d4" data-count="2.5" data-suffix="x" style="--bar:65%">
+                <div class="kpi-card reveal reveal-d4" style="--bar:65%">
                     <div class="flex items-center justify-between mb-4">
                         <span class="label text-white/40">Online Booking</span>
-                        <span class="kpi-delta"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1L9 6H1L5 1Z" fill="#06C755"/></svg>150%</span>
+                        <span class="kpi-delta">▲ 150%</span>
                     </div>
                     <div><span class="kpi-num counter" data-target="2.5" data-decimals="1">0</span><span class="kpi-suffix">x</span></div>
                     <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
@@ -398,20 +504,18 @@
 
     <script>
     // Scroll reveal
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');if(e.target.classList.contains('kpi-card'))startCount(e.target)}})},{threshold:.15});
-    document.querySelectorAll('.reveal,.kpi-card,.metric-ring').forEach(function(el){io.observe(el)});
+    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.counter').forEach(startCount)}})},{threshold:.12});
+    document.querySelectorAll('.reveal,.kpi-card,.metric-ring,.dash-panel').forEach(function(el){io.observe(el)});
 
     // Count-up animation
-    function startCount(card){
-        var el=card.querySelector('.counter');
+    function startCount(el){
         if(!el||el.dataset.done)return;
         el.dataset.done='1';
-        var target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.decimals),dur=1800,start=performance.now();
+        var target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.decimals),dur=1900,start=performance.now();
         function step(now){
             var p=Math.min((now-start)/dur,1);
             p=1-Math.pow(1-p,4);
-            var v=p*target;
-            el.textContent=v.toFixed(dec);
+            el.textContent=(p*target).toFixed(dec);
             if(p<1)requestAnimationFrame(step);
         }
         requestAnimationFrame(step);

@@ -33,8 +33,23 @@
         .reveal.visible{opacity:1;transform:none}
         .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.38s}
 
-        /* ── Hook stat ── */
-        .hook-num{font-family:'Inter','Kanit',sans-serif;font-size:clamp(5.5rem,16vw,13rem);font-weight:700;letter-spacing:-0.06em;line-height:.88;color:#FFF;font-variant-numeric:tabular-nums lining-nums;display:block}
+        /* ── Hook stat — editorial pull-quote; figure is a refined serif numeral, NOT a billboard ── */
+        .hook-grid{display:grid;grid-template-columns:minmax(110px,1.3fr) minmax(0,7fr);gap:clamp(2rem,6vw,5rem);align-items:start}
+        .hook-rail{display:flex;flex-direction:column;gap:1rem;padding-top:.7rem}
+        .hook-rail-loc{color:rgba(148,166,219,.30);letter-spacing:.16em}
+        /* Thai lede stays Kanit (loopless) — light & airy */
+        .hook-lede{font-family:'Kanit',sans-serif;color:#E9ECF4;font-weight:300;font-size:clamp(1.4rem,2.6vw,2.25rem);line-height:1.55;letter-spacing:0;max-width:32ch}
+        .hook-figure{display:inline-flex;align-items:baseline;white-space:nowrap;margin:0 .14em;line-height:0}
+        /* ONLY the Latin numeral is serif */
+        .hook-num{font-family:'Cormorant Garamond',serif !important;font-size:clamp(3.2rem,5.5vw,5rem);font-weight:500;letter-spacing:-0.01em;line-height:.7;color:#FFF;font-variant-numeric:tabular-nums lining-nums;display:inline-block}
+        .hook-unit{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);color:#94A6DB;margin-left:.03em;line-height:1}
+        .hook-tail{color:#94A6DB}
+        .hook-rule{height:1px;width:96px;background:rgba(148,166,219,.45);margin:2.4rem 0 1.4rem}
+        .hook-credit{color:rgba(148,166,219,.5);letter-spacing:.24em}
+        @media(max-width:1024px){
+            .hook-grid{grid-template-columns:1fr;gap:2rem}
+            .hook-rail{flex-direction:row;gap:1.5rem;align-items:baseline;padding-top:0}
+        }
 
         /* ── Challenge rows ── */
         .chal-row{border-top:1px solid #E8EBF0;padding:44px 0;display:grid;grid-template-columns:68px 1fr;gap:40px;align-items:start}
@@ -52,8 +67,34 @@
         .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.13);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s,transform .35s;border:1px solid rgba(255,255,255,.22)}
         .reel-card:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 
+        /* ── Featured reel (the footage is the hero) + scroll rail ── */
+        .feature-grid{display:grid;grid-template-columns:minmax(0,clamp(360px,38vw,460px)) 1fr;gap:clamp(2.5rem,5vw,5rem);align-items:center;margin-bottom:clamp(3.5rem,7vw,6rem)}
+        .feature-reel{aspect-ratio:9/16;width:100%;max-width:460px;border-radius:20px;box-shadow:0 50px 100px -35px rgba(0,0,0,.75)}
+        .feature-reel .reel-overlay{background:linear-gradient(180deg,transparent 62%,rgba(0,0,0,.32));opacity:1}
+        .feature-reel .reel-play{opacity:1;width:64px;height:64px;background:rgba(255,255,255,.10)}
+        .feature-reel:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
+        .feature-caption{max-width:36ch}
+        .feature-title{color:#fff;font-size:clamp(2.3rem,4vw,3.6rem);line-height:1.06;letter-spacing:-0.01em;margin:1.1rem 0 1.4rem}
+        .feature-desc{font-family:'Kanit',sans-serif;color:rgba(233,236,244,.72);font-weight:300;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.85;margin-bottom:2rem}
+        .feature-meta{color:rgba(148,166,219,.45);letter-spacing:.22em}
+        .reel-rail-head{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(148,166,219,.14);padding-top:1.6rem;margin-bottom:1.6rem}
+        .reel-rail-hint{color:rgba(148,166,219,.35);letter-spacing:.2em}
+        .reel-rail{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(230px,25vw,290px);gap:clamp(1rem,1.6vw,1.5rem);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:1.4rem;margin:0 -1.5rem;padding-left:1.5rem;padding-right:1.5rem;scrollbar-width:none}
+        .reel-rail::-webkit-scrollbar{display:none}
+        .rail-card{scroll-snap-align:start;border-radius:16px}
+        .rail-card .reel-overlay{padding:16px}
+        .rail-cap{color:#fff;font-size:.85rem;font-weight:400;font-family:'Kanit',sans-serif;line-height:1.4}
+        @media(max-width:900px){
+            .feature-grid{grid-template-columns:1fr;gap:2rem;justify-items:start}
+            .feature-reel{max-width:330px}
+            .feature-caption{max-width:48ch}
+        }
+        @media(max-width:480px){
+            .reel-rail{grid-auto-columns:64vw}
+        }
+
         /* ── Result stats ── */
-        .result-num{font-family:'Inter','Kanit',sans-serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.05em;line-height:1;font-variant-numeric:tabular-nums;color:#0F1B30}
+        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(2.8rem,4.8vw,4.2rem);font-weight:500;letter-spacing:-0.01em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
 
         /* ── CTA glow ── */
         .cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
@@ -90,13 +131,18 @@
 
     <!-- ════════════════ HOOK STAT ════════════════ -->
     <section class="bg-ink-900">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-36 lg:py-48 text-center">
-            <div class="label mb-14 reveal" style="color:rgba(148,166,219,.38)">Varinpat Clinic · ศรีราชา · 2024–2025</div>
-            <div class="reveal reveal-d1">
-                <span class="hook-num counter" data-target="1.8" data-decimals="1">0</span>
-                <div style="font-family:'Kanit',sans-serif;font-size:clamp(1.1rem,2.2vw,1.75rem);color:#94A6DB;font-weight:300;letter-spacing:0.14em;margin-top:1.75rem">ล้านวิว จาก Organic Content</div>
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-28 lg:py-36">
+            <div class="hook-grid">
+                <div class="hook-rail reveal">
+                    <span class="label" style="color:rgba(148,166,219,.42)">Impact</span>
+                    <span class="hook-rail-loc label">Varinpat&nbsp;Clinic · ศรีราชา</span>
+                </div>
+                <div class="hook-body reveal reveal-d1">
+                    <p class="hook-lede">คอนเทนต์ออร์แกนิกที่เราวางกลยุทธ์และผลิตให้ Varinpat ทำยอดวิวรวมแตะ<span class="hook-figure"><span class="hook-num counter" data-target="1.8" data-decimals="1">0</span><span class="hook-unit">M</span></span>วิว ภายในปีเดียว <span class="hook-tail">โดยไม่ยิงโฆษณาแม้แต่บาทเดียว</span></p>
+                    <div class="hook-rule"></div>
+                    <p class="label hook-credit">Organic Only · 2024–2025</p>
+                </div>
             </div>
-            <p class="mt-12 label reveal reveal-d2" style="color:rgba(148,166,219,.28);letter-spacing:0.28em">ไม่ใช้โฆษณา · Organic Only</p>
         </div>
     </section>
 
@@ -191,49 +237,65 @@
     </section>
 
     <!-- ════════════════ CONTENT SHOWCASE ════════════════ -->
-    <section class="bg-ink-900 py-24 lg:py-32">
+    <section class="bg-ink-900 pt-24 lg:pt-32 pb-20 lg:pb-28">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="flex items-end justify-between mb-14 reveal">
+            <div class="flex items-end justify-between mb-12 lg:mb-16 reveal">
                 <div>
                     <div class="label mb-5" style="color:#94A6DB">03 · The Content</div>
                     <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
                 </div>
                 <div class="hidden md:block text-right label" style="color:rgba(148,166,219,.3)">7 คอนเทนต์<br/>Organic Viral</div>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
-                <div class="reel-card reveal reveal-d1" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">ความลับคนหน้าเรียวศรีราชา</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+
+            <!-- FEATURED REEL — the footage is the hero -->
+            <div class="feature-grid reveal reveal-d1">
+                <div class="feature-reel reel-card" onclick="togglePlay(this)">
+                    <video autoplay muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
+                    <div class="reel-overlay"></div>
+                    <div class="reel-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card reveal reveal-d2" onclick="togglePlay(this)">
+                <div class="feature-caption">
+                    <span class="label" style="color:#94A6DB">Featured · Viral Hook</span>
+                    <h3 class="font-display feature-title">ความลับคน<span class="italic-serif" style="color:#94A6DB">หน้าเรียว</span> ศรีราชา</h3>
+                    <p class="feature-desc">คลิปเปิดแคมเปญที่จุดกระแสคนศรีราชา — วางมุมเล่าที่ดูง่าย และสื่อถึงความเชี่ยวชาญของคลินิกได้ภายในคลิปเดียว</p>
+                    <span class="feature-meta label">01 / 07 — Organic Content</span>
+                </div>
+            </div>
+
+            <!-- SCROLLING REEL RAIL — phone-sized verticals -->
+            <div class="reel-rail-head reveal">
+                <span class="label" style="color:rgba(148,166,219,.5)">More from the series</span>
+                <span class="reel-rail-hint label">เลื่อนดู →</span>
+            </div>
+            <div class="reel-rail reveal reveal-d1">
+                <div class="rail-card reel-card" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">หมออ้น อัพเดตเทรนความงาม</span></div>
+                    <div class="reel-overlay"><span class="rail-cap">หมออ้น อัพเดตเทรนความงาม</span></div>
                     <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card reveal reveal-d3" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">ASMR Testimonial</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="reel-card reveal" style="transition-delay:.48s" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">ยกยุบอยู่นาน</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="reel-card reveal reveal-d1" onclick="togglePlay(this)">
+                <div class="rail-card reel-card" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/review-fai.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">รีวิวคุณฝ้าย</span></div>
+                    <div class="reel-overlay"><span class="rail-cap">รีวิวคุณฝ้าย</span></div>
                     <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card reveal reveal-d2" onclick="togglePlay(this)">
+                <div class="rail-card reel-card" onclick="togglePlay(this)">
+                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video>
+                    <div class="reel-overlay"><span class="rail-cap">ASMR Testimonial</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="rail-card reel-card" onclick="togglePlay(this)">
+                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video>
+                    <div class="reel-overlay"><span class="rail-cap">ยกยุบอยู่นาน</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                </div>
+                <div class="rail-card reel-card" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/treatments-2026.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">หัตถการที่ได้ไปต่อ 2026</span></div>
+                    <div class="reel-overlay"><span class="rail-cap">หัตถการที่ได้ไปต่อ 2026</span></div>
                     <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card reveal reveal-d3" onclick="togglePlay(this)">
+                <div class="rail-card reel-card" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/ulthera-age.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">อายุเท่าไหร่ควรเริ่มอัลเทอร่า</span></div>
+                    <div class="reel-overlay"><span class="rail-cap">อายุเท่าไหร่ควรเริ่มอัลเทอร่า</span></div>
                     <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
             </div>

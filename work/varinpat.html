@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Varinpat Clinic — Case Study | CYN Medical</title>
-    <meta name="description" content="ปรับ Mood & Tone คอนเทนต์คลินิกเสริมความงาม Varinpat Clinic ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูง — Organic Engagement เพิ่มกว่า 100%">
+    <meta name="description" content="ปรับ Mood & Tone คอนเทนต์คลินิกเสริมความงาม Varinpat Clinic ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูง — Organic 1.8M views โดยไม่ยิงโฆษณา">
     <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
@@ -14,7 +14,7 @@
         .font-display{font-family:'Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
         .italic-serif{font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-weight:400}
         .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
-        .num{font-family:'Inter','Kanit',sans-serif;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums lining-nums}
+        .serif-num{font-family:'Cormorant Garamond',serif;font-variant-numeric:tabular-nums lining-nums;font-weight:500;letter-spacing:-0.01em}
         .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s}
         .pill-dark{background:#0F1B30;color:#FFF}.pill-dark:hover{background:#1F2D44}
         .pill-outline-light{background:transparent;color:#FFF;border:1px solid rgba(255,255,255,.3)}.pill-outline-light:hover{background:#FFF;color:#0F1B30}
@@ -23,86 +23,44 @@
         ::selection{background:#2C4CAA;color:#FFF}
 
         /* ── Hero ── */
-        .hero-banner{position:relative;height:70vh;min-height:480px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr}
+        .hero-banner{position:relative;height:74vh;min-height:520px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr}
         .hero-banner video{width:100%;height:100%;object-fit:cover}
-        .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.68),rgba(6,9,18,.50) 45%,rgba(2,4,9,.88))}
+        .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.62),rgba(6,9,18,.5) 42%,rgba(2,4,9,.9))}
         .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
+        .hero-stats{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:24px}
+        .hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.7rem);color:#fff;line-height:1;font-variant-numeric:lining-nums}
+        .hero-stats .sep{color:rgba(148,166,219,.45)}
+        .hero-stats .txt{color:rgba(255,255,255,.72);font-size:14px}
 
         /* ── Scroll reveal ── */
-        .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+        .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
         .reveal.visible{opacity:1;transform:none}
-        .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.38s}
+        .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
 
-        /* ── Hook stat — editorial pull-quote; figure is a refined serif numeral, NOT a billboard ── */
-        .hook-grid{display:grid;grid-template-columns:minmax(110px,1.3fr) minmax(0,7fr);gap:clamp(2rem,6vw,5rem);align-items:start}
-        .hook-rail{display:flex;flex-direction:column;gap:1rem;padding-top:.7rem}
-        .hook-rail-loc{color:rgba(148,166,219,.30);letter-spacing:.16em}
-        /* Thai lede stays Kanit (loopless) — light & airy */
-        .hook-lede{font-family:'Kanit',sans-serif;color:#E9ECF4;font-weight:300;font-size:clamp(1.4rem,2.6vw,2.25rem);line-height:1.55;letter-spacing:0;max-width:32ch}
-        .hook-figure{display:inline-flex;align-items:baseline;white-space:nowrap;margin:0 .14em;line-height:0}
-        /* ONLY the Latin numeral is serif */
-        .hook-num{font-family:'Cormorant Garamond',serif !important;font-size:clamp(3.2rem,5.5vw,5rem);font-weight:500;letter-spacing:-0.01em;line-height:.7;color:#FFF;font-variant-numeric:tabular-nums lining-nums;display:inline-block}
-        .hook-unit{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);color:#94A6DB;margin-left:.03em;line-height:1}
-        .hook-tail{color:#94A6DB}
-        .hook-rule{height:1px;width:96px;background:rgba(148,166,219,.45);margin:2.4rem 0 1.4rem}
-        .hook-credit{color:rgba(148,166,219,.5);letter-spacing:.24em}
-        @media(max-width:1024px){
-            .hook-grid{grid-template-columns:1fr;gap:2rem}
-            .hook-rail{flex-direction:row;gap:1.5rem;align-items:baseline;padding-top:0}
-        }
+        /* ── Video marquee (the hero of the page) ── */
+        .marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+        .marquee-track{display:flex;gap:18px;width:max-content;animation:scroll 60s linear infinite}
+        .marquee:hover .marquee-track{animation-play-state:paused}
+        @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .m-reel{flex:0 0 auto;width:clamp(190px,21vw,250px);aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#0a0a0a;position:relative;cursor:pointer}
+        .m-reel video{width:100%;height:100%;object-fit:cover}
+        .m-reel::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);border-radius:16px;pointer-events:none}
+        @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
 
-        /* ── Challenge rows ── */
-        .chal-row{border-top:1px solid #E8EBF0;padding:44px 0;display:grid;grid-template-columns:68px 1fr;gap:40px;align-items:start}
-
-        /* ── Solution list ── */
-        .sol-row{border-top:1px solid #E8EBF0;padding:44px 0}
-        .sol-row:last-child{border-bottom:1px solid #E8EBF0}
-
-        /* ── Reel cards ── */
-        .reel-card{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;cursor:pointer;background:#0a0a0a}
-        .reel-card video{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
-        .reel-card:hover video{transform:scale(1.05)}
-        .reel-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.72));display:flex;align-items:flex-end;padding:18px;opacity:0;transition:opacity .35s;pointer-events:none}
-        .reel-card:hover .reel-overlay{opacity:1}
-        .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.13);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s,transform .35s;border:1px solid rgba(255,255,255,.22)}
-        .reel-card:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
-
-        /* ── Featured reel (the footage is the hero) + scroll rail ── */
-        .feature-grid{display:grid;grid-template-columns:minmax(0,clamp(360px,38vw,460px)) 1fr;gap:clamp(2.5rem,5vw,5rem);align-items:center;margin-bottom:clamp(3.5rem,7vw,6rem)}
-        .feature-reel{aspect-ratio:9/16;width:100%;max-width:460px;border-radius:20px;box-shadow:0 50px 100px -35px rgba(0,0,0,.75)}
-        .feature-reel .reel-overlay{background:linear-gradient(180deg,transparent 62%,rgba(0,0,0,.32));opacity:1}
-        .feature-reel .reel-play{opacity:1;width:64px;height:64px;background:rgba(255,255,255,.10)}
-        .feature-reel:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
-        .feature-caption{max-width:36ch}
-        .feature-title{color:#fff;font-size:clamp(2.3rem,4vw,3.6rem);line-height:1.06;letter-spacing:-0.01em;margin:1.1rem 0 1.4rem}
-        .feature-desc{font-family:'Kanit',sans-serif;color:rgba(233,236,244,.72);font-weight:300;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.85;margin-bottom:2rem}
-        .feature-meta{color:rgba(148,166,219,.45);letter-spacing:.22em}
-        .reel-rail-head{display:flex;align-items:baseline;justify-content:space-between;border-top:1px solid rgba(148,166,219,.14);padding-top:1.6rem;margin-bottom:1.6rem}
-        .reel-rail-hint{color:rgba(148,166,219,.35);letter-spacing:.2em}
-        .reel-rail{display:grid;grid-auto-flow:column;grid-auto-columns:clamp(230px,25vw,290px);gap:clamp(1rem,1.6vw,1.5rem);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:1.4rem;margin:0 -1.5rem;padding-left:1.5rem;padding-right:1.5rem;scrollbar-width:none}
-        .reel-rail::-webkit-scrollbar{display:none}
-        .rail-card{scroll-snap-align:start;border-radius:16px}
-        .rail-card .reel-overlay{padding:16px}
-        .rail-cap{color:#fff;font-size:.85rem;font-weight:400;font-family:'Kanit',sans-serif;line-height:1.4}
-        @media(max-width:900px){
-            .feature-grid{grid-template-columns:1fr;gap:2rem;justify-items:start}
-            .feature-reel{max-width:330px}
-            .feature-caption{max-width:48ch}
-        }
-        @media(max-width:480px){
-            .reel-rail{grid-auto-columns:64vw}
-        }
+        /* ── Approach chips ── */
+        .chip{display:inline-flex;padding:7px 15px;border-radius:9999px;background:#fff;border:1px solid #E5E9F0;color:#46506f;font-size:13px;font-weight:400}
+        .approach-meta{display:flex;gap:34px;flex-wrap:wrap}
+        .approach-meta .label{color:#9aa3b8;margin-bottom:5px}
 
         /* ── Result stats ── */
-        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(2.8rem,4.8vw,4.2rem);font-weight:500;letter-spacing:-0.01em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
+        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:500;letter-spacing:-0.01em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
 
         /* ── CTA glow ── */
-        .cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
+        .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
 
         @media(max-width:768px){
-            .hero-banner{height:52vh;min-height:360px;grid-template-columns:1fr 1fr}
+            .hero-banner{height:56vh;min-height:380px;grid-template-columns:1fr 1fr}
             .hero-banner video:nth-child(3){display:none}
-            .chal-row{grid-template-columns:1fr;gap:14px}
         }
         @media(max-width:480px){
             .hero-banner{grid-template-columns:1fr}
@@ -124,180 +82,41 @@
             <div class="max-w-[1400px] mx-auto px-6 lg:px-10 pb-16 w-full">
                 <div class="label text-royal-300 mb-5">Aesthetic Clinic · Content & Ads</div>
                 <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white"><span class="italic-serif" style="color:#94A6DB">Varinpat</span> Clinic</h1>
-                <p class="mt-5 text-white/65 max-w-lg text-[15px] leading-relaxed">ปรับภาพลักษณ์คลินิกเสริมความงามศรีราชา ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูงผ่านคอนเทนต์และโฆษณาที่ดูเป็นมืออาชีพ</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ════════════════ HOOK STAT ════════════════ -->
-    <section class="bg-ink-900">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-28 lg:py-36">
-            <div class="hook-grid">
-                <div class="hook-rail reveal">
-                    <span class="label" style="color:rgba(148,166,219,.42)">Impact</span>
-                    <span class="hook-rail-loc label">Varinpat&nbsp;Clinic · ศรีราชา</span>
-                </div>
-                <div class="hook-body reveal reveal-d1">
-                    <p class="hook-lede">คอนเทนต์ออร์แกนิกที่เราวางกลยุทธ์และผลิตให้ Varinpat ทำยอดวิวรวมแตะ<span class="hook-figure"><span class="hook-num counter" data-target="1.8" data-decimals="1">0</span><span class="hook-unit">M</span></span>วิว ภายในปีเดียว <span class="hook-tail">โดยไม่ยิงโฆษณาแม้แต่บาทเดียว</span></p>
-                    <div class="hook-rule"></div>
-                    <p class="label hook-credit">Organic Only · 2024–2025</p>
+                <p class="mt-5 text-white/65 max-w-md text-[15px] leading-relaxed">คลินิกเสริมความงามศรีราชา ที่เราปรับคอนเทนต์ให้เข้าถึงกลุ่มกำลังซื้อสูง</p>
+                <div class="hero-stats">
+                    <span class="hero-stat-num">1.8M</span><span class="txt">organic views</span>
+                    <span class="sep">·</span><span class="txt">0฿ ad spend</span>
+                    <span class="sep">·</span><span class="txt">2024–2025</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ════════════════ OVERVIEW ════════════════ -->
-    <section class="py-24 lg:py-32" style="background:#F9F8F6">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-16 lg:gap-20">
-                <div class="lg:col-span-4 reveal">
-                    <div class="label text-cobalt mb-10">Project Overview</div>
-                    <div class="space-y-8">
-                        <div class="border-b border-ink-200 pb-7">
-                            <div class="label text-ink-400 mb-2">Client</div>
-                            <div class="font-display text-2xl text-ink-800">Varinpat Clinic</div>
-                        </div>
-                        <div class="border-b border-ink-200 pb-7">
-                            <div class="label text-ink-400 mb-2">Location</div>
-                            <div class="text-ink-700">ศรีราชา, ชลบุรี</div>
-                        </div>
-                        <div>
-                            <div class="label text-ink-400 mb-4">Services</div>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Content Strategy</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Doctor Branding</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Social Media Ads</span>
-                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Mood & Tone</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:col-span-8 reveal reveal-d1">
-                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight mb-8">คลินิกที่ต้องการ<br/><span class="italic-serif text-cobalt">สื่อสารความเชี่ยวชาญ</span></h2>
-                    <p class="text-ink-500 leading-relaxed text-[16px] max-w-2xl">Varinpat Clinic มีแพทย์ที่มีประสบการณ์สูงด้านเสริมความงาม แต่ภาพลักษณ์คอนเทนต์เดิมไม่ตรงกับกลุ่มเป้าหมายที่มีกำลังซื้อสูง — CYN เข้ามาปรับกลยุทธ์ทั้งหมดตั้งแต่ Mood & Tone ไปจนถึงการวางแผนโฆษณา</p>
-                </div>
+    <!-- ════════════════ THE WORK (marquee) ════════════════ -->
+    <section class="bg-ink-900 py-20 lg:py-28 overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-end justify-between mb-12 reveal">
+            <div>
+                <div class="label mb-5" style="color:#94A6DB">Selected Work</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
             </div>
+            <span class="hidden md:block label" style="color:rgba(148,166,219,.32)">7 Reels · Organic</span>
         </div>
-    </section>
-
-    <!-- ════════════════ CHALLENGE ════════════════ -->
-    <section class="py-24 lg:py-32 bg-white">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="max-w-3xl mb-16 reveal">
-                <div class="label text-cobalt mb-6">01 · The Challenge</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ขายดีกว่านี้ได้<br/><span class="italic-serif text-cobalt">ถ้าสื่อสารถูกทาง</span></h2>
-            </div>
-            <div class="max-w-3xl">
-                <div class="chal-row reveal reveal-d1">
-                    <div style="font-family:'Inter',sans-serif;font-size:2.75rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:rgba(45,77,177,.13)">01</div>
-                    <div>
-                        <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">คอนเทนต์ไม่ตรงกลุ่มเป้าหมาย</h3>
-                        <p class="text-ink-500 leading-relaxed">ภาพลักษณ์คอนเทนต์ค่อนข้างวัยรุ่น ทั้งที่คลินิกต้องการโปรโมตแพ็กเกจหัตถการขนาดใหญ่ในระดับราคาสูง — ทำให้พลาดกลุ่มลูกค้าที่มีกำลังซื้อจริง</p>
-                    </div>
-                </div>
-                <div class="chal-row reveal reveal-d2">
-                    <div style="font-family:'Inter',sans-serif;font-size:2.75rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:rgba(45,77,177,.13)">02</div>
-                    <div>
-                        <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">Expertise ไม่ถูกสื่อสาร</h3>
-                        <p class="text-ink-500 leading-relaxed">แพทย์มีประสบการณ์สูงและความเชี่ยวชาญเฉพาะทาง แต่ลูกค้าไม่รับรู้ — คอนเทนต์ไม่ได้สะท้อนความน่าเชื่อถือที่แท้จริงของคลินิก</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ════════════════ SOLUTION ════════════════ -->
-    <section class="py-24 lg:py-32" style="background:#F9F8F6">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-16">
-                <div class="lg:col-span-4 reveal">
-                    <div class="label text-cobalt mb-6">02 · The Solution</div>
-                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ปรับทุกอย่าง<br/><span class="italic-serif text-cobalt">ตั้งแต่ต้น</span></h2>
-                    <p class="mt-6 text-ink-500 leading-relaxed">วิเคราะห์ กำหนดกลุ่มเป้าหมาย และปรับรูปแบบคอนเทนต์พร้อมกลยุทธ์โฆษณาทั้งหมด</p>
-                </div>
-                <div class="lg:col-span-8">
-                    <div class="sol-row reveal reveal-d1">
-                        <div class="label text-cobalt mb-4">01 /</div>
-                        <h3 class="font-display text-2xl lg:text-3xl text-ink-800 tracking-tight mb-4">กำหนดกลุ่มเป้าหมายใหม่</h3>
-                        <p class="text-ink-500 leading-relaxed max-w-xl">วิเคราะห์ Persona และพฤติกรรมของกลุ่มเป้าหมายใหม่ เน้นกลุ่มลูกค้าที่มีกำลังซื้อสูง พร้อมตัดสินใจ และตอบสนองต่อคอนเทนต์เชิงคุณค่ามากกว่าราคา</p>
-                    </div>
-                    <div class="sol-row reveal reveal-d2">
-                        <div class="label text-cobalt mb-4">02 /</div>
-                        <h3 class="font-display text-2xl lg:text-3xl text-ink-800 tracking-tight mb-4">Doctor as Brand</h3>
-                        <p class="text-ink-500 leading-relaxed max-w-xl">นำเสนอแพทย์เป็น brand voice หลัก สื่อสารความเชี่ยวชาญผ่านคอนเทนต์ที่ดูน่าเชื่อถือ ทำให้ลูกค้ารู้สึกว่าได้รับบริการจากผู้เชี่ยวชาญจริงๆ</p>
-                    </div>
-                    <div class="sol-row reveal reveal-d3">
-                        <div class="label text-cobalt mb-4">03 /</div>
-                        <h3 class="font-display text-2xl lg:text-3xl text-ink-800 tracking-tight mb-4">กลยุทธ์โฆษณาตรงจุด</h3>
-                        <p class="text-ink-500 leading-relaxed max-w-xl">วางกลยุทธ์โฆษณาให้คอนเทนต์เข้าถึงกลุ่มเป้าหมายที่มีศักยภาพ ด้วย Lookalike Audience และ Retargeting ที่ออกแบบมาเพื่อหัตถการขนาดใหญ่</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ════════════════ CONTENT SHOWCASE ════════════════ -->
-    <section class="bg-ink-900 pt-24 lg:pt-32 pb-20 lg:pb-28">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="flex items-end justify-between mb-12 lg:mb-16 reveal">
-                <div>
-                    <div class="label mb-5" style="color:#94A6DB">03 · The Content</div>
-                    <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
-                </div>
-                <div class="hidden md:block text-right label" style="color:rgba(148,166,219,.3)">7 คอนเทนต์<br/>Organic Viral</div>
-            </div>
-
-            <!-- FEATURED REEL — the footage is the hero -->
-            <div class="feature-grid reveal reveal-d1">
-                <div class="feature-reel reel-card" onclick="togglePlay(this)">
-                    <video autoplay muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"></div>
-                    <div class="reel-play"><svg width="24" height="24" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="feature-caption">
-                    <span class="label" style="color:#94A6DB">Featured · Viral Hook</span>
-                    <h3 class="font-display feature-title">ความลับคน<span class="italic-serif" style="color:#94A6DB">หน้าเรียว</span> ศรีราชา</h3>
-                    <p class="feature-desc">คลิปเปิดแคมเปญที่จุดกระแสคนศรีราชา — วางมุมเล่าที่ดูง่าย และสื่อถึงความเชี่ยวชาญของคลินิกได้ภายในคลิปเดียว</p>
-                    <span class="feature-meta label">01 / 07 — Organic Content</span>
-                </div>
-            </div>
-
-            <!-- SCROLLING REEL RAIL — phone-sized verticals -->
-            <div class="reel-rail-head reveal">
-                <span class="label" style="color:rgba(148,166,219,.5)">More from the series</span>
-                <span class="reel-rail-hint label">เลื่อนดู →</span>
-            </div>
-            <div class="reel-rail reveal reveal-d1">
-                <div class="rail-card reel-card" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="rail-cap">หมออ้น อัพเดตเทรนความงาม</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="rail-card reel-card" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/review-fai.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="rail-cap">รีวิวคุณฝ้าย</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="rail-card reel-card" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="rail-cap">ASMR Testimonial</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="rail-card reel-card" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="rail-cap">ยกยุบอยู่นาน</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="rail-card reel-card" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/treatments-2026.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="rail-cap">หัตถการที่ได้ไปต่อ 2026</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
-                <div class="rail-card reel-card" onclick="togglePlay(this)">
-                    <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/ulthera-age.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay"><span class="rail-cap">อายุเท่าไหร่ควรเริ่มอัลเทอร่า</span></div>
-                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
-                </div>
+        <div class="marquee reveal reveal-d1">
+            <div class="marquee-track">
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/review-fai.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/treatments-2026.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/ulthera-age.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/review-fai.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/treatments-2026.mp4" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/ulthera-age.mp4" type="video/mp4"></video></div>
             </div>
         </div>
     </section>
@@ -305,25 +124,60 @@
     <!-- ════════════════ RESULTS ════════════════ -->
     <section class="py-24 lg:py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="max-w-3xl mb-20 reveal">
-                <div class="label text-cobalt mb-6">04 · The Results</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<br/><span class="italic-serif text-cobalt">พูดแทนทุกอย่าง</span></h2>
+            <div class="max-w-2xl mb-16 reveal">
+                <div class="label text-cobalt mb-6">The Results</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="italic-serif text-cobalt"> พูดแทนทุกอย่าง</span></h2>
             </div>
             <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-100 reveal reveal-d1">
-                <div class="py-12 px-4 md:px-10 text-center">
+                <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
                     <div class="result-num">1.8M</div>
-                    <div class="mt-5 mb-2 label text-ink-400">Total Views</div>
-                    <p class="text-ink-400 text-sm leading-relaxed max-w-[180px] mx-auto">Organic reach — ไม่ใช้โฆษณา</p>
+                    <div class="mt-4 label text-ink-400">Total Views</div>
+                    <p class="mt-2 text-ink-400 text-sm leading-relaxed">Organic reach — ไม่ใช้โฆษณา</p>
                 </div>
-                <div class="py-12 px-4 md:px-10 text-center">
-                    <div class="result-num" style="color:#2D4DB1">100%+</div>
-                    <div class="mt-5 mb-2 label text-ink-400">Organic Growth</div>
-                    <p class="text-ink-400 text-sm leading-relaxed max-w-[180px] mx-auto">Engagement เพิ่มขึ้นกว่าเท่าตัว</p>
+                <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
+                    <div class="result-num" style="color:#2D4DB1">+100%</div>
+                    <div class="mt-4 label text-ink-400">Engagement</div>
+                    <p class="mt-2 text-ink-400 text-sm leading-relaxed">เพิ่มขึ้นกว่าเท่าตัว</p>
                 </div>
-                <div class="py-12 px-4 md:px-10 text-center">
+                <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
                     <div class="result-num">2.5×</div>
-                    <div class="mt-5 mb-2 label text-ink-400">Online Booking</div>
-                    <p class="text-ink-400 text-sm leading-relaxed max-w-[180px] mx-auto">การจองออนไลน์เพิ่มขึ้น 2.5 เท่า</p>
+                    <div class="mt-4 label text-ink-400">Online Booking</div>
+                    <p class="mt-2 text-ink-400 text-sm leading-relaxed">การจองออนไลน์เพิ่มขึ้น</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════ APPROACH (lean) ════════════════ -->
+    <section class="py-24 lg:py-32" style="background:#F9F8F6">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+                <div class="lg:col-span-7 reveal">
+                    <div class="label text-cobalt mb-6">The Approach</div>
+                    <h2 class="font-display text-3xl lg:text-4xl text-ink-800 leading-snug tracking-tight">วางกลยุทธ์คอนเทนต์ใหม่ ดันหมอเป็นแบรนด์<br/><span class="italic-serif text-cobalt">และยิงแอดให้ตรงกลุ่มกำลังซื้อสูง</span></h2>
+                    <div class="flex flex-wrap gap-2.5 mt-8">
+                        <span class="chip">Repositioning</span>
+                        <span class="chip">Doctor Branding</span>
+                        <span class="chip">Content Strategy</span>
+                        <span class="chip">Mood & Tone</span>
+                        <span class="chip">Performance Ads</span>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 lg:pl-10 lg:border-l border-ink-200 reveal reveal-d1">
+                    <div class="approach-meta">
+                        <div>
+                            <div class="label">Client</div>
+                            <div class="text-ink-700">Varinpat Clinic</div>
+                        </div>
+                        <div>
+                            <div class="label">Location</div>
+                            <div class="text-ink-700">ศรีราชา, ชลบุรี</div>
+                        </div>
+                        <div>
+                            <div class="label">Year</div>
+                            <div class="text-ink-700">2024–2025</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -371,35 +225,14 @@
     </footer>
 
     <script>
-    var io = new IntersectionObserver(function(entries) {
-        entries.forEach(function(e) {
-            if (e.isIntersecting) {
-                e.target.classList.add('visible');
-                e.target.querySelectorAll('.counter').forEach(startCount);
-            }
-        });
-    }, {threshold: .1});
-    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+    var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-    function startCount(el) {
-        if (!el || el.dataset.done) return;
-        el.dataset.done = '1';
-        var target = parseFloat(el.dataset.target), dec = parseInt(el.dataset.decimals), dur = 2400, start = performance.now();
-        function step(now) {
-            var p = Math.min((now - start) / dur, 1);
-            p = 1 - Math.pow(1 - p, 4);
-            el.textContent = (p * target).toFixed(dec);
-            if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    }
-
-    function togglePlay(card) {
+    function toggleOne(card){
         var v = card.querySelector('video');
-        if (v.paused) {
-            document.querySelectorAll('.reel-card video').forEach(function(o) { if (o !== v) { o.pause(); o.currentTime = 0; } });
-            v.play();
-        } else { v.pause(); }
+        if(v.paused){ v.play(); } else { v.pause(); }
     }
     </script>
 </body>

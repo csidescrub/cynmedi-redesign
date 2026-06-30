@@ -6,117 +6,74 @@
     <meta name="description" content="ปรับ Mood & Tone คอนเทนต์คลินิกเสริมความงาม Varinpat Clinic ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูง — Organic Engagement เพิ่มกว่า 100%">
     <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/tailwind.css" />
     <style>
-        @font-face{font-family:'NumSans';src:local('Inter'),local('Helvetica Neue'),local('Arial');unicode-range:U+0030-0039,U+002B,U+0025,U+002E,U+002C}
-        .usfx{font-family:'Inter','Kanit',system-ui,sans-serif !important;font-style:normal !important;font-variant-numeric:tabular-nums lining-nums}
-        .num{font-family:'Inter','Kanit',system-ui,sans-serif;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums lining-nums}
         html{scroll-behavior:smooth}
         body{font-family:'Kanit','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;-webkit-font-smoothing:antialiased}
-        .font-display{font-family:'NumSans','Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
-        .italic-serif{font-family:'NumSans','Cormorant Garamond','Kanit',serif;font-style:italic;font-weight:400}
+        .font-display{font-family:'Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
+        .italic-serif{font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-weight:400}
         .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
+        .num{font-family:'Inter','Kanit',sans-serif;font-weight:600;letter-spacing:-0.03em;font-variant-numeric:tabular-nums lining-nums}
         .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s}
         .pill-dark{background:#0F1B30;color:#FFF}.pill-dark:hover{background:#1F2D44}
-        .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}.pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
         .pill-outline-light{background:transparent;color:#FFF;border:1px solid rgba(255,255,255,.3)}.pill-outline-light:hover{background:#FFF;color:#0F1B30}
-        .pill-line{background:#2D4DB1;color:#FFF;border:none}.pill-line:hover{background:#23408F}
+        .pill-line{background:#2D4DB1;color:#FFF}.pill-line:hover{background:#23408F}
         body .text-cobalt{color:#23408F}
         ::selection{background:#2C4CAA;color:#FFF}
 
+        /* ── Hero ── */
         .hero-banner{position:relative;height:70vh;min-height:480px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr}
         .hero-banner video{width:100%;height:100%;object-fit:cover}
-        .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,0.72),rgba(6,9,18,0.55) 50%,rgba(2,4,9,0.85))}
+        .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.68),rgba(6,9,18,.50) 45%,rgba(2,4,9,.88))}
         .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
 
-        /* Scroll reveal */
-        .reveal{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}.reveal.visible{opacity:1;transform:none}
-        .reveal-d1{transition-delay:.1s}.reveal-d2{transition-delay:.2s}.reveal-d3{transition-delay:.3s}.reveal-d4{transition-delay:.4s}
+        /* ── Scroll reveal ── */
+        .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:none}
+        .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.38s}
 
-        /* KPI counter card */
-        .kpi-card{background:#0B1223;border:1px solid rgba(148,166,219,.12);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .4s,border-color .4s}
-        .kpi-card:hover{transform:translateY(-4px);border-color:rgba(148,166,219,.3)}
-        .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2D4DB1,#94A6DB);opacity:0;transition:opacity .4s}
-        .kpi-card:hover::before{opacity:1}
-        .kpi-num{font-family:'Inter','Kanit',sans-serif;font-size:3.5rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:#FFF;font-variant-numeric:tabular-nums}
-        .kpi-suffix{font-family:'Inter',sans-serif;font-weight:500;color:#94A6DB;font-size:1.5rem;margin-left:2px}
-        .kpi-bar{height:4px;border-radius:9999px;background:rgba(148,166,219,.15);margin-top:16px;overflow:hidden}
-        .kpi-bar-fill{height:100%;border-radius:9999px;background:linear-gradient(90deg,#2D4DB1,#94A6DB);width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
-        .kpi-card.visible .kpi-bar-fill{width:var(--bar)}
-        .kpi-delta{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;background:rgba(6,199,85,.12);color:#06C755}
+        /* ── Hook stat ── */
+        .hook-num{font-family:'Inter','Kanit',sans-serif;font-size:clamp(5.5rem,16vw,13rem);font-weight:700;letter-spacing:-0.06em;line-height:.88;color:#FFF;font-variant-numeric:tabular-nums lining-nums;display:block}
 
-        /* Solution cards */
-        .sol-card{background:#FFF;border:1px solid #E5E9F0;border-radius:16px;padding:36px 32px;transition:all .4s;position:relative;overflow:hidden}
-        .sol-card:hover{border-color:#2D4DB1;box-shadow:0 8px 40px rgba(45,77,177,.08);transform:translateY(-3px)}
-        .sol-num{font-family:'Inter',sans-serif;font-size:72px;font-weight:800;line-height:1;color:rgba(45,77,177,.06);position:absolute;top:-8px;right:16px}
+        /* ── Challenge rows ── */
+        .chal-row{border-top:1px solid #E8EBF0;padding:44px 0;display:grid;grid-template-columns:68px 1fr;gap:40px;align-items:start}
 
-        /* Reel cards */
-        .reel-card{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;cursor:pointer;box-shadow:0 4px 24px rgba(0,0,0,.15);transition:transform .5s,box-shadow .5s}
-        .reel-card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 48px rgba(0,0,0,.25)}
-        .reel-card video{width:100%;height:100%;object-fit:cover}
-        .reel-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7));display:flex;flex-direction:column;justify-content:flex-end;padding:20px;pointer-events:none}
-        .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;transition:all .3s;border:1px solid rgba(255,255,255,.25)}
-        .reel-card:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.1)}
-        .reel-tag{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:600;font-family:'Inter',sans-serif;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#FFF;margin-bottom:8px;width:fit-content}
+        /* ── Solution list ── */
+        .sol-row{border-top:1px solid #E8EBF0;padding:44px 0}
+        .sol-row:last-child{border-bottom:1px solid #E8EBF0}
 
-        /* Results metric */
-        .metric-ring{width:120px;height:120px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .metric-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
-        .metric-ring circle{fill:none;stroke-width:4}
-        .metric-ring .track{stroke:rgba(148,166,219,.15)}
-        .metric-ring .fill{stroke:#94A6DB;stroke-linecap:round;stroke-dasharray:var(--circ);stroke-dashoffset:var(--circ);transition:stroke-dashoffset 1.8s cubic-bezier(.16,1,.3,1)}
-        .metric-ring.visible .fill{stroke-dashoffset:var(--offset)}
+        /* ── Reel cards ── */
+        .reel-card{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;cursor:pointer;background:#0a0a0a}
+        .reel-card video{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+        .reel-card:hover video{transform:scale(1.05)}
+        .reel-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.72));display:flex;align-items:flex-end;padding:18px;opacity:0;transition:opacity .35s;pointer-events:none}
+        .reel-card:hover .reel-overlay{opacity:1}
+        .reel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.13);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s,transform .35s;border:1px solid rgba(255,255,255,.22)}
+        .reel-card:hover .reel-play{opacity:1;transform:translate(-50%,-50%) scale(1.08)}
 
-        /* CTA glow */
-        .cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.15),transparent 70%);top:50%;right:-10%;transform:translateY(-50%);pointer-events:none}
+        /* ── Result stats ── */
+        .result-num{font-family:'Inter','Kanit',sans-serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;letter-spacing:-0.05em;line-height:1;font-variant-numeric:tabular-nums;color:#0F1B30}
 
-        /* Dashboard panel */
-        .dash-panel{position:relative;background:#0B1223;border:1px solid rgba(148,166,219,.14);border-radius:24px;overflow:hidden}
-        .dash-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(148,166,219,.12) 1px,transparent 1px);background-size:22px 22px;opacity:.5;pointer-events:none}
-        .corner{position:absolute;width:14px;height:14px;border-color:rgba(148,166,219,.5)}
-        .corner.tl{top:14px;left:14px;border-top:1.5px solid;border-left:1.5px solid}
-        .corner.tr{top:14px;right:14px;border-top:1.5px solid;border-right:1.5px solid}
-        .corner.bl{bottom:14px;left:14px;border-bottom:1.5px solid;border-left:1.5px solid}
-        .corner.br{bottom:14px;right:14px;border-bottom:1.5px solid;border-right:1.5px solid}
-        .live-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 0 rgba(74,222,128,.6);animation:livePulse 2s infinite}
-        @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}70%{box-shadow:0 0 0 8px rgba(74,222,128,0)}100%{box-shadow:0 0 0 0 rgba(74,222,128,0)}}
-
-        /* Equalizer bar chart */
-        .eq{display:flex;align-items:flex-end;gap:5px;height:140px}
-        .eq-bar{flex:1;border-radius:4px 4px 0 0;background:linear-gradient(180deg,#94A6DB,#2D4DB1);transform-origin:bottom;transform:scaleY(0);transition:transform 1s cubic-bezier(.16,1,.3,1)}
-        .dash-panel.visible .eq-bar{transform:scaleY(var(--h))}
-        .dash-panel.visible .eq-bar.live{animation:eqLive 1.4s ease-in-out infinite alternate}
-        @keyframes eqLive{from{transform:scaleY(var(--h))}to{transform:scaleY(var(--h2))}}
-
-        /* Line graph draw */
-        .line-path{stroke:#94A6DB;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:600;stroke-dashoffset:600}
-        .dash-panel.visible .line-path{animation:drawLine 2s cubic-bezier(.16,1,.3,1) forwards}
-        @keyframes drawLine{to{stroke-dashoffset:0}}
-        .line-dot{opacity:0}
-        .dash-panel.visible .line-dot{animation:dotIn .4s ease forwards;animation-delay:1.8s}
-        @keyframes dotIn{to{opacity:1}}
-        .area-fill{opacity:0}
-        .dash-panel.visible .area-fill{animation:areaIn 1.2s ease forwards;animation-delay:1s}
-        @keyframes areaIn{to{opacity:1}}
+        /* ── CTA glow ── */
+        .cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
 
         @media(max-width:768px){
-            .hero-banner{height:50vh;min-height:360px}
+            .hero-banner{height:52vh;min-height:360px;grid-template-columns:1fr 1fr}
             .hero-banner video:nth-child(3){display:none}
-            .hero-banner{grid-template-columns:1fr 1fr}
-            .kpi-num{font-size:2.5rem}
-            .kpi-suffix{font-size:1.1rem}
+            .chal-row{grid-template-columns:1fr;gap:14px}
         }
         @media(max-width:480px){
-            .hero-banner video:nth-child(2){display:none}
             .hero-banner{grid-template-columns:1fr}
+            .hero-banner video:nth-child(2){display:none}
         }
     </style>
 </head>
 <body class="antialiased">
+
     <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-200/60"><div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between"><a href="/" class="flex items-center gap-2"><img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto" /></a><nav class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700"><a href="/services.html" class="hover:text-cobalt transition">Services</a><a href="/work.html" class="text-cobalt transition">Work</a><a href="/contact.html" class="hover:text-cobalt transition">Contact Us</a><a href="/about.html" class="hover:text-cobalt transition">About Us</a></nav><div class="flex items-center gap-3"><a href="/contact.html" class="pill-btn pill-dark text-[11px]">Consultation</a></div></div></header>
 
-    <!-- ═══════════════════════ HERO ═══════════════════════ -->
+    <!-- ════════════════ HERO ════════════════ -->
     <section class="hero-banner">
         <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
         <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video>
@@ -126,342 +83,191 @@
             <div class="max-w-[1400px] mx-auto px-6 lg:px-10 pb-16 w-full">
                 <div class="label text-royal-300 mb-5">Aesthetic Clinic · Content & Ads</div>
                 <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white"><span class="italic-serif" style="color:#94A6DB">Varinpat</span> Clinic</h1>
-                <p class="mt-5 text-white/70 max-w-lg text-[15px] leading-relaxed">ปรับภาพลักษณ์คลินิกเสริมความงามศรีราชา ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูงผ่านคอนเทนต์และโฆษณาที่ดูเป็นมืออาชีพ</p>
+                <p class="mt-5 text-white/65 max-w-lg text-[15px] leading-relaxed">ปรับภาพลักษณ์คลินิกเสริมความงามศรีราชา ให้เข้าถึงกลุ่มลูกค้ากำลังซื้อสูงผ่านคอนเทนต์และโฆษณาที่ดูเป็นมืออาชีพ</p>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════ KPI DASHBOARD ═══════════════════════ -->
-    <section class="bg-ink-900 py-20 lg:py-24">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="flex items-center justify-between mb-10 reveal">
-                <div class="flex items-center gap-3">
-                    <div class="live-dot"></div>
-                    <span class="label text-white/50">Performance Dashboard</span>
-                </div>
-                <span class="label text-white/30 hidden sm:block">Varinpat Clinic · 2024–2025</span>
+    <!-- ════════════════ HOOK STAT ════════════════ -->
+    <section class="bg-ink-900">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 py-36 lg:py-48 text-center">
+            <div class="label mb-14 reveal" style="color:rgba(148,166,219,.38)">Varinpat Clinic · ศรีราชา · 2024–2025</div>
+            <div class="reveal reveal-d1">
+                <span class="hook-num counter" data-target="1.8" data-decimals="1">0</span>
+                <div style="font-family:'Kanit',sans-serif;font-size:clamp(1.1rem,2.2vw,1.75rem);color:#94A6DB;font-weight:300;letter-spacing:0.14em;margin-top:1.75rem">ล้านวิว จาก Organic Content</div>
             </div>
-
-            <div class="dash-panel reveal reveal-d1 p-6 sm:p-8 lg:p-10">
-                <div class="dash-dots"></div>
-                <span class="corner tl"></span><span class="corner tr"></span><span class="corner bl"></span><span class="corner br"></span>
-
-                <div class="relative grid lg:grid-cols-12 gap-8 lg:gap-10">
-                    <!-- LINE GRAPH — Engagement growth -->
-                    <div class="lg:col-span-7">
-                        <div class="flex items-end justify-between mb-5">
-                            <div>
-                                <div class="label text-white/40 mb-2">Organic Engagement</div>
-                                <div class="flex items-baseline gap-2">
-                                    <span class="num text-3xl lg:text-4xl text-white counter" data-target="100" data-decimals="0">0</span>
-                                    <span class="num text-2xl" style="color:#94A6DB">%+</span>
-                                </div>
-                            </div>
-                            <span class="kpi-delta">▲ Viral</span>
-                        </div>
-                        <svg viewBox="0 0 480 180" class="w-full" preserveAspectRatio="none" style="height:180px">
-                            <defs>
-                                <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#2D4DB1" stop-opacity="0.35"/>
-                                    <stop offset="100%" stop-color="#2D4DB1" stop-opacity="0"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- grid lines -->
-                            <line x1="0" y1="45" x2="480" y2="45" stroke="rgba(148,166,219,.08)"/>
-                            <line x1="0" y1="90" x2="480" y2="90" stroke="rgba(148,166,219,.08)"/>
-                            <line x1="0" y1="135" x2="480" y2="135" stroke="rgba(148,166,219,.08)"/>
-                            <!-- area + line: rising curve -->
-                            <path class="area-fill" d="M0,160 L60,150 L130,135 L200,120 L270,95 L340,70 L410,40 L480,15 L480,180 L0,180 Z" fill="url(#areaGrad)"/>
-                            <path class="line-path" d="M0,160 L60,150 L130,135 L200,120 L270,95 L340,70 L410,40 L480,15"/>
-                            <circle class="line-dot" cx="480" cy="15" r="5" fill="#94A6DB"/>
-                            <circle class="line-dot" cx="480" cy="15" r="9" fill="#94A6DB" opacity="0.25"/>
-                        </svg>
-                        <div class="flex justify-between mt-3 label text-white/25 text-[10px]">
-                            <span>เริ่มทำ</span><span>Q2</span><span>Q3</span><span>Q4</span><span>ปัจจุบัน</span>
-                        </div>
-                    </div>
-
-                    <!-- BAR CHART — Live system / reach -->
-                    <div class="lg:col-span-5 lg:border-l lg:border-white/8 lg:pl-10">
-                        <div class="flex items-center justify-between mb-5">
-                            <div>
-                                <div class="label text-white/40 mb-2">Monthly Reach</div>
-                                <div class="flex items-baseline gap-1">
-                                    <span class="num text-3xl lg:text-4xl text-white counter" data-target="1.8" data-decimals="1">0</span>
-                                    <span class="num text-2xl" style="color:#94A6DB">M</span>
-                                </div>
-                            </div>
-                            <span class="kpi-delta">▲ 180%</span>
-                        </div>
-                        <div class="eq">
-                            <div class="eq-bar" style="--h:.30;--h2:.42"></div>
-                            <div class="eq-bar" style="--h:.45;--h2:.38"></div>
-                            <div class="eq-bar" style="--h:.38;--h2:.52"></div>
-                            <div class="eq-bar live" style="--h:.58;--h2:.70"></div>
-                            <div class="eq-bar" style="--h:.50;--h2:.62"></div>
-                            <div class="eq-bar live" style="--h:.68;--h2:.55"></div>
-                            <div class="eq-bar" style="--h:.62;--h2:.78"></div>
-                            <div class="eq-bar live" style="--h:.80;--h2:.66"></div>
-                            <div class="eq-bar" style="--h:.72;--h2:.88"></div>
-                            <div class="eq-bar live" style="--h:.90;--h2:.76"></div>
-                            <div class="eq-bar" style="--h:.84;--h2:.96"></div>
-                            <div class="eq-bar" style="--h:1;--h2:.88"></div>
-                        </div>
-                        <div class="flex justify-between mt-3 label text-white/25 text-[10px]">
-                            <span>ม.ค.</span><span>มิ.ย.</span><span>ธ.ค.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- KPI counter strip -->
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mt-5">
-                <div class="kpi-card reveal reveal-d1" style="--bar:92%">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="label text-white/40">Total Views</span>
-                        <span class="kpi-delta">▲ 180%</span>
-                    </div>
-                    <div><span class="kpi-num counter" data-target="1.8" data-decimals="1">0</span><span class="kpi-suffix">M</span></div>
-                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
-                </div>
-                <div class="kpi-card reveal reveal-d2" style="--bar:78%">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="label text-white/40">Engagement</span>
-                        <span class="kpi-delta">▲ 120%</span>
-                    </div>
-                    <div><span class="kpi-num counter" data-target="300" data-decimals="0">0</span><span class="kpi-suffix">K+</span></div>
-                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
-                </div>
-                <div class="kpi-card reveal reveal-d3" style="--bar:100%">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="label text-white/40">Organic Growth</span>
-                        <span class="kpi-delta">▲ Viral</span>
-                    </div>
-                    <div><span class="kpi-num counter" data-target="100" data-decimals="0">0</span><span class="kpi-suffix">%+</span></div>
-                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
-                </div>
-                <div class="kpi-card reveal reveal-d4" style="--bar:65%">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="label text-white/40">Online Booking</span>
-                        <span class="kpi-delta">▲ 150%</span>
-                    </div>
-                    <div><span class="kpi-num counter" data-target="2.5" data-decimals="1">0</span><span class="kpi-suffix">x</span></div>
-                    <div class="kpi-bar"><div class="kpi-bar-fill"></div></div>
-                </div>
-            </div>
+            <p class="mt-12 label reveal reveal-d2" style="color:rgba(148,166,219,.28);letter-spacing:0.28em">ไม่ใช้โฆษณา · Organic Only</p>
         </div>
     </section>
 
-    <!-- ═══════════════════════ PROJECT OVERVIEW ═══════════════════════ -->
-    <section class="py-24 lg:py-32 bg-white">
+    <!-- ════════════════ OVERVIEW ════════════════ -->
+    <section class="py-24 lg:py-32" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-16">
+            <div class="grid lg:grid-cols-12 gap-16 lg:gap-20">
                 <div class="lg:col-span-4 reveal">
-                    <div class="label text-cobalt mb-8">Project Overview</div>
+                    <div class="label text-cobalt mb-10">Project Overview</div>
                     <div class="space-y-8">
-                        <div class="border-b border-ink-200 pb-6">
+                        <div class="border-b border-ink-200 pb-7">
                             <div class="label text-ink-400 mb-2">Client</div>
                             <div class="font-display text-2xl text-ink-800">Varinpat Clinic</div>
                         </div>
-                        <div class="border-b border-ink-200 pb-6">
-                            <div class="label text-ink-400 mb-2">Industry</div>
-                            <div class="text-ink-700">Aesthetic Clinic · ศรีราชา</div>
+                        <div class="border-b border-ink-200 pb-7">
+                            <div class="label text-ink-400 mb-2">Location</div>
+                            <div class="text-ink-700">ศรีราชา, ชลบุรี</div>
                         </div>
                         <div>
-                            <div class="label text-ink-400 mb-3">Services</div>
+                            <div class="label text-ink-400 mb-4">Services</div>
                             <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Content Strategy</span>
-                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Doctor Branding</span>
-                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Social Media Ads</span>
-                                <span class="px-3 py-1.5 rounded-full bg-ink-50 text-ink-700 text-sm font-medium">Mood & Tone</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Content Strategy</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Doctor Branding</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Social Media Ads</span>
+                                <span class="px-3 py-1.5 rounded-full bg-white text-ink-700 text-sm border border-ink-100">Mood & Tone</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:col-span-8 reveal reveal-d1">
                     <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight mb-8">คลินิกที่ต้องการ<br/><span class="italic-serif text-cobalt">สื่อสารความเชี่ยวชาญ</span></h2>
-                    <p class="text-ink-600 leading-relaxed text-[16px] max-w-2xl">Varinpat Clinic มีแพทย์ที่มีประสบการณ์สูงด้านเสริมความงาม แต่ภาพลักษณ์คอนเทนต์เดิมไม่ตรงกับกลุ่มเป้าหมายที่มีกำลังซื้อสูง — CYN เข้ามาปรับกลยุทธ์ทั้งหมดตั้งแต่ Mood & Tone ไปจนถึงการวางแผนโฆษณา</p>
+                    <p class="text-ink-500 leading-relaxed text-[16px] max-w-2xl">Varinpat Clinic มีแพทย์ที่มีประสบการณ์สูงด้านเสริมความงาม แต่ภาพลักษณ์คอนเทนต์เดิมไม่ตรงกับกลุ่มเป้าหมายที่มีกำลังซื้อสูง — CYN เข้ามาปรับกลยุทธ์ทั้งหมดตั้งแต่ Mood & Tone ไปจนถึงการวางแผนโฆษณา</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════ CHALLENGE ═══════════════════════ -->
-    <section class="py-24 lg:py-32 bg-gradient-to-b from-ink-50 to-white">
+    <!-- ════════════════ CHALLENGE ════════════════ -->
+    <section class="py-24 lg:py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="max-w-3xl mb-16 reveal">
                 <div class="label text-cobalt mb-6">01 · The Challenge</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">แข่งขันด้านราคา<br/><span class="italic-serif text-cobalt">ในตลาดที่อิ่มตัว</span></h2>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ขายดีกว่านี้ได้<br/><span class="italic-serif text-cobalt">ถ้าสื่อสารถูกทาง</span></h2>
             </div>
-            <div class="grid md:grid-cols-2 gap-6 reveal reveal-d1">
-                <div class="bg-white rounded-2xl border border-ink-200 p-8 lg:p-10 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-400">
-                    <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-6">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div class="max-w-3xl">
+                <div class="chal-row reveal reveal-d1">
+                    <div style="font-family:'Inter',sans-serif;font-size:2.75rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:rgba(45,77,177,.13)">01</div>
+                    <div>
+                        <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">คอนเทนต์ไม่ตรงกลุ่มเป้าหมาย</h3>
+                        <p class="text-ink-500 leading-relaxed">ภาพลักษณ์คอนเทนต์ค่อนข้างวัยรุ่น ทั้งที่คลินิกต้องการโปรโมตแพ็กเกจหัตถการขนาดใหญ่ในระดับราคาสูง — ทำให้พลาดกลุ่มลูกค้าที่มีกำลังซื้อจริง</p>
                     </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">คอนเทนต์ไม่ตรงกลุ่มเป้าหมาย</h3>
-                    <p class="text-ink-600 leading-relaxed">ภาพลักษณ์คอนเทนต์ค่อนข้างวัยรุ่น ทั้งที่คลินิกต้องการโปรโมตแพ็กเกจหัตถการขนาดใหญ่ในระดับราคาสูง ไม่สอดคล้องกับกลุ่มลูกค้าที่มีกำลังซื้อ</p>
                 </div>
-                <div class="bg-white rounded-2xl border border-ink-200 p-8 lg:p-10 shadow-sm hover:shadow-lg hover:border-red-200 transition-all duration-400">
-                    <div class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-6">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <div class="chal-row reveal reveal-d2">
+                    <div style="font-family:'Inter',sans-serif;font-size:2.75rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:rgba(45,77,177,.13)">02</div>
+                    <div>
+                        <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">Expertise ไม่ถูกสื่อสาร</h3>
+                        <p class="text-ink-500 leading-relaxed">แพทย์มีประสบการณ์สูงและความเชี่ยวชาญเฉพาะทาง แต่ลูกค้าไม่รับรู้ — คอนเทนต์ไม่ได้สะท้อนความน่าเชื่อถือที่แท้จริงของคลินิก</p>
                     </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">Expertise ไม่ถูกสื่อสาร</h3>
-                    <p class="text-ink-600 leading-relaxed">แพทย์มีประสบการณ์สูงและความเชี่ยวชาญเฉพาะทาง แต่ลูกค้าไม่รับรู้ — คอนเทนต์ไม่ได้สะท้อนความน่าเชื่อถือที่แท้จริงของคลินิก</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════════════════════ SOLUTION ═══════════════════════ -->
-    <section class="py-24 lg:py-32 bg-white">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="max-w-3xl mb-16 reveal">
-                <div class="label text-cobalt mb-6">02 · The Solution</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ปรับ Mood & Tone<br/><span class="italic-serif text-cobalt">ให้ตรงกลุ่มเป้าหมาย</span></h2>
-                <p class="mt-6 text-ink-600 leading-relaxed max-w-2xl">วิเคราะห์และกำหนดกลุ่มเป้าหมายใหม่ให้ชัดเจน พร้อมทั้งปรับรูปแบบคอนเทนต์ให้เหมาะสมกับกลุ่มลูกค้าที่มีกำลังซื้อสูง</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="sol-card reveal reveal-d1">
-                    <span class="sol-num">01</span>
-                    <div class="w-12 h-12 rounded-xl bg-cobalt/8 flex items-center justify-center mb-6">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4DB1" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                    </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">กำหนดกลุ่มเป้าหมายใหม่</h3>
-                    <p class="text-ink-600 leading-relaxed text-[15px]">วิเคราะห์และกำหนดกลุ่มเป้าหมายให้ชัดเจน เน้นกลุ่มลูกค้าที่มีกำลังซื้อสูงและพร้อมตัดสินใจ</p>
-                </div>
-                <div class="sol-card reveal reveal-d2">
-                    <span class="sol-num">02</span>
-                    <div class="w-12 h-12 rounded-xl bg-cobalt/8 flex items-center justify-center mb-6">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4DB1" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">Doctor as Brand</h3>
-                    <p class="text-ink-600 leading-relaxed text-[15px]">นำเสนอแพทย์เป็น brand voice หลัก สื่อสารความเชี่ยวชาญผ่านคอนเทนต์ที่ดูน่าเชื่อถือและเป็นมืออาชีพ</p>
-                </div>
-                <div class="sol-card reveal reveal-d3">
-                    <span class="sol-num">03</span>
-                    <div class="w-12 h-12 rounded-xl bg-cobalt/8 flex items-center justify-center mb-6">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2D4DB1" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                    </div>
-                    <h3 class="font-display text-2xl text-ink-800 tracking-tight mb-3">กลยุทธ์โฆษณาตรงจุด</h3>
-                    <p class="text-ink-600 leading-relaxed text-[15px]">วางกลยุทธ์โฆษณาให้คอนเทนต์เข้าถึงกลุ่มลูกค้าที่มีศักยภาพ สะท้อนคุณค่าของแพ็กเกจหัตถการขนาดใหญ่</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════ CONTENT SHOWCASE ═══════════════════════ -->
-    <section class="py-24 lg:py-32 bg-ink-900 overflow-hidden">
+    <!-- ════════════════ SOLUTION ════════════════ -->
+    <section class="py-24 lg:py-32" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="max-w-3xl mb-14 reveal">
-                <div class="label mb-6" style="color:#94A6DB">03 · The Content</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
-                <p class="mt-6 text-white/55 leading-relaxed">คอนเทนต์ที่ออกแบบมาเพื่อสะท้อนความเชี่ยวชาญของแพทย์ สร้างความน่าเชื่อถือ และดึงดูดลูกค้าที่มีกำลังซื้อสูง</p>
+            <div class="grid lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-4 reveal">
+                    <div class="label text-cobalt mb-6">02 · The Solution</div>
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ปรับทุกอย่าง<br/><span class="italic-serif text-cobalt">ตั้งแต่ต้น</span></h2>
+                    <p class="mt-6 text-ink-500 leading-relaxed">วิเคราะห์ กำหนดกลุ่มเป้าหมาย และปรับรูปแบบคอนเทนต์พร้อมกลยุทธ์โฆษณาทั้งหมด</p>
+                </div>
+                <div class="lg:col-span-8">
+                    <div class="sol-row reveal reveal-d1">
+                        <div class="label text-cobalt mb-4">01 /</div>
+                        <h3 class="font-display text-2xl lg:text-3xl text-ink-800 tracking-tight mb-4">กำหนดกลุ่มเป้าหมายใหม่</h3>
+                        <p class="text-ink-500 leading-relaxed max-w-xl">วิเคราะห์ Persona และพฤติกรรมของกลุ่มเป้าหมายใหม่ เน้นกลุ่มลูกค้าที่มีกำลังซื้อสูง พร้อมตัดสินใจ และตอบสนองต่อคอนเทนต์เชิงคุณค่ามากกว่าราคา</p>
+                    </div>
+                    <div class="sol-row reveal reveal-d2">
+                        <div class="label text-cobalt mb-4">02 /</div>
+                        <h3 class="font-display text-2xl lg:text-3xl text-ink-800 tracking-tight mb-4">Doctor as Brand</h3>
+                        <p class="text-ink-500 leading-relaxed max-w-xl">นำเสนอแพทย์เป็น brand voice หลัก สื่อสารความเชี่ยวชาญผ่านคอนเทนต์ที่ดูน่าเชื่อถือ ทำให้ลูกค้ารู้สึกว่าได้รับบริการจากผู้เชี่ยวชาญจริงๆ</p>
+                    </div>
+                    <div class="sol-row reveal reveal-d3">
+                        <div class="label text-cobalt mb-4">03 /</div>
+                        <h3 class="font-display text-2xl lg:text-3xl text-ink-800 tracking-tight mb-4">กลยุทธ์โฆษณาตรงจุด</h3>
+                        <p class="text-ink-500 leading-relaxed max-w-xl">วางกลยุทธ์โฆษณาให้คอนเทนต์เข้าถึงกลุ่มเป้าหมายที่มีศักยภาพ ด้วย Lookalike Audience และ Retargeting ที่ออกแบบมาเพื่อหัตถการขนาดใหญ่</p>
+                    </div>
+                </div>
             </div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+        </div>
+    </section>
+
+    <!-- ════════════════ CONTENT SHOWCASE ════════════════ -->
+    <section class="bg-ink-900 py-24 lg:py-32">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex items-end justify-between mb-14 reveal">
+                <div>
+                    <div class="label mb-5" style="color:#94A6DB">03 · The Content</div>
+                    <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่<span class="italic-serif" style="color:#94A6DB"> สร้าง trust</span></h2>
+                </div>
+                <div class="hidden md:block text-right label" style="color:rgba(148,166,219,.3)">7 คอนเทนต์<br/>Organic Viral</div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4">
                 <div class="reel-card reveal reveal-d1" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Viral</span>
-                        <span class="text-white text-sm font-medium">ความลับคนหน้าเรียวศรีราชา</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">ความลับคนหน้าเรียวศรีราชา</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="reel-card reveal reveal-d2" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Doctor</span>
-                        <span class="text-white text-sm font-medium">หมออ้น อัพเดตเทรนความงาม</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">หมออ้น อัพเดตเทรนความงาม</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="reel-card reveal reveal-d3" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Review</span>
-                        <span class="text-white text-sm font-medium">ASMR + Testimonial</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">ASMR Testimonial</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
-                <div class="reel-card reveal reveal-d4" onclick="togglePlay(this)">
+                <div class="reel-card reveal" style="transition-delay:.48s" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Case Study</span>
-                        <span class="text-white text-sm font-medium">ยกยุบอยู่นาน</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">ยกยุบอยู่นาน</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="reel-card reveal reveal-d1" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/review-fai.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Review</span>
-                        <span class="text-white text-sm font-medium">รีวิวคุณฝ้าย</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">รีวิวคุณฝ้าย</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="reel-card reveal reveal-d2" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/treatments-2026.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>Education</span>
-                        <span class="text-white text-sm font-medium">หัตถการที่ได้ไปต่อ ปี 2026</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">หัตถการที่ได้ไปต่อ 2026</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
                 <div class="reel-card reveal reveal-d3" onclick="togglePlay(this)">
                     <video muted loop playsinline preload="metadata"><source src="/assets/client/aesthetic/varinpat/ulthera-age.mp4" type="video/mp4"></video>
-                    <div class="reel-overlay">
-                        <span class="reel-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFF" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>FAQ</span>
-                        <span class="text-white text-sm font-medium">อายุเท่าไหร่ควรเริ่มทำอัลเทอร่า</span>
-                    </div>
-                    <div class="reel-play"><svg width="22" height="22" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
+                    <div class="reel-overlay"><span class="text-white text-sm font-medium" style="font-family:'Kanit',sans-serif">อายุเท่าไหร่ควรเริ่มอัลเทอร่า</span></div>
+                    <div class="reel-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M8 5v14l11-7z"/></svg></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════ RESULTS ═══════════════════════ -->
+    <!-- ════════════════ RESULTS ════════════════ -->
     <section class="py-24 lg:py-32 bg-white">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="max-w-3xl mb-16 reveal">
+            <div class="max-w-3xl mb-20 reveal">
                 <div class="label text-cobalt mb-6">04 · The Results</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">คอนเทนต์ไวรัล ที่<br/><span class="italic-serif text-cobalt">เปลี่ยนเป็น booking</span></h2>
-                <p class="mt-6 text-ink-600 leading-relaxed max-w-2xl">หลังจากปรับคอนเทนต์และวางกลยุทธ์ใหม่ คอนเทนต์ของ Varinpat Clinic เริ่มถูกแชร์ต่อจนกลายเป็นไวรัล เข้าถึงกลุ่มเป้าหมายได้ตรงขึ้น Organic Engagement เพิ่มขึ้นมากกว่า 100%</p>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<br/><span class="italic-serif text-cobalt">พูดแทนทุกอย่าง</span></h2>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="rounded-2xl border border-ink-200 p-8 lg:p-10 text-center hover:shadow-xl hover:border-cobalt/30 transition-all duration-400 reveal reveal-d1">
-                    <div class="metric-ring mx-auto mb-6" style="--circ:339.3;--offset:27.1">
-                        <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="fill" cx="60" cy="60" r="54"/></svg>
-                        <div class="relative z-10">
-                            <div class="num text-3xl text-ink-800">1.8M</div>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-ink-800 tracking-tight mb-2">Views</h3>
-                    <p class="text-ink-500 text-sm leading-relaxed">คอนเทนต์กลายเป็นไวรัล<br/>เข้าถึงกลุ่มเป้าหมายได้ตรง</p>
+            <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-100 reveal reveal-d1">
+                <div class="py-12 px-4 md:px-10 text-center">
+                    <div class="result-num">1.8M</div>
+                    <div class="mt-5 mb-2 label text-ink-400">Total Views</div>
+                    <p class="text-ink-400 text-sm leading-relaxed max-w-[180px] mx-auto">Organic reach — ไม่ใช้โฆษณา</p>
                 </div>
-                <div class="rounded-2xl border border-ink-200 p-8 lg:p-10 text-center hover:shadow-xl hover:border-cobalt/30 transition-all duration-400 reveal reveal-d2">
-                    <div class="metric-ring mx-auto mb-6" style="--circ:339.3;--offset:0">
-                        <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="fill" cx="60" cy="60" r="54"/></svg>
-                        <div class="relative z-10">
-                            <div class="num text-3xl text-ink-800">100%+</div>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-ink-800 tracking-tight mb-2">Organic Growth</h3>
-                    <p class="text-ink-500 text-sm leading-relaxed">Organic Engagement เพิ่มขึ้น<br/>มากกว่า 100%</p>
+                <div class="py-12 px-4 md:px-10 text-center">
+                    <div class="result-num" style="color:#2D4DB1">100%+</div>
+                    <div class="mt-5 mb-2 label text-ink-400">Organic Growth</div>
+                    <p class="text-ink-400 text-sm leading-relaxed max-w-[180px] mx-auto">Engagement เพิ่มขึ้นกว่าเท่าตัว</p>
                 </div>
-                <div class="rounded-2xl border border-ink-200 p-8 lg:p-10 text-center hover:shadow-xl hover:border-cobalt/30 transition-all duration-400 reveal reveal-d3">
-                    <div class="metric-ring mx-auto mb-6" style="--circ:339.3;--offset:118.8">
-                        <svg viewBox="0 0 120 120"><circle class="track" cx="60" cy="60" r="54"/><circle class="fill" cx="60" cy="60" r="54"/></svg>
-                        <div class="relative z-10">
-                            <div class="num text-3xl text-ink-800">2.5x</div>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl text-ink-800 tracking-tight mb-2">Online Booking</h3>
-                    <p class="text-ink-500 text-sm leading-relaxed">การจองออนไลน์เพิ่มขึ้น<br/>2.5 เท่าจากเดิม</p>
+                <div class="py-12 px-4 md:px-10 text-center">
+                    <div class="result-num">2.5×</div>
+                    <div class="mt-5 mb-2 label text-ink-400">Online Booking</div>
+                    <p class="text-ink-400 text-sm leading-relaxed max-w-[180px] mx-auto">การจองออนไลน์เพิ่มขึ้น 2.5 เท่า</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ═══════════════════════ CTA ═══════════════════════ -->
+    <!-- ════════════════ CTA ════════════════ -->
     <section class="bg-ink-900 text-white relative overflow-hidden">
         <div class="cta-glow"></div>
         <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
@@ -469,7 +275,7 @@
                 <div class="lg:col-span-7">
                     <div class="label mb-6" style="color:#94A6DB">Ready to grow?</div>
                     <h2 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white">อยากได้ผลลัพธ์<br/><span class="italic-serif" style="color:#94A6DB">แบบนี้?</span></h2>
-                    <p class="mt-6 text-white/55 max-w-md leading-relaxed">มาคุยกัน — ดูว่าเราจะช่วยคลินิกของคุณเติบโตได้อย่างไร</p>
+                    <p class="mt-6 text-white/50 max-w-md leading-relaxed">มาคุยกัน — ดูว่าเราจะช่วยคลินิกของคุณเติบโตได้อย่างไร</p>
                 </div>
                 <div class="lg:col-span-5 flex lg:justify-end gap-4 flex-wrap">
                     <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-line text-[13px]">
@@ -482,7 +288,7 @@
         </div>
     </section>
 
-    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+    <!-- ════════════════ FOOTER ════════════════ -->
     <footer class="bg-ink-900 text-white py-10 border-t border-white/5">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="flex flex-col gap-7">
@@ -496,33 +302,43 @@
                     </div>
                 </div>
                 <div class="pt-6 border-t border-white/10 text-center">
-                    <div class="text-xs text-white/60 whitespace-nowrap">© 2026 CYN Medical Digital Agency</div>
+                    <div class="text-xs text-white/60">© 2026 CYN Medical Digital Agency</div>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-    // Scroll reveal
-    var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');e.target.querySelectorAll('.counter').forEach(startCount)}})},{threshold:.12});
-    document.querySelectorAll('.reveal,.kpi-card,.metric-ring,.dash-panel').forEach(function(el){io.observe(el)});
+    var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                e.target.querySelectorAll('.counter').forEach(startCount);
+            }
+        });
+    }, {threshold: .1});
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
 
-    // Count-up animation
-    function startCount(el){
-        if(!el||el.dataset.done)return;
-        el.dataset.done='1';
-        var target=parseFloat(el.dataset.target),dec=parseInt(el.dataset.decimals),dur=1900,start=performance.now();
-        function step(now){
-            var p=Math.min((now-start)/dur,1);
-            p=1-Math.pow(1-p,4);
-            el.textContent=(p*target).toFixed(dec);
-            if(p<1)requestAnimationFrame(step);
+    function startCount(el) {
+        if (!el || el.dataset.done) return;
+        el.dataset.done = '1';
+        var target = parseFloat(el.dataset.target), dec = parseInt(el.dataset.decimals), dur = 2400, start = performance.now();
+        function step(now) {
+            var p = Math.min((now - start) / dur, 1);
+            p = 1 - Math.pow(1 - p, 4);
+            el.textContent = (p * target).toFixed(dec);
+            if (p < 1) requestAnimationFrame(step);
         }
         requestAnimationFrame(step);
     }
 
-    // Video toggle
-    function togglePlay(card){var v=card.querySelector('video');if(v.paused){document.querySelectorAll('.reel-card video').forEach(function(o){if(o!==v){o.pause();o.currentTime=0}});v.play()}else{v.pause()}}
+    function togglePlay(card) {
+        var v = card.querySelector('video');
+        if (v.paused) {
+            document.querySelectorAll('.reel-card video').forEach(function(o) { if (o !== v) { o.pause(); o.currentTime = 0; } });
+            v.play();
+        } else { v.pause(); }
+    }
     </script>
 </body>
 </html>

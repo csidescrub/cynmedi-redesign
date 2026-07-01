@@ -78,11 +78,14 @@
         .pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
         .proj-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
         @media(min-width:768px){.proj-grid{grid-template-columns:repeat(3,1fr)}}
-        .proj-card{position:relative;aspect-ratio:4/5;border-radius:18px;background:#0F1B30;border:1px solid rgba(148,166,219,.14);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:24px;transition:border-color .4s}
+        .proj-card{position:relative;aspect-ratio:9/16;border-radius:18px;background:#0F1B30;border:1px solid rgba(148,166,219,.14);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:22px;transition:border-color .4s}
         .group:hover .proj-card{border-color:rgba(148,166,219,.42)}
-        .proj-logo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);max-width:60%;max-height:38%;width:auto;object-fit:contain;opacity:.92}
-        .proj-metric{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;color:#94A6DB;font-family:'Inter',sans-serif;font-size:13px;font-weight:500}
-        .proj-metric .arr{transition:transform .3s}
+        .proj-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+        .group:hover .proj-video{transform:scale(1.05)}
+        .proj-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,9,18,.5),rgba(6,9,18,.12) 42%,rgba(4,7,14,.72))}
+        .proj-cat{position:relative;z-index:1}
+        .proj-metric{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;color:#fff;font-family:'Inter',sans-serif;font-size:13px;font-weight:500}
+        .proj-metric .arr{color:#94A6DB;transition:transform .3s}
         .group:hover .proj-metric .arr{transform:translateX(5px)}
 
         @media(max-width:768px){
@@ -275,24 +278,27 @@
             <div class="proj-grid reveal reveal-d1">
                 <a href="/work/the-bloom.html" class="group card-hover block">
                     <div class="proj-card">
-                        <span class="label" style="color:rgba(148,166,219,.5)">Aesthetic Clinic · 2024</span>
-                        <img src="/assets/logos/white/thebloom.webp" alt="The Bloom" class="proj-logo" loading="lazy">
+                        <video class="proj-video" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/the-bloom.mp4" type="video/mp4"></video>
+                        <div class="proj-scrim"></div>
+                        <span class="label proj-cat" style="color:rgba(255,255,255,.7)">Aesthetic Clinic · 2024</span>
                         <div class="proj-metric"><span>200K+ Engagement</span><span class="arr">→</span></div>
                     </div>
                     <h3 class="font-display text-xl text-ink-800 tracking-tight mt-4">The Bloom Clinic</h3>
                 </a>
                 <a href="/work/astell.html" class="group card-hover block">
                     <div class="proj-card">
-                        <span class="label" style="color:rgba(148,166,219,.5)">Aesthetic · ASEAN · 2023</span>
-                        <img src="/assets/logos/white/astell.webp" alt="Astell" class="proj-logo" loading="lazy">
+                        <video class="proj-video" autoplay muted loop playsinline preload="none"><source src="/assets/astell.mp4" type="video/mp4"></video>
+                        <div class="proj-scrim"></div>
+                        <span class="label proj-cat" style="color:rgba(255,255,255,.7)">Aesthetic · ASEAN · 2023</span>
                         <div class="proj-metric"><span>Global Reach</span><span class="arr">→</span></div>
                     </div>
                     <h3 class="font-display text-xl text-ink-800 tracking-tight mt-4">Astell</h3>
                 </a>
                 <a href="/work/natural-joy-vision.html" class="group card-hover block">
                     <div class="proj-card">
-                        <span class="label" style="color:rgba(148,166,219,.5)">Eye Clinic · 2024</span>
-                        <img src="/assets/logos/white/naturaljoy.webp" alt="Natural Joy Vision" class="proj-logo" loading="lazy">
+                        <video class="proj-video" autoplay muted loop playsinline preload="none"><source src="/assets/natural-joy-vision.mp4" type="video/mp4"></video>
+                        <div class="proj-scrim"></div>
+                        <span class="label proj-cat" style="color:rgba(255,255,255,.7)">Eye Clinic · 2024</span>
                         <div class="proj-metric"><span>3× Online Booking</span><span class="arr">→</span></div>
                     </div>
                     <h3 class="font-display text-xl text-ink-800 tracking-tight mt-4">Natural Joy Vision</h3>

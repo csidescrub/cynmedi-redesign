@@ -34,10 +34,12 @@
         .hero-stats .sep{color:rgba(148,166,219,.45)}
         .hero-stats .txt{color:rgba(255,255,255,.72);font-size:14px}
 
-        /* ── Scroll reveal ── */
+        /* ── Scroll reveal (clip-path unfold + fade) ── */
         .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
         .reveal.visible{opacity:1;transform:none}
         .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
+        .reveal-clip{opacity:0;clip-path:inset(30% 12% 30% 12%);transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),clip-path 1s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+        .reveal-clip.visible{opacity:1;clip-path:inset(0% 0% 0% 0%);transform:none}
 
         /* ── Video marquee (the hero of the page) ── */
         .marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
@@ -54,8 +56,19 @@
         .approach-meta{display:flex;gap:34px;flex-wrap:wrap}
         .approach-meta .label{color:#9aa3b8;margin-bottom:5px}
 
-        /* ── Result stats ── */
-        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:500;letter-spacing:-0.01em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
+        /* ── Result stats (list layout + count-up) ── */
+        .result-row{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #E5E9F0;padding:2.5rem 0}
+        @media(min-width:768px){.result-row{grid-template-columns:1fr 1fr;align-items:baseline}}
+        .result-row:last-child{border-bottom:1px solid #E5E9F0}
+        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
+
+        /* ── Prev / Next nav ── */
+        .pn-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #E5E9F0}
+        .pn-link{display:flex;flex-direction:column;gap:6px;padding:2.5rem 0;transition:color .3s}
+        .pn-link:hover{color:#2D4DB1}
+        .pn-link--next{text-align:right;border-left:1px solid #E5E9F0}
+        .pn-label{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-family:'Inter',sans-serif;color:#9aa3b8}
+        .pn-name{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;letter-spacing:-.01em}
 
         /* ── CTA glow ── */
         .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
@@ -136,7 +149,7 @@
             </div>
             <span class="hidden md:block label" style="color:rgba(148,166,219,.32)">7 Reels · Content</span>
         </div>
-        <div class="marquee reveal reveal-d1">
+        <div class="marquee reveal-clip">
             <div class="marquee-track">
                 <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" type="video/mp4"></video></div>
                 <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" type="video/mp4"></video></div>
@@ -157,35 +170,32 @@
     </section>
 
     <!-- ════════════════ RESULTS ════════════════ -->
-    <section class="py-24 lg:py-32 bg-white">
-        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="max-w-2xl mb-16 reveal">
-                <div class="label text-cobalt mb-6">The Results</div>
+    <section class="py-28 lg:py-40 bg-white">
+        <div class="max-w-[1000px] mx-auto px-6 lg:px-10">
+            <div class="mb-20 reveal">
+                <div class="label text-cobalt mb-6">Results</div>
                 <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
             </div>
-            <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ink-100 reveal reveal-d1">
-                <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
-                    <div class="result-num">1.8M</div>
-                    <div class="mt-4 label text-ink-400">Total Views</div>
-                    <p class="mt-2 text-ink-400 text-sm leading-relaxed">ยอดวิวรวมตลอดแคมเปญ</p>
+            <div class="reveal reveal-d1">
+                <div class="result-row">
+                    <div class="result-num" data-count="1800000" data-suffix="" data-format="abbr">1.8M</div>
+                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">ยอดวิวรวมจากทุกแพลตฟอร์ม ตลอดแคมเปญที่เราดูแลให้</p>
                 </div>
-                <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
-                    <div class="result-num" style="color:#2D4DB1">+100%</div>
-                    <div class="mt-4 label text-ink-400">Engagement</div>
-                    <p class="mt-2 text-ink-400 text-sm leading-relaxed">เพิ่มขึ้นกว่าเท่าตัว</p>
+                <div class="result-row">
+                    <div class="result-num" style="color:#2D4DB1" data-count="100" data-suffix="%" data-prefix="+">+100%</div>
+                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">Engagement เพิ่มขึ้นกว่าเท่าตัว เมื่อเทียบช่วงก่อนเริ่มงาน</p>
                 </div>
-                <div class="py-10 md:py-4 md:px-10 text-center md:text-left">
-                    <div class="result-num">2.5×</div>
-                    <div class="mt-4 label text-ink-400">Online Booking</div>
-                    <p class="mt-2 text-ink-400 text-sm leading-relaxed">การจองออนไลน์เพิ่มขึ้น</p>
+                <div class="result-row">
+                    <div class="result-num" data-count="2.5" data-suffix="×">2.5×</div>
+                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">การจองออนไลน์เพิ่มขึ้น — ลูกค้ากำลังซื้อสูงเข้ามามากขึ้น</p>
                 </div>
             </div>
-            <p class="mt-12 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน ปี 2024–2025</p>
+            <p class="mt-16 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน ปี 2024–2025</p>
         </div>
     </section>
 
     <!-- ════════════════ APPROACH (lean) ════════════════ -->
-    <section class="py-24 lg:py-32" style="background:#F9F8F6">
+    <section class="py-28 lg:py-40" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-7 reveal">
@@ -230,7 +240,7 @@
     </section>
 
     <!-- ════════════════ TRUSTED BY ════════════════ -->
-    <section class="py-20 lg:py-24 bg-white border-t border-ink-100">
+    <section class="py-28 lg:py-36 bg-white border-t border-ink-100">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center mb-12 lg:mb-14 reveal">
             <div class="label text-cobalt mb-5">Trusted By</div>
             <p class="font-display text-2xl lg:text-3xl text-ink-700 max-w-2xl mx-auto leading-snug">ดูแลคอนเทนต์และโฆษณาให้คลินิกและแบรนด์การแพทย์<br class="hidden sm:block"/>กว่า <span class="accent-th text-cobalt">30 แบรนด์</span> ทั่วประเทศ</p>
@@ -266,7 +276,7 @@
     </section>
 
     <!-- ════════════════ RELATED PROJECTS ════════════════ -->
-    <section class="py-24 lg:py-32" style="background:#F9F8F6">
+    <section class="py-28 lg:py-40" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="flex items-end justify-between mb-12 reveal">
                 <div>
@@ -275,7 +285,7 @@
                 </div>
                 <a href="/work.html" class="pill-btn pill-outline text-[12px] hidden sm:inline-flex">ดูทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
             </div>
-            <div class="scroll-strip reveal reveal-d1" id="moreWorkStrip">
+            <div class="scroll-strip reveal-clip" id="moreWorkStrip">
                 <a href="/work/astell.html" class="sc-card">
                     <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/astell.mp4" type="video/mp4"></video>
                     <div class="sc-scrim"></div>
@@ -341,6 +351,22 @@
         </div>
     </section>
 
+    <!-- ════════════════ PREV / NEXT ════════════════ -->
+    <section class="bg-white">
+        <div class="max-w-[1000px] mx-auto px-6 lg:px-10 py-8">
+            <nav class="pn-nav reveal">
+                <a href="/work/astell.html" class="pn-link">
+                    <span class="pn-label">← Previous</span>
+                    <span class="pn-name">Astell</span>
+                </a>
+                <a href="/work/the-bloom.html" class="pn-link pn-link--next">
+                    <span class="pn-label">Next →</span>
+                    <span class="pn-name">The Bloom</span>
+                </a>
+            </nav>
+        </div>
+    </section>
+
     <!-- ════════════════ CTA (soft) ════════════════ -->
     <section class="bg-ink-900 text-white relative overflow-hidden">
         <div class="cta-glow"></div>
@@ -397,7 +423,32 @@
     var io = new IntersectionObserver(function(entries){
         entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); } });
     }, {threshold:.12});
-    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    document.querySelectorAll('.reveal,.reveal-clip').forEach(function(el){ io.observe(el); });
+
+    // Count-up animation for result numbers
+    var countObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(!e.isIntersecting || e.target.dataset.counted) return;
+            e.target.dataset.counted = '1';
+            var el = e.target;
+            var target = parseFloat(el.dataset.count);
+            var prefix = el.dataset.prefix || '';
+            var suffix = el.dataset.suffix || '';
+            var isAbbr = el.dataset.format === 'abbr';
+            var duration = 1800, start = performance.now();
+            function step(now){
+                var t = Math.min((now - start) / duration, 1);
+                t = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                var val = target * t;
+                if(isAbbr){ el.textContent = prefix + (val/1e6).toFixed(1) + 'M' + suffix; }
+                else if(target % 1 !== 0){ el.textContent = prefix + val.toFixed(1) + suffix; }
+                else { el.textContent = prefix + Math.round(val) + suffix; }
+                if(t < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+    }, {threshold:.3});
+    document.querySelectorAll('.result-num[data-count]').forEach(function(el){ countObs.observe(el); });
 
     function toggleOne(card){
         var v = card.querySelector('video');

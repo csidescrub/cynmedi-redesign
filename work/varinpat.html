@@ -56,9 +56,13 @@
         .approach-meta{display:flex;gap:34px;flex-wrap:wrap}
         .approach-meta .label{color:#9aa3b8;margin-bottom:5px}
 
+        /* ── Section rhythm (real CSS — Tailwind py-40/py-36 not compiled) ── */
+        .sec{padding-top:clamp(4.5rem,8vw,7rem);padding-bottom:clamp(4.5rem,8vw,7rem)}
+        .sec-tight-b{padding-bottom:clamp(3rem,5vw,4.5rem)}
+
         /* ── Result stats (list layout + count-up) ── */
-        .result-row{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #E5E9F0;padding:2.5rem 0}
-        @media(min-width:768px){.result-row{grid-template-columns:1fr 1fr;align-items:baseline}}
+        .result-row{display:flex;flex-direction:column;gap:.6rem;border-top:1px solid #E5E9F0;padding:2.5rem 0}
+        @media(min-width:768px){.result-row{flex-direction:row;align-items:baseline;gap:3rem}.result-row>.result-num{flex:0 0 clamp(180px,20vw,240px)}.result-row>p{max-width:42ch}}
         .result-row:last-child{border-bottom:1px solid #E5E9F0}
         .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
 
@@ -141,7 +145,7 @@
     </section>
 
     <!-- ════════════════ THE WORK (marquee) ════════════════ -->
-    <section class="bg-ink-900 py-20 lg:py-28 overflow-hidden">
+    <section class="bg-ink-900 sec sec-tight-b overflow-hidden">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-end justify-between mb-12 reveal">
             <div>
                 <div class="label mb-5" style="color:#94A6DB">Selected Work</div>
@@ -170,9 +174,9 @@
     </section>
 
     <!-- ════════════════ RESULTS ════════════════ -->
-    <section class="py-28 lg:py-40 bg-white">
+    <section class="sec bg-white">
         <div class="max-w-[1000px] mx-auto px-6 lg:px-10">
-            <div class="mb-20 reveal">
+            <div class="reveal" style="margin-bottom:clamp(2.5rem,4vw,3.75rem)">
                 <div class="label text-cobalt mb-6">Results</div>
                 <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
             </div>
@@ -195,7 +199,7 @@
     </section>
 
     <!-- ════════════════ APPROACH (lean) ════════════════ -->
-    <section class="py-28 lg:py-40" style="background:#F9F8F6">
+    <section class="sec" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
                 <div class="lg:col-span-7 reveal">
@@ -240,7 +244,7 @@
     </section>
 
     <!-- ════════════════ TRUSTED BY ════════════════ -->
-    <section class="py-28 lg:py-36 bg-white border-t border-ink-100">
+    <section class="sec bg-white border-t border-ink-100">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center mb-12 lg:mb-14 reveal">
             <div class="label text-cobalt mb-5">Trusted By</div>
             <p class="font-display text-2xl lg:text-3xl text-ink-700 max-w-2xl mx-auto leading-snug">ดูแลคอนเทนต์และโฆษณาให้คลินิกและแบรนด์การแพทย์<br class="hidden sm:block"/>กว่า <span class="accent-th text-cobalt">30 แบรนด์</span> ทั่วประเทศ</p>
@@ -276,7 +280,7 @@
     </section>
 
     <!-- ════════════════ RELATED PROJECTS ════════════════ -->
-    <section class="py-28 lg:py-40" style="background:#F9F8F6">
+    <section class="sec" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
             <div class="flex items-end justify-between mb-12 reveal">
                 <div>
@@ -353,7 +357,7 @@
 
     <!-- ════════════════ PREV / NEXT ════════════════ -->
     <section class="bg-white">
-        <div class="max-w-[1000px] mx-auto px-6 lg:px-10 py-8">
+        <div class="max-w-[1000px] mx-auto px-6 lg:px-10" style="padding-top:clamp(2.5rem,4vw,3.5rem);padding-bottom:clamp(2.5rem,4vw,3.5rem)">
             <nav class="pn-nav reveal">
                 <a href="/work/astell.html" class="pn-link">
                     <span class="pn-label">← Previous</span>
@@ -370,7 +374,7 @@
     <!-- ════════════════ CTA (soft) ════════════════ -->
     <section class="bg-ink-900 text-white relative overflow-hidden">
         <div class="cta-glow"></div>
-        <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-24 lg:py-32">
+        <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 sec">
             <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 reveal">
                 <div class="lg:col-span-7">
                     <div class="label mb-6" style="color:#94A6DB">Let's talk</div>

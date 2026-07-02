@@ -53,8 +53,36 @@
 
         /* ── Approach chips ── */
         .chip{display:inline-flex;padding:7px 15px;border-radius:9999px;background:#fff;border:1px solid #E5E9F0;color:#46506f;font-size:13px;font-weight:400}
-        .approach-meta{display:flex;gap:34px;flex-wrap:wrap}
-        .approach-meta .label{color:#9aa3b8;margin-bottom:5px}
+        .approach-meta{display:flex;gap:40px;flex-wrap:wrap}
+        .approach-meta .label{color:#9aa3b8;margin-bottom:6px}
+
+        /* ── Before / After block (Thai labels = Kanit, loopless) ── */
+        .ba-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:stretch;max-width:640px}
+        @media(min-width:640px){.ba-grid{grid-template-columns:1fr auto 1fr;align-items:stretch}}
+        .ba-card{border-radius:16px;padding:20px 22px;background:#fff;border:1px solid #E5E9F0;display:flex;flex-direction:column}
+        .ba-after{background:rgba(45,77,177,.05);border-color:rgba(45,77,177,.28)}
+        .ba-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+        .ba-dot{width:8px;height:8px;border-radius:50%;background:#c3cad8;flex:0 0 auto}
+        .ba-after .ba-dot{background:#2D4DB1}
+        .ba-tag{font-family:'Kanit',sans-serif;font-weight:600;font-size:15px;color:#46506f;line-height:1}
+        .ba-after .ba-tag{color:#23408F}
+        .ba-en{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#b8bfce;margin-left:auto}
+        .ba-text{font-family:'Kanit',sans-serif;font-size:14px;line-height:1.65;color:#5a6376;margin:0}
+        .ba-after .ba-text{color:#3a4358}
+        .ba-arrow{display:none;align-items:center;justify-content:center;color:#2D4DB1}
+        @media(min-width:640px){.ba-arrow{display:flex}}
+        .ba-arrow-m{display:flex;align-items:center;justify-content:center;color:#2D4DB1;transform:rotate(90deg)}
+        @media(min-width:640px){.ba-arrow-m{display:none}}
+
+        /* ── Approach video carousel (right column) ── */
+        .approach-carousel{max-width:340px;margin:0 auto}
+        .ac-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:20px;aspect-ratio:9/16;background:#0F1B30;-webkit-overflow-scrolling:touch}
+        .ac-track::-webkit-scrollbar{display:none}
+        .ac-slide{flex:0 0 100%;scroll-snap-align:center;position:relative;overflow:hidden}
+        .ac-slide video{width:100%;height:100%;object-fit:cover;display:block}
+        .ac-nav{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+        .ac-count{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.06em;color:#9aa3b8}
+        .ac-count b{color:#0F1B30;font-weight:600}
 
         /* ── Section rhythm (real CSS — Tailwind py-40/py-36 not compiled) ── */
         .sec{padding-top:clamp(4.5rem,8vw,7rem);padding-bottom:clamp(4.5rem,8vw,7rem)}
@@ -198,20 +226,25 @@
     <!-- ════════════════ APPROACH (lean) ════════════════ -->
     <section class="sec" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
                 <div class="lg:col-span-7 reveal">
                     <div class="label text-cobalt mb-6">The Approach</div>
                     <h2 class="font-display text-3xl lg:text-4xl text-ink-800 leading-snug tracking-tight">วางกลยุทธ์คอนเทนต์ใหม่ ดันหมอเป็นแบรนด์<br/><span class="accent-th text-cobalt">และยิงแอดให้ตรงกลุ่มกำลังซื้อสูง</span></h2>
-                    <div class="grid sm:grid-cols-2 gap-4 mt-8 max-w-xl">
-                        <div class="rounded-xl border border-ink-200 p-5">
-                            <div class="label text-ink-400 mb-3">เดิม</div>
-                            <p class="text-ink-600 text-sm leading-relaxed">คอนเทนต์วัยรุ่น จับกลุ่มราคาประหยัด ภาพลักษณ์ไม่ตรงกับแพ็กเกจหัตถการราคาสูง</p>
+
+                    <!-- Before / After -->
+                    <div class="ba-grid mt-10">
+                        <div class="ba-card ba-before">
+                            <div class="ba-head"><span class="ba-dot"></span><span class="ba-tag">เดิม</span><span class="ba-en">Before</span></div>
+                            <p class="ba-text">คอนเทนต์วัยรุ่น จับกลุ่มราคาประหยัด ภาพลักษณ์ไม่ตรงกับแพ็กเกจหัตถการราคาสูง</p>
                         </div>
-                        <div class="rounded-xl p-5" style="border:1px solid rgba(45,77,177,.3);background:rgba(45,77,177,.05)">
-                            <div class="label text-cobalt mb-3">ตอนนี้</div>
-                            <p class="text-ink-700 text-sm leading-relaxed">ภาพลักษณ์พรีเมียม หมอเป็นแบรนด์ จับกลุ่มลูกค้ากำลังซื้อสูง</p>
+                        <div class="ba-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+                        <div class="ba-arrow-m" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+                        <div class="ba-card ba-after">
+                            <div class="ba-head"><span class="ba-dot"></span><span class="ba-tag">ตอนนี้</span><span class="ba-en">After</span></div>
+                            <p class="ba-text">ภาพลักษณ์พรีเมียม หมอเป็นแบรนด์ จับกลุ่มลูกค้ากำลังซื้อสูง</p>
                         </div>
                     </div>
+
                     <div class="flex flex-wrap gap-2.5 mt-8">
                         <span class="chip">Repositioning</span>
                         <span class="chip">Doctor Branding</span>
@@ -219,9 +252,8 @@
                         <span class="chip">Mood & Tone</span>
                         <span class="chip">Performance Ads</span>
                     </div>
-                </div>
-                <div class="lg:col-span-5 lg:pl-10 lg:border-l border-ink-200 reveal reveal-d1">
-                    <div class="approach-meta">
+
+                    <div class="approach-meta mt-10 pt-8 border-t border-ink-200">
                         <div>
                             <div class="label">Client</div>
                             <div class="text-ink-700">Varinpat Clinic</div>
@@ -233,6 +265,28 @@
                         <div>
                             <div class="label">Year</div>
                             <div class="text-ink-700">2024–2025</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: single-clip video carousel -->
+                <div class="lg:col-span-5 reveal reveal-d1">
+                    <div class="approach-carousel">
+                        <div class="ac-track" id="approachCarousel">
+                            <div class="ac-slide"><video muted loop playsinline preload="metadata" src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/ulthera-age.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/treatments-2026.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/review-fai.mp4"></video></div>
+                        </div>
+                        <div class="ac-nav">
+                            <span class="ac-count"><b id="acCur">1</b> / 7</span>
+                            <div class="scroll-arrows">
+                                <button type="button" class="scroll-arrow" data-ac="-1" aria-label="คลิปก่อนหน้า"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 19l-7-7 7-7"/></svg></button>
+                                <button type="button" class="scroll-arrow" data-ac="1" aria-label="คลิปถัดไป"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -431,6 +485,35 @@
         entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); } });
     }, {threshold:.12});
     document.querySelectorAll('.reveal,.reveal-clip').forEach(function(el){ io.observe(el); });
+
+    // Approach video carousel — one clip at a time, only the visible one plays
+    (function(){
+        var track = document.getElementById('approachCarousel');
+        if(!track) return;
+        var slides = [...track.querySelectorAll('.ac-slide')];
+        var vids = slides.map(function(s){ return s.querySelector('video'); });
+        var curEl = document.getElementById('acCur');
+        function current(){ return Math.round(track.scrollLeft / track.clientWidth); }
+        function sync(){
+            var i = Math.max(0, Math.min(current(), slides.length-1));
+            if(curEl) curEl.textContent = (i+1);
+            vids.forEach(function(v,idx){ if(!v) return; if(idx===i){ v.play().catch(function(){}); } else { v.pause(); } });
+            document.querySelectorAll('.scroll-arrow[data-ac]').forEach(function(a){
+                var dir = parseInt(a.dataset.ac,10);
+                a.disabled = dir<0 ? i===0 : i===slides.length-1;
+            });
+        }
+        document.querySelectorAll('.scroll-arrow[data-ac]').forEach(function(a){
+            a.addEventListener('click',function(){
+                track.scrollBy({left: parseInt(a.dataset.ac,10) * track.clientWidth, behavior:'smooth'});
+            });
+        });
+        var t; track.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sync,90); },{passive:true});
+        // play first clip when carousel scrolls into view
+        var vio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ sync(); } }); },{threshold:.35});
+        vio.observe(track);
+        sync();
+    })();
 
     // Count-up animation for result numbers
     var countObs = new IntersectionObserver(function(entries){

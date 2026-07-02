@@ -279,13 +279,13 @@
                 <div class="lg:col-span-5 reveal reveal-d1">
                     <div class="approach-carousel">
                         <div class="ac-track" id="approachCarousel">
-                            <div class="ac-slide"><video muted loop playsinline preload="metadata" src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4"></video></div>
-                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4"></video></div>
-                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4"></video></div>
-                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/ulthera-age.mp4"></video></div>
-                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/treatments-2026.mp4"></video></div>
-                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4"></video></div>
-                            <div class="ac-slide"><video muted loop playsinline preload="none" src="/assets/client/aesthetic/varinpat/review-fai.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="metadata" src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/varinpat/long-lasting-lift.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/varinpat/ulthera-age.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/varinpat/treatments-2026.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/varinpat/review-fai.mp4"></video></div>
                         </div>
                         <div class="ac-nav">
                             <span class="ac-count"><b id="acCur">1</b> / 7</span>
@@ -528,11 +528,20 @@
         var slides = [...track.querySelectorAll('.ac-slide')];
         var vids = slides.map(function(s){ return s.querySelector('video'); });
         var curEl = document.getElementById('acCur');
+        var userPaused = {}, suppress = false;
         function current(){ return Math.round(track.scrollLeft / track.clientWidth); }
+        // Respect manual pause: don't let scroll-sync auto-resume a clip the user paused
+        vids.forEach(function(v,idx){
+            if(!v) return;
+            v.addEventListener('pause',function(){ if(!suppress && idx===current()) userPaused[idx]=true; });
+            v.addEventListener('play',function(){ userPaused[idx]=false; });
+        });
         function sync(){
             var i = Math.max(0, Math.min(current(), slides.length-1));
             if(curEl) curEl.textContent = (i+1);
-            vids.forEach(function(v,idx){ if(!v) return; if(idx===i){ v.play().catch(function(){}); } else { v.pause(); } });
+            suppress = true;
+            vids.forEach(function(v,idx){ if(!v) return; if(idx===i){ if(!userPaused[idx]) v.play().catch(function(){}); } else { v.pause(); } });
+            suppress = false;
             document.querySelectorAll('.scroll-arrow[data-ac]').forEach(function(a){
                 var dir = parseInt(a.dataset.ac,10);
                 a.disabled = dir<0 ? i===0 : i===slides.length-1;

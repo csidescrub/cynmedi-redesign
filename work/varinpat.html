@@ -66,14 +66,6 @@
         .result-row:last-child{border-bottom:1px solid #E5E9F0}
         .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
 
-        /* ── Prev / Next nav ── */
-        .pn-nav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #E5E9F0}
-        .pn-link{display:flex;flex-direction:column;gap:6px;padding:2.5rem 0;transition:color .3s}
-        .pn-link:hover{color:#2D4DB1}
-        .pn-link--next{text-align:right;border-left:1px solid #E5E9F0}
-        .pn-label{font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;font-family:'Inter',sans-serif;color:#9aa3b8}
-        .pn-name{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:400;letter-spacing:-.01em}
-
         /* ── CTA glow ── */
         .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
 
@@ -93,6 +85,11 @@
         .card-hover:hover{transform:translateY(-6px)}
         .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}
         .pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
+        /* Scroll arrows — More Work */
+        .scroll-arrows{display:flex;gap:10px}
+        .scroll-arrow{width:46px;height:46px;border-radius:9999px;border:1px solid rgba(15,27,48,.18);background:#fff;color:#0F1B30;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s}
+        .scroll-arrow:hover{background:#0F1B30;color:#fff;border-color:#0F1B30}
+        .scroll-arrow:disabled{opacity:.3;cursor:default;background:#fff;color:#0F1B30;border-color:rgba(15,27,48,.18)}
         /* Horizontal scroll strip — More Work */
         .scroll-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;user-select:none}
         .scroll-strip::-webkit-scrollbar{display:none}
@@ -287,7 +284,10 @@
                     <div class="label text-cobalt mb-4">More Work</div>
                     <h2 class="font-display text-4xl lg:text-5xl text-ink-800 tracking-tight">ผลงานคลินิก<span class="accent-th text-cobalt"> อื่นๆ</span></h2>
                 </div>
-                <a href="/work.html" class="pill-btn pill-outline text-[12px] hidden sm:inline-flex">ดูทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+                <div class="scroll-arrows hidden sm:flex">
+                    <button type="button" class="scroll-arrow" data-dir="-1" aria-label="เลื่อนซ้าย"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 19l-7-7 7-7"/></svg></button>
+                    <button type="button" class="scroll-arrow" data-dir="1" aria-label="เลื่อนขวา"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+                </div>
             </div>
             <div class="scroll-strip reveal-clip" id="moreWorkStrip">
                 <a href="/work/astell.html" class="sc-card">
@@ -351,23 +351,7 @@
                     <div class="sc-name">Madam Clinic</div>
                 </div>
             </div>
-            <a href="/work.html" class="pill-btn pill-outline text-[12px] inline-flex sm:hidden mt-8">ดูผลงานทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-        </div>
-    </section>
-
-    <!-- ════════════════ PREV / NEXT ════════════════ -->
-    <section class="bg-white">
-        <div class="max-w-[1000px] mx-auto px-6 lg:px-10" style="padding-top:clamp(2.5rem,4vw,3.5rem);padding-bottom:clamp(2.5rem,4vw,3.5rem)">
-            <nav class="pn-nav reveal">
-                <a href="/work/astell.html" class="pn-link">
-                    <span class="pn-label">← Previous</span>
-                    <span class="pn-name">Astell</span>
-                </a>
-                <a href="/work/the-bloom.html" class="pn-link pn-link--next">
-                    <span class="pn-label">Next →</span>
-                    <span class="pn-name">The Bloom</span>
-                </a>
-            </nav>
+            <a href="/work.html" class="pill-btn pill-outline text-[12px] inline-flex mt-10">ดูผลงานทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
     </section>
 
@@ -422,6 +406,25 @@
         strip.addEventListener('mouseleave',function(){isDown=false;strip.classList.remove('grabbing');});
         strip.addEventListener('mouseup',function(){isDown=false;strip.classList.remove('grabbing');});
         strip.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-strip.offsetLeft;strip.scrollLeft=scrollLeft-(x-startX)*1.2;});
+
+        // Arrow buttons
+        var arrows = document.querySelectorAll('.scroll-arrow');
+        function stepAmount(){ var card = strip.querySelector('.sc-card'); return card ? (card.offsetWidth + 12) * 3 : strip.clientWidth * 0.8; }
+        function syncArrows(){
+            arrows.forEach(function(a){
+                var dir = parseInt(a.dataset.dir,10);
+                var atStart = strip.scrollLeft <= 2;
+                var atEnd = strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 2;
+                a.disabled = dir < 0 ? atStart : atEnd;
+            });
+        }
+        arrows.forEach(function(a){
+            a.addEventListener('click',function(){
+                strip.scrollBy({left: parseInt(a.dataset.dir,10) * stepAmount(), behavior:'smooth'});
+            });
+        });
+        strip.addEventListener('scroll', syncArrows, {passive:true});
+        syncArrows();
     })();
 
     var io = new IntersectionObserver(function(entries){

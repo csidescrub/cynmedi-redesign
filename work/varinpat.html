@@ -122,6 +122,10 @@
         .scroll-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;user-select:none}
         .scroll-strip::-webkit-scrollbar{display:none}
         .scroll-strip.grabbing{cursor:grabbing}
+        /* Scrollbar under More Work cards */
+        .mw-scrollbar{position:relative;height:4px;border-radius:9999px;background:rgba(15,27,48,.1);margin-top:28px;cursor:pointer;touch-action:none}
+        .mw-thumb{position:absolute;top:0;left:0;height:100%;min-width:40px;border-radius:9999px;background:rgba(15,27,48,.4);transition:background .25s}
+        .mw-scrollbar:hover .mw-thumb,.mw-thumb.dragging{background:#2D4DB1}
         .sc-card{flex:0 0 calc((100% - 60px)/6);min-width:130px;aspect-ratio:9/16;position:relative;border-radius:16px;overflow:hidden;scroll-snap-align:start;background:#0F1B30;transition:transform .4s cubic-bezier(.16,1,.3,1)}
         .sc-card:hover{transform:scale(1.03)}
         .sc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -405,6 +409,7 @@
                     <div class="sc-name">Madam Clinic</div>
                 </div>
             </div>
+            <div class="mw-scrollbar" id="mwScrollbar" role="scrollbar" aria-label="เลื่อนดูผลงาน" tabindex="0"><span class="mw-thumb" id="mwThumb"></span></div>
             <a href="/work.html" class="pill-btn pill-outline text-[12px] inline-flex mt-10">ดูผลงานทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         </div>
     </section>
@@ -461,14 +466,15 @@
         strip.addEventListener('mouseup',function(){isDown=false;strip.classList.remove('grabbing');});
         strip.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-strip.offsetLeft;strip.scrollLeft=scrollLeft-(x-startX)*1.2;});
 
-        // Arrow buttons
-        var arrows = document.querySelectorAll('.scroll-arrow');
+        // Arrow buttons (scoped to this strip via [data-dir])
+        var arrows = document.querySelectorAll('.scroll-arrow[data-dir]');
         function stepAmount(){ var card = strip.querySelector('.sc-card'); return card ? (card.offsetWidth + 12) * 3 : strip.clientWidth * 0.8; }
+        function maxScroll(){ return Math.max(1, strip.scrollWidth - strip.clientWidth); }
         function syncArrows(){
             arrows.forEach(function(a){
                 var dir = parseInt(a.dataset.dir,10);
                 var atStart = strip.scrollLeft <= 2;
-                var atEnd = strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 2;
+                var atEnd = strip.scrollLeft >= maxScroll() - 2;
                 a.disabled = dir < 0 ? atStart : atEnd;
             });
         }
@@ -477,8 +483,35 @@
                 strip.scrollBy({left: parseInt(a.dataset.dir,10) * stepAmount(), behavior:'smooth'});
             });
         });
-        strip.addEventListener('scroll', syncArrows, {passive:true});
-        syncArrows();
+
+        // Scrollbar under the cards
+        var bar = document.getElementById('mwScrollbar'), thumb = document.getElementById('mwThumb');
+        function syncThumb(){
+            if(!bar||!thumb) return;
+            var ratio = strip.clientWidth / strip.scrollWidth;
+            var tw = Math.max(40, bar.clientWidth * ratio);
+            thumb.style.width = tw + 'px';
+            var travel = bar.clientWidth - tw;
+            thumb.style.left = (strip.scrollLeft / maxScroll()) * travel + 'px';
+        }
+        // Drag the thumb
+        if(bar && thumb){
+            var dragging=false, dragStartX=0, thumbStartLeft=0;
+            function thumbTravel(){ return bar.clientWidth - thumb.offsetWidth; }
+            function onDown(e){ dragging=true; thumb.classList.add('dragging'); dragStartX=(e.touches?e.touches[0].pageX:e.pageX); thumbStartLeft=parseFloat(thumb.style.left)||0; e.preventDefault(); }
+            function onMove(e){ if(!dragging) return; var px=(e.touches?e.touches[0].pageX:e.pageX); var nl=Math.max(0,Math.min(thumbStartLeft+(px-dragStartX),thumbTravel())); strip.scrollLeft=(nl/thumbTravel())*maxScroll(); }
+            function onUp(){ dragging=false; thumb.classList.remove('dragging'); }
+            thumb.addEventListener('mousedown',onDown); thumb.addEventListener('touchstart',onDown,{passive:false});
+            window.addEventListener('mousemove',onMove); window.addEventListener('touchmove',onMove,{passive:false});
+            window.addEventListener('mouseup',onUp); window.addEventListener('touchend',onUp);
+            // Click on track jumps
+            bar.addEventListener('mousedown',function(e){ if(e.target===thumb) return; var rect=bar.getBoundingClientRect(); var pos=(e.clientX-rect.left)/rect.width; strip.scrollTo({left:pos*maxScroll(),behavior:'smooth'}); });
+        }
+
+        function syncAll(){ syncArrows(); syncThumb(); }
+        strip.addEventListener('scroll', syncAll, {passive:true});
+        window.addEventListener('resize', syncAll);
+        syncAll();
     })();
 
     var io = new IntersectionObserver(function(entries){

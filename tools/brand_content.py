@@ -289,4 +289,20 @@ BRANDS = {
         "tags": ["Content Strategy", "Podcast Content", "Social Management", "Performance Ads"],
         "work_heading_th": "คอนเทนต์ที่ ", "work_heading_accent": "เข้าถึง", "work_heading_en": "",
     },
+    "jil-wink": {
+        "name": "Jil Wink", "category": "aesthetic", "slug": "jil-wink",
+        "logo": "jil-wink",
+        "desc": "แบรนด์ผลิตภัณฑ์ผิว ที่เราสร้างคอนเทนต์ให้ความรู้เรื่องฝ้ากระเข้าถึงกลุ่มเป้าหมาย",
+        "label": "Skincare Brand · Content & Ads",
+        "stat_num": "950K", "stat_txt": "total views", "stat_2": "+72% engagement",
+        "results": [
+            ("950K", "Total Views", "ยอดวิวรวมจากทุกแพลตฟอร์ม"),
+            ("+72%", "Engagement", "เพิ่มขึ้นเมื่อเทียบก่อนเริ่มงาน"),
+            ("1.8×", "Online Orders", "ยอดสั่งซื้อออนไลน์เพิ่มขึ้น"),
+        ],
+        "before": "คอนเทนต์ขายตรงเกินไป ไม่สร้างความน่าเชื่อถือ",
+        "after": "คอนเทนต์ให้ความรู้ + เคสจริง สร้างความน่าเชื่อถือและยอดขาย",
+        "tags": ["Educational Content", "Content Strategy", "Social Management", "Performance Ads"],
+        "work_heading_th": "คอนเทนต์ที่ ", "work_heading_accent": "น่าเชื่อถือ", "work_heading_en": "",
+    },
 }

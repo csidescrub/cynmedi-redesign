@@ -38,6 +38,7 @@ AESTHETIC_SHOWCASE = [
     ("Rancha Clinic", "/assets/client/aesthetic/rancha-clinic.mp4", False, "rancha"),
     ("Dr. Fern",      "/assets/client/aesthetic/dr-fern.mp4", False, "dr-fern"),
     ("Madam Clinic",  "/assets/client/aesthetic/madam-clinic.mp4", False, "madam"),
+    ("Jil Wink",      "/assets/client/aesthetic/jil-wink/reel-1.mp4", False, "jil-wink"),
 ]
 
 # Dental & wellness showcase (work.html data-cat="wellness" group)

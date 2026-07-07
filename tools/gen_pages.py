@@ -54,6 +54,24 @@ DENTAL_SHOWCASE = [
     ("MS Rehab",       "/assets/client/wellness/ms-rehab.mp4", False, "ms-rehab"),
 ]
 
+# "Other industries" showcase (work.html data-cat="other" group)
+OTHER_SHOWCASE = [
+    ("Blink Babe",   "/assets/client/other/blink-babe.mp4", False, "blink-babe"),
+    ("Keeree",       "/assets/client/other/keeree.mp4", False, "keeree"),
+    ("The Attic",    "/assets/client/other/the-attic.mp4", False, "the-attic"),
+    ("Mental Matters","/assets/client/other/mental-matters.mp4", False, "mental-matters"),
+    ("Cside",        "/assets/cside.mp4", False, "cside"),
+    ("Natural Joy Vision","/assets/natural-joy-vision.mp4", False, "natural-joy-vision"),
+    ("Supersup",     "/assets/supersup.mp4", False, "supersup"),
+    ("Zendori",      "/assets/zendori.mp4", False, "zendori"),
+    ("L'ambiance Cafe","/assets/client/other/lambiance-cafe.mp4", False, "lambiance-cafe"),
+    ("The Crane",    "/assets/client/other/the-crane.mp4", False, "the-crane"),
+    ("Sanipa Resort","/assets/client/other/sanipa-resort.mp4", False, "sanipa-resort"),
+    ("MedNinja",     "/assets/client/other/medninja.mp4", False, "medninja"),
+    ("Home 369",     "/assets/client/other/home369.mp4", False, "home369"),
+    ("Quality Plus", "/assets/client/other/quality-plus.mp4", False, "quality-plus"),
+]
+
 def sc_card(name, src, is_img, slug):
     media = (f'<img src="{src}" alt="{name}" class="sc-zoom-img" loading="lazy"/>' if is_img
              else f'<video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="{src}" type="video/mp4"></video>')
@@ -63,7 +81,7 @@ def sc_card(name, src, is_img, slug):
     return f'<div class="sc-card">\n                    {body}\n                </div>'
 
 def showcase_cards(slug, cat="aesthetic"):
-    strip = DENTAL_SHOWCASE if cat == "dental" else AESTHETIC_SHOWCASE
+    strip = {"dental": DENTAL_SHOWCASE, "wellness": DENTAL_SHOWCASE, "other": OTHER_SHOWCASE}.get(cat, AESTHETIC_SHOWCASE)
     return [sc_card(n, s, img, pg) for (n, s, img, pg) in strip if pg != slug]
 
 def build(slug):
@@ -72,6 +90,8 @@ def build(slug):
     n = len(reels)
     hero3 = reels[:3] if len(reels) >= 3 else reels
     PH = "<!-- ⚠ PLACEHOLDER METRIC — replace with real data -->"
+    _parts = b["name"].rsplit(" ", 1)
+    name_first, name_rest = (_parts[0], _parts[1]) if len(_parts) == 2 else (b["name"], "")
 
     hero_vids = "\n        ".join(
         f'<video autoplay muted loop playsinline preload="auto"><source src="{r}" type="video/mp4"></video>'
@@ -126,7 +146,7 @@ def build(slug):
                     <span class="text-white/85">{b["name"].split(" Clinic")[0].split(" Dental")[0]}</span>
                 </nav>
                 <div class="label text-royal-300 mb-5">{b["label"]}</div>
-                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white"><span class="italic-serif" style="color:#94A6DB">{b["name"].rsplit(" ",1)[0]}</span> {b["name"].rsplit(" ",1)[1]}</h1>
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white"><span class="italic-serif" style="color:#94A6DB">{name_first}</span> {name_rest}</h1>
                 <p class="mt-5 text-white/65 max-w-md text-[15px] leading-relaxed">{b["desc"]}</p>
                 <div class="hero-stats">{PH}
                     <span class="hero-stat-num">{b["stat_num"]}</span><span class="txt">{b["stat_txt"]}</span>

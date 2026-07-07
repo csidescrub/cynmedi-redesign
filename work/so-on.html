@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>So On Clinic — Case Study | CYN Medical</title>
+    <meta name="description" content="So On Clinic — คลินิกความงาม ที่เราสร้างคอนเทนต์รีวิวจริงและให้ความรู้เรื่องหัตถการ">
+    <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/tailwind.css" />
+    <style>
+        html{scroll-behavior:smooth}
+        body{font-family:'Kanit','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;-webkit-font-smoothing:antialiased}
+        .font-display{font-family:'Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
+        .italic-serif{font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-weight:400}
+        /* Thai accent — Kanit (loopless), NEVER italic-serif (serif fallback = looped Thai) */
+        .accent-th{font-family:'Kanit',sans-serif;font-style:normal;font-weight:500}
+        .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
+        .serif-num{font-family:'Cormorant Garamond',serif;font-variant-numeric:tabular-nums lining-nums;font-weight:500;letter-spacing:-0.01em}
+        .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s}
+        .pill-dark{background:#0F1B30;color:#FFF}.pill-dark:hover{background:#1F2D44}
+        .pill-outline-light{background:transparent;color:#FFF;border:1px solid rgba(255,255,255,.3)}.pill-outline-light:hover{background:#FFF;color:#0F1B30}
+        .pill-line{background:#2D4DB1;color:#FFF}.pill-line:hover{background:#23408F}
+        body .text-cobalt{color:#23408F}
+        ::selection{background:#2C4CAA;color:#FFF}
+
+        /* ── Hero ── */
+        .hero-banner{position:relative;height:74vh;min-height:520px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr 1fr}
+        .hero-banner video{width:100%;height:100%;object-fit:cover}
+        .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.68),rgba(6,9,18,.55) 42%,rgba(2,4,9,.99))}
+        .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
+        .hero-stats{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:24px}
+        .hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.7rem);color:#fff;line-height:1;font-variant-numeric:lining-nums}
+        .hero-stats .sep{color:rgba(148,166,219,.45)}
+        .hero-stats .txt{color:rgba(255,255,255,.72);font-size:14px}
+
+        /* ── Scroll reveal (clip-path unfold + fade) ── */
+        .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+        .reveal.visible{opacity:1;transform:none}
+        .reveal-d1{transition-delay:.12s}.reveal-d2{transition-delay:.24s}.reveal-d3{transition-delay:.36s}
+        .reveal-clip{opacity:0;clip-path:inset(30% 12% 30% 12%);transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),clip-path 1s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+        .reveal-clip.visible{opacity:1;clip-path:inset(0% 0% 0% 0%);transform:none}
+
+        /* ── Video marquee (the hero of the page) ── */
+        .marquee{position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+        .marquee-track{display:flex;gap:18px;width:max-content;animation:scroll 60s linear infinite}
+        .marquee:hover .marquee-track{animation-play-state:paused}
+        @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .m-reel{flex:0 0 auto;width:clamp(190px,21vw,250px);aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:#0a0a0a;position:relative;cursor:pointer}
+        .m-reel video{width:100%;height:100%;object-fit:cover}
+        .m-reel::after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);border-radius:16px;pointer-events:none}
+        @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+        /* ── Approach chips ── */
+        .chip{display:inline-flex;padding:7px 15px;border-radius:9999px;background:#fff;border:1px solid #E5E9F0;color:#46506f;font-size:13px;font-weight:400}
+        .approach-meta{display:flex;gap:40px;flex-wrap:wrap}
+        .approach-meta .label{color:#9aa3b8;margin-bottom:6px}
+
+        /* ── Before / After block (Thai labels = Kanit, loopless) ── */
+        .ba-grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:stretch;max-width:640px}
+        @media(min-width:640px){.ba-grid{grid-template-columns:1fr auto 1fr;align-items:stretch}}
+        .ba-card{border-radius:16px;padding:20px 22px;background:#fff;border:1px solid #E5E9F0;display:flex;flex-direction:column}
+        .ba-after{background:rgba(45,77,177,.05);border-color:rgba(45,77,177,.28)}
+        .ba-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+        .ba-dot{width:8px;height:8px;border-radius:50%;background:#c3cad8;flex:0 0 auto}
+        .ba-after .ba-dot{background:#2D4DB1}
+        .ba-tag{font-family:'Kanit',sans-serif;font-weight:600;font-size:15px;color:#46506f;line-height:1}
+        .ba-after .ba-tag{color:#23408F}
+        .ba-en{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#b8bfce;margin-left:auto}
+        .ba-text{font-family:'Kanit',sans-serif;font-size:14px;line-height:1.65;color:#5a6376;margin:0}
+        .ba-after .ba-text{color:#3a4358}
+        .ba-arrow{display:none;align-items:center;justify-content:center;color:#2D4DB1}
+        @media(min-width:640px){.ba-arrow{display:flex}}
+        .ba-arrow-m{display:flex;align-items:center;justify-content:center;color:#2D4DB1;transform:rotate(90deg)}
+        @media(min-width:640px){.ba-arrow-m{display:none}}
+
+        /* ── Approach video carousel (right column, hero element) ── */
+        .approach-carousel{position:relative;max-width:340px;margin:0 auto}
+        .approach-carousel::before{content:'';position:absolute;inset:-16% -22% -12%;z-index:0;border-radius:50%;background:radial-gradient(ellipse at 55% 45%,rgba(45,77,177,.22),rgba(45,77,177,.08) 55%,transparent 74%)}
+        .ac-track{position:relative;z-index:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:24px;aspect-ratio:9/16;background:#0F1B30;-webkit-overflow-scrolling:touch;box-shadow:0 34px 70px -26px rgba(15,27,48,.5),0 10px 26px -14px rgba(15,27,48,.28)}
+        .ac-track::-webkit-scrollbar{display:none}
+        .ac-slide{flex:0 0 100%;scroll-snap-align:center;position:relative;overflow:hidden}
+        .ac-slide video{width:100%;height:100%;object-fit:cover;display:block}
+        .ac-stage{position:relative}
+        .ac-playpause{position:absolute;left:14px;bottom:14px;z-index:2;width:44px;height:44px;border-radius:9999px;border:none;background:rgba(15,27,48,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s,transform .1s}
+        .ac-playpause:hover{background:rgba(15,27,48,.8)}
+        .ac-playpause:active{transform:scale(.94)}
+        .ac-playpause:focus-visible{outline:2px solid #fff;outline-offset:2px}
+        .ac-playpause .ac-icon-play{display:none}
+        .ac-playpause.paused .ac-icon-play{display:block}
+        .ac-playpause.paused .ac-icon-pause{display:none}
+        .ac-nav{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;margin-top:20px}
+        .ac-count{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.06em;color:#9aa3b8}
+        .ac-count b{color:#0F1B30;font-weight:600}
+
+        /* ── Section rhythm (real CSS — Tailwind py-40/py-36 not compiled) ── */
+        .sec{padding-top:clamp(4.5rem,8vw,7rem);padding-bottom:clamp(4.5rem,8vw,7rem)}
+        .sec-tight-b{padding-bottom:clamp(3rem,5vw,4.5rem)}
+        .sec-feature{padding-top:clamp(6rem,11vw,9.5rem);padding-bottom:clamp(6rem,11vw,9.5rem)}
+
+        /* ── Result stats (list layout + count-up) ── */
+        .result-row{display:flex;flex-direction:column;gap:.6rem;border-top:1px solid #E5E9F0;padding:2.5rem 0}
+        @media(min-width:768px){.result-row{flex-direction:row;align-items:baseline;gap:3rem}.result-row>.result-num{flex:0 0 clamp(180px,20vw,240px)}.result-row>p{max-width:42ch}}
+        .result-row:last-child{border-bottom:1px solid #E5E9F0}
+        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
+
+        /* ── CTA glow ── */
+        .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
+
+        /* ── Trusted-by logo marquee (reused from home) ── */
+        .logo-marquee{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+        .logo-track{display:flex;align-items:center;width:max-content;animation:logoScroll 40s linear infinite}
+        .logo-marquee:hover .logo-track{animation-play-state:paused}
+        @keyframes logoScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        .logo-cell{flex:0 0 auto;width:38vw;height:58px;display:flex;align-items:center;justify-content:center;padding:0 8px}
+        @media(min-width:768px){.logo-cell{width:12vw;height:70px}}
+        .logo-cell img{max-width:100%;max-height:calc(100% - 3px);width:auto;height:auto;object-fit:contain;opacity:.6;filter:grayscale(1);transition:opacity .3s,filter .3s;user-select:none}
+        .logo-cell img:hover{opacity:1;filter:grayscale(0)}
+        @media(prefers-reduced-motion:reduce){.logo-track{animation:none;flex-wrap:wrap;justify-content:center}}
+
+        /* ── Related project cards ── */
+        .card-hover{transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+        .card-hover:hover{transform:translateY(-6px)}
+        .pill-outline{background:transparent;color:#0F1B30;border:1px solid rgba(15,27,48,.22)}
+        .pill-outline:hover{border-color:#0F1B30;background:#0F1B30;color:#FFF}
+        /* Scroll arrows — More Work */
+        .scroll-arrows{display:flex;gap:10px}
+        .scroll-arrow{width:46px;height:46px;border-radius:9999px;border:1px solid rgba(15,27,48,.18);background:#fff;color:#0F1B30;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s}
+        .scroll-arrow:hover{background:#0F1B30;color:#fff;border-color:#0F1B30}
+        .scroll-arrow:disabled{opacity:.3;cursor:default;background:#fff;color:#0F1B30;border-color:rgba(15,27,48,.18)}
+        /* Horizontal scroll strip — More Work */
+        .scroll-strip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;cursor:grab;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;user-select:none}
+        .scroll-strip::-webkit-scrollbar{display:none}
+        .scroll-strip.grabbing{cursor:grabbing}
+        /* Scrollbar under More Work cards */
+        .mw-scrollbar{position:relative;height:4px;border-radius:9999px;background:rgba(15,27,48,.1);margin-top:28px;cursor:pointer;touch-action:none}
+        .mw-thumb{position:absolute;top:0;left:0;height:100%;min-width:40px;border-radius:9999px;background:rgba(15,27,48,.4);transition:background .25s}
+        .mw-scrollbar:hover .mw-thumb,.mw-thumb.dragging{background:#2D4DB1}
+        .sc-card{flex:0 0 calc((100% - 60px)/6);min-width:130px;aspect-ratio:9/16;position:relative;border-radius:16px;overflow:hidden;scroll-snap-align:start;background:#0F1B30;transition:transform .4s cubic-bezier(.16,1,.3,1)}
+        .sc-card:hover{transform:scale(1.03)}
+        .sc-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+        .sc-scrim{position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(4,7,14,.88))}
+        .sc-name{position:absolute;bottom:0;left:0;right:0;padding:10px 13px;font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-size:clamp(.9rem,1.2vw,1.15rem);color:#fff;letter-spacing:-.01em;line-height:1.2}
+        @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
+        .sc-zoom-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slowZoom 12s ease-in-out infinite alternate}
+
+        @media(max-width:768px){
+            .hero-banner{height:56vh;min-height:380px;grid-template-columns:1fr 1fr}
+            .hero-banner video:nth-child(3){display:none}
+        }
+        @media(max-width:480px){
+            .hero-banner{grid-template-columns:1fr}
+            .hero-banner video:nth-child(2){display:none}
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink-200/60"><div class="max-w-[1400px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between"><a href="/" class="flex items-center gap-2"><img src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto" /></a><nav class="hidden lg:flex items-center gap-10 text-[13px] tracking-[0.15em] uppercase font-medium text-ink-700"><a href="/services.html" class="hover:text-cobalt transition">Services</a><a href="/work.html" class="text-cobalt transition">Work</a><a href="/contact.html" class="hover:text-cobalt transition">Contact Us</a><a href="/about.html" class="hover:text-cobalt transition">About Us</a></nav><div class="flex items-center gap-3"><a href="/contact.html" class="pill-btn pill-dark text-[11px]">Consultation</a></div></div></header>
+
+    <!-- HERO -->
+    <section class="hero-banner">
+        <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-1.mp4?v=1" type="video/mp4"></video>
+        <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-2.mp4?v=1" type="video/mp4"></video>
+        <video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-3.mp4?v=1" type="video/mp4"></video>
+        <div class="hero-scrim"></div>
+        <div class="hero-content">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-10 pb-16 w-full">
+                <nav class="flex items-center gap-2 text-[11px] tracking-[0.15em] uppercase text-white/55 mb-6">
+                    <a href="/work.html" class="hover:text-white transition">Work</a>
+                    <span class="text-white/30">/</span>
+                    <span class="text-white/85">So On</span>
+                </nav>
+                <div class="label text-royal-300 mb-5">Aesthetic Clinic · Content & Ads</div>
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white"><span class="italic-serif" style="color:#94A6DB">So On</span> Clinic</h1>
+                <p class="mt-5 text-white/65 max-w-md text-[15px] leading-relaxed">คลินิกความงาม ที่เราสร้างคอนเทนต์รีวิวจริงและให้ความรู้เรื่องหัตถการ</p>
+                <div class="hero-stats"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
+                    <span class="hero-stat-num">1.2M</span><span class="txt">total views</span>
+                    <span class="sep">·</span><span class="txt">+90% engagement</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE WORK -->
+    <section class="bg-ink-900 sec sec-tight-b overflow-hidden">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 flex items-end justify-between mb-12 reveal">
+            <div>
+                <div class="label mb-5" style="color:#94A6DB">Selected Work</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-white leading-tight tracking-tight">คอนเทนต์ที่ <span class="accent-th" style="color:#94A6DB">ไว้วางใจ</span></h2>
+            </div>
+            <span class="hidden md:block label" style="color:rgba(148,166,219,.32)">8 Reels · Content</span>
+        </div>
+        <div class="marquee reveal-clip">
+            <div class="marquee-track">
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-1.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-2.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-3.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-4.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-5.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-6.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-7.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" onclick="toggleOne(this)"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-8.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-1.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-2.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-3.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-4.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-5.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-6.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-7.mp4?v=1" type="video/mp4"></video></div>
+                <div class="m-reel" aria-hidden="true"><video autoplay muted loop playsinline preload="auto"><source src="/assets/client/aesthetic/so-on/reel-8.mp4?v=1" type="video/mp4"></video></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="sec bg-white">
+        <div class="max-w-[1000px] mx-auto px-6 lg:px-10">
+            <div class="reveal" style="margin-bottom:clamp(2.5rem,4vw,3.75rem)">
+                <div class="label text-cobalt mb-6">Results</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
+            </div>
+            <div class="reveal reveal-d1"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
+                <div class="result-row">
+                    <div class="result-num">1.2M</div>
+                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">ยอดวิวรวมจากทุกแพลตฟอร์ม</p>
+                </div>
+                <div class="result-row">
+                    <div class="result-num" style="color:#2D4DB1">+90%</div>
+                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">เพิ่มขึ้นเมื่อเทียบก่อนเริ่มงาน</p>
+                </div>
+                <div class="result-row">
+                    <div class="result-num">2×</div>
+                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">การจองออนไลน์เพิ่มขึ้น</p>
+                </div>
+            </div>
+            <p class="mt-16 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน</p>
+        </div>
+    </section>
+
+    <!-- APPROACH -->
+    <section class="sec sec-feature" style="background:#F9F8F6">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+                <div class="lg:col-span-7 reveal">
+                    <div class="label text-cobalt mb-6">The Approach</div>
+                    <h2 class="font-display text-3xl lg:text-4xl text-ink-800 leading-snug tracking-tight">คลินิกความงาม ที่เราสร้างคอนเทนต์รีวิวจริงและให้ความรู้เรื่องหัตถการ</h2>
+                    <div class="ba-grid mt-10">
+                        <div class="ba-card ba-before">
+                            <div class="ba-head"><span class="ba-dot"></span><span class="ba-tag">เดิม</span><span class="ba-en">Before</span></div>
+                            <p class="ba-text">คอนเทนต์ขายตรงเกินไป ไม่สร้างความไว้วางใจ</p>
+                        </div>
+                        <div class="ba-arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+                        <div class="ba-arrow-m" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+                        <div class="ba-card ba-after">
+                            <div class="ba-head"><span class="ba-dot"></span><span class="ba-tag">ตอนนี้</span><span class="ba-en">After</span></div>
+                            <p class="ba-text">คอนเทนต์รีวิวจริง + ให้ความรู้ สร้างความไว้วางใจระยะยาว</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2.5 mt-8">
+                        <span class="chip">Content Strategy</span>
+                        <span class="chip">Educational Content</span>
+                        <span class="chip">Social Management</span>
+                        <span class="chip">Performance Ads</span>
+                    </div>
+                    <div class="approach-meta mt-10 pt-8 border-t border-ink-200">
+                        <div><div class="label">Client</div><div class="text-ink-700">So On Clinic</div></div>
+                        <div><div class="label">Services</div><div class="text-ink-700">Content · Ads</div></div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 reveal reveal-d1">
+                    <div class="approach-carousel">
+                        <div class="ac-stage">
+                            <div class="ac-track" id="approachCarousel">
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="metadata" src="/assets/client/aesthetic/so-on/reel-1.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-2.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-3.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-4.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-5.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-6.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-7.mp4?v=1"></video></div>
+                            <div class="ac-slide"><video muted loop playsinline controls controlslist="nofullscreen nodownload noplaybackrate" preload="none" src="/assets/client/aesthetic/so-on/reel-8.mp4?v=1"></video></div>
+                            </div>
+                        </div>
+                        <div class="ac-nav">
+                            <span class="ac-count"><b id="acCur">1</b> / 8</span>
+                            <div class="scroll-arrows">
+                                <button type="button" class="scroll-arrow" data-ac="-1" aria-label="คลิปก่อนหน้า"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 19l-7-7 7-7"/></svg></button>
+                                <button type="button" class="scroll-arrow" data-ac="1" aria-label="คลิปถัดไป"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════ TRUSTED BY ════════════════ -->
+    <section class="sec bg-white border-t border-ink-100">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center mb-12 lg:mb-14 reveal">
+            <div class="label text-cobalt mb-5">Trusted By</div>
+            <p class="font-display text-2xl lg:text-3xl text-ink-700 max-w-2xl mx-auto leading-snug">ดูแลคอนเทนต์และโฆษณาให้คลินิกและแบรนด์การแพทย์<br class="hidden sm:block"/>กว่า <span class="accent-th text-cobalt">30 แบรนด์</span> ทั่วประเทศ</p>
+        </div>
+        <div class="logo-marquee reveal reveal-d1">
+            <div class="logo-track">
+                <div class="logo-cell"><img src="/assets/logos/astell.webp" alt="Astell" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/thebloom.webp" alt="The Bloom" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/sanipa.webp" alt="Sanipa" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/lambiance.webp" alt="L'ambiance" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/premier.webp" alt="Premier" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/dr-fern.webp" alt="Dr.Fern" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/punsmile.webp" alt="Pun Smile" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/naturaljoy.webp" alt="Natural Joy Vision" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/home369.webp" alt="Home 369" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/msrehab.webp" alt="MS Rehab" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/medninja.webp" alt="MedNinja" loading="lazy"></div>
+                <div class="logo-cell"><img src="/assets/logos/chaba.webp" alt="Chaba" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/astell.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/thebloom.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/sanipa.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/lambiance.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/premier.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/dr-fern.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/punsmile.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/naturaljoy.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/home369.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/msrehab.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/medninja.webp" alt="" loading="lazy"></div>
+                <div class="logo-cell" aria-hidden="true"><img src="/assets/logos/chaba.webp" alt="" loading="lazy"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE WORK -->
+    <section class="sec" style="background:#F9F8F6">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex items-end justify-between mb-12 reveal">
+                <div>
+                    <div class="label text-cobalt mb-4">More Work</div>
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 tracking-tight">ผลงานคลินิก<span class="accent-th text-cobalt"> อื่นๆ</span></h2>
+                </div>
+                <div class="scroll-arrows hidden sm:flex">
+                    <button type="button" class="scroll-arrow" data-dir="-1" aria-label="เลื่อนซ้าย"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 19l-7-7 7-7"/></svg></button>
+                    <button type="button" class="scroll-arrow" data-dir="1" aria-label="เลื่อนขวา"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+            <div class="scroll-strip reveal-clip" id="moreWorkStrip">
+                <a href="/work/varinpat.html" class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/varinpat.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Varinpat</div>
+                </a>
+                <div class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/astell.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Astell</div>
+                </div>
+                <a href="/work/the-bloom.html" class="sc-card">
+                    <img src="/assets/the-bloom.jpg" alt="The Bloom" class="sc-zoom-img" loading="lazy"/>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">The Bloom</div>
+                </a>
+                <a href="/work/klear.html" class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/klear-clinic.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Klear Clinic</div>
+                </a>
+                <div class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/parapin-clinic.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Parapin</div>
+                </div>
+                <a href="/work/la-clair.html" class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/la-claire.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">La Claire</div>
+                </a>
+                <a href="/work/chaba.html" class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/chaba.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Chaba</div>
+                </a>
+                <div class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/qis.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">QIS</div>
+                </div>
+                <div class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/rapi-clinic.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Rapi Clinic</div>
+                </div>
+                <div class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/rancha-clinic.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Rancha Clinic</div>
+                </div>
+                <a href="/work/dr-fern.html" class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/dr-fern.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Dr. Fern</div>
+                </a>
+                <div class="sc-card">
+                    <video class="sc-vid" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/madam-clinic.mp4" type="video/mp4"></video>
+                    <div class="sc-scrim"></div>
+                    <div class="sc-name">Madam Clinic</div>
+                </div>
+            </div>
+            <div class="mw-scrollbar" id="mwScrollbar" role="scrollbar" aria-label="เลื่อนดูผลงาน" tabindex="0"><span class="mw-thumb" id="mwThumb"></span></div>
+            <a href="/work.html" class="pill-btn pill-outline text-[12px] inline-flex mt-10">ดูผลงานทั้งหมด<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-ink-900 text-white relative overflow-hidden">
+        <div class="cta-glow"></div>
+        <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 sec">
+            <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10 reveal">
+                <div class="lg:col-span-7">
+                    <div class="label mb-6" style="color:#94A6DB">Let's talk</div>
+                    <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.08] tracking-[-0.02em] text-white">คุยกันสบายๆ<br/><span class="accent-th" style="color:#94A6DB">ก่อนตัดสินใจ</span></h2>
+                    <p class="mt-6 text-white/55 max-w-md leading-relaxed">ทักมาปรึกษาได้เลย ไม่มีค่าใช้จ่าย ไม่มีข้อผูกมัด — เรายินดีช่วยดูทิศทางคอนเทนต์และโฆษณาของคลินิกคุณให้ก่อน</p>
+                </div>
+                <div class="lg:col-span-5 flex lg:justify-end gap-4 flex-wrap">
+                    <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-line text-[13px]"><svg width="20" height="20" viewBox="0 0 24 24" fill="#FFF"><path d="M12 2C6.48 2 2 5.64 2 10.13c0 4.02 3.55 7.39 8.34 8.03.33.07.77.22.88.5.1.26.07.66.03.92l-.14.86c-.04.26-.2 1.02.9.56 1.1-.46 5.93-3.49 8.09-5.98 1.49-1.63 2-3.3 2-5.85C24 5.64 17.52 2 12 2z"/></svg>ปรึกษาฟรี</a>
+                    <a href="/contact.html" class="pill-btn pill-outline-light text-[13px]">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-ink-900 text-white py-10 border-t border-white/5">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
+            <div class="flex flex-col gap-7">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <img loading="lazy" src="/assets/cyn-logo-2026.webp" alt="CYN Medical Digital Agency" class="h-12 w-auto brightness-0 invert opacity-90" />
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.facebook.com/cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.02 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96H15.83c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.09 24 12.07z"/></svg></a>
+                        <a href="https://www.instagram.com/cynmedi.digital/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+                        <a href="https://www.tiktok.com/@cynmedi.digital" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82a4.28 4.28 0 0 1-1.06-2.82h-3.2v12.86a2.59 2.59 0 0 1-2.59 2.5 2.59 2.59 0 0 1 0-5.18c.27 0 .53.04.77.12V9.99a5.9 5.9 0 0 0-.77-.05 5.85 5.85 0 1 0 5.85 5.85V9.4a7.43 7.43 0 0 0 4.34 1.39V7.6a4.28 4.28 0 0 1-3.34-1.78z"/></svg></a>
+                        <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener noreferrer" aria-label="LINE" class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-cobalt hover:bg-cobalt transition"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.58 2 11c0 3.95 3.54 7.27 8.32 7.89.32.07.76.21.87.49.1.25.07.64.03.89l-.14.83c-.04.25-.2.99.87.54 1.07-.45 5.74-3.38 7.83-5.79C21.27 14.32 22 12.74 22 11c0-4.42-4.48-8-10-8z"/></svg></a>
+                    </div>
+                </div>
+                <div class="pt-6 border-t border-white/10 text-center">
+                    <div class="text-xs text-white/60">© 2026 CYN Medical Digital Agency</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // Drag-to-scroll for More Work strip
+    (function(){
+        var strip = document.getElementById('moreWorkStrip');
+        if(!strip) return;
+        var isDown=false, startX, scrollLeft;
+        strip.addEventListener('mousedown',function(e){isDown=true;strip.classList.add('grabbing');startX=e.pageX-strip.offsetLeft;scrollLeft=strip.scrollLeft;});
+        strip.addEventListener('mouseleave',function(){isDown=false;strip.classList.remove('grabbing');});
+        strip.addEventListener('mouseup',function(){isDown=false;strip.classList.remove('grabbing');});
+        strip.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-strip.offsetLeft;strip.scrollLeft=scrollLeft-(x-startX)*1.2;});
+
+        // Arrow buttons (scoped to this strip via [data-dir])
+        var arrows = document.querySelectorAll('.scroll-arrow[data-dir]');
+        function stepAmount(){ var card = strip.querySelector('.sc-card'); return card ? (card.offsetWidth + 12) * 3 : strip.clientWidth * 0.8; }
+        function maxScroll(){ return Math.max(1, strip.scrollWidth - strip.clientWidth); }
+        function syncArrows(){
+            arrows.forEach(function(a){
+                var dir = parseInt(a.dataset.dir,10);
+                var atStart = strip.scrollLeft <= 2;
+                var atEnd = strip.scrollLeft >= maxScroll() - 2;
+                a.disabled = dir < 0 ? atStart : atEnd;
+            });
+        }
+        arrows.forEach(function(a){
+            a.addEventListener('click',function(){
+                strip.scrollBy({left: parseInt(a.dataset.dir,10) * stepAmount(), behavior:'smooth'});
+            });
+        });
+
+        // Scrollbar under the cards
+        var bar = document.getElementById('mwScrollbar'), thumb = document.getElementById('mwThumb');
+        function syncThumb(){
+            if(!bar||!thumb) return;
+            var ratio = strip.clientWidth / strip.scrollWidth;
+            var tw = Math.max(40, bar.clientWidth * ratio);
+            thumb.style.width = tw + 'px';
+            var travel = bar.clientWidth - tw;
+            thumb.style.left = (strip.scrollLeft / maxScroll()) * travel + 'px';
+        }
+        // Drag the thumb
+        if(bar && thumb){
+            var dragging=false, dragStartX=0, thumbStartLeft=0;
+            function thumbTravel(){ return bar.clientWidth - thumb.offsetWidth; }
+            function onDown(e){ dragging=true; thumb.classList.add('dragging'); dragStartX=(e.touches?e.touches[0].pageX:e.pageX); thumbStartLeft=parseFloat(thumb.style.left)||0; e.preventDefault(); }
+            function onMove(e){ if(!dragging) return; var px=(e.touches?e.touches[0].pageX:e.pageX); var nl=Math.max(0,Math.min(thumbStartLeft+(px-dragStartX),thumbTravel())); strip.scrollLeft=(nl/thumbTravel())*maxScroll(); }
+            function onUp(){ dragging=false; thumb.classList.remove('dragging'); }
+            thumb.addEventListener('mousedown',onDown); thumb.addEventListener('touchstart',onDown,{passive:false});
+            window.addEventListener('mousemove',onMove); window.addEventListener('touchmove',onMove,{passive:false});
+            window.addEventListener('mouseup',onUp); window.addEventListener('touchend',onUp);
+            // Click on track jumps
+            bar.addEventListener('mousedown',function(e){ if(e.target===thumb) return; var rect=bar.getBoundingClientRect(); var pos=(e.clientX-rect.left)/rect.width; strip.scrollTo({left:pos*maxScroll(),behavior:'smooth'}); });
+        }
+
+        function syncAll(){ syncArrows(); syncThumb(); }
+        strip.addEventListener('scroll', syncAll, {passive:true});
+        window.addEventListener('resize', syncAll);
+        syncAll();
+    })();
+
+    var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal,.reveal-clip').forEach(function(el){ io.observe(el); });
+
+    // Approach video carousel — one clip at a time, only the visible one plays
+    (function(){
+        var track = document.getElementById('approachCarousel');
+        if(!track) return;
+        var slides = [...track.querySelectorAll('.ac-slide')];
+        var vids = slides.map(function(s){ return s.querySelector('video'); });
+        var curEl = document.getElementById('acCur');
+        var ppBtn = document.getElementById('acPlayPause');
+        var userPaused = {}, suppress = false;
+        function current(){ return Math.round(track.scrollLeft / track.clientWidth); }
+        function updateIcon(){ var v=vids[current()]; if(ppBtn && v) ppBtn.classList.toggle('paused', v.paused); }
+        // Respect manual pause: don't let scroll-sync auto-resume a clip the user paused
+        vids.forEach(function(v,idx){
+            if(!v) return;
+            v.addEventListener('pause',function(){ if(!suppress && idx===current()) userPaused[idx]=true; if(idx===current()) updateIcon(); });
+            v.addEventListener('play',function(){ userPaused[idx]=false; if(idx===current()) updateIcon(); });
+        });
+        if(ppBtn) ppBtn.addEventListener('click',function(){ var v=vids[current()]; if(!v) return; if(v.paused){ v.play().catch(function(){}); } else { v.pause(); } });
+        function sync(){
+            var i = Math.max(0, Math.min(current(), slides.length-1));
+            if(curEl) curEl.textContent = (i+1);
+            suppress = true;
+            vids.forEach(function(v,idx){ if(!v) return; if(idx===i){ if(!userPaused[idx]) v.play().catch(function(){}); } else { v.pause(); } });
+            suppress = false;
+            updateIcon();
+            document.querySelectorAll('.scroll-arrow[data-ac]').forEach(function(a){
+                var dir = parseInt(a.dataset.ac,10);
+                a.disabled = dir<0 ? i===0 : i===slides.length-1;
+            });
+        }
+        document.querySelectorAll('.scroll-arrow[data-ac]').forEach(function(a){
+            a.addEventListener('click',function(){
+                track.scrollBy({left: parseInt(a.dataset.ac,10) * track.clientWidth, behavior:'smooth'});
+            });
+        });
+        var t; track.addEventListener('scroll',function(){ clearTimeout(t); t=setTimeout(sync,90); },{passive:true});
+        // play first clip when carousel scrolls into view
+        var vio = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ sync(); } }); },{threshold:.35});
+        vio.observe(track);
+        sync();
+    })();
+
+    // Count-up animation for result numbers
+    var countObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+            if(!e.isIntersecting || e.target.dataset.counted) return;
+            e.target.dataset.counted = '1';
+            var el = e.target;
+            var target = parseFloat(el.dataset.count);
+            var prefix = el.dataset.prefix || '';
+            var suffix = el.dataset.suffix || '';
+            var isAbbr = el.dataset.format === 'abbr';
+            var duration = 1800, start = performance.now();
+            function step(now){
+                var t = Math.min((now - start) / duration, 1);
+                t = 1 - Math.pow(1 - t, 3); // ease-out cubic
+                var val = target * t;
+                if(isAbbr){ el.textContent = prefix + (val/1e6).toFixed(1) + 'M' + suffix; }
+                else if(target % 1 !== 0){ el.textContent = prefix + val.toFixed(1) + suffix; }
+                else { el.textContent = prefix + Math.round(val) + suffix; }
+                if(t < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+    }, {threshold:.3});
+    document.querySelectorAll('.result-num[data-count]').forEach(function(el){ countObs.observe(el); });
+
+    function toggleOne(card){
+        var v = card.querySelector('video');
+        if(v.paused){ v.play(); } else { v.pause(); }
+    }
+    </script>
+</body>
+</html>

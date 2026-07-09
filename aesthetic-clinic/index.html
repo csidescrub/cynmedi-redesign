@@ -183,6 +183,116 @@
         </div>
     </section>
 
+    <!-- CLIENT VOICES — real client testimonial videos (ported from homepage). -->
+<style>
+    /* Client Voices video carousel (self-contained; ported from homepage) */
+    .cvx{background:#F7F8FB;padding:5.5rem 0}
+    @media(min-width:1024px){.cvx{padding:7.5rem 0}}
+    .cvx-in{max-width:1400px;margin:0 auto;padding:0 1.5rem}
+    @media(min-width:1024px){.cvx-in{padding:0 2.5rem}}
+    .cvx-eyebrow{font-family:'Inter','Kanit',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#2D4DB1;margin:0 0 1.1rem}
+    .cvx-h2{font-family:'Cormorant Garamond','Kanit',sans-serif;font-weight:500;color:#0F1B30;line-height:1.1;letter-spacing:-.01em;font-size:2.25rem;margin:0 0 3rem}
+    @media(min-width:768px){.cvx-h2{font-size:3rem}}
+    @media(min-width:1024px){.cvx-h2{font-size:3.75rem;margin-bottom:3.5rem}}
+    .cvx-h2 span{color:#2D4DB1}
+    .cvx-stage{position:relative}
+    .cvx-vp{overflow:hidden}
+    .cvx-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+    .cvx-slide{flex:0 0 100%;padding:0 .5rem;box-sizing:border-box}
+    @media(min-width:768px){.cvx-slide{flex:0 0 50%;padding:0 .75rem}}
+    .cvx-card{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(217,223,233,.7);border-radius:1rem;overflow:hidden;box-shadow:0 30px 60px -40px rgba(15,27,48,.25);height:100%}
+    @media(min-width:768px){.cvx-card{flex-direction:row}}
+    .cvx-vid{position:relative;width:100%;background:#070F1E;aspect-ratio:9/16}
+    @media(min-width:768px){.cvx-vid{width:50%;flex:0 0 50%}}
+    .cvx-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .cvx-body{flex:1;padding:1.25rem;display:flex;flex-direction:column;justify-content:center;text-align:center}
+    @media(min-width:768px){.cvx-body{padding:1.5rem;text-align:left}}
+    @media(min-width:1024px){.cvx-body{padding:2rem}}
+    .cvx-mark{display:none;font-family:'Cormorant Garamond',serif;font-size:2.25rem;color:#B9C4E4;line-height:.4;margin-bottom:1rem}
+    @media(min-width:768px){.cvx-mark{display:block}}
+    .cvx-quote{display:none;color:#1F2D44;line-height:1.625;margin:0 0 1.25rem;font-size:1rem}
+    @media(min-width:768px){.cvx-quote{display:block}}
+    @media(min-width:1024px){.cvx-quote{font-size:1.125rem}}
+    .cvx-attr{margin-top:auto}
+    .cvx-name{display:block;font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-size:1.125rem;color:#0F1B30;line-height:1.2}
+    @media(min-width:768px){.cvx-name{font-size:1.5rem}}
+    .cvx-role{display:block;font-size:.75rem;color:#536685;margin-top:.15rem}
+    @media(min-width:768px){.cvx-role{font-size:.875rem}}
+    .cvx-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:2.75rem;height:2.75rem;border-radius:9999px;background:hsla(0,0%,100%,.95);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 8px 24px -8px rgba(15,27,48,.45);border:1px solid #D9DFE9;color:#1F2D44;display:none;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+    @media(min-width:768px){.cvx-arrow{display:flex}}
+    .cvx-arrow:hover{background:#0F1B30;color:#fff;border-color:#0F1B30}
+    .cvx-prev{left:.25rem}.cvx-next{right:.25rem}
+    @media(min-width:1024px){.cvx-prev{left:-1rem}.cvx-next{right:-1rem}}
+    .cvx-dots{display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem}
+    .cvx-dot{width:8px;height:8px;border-radius:9999px;background:#D9DFE9;border:0;padding:0;cursor:pointer;transition:all .3s}
+    .cvx-dot.on{background:#2D4DB1;width:22px}
+    .cvx-mute{position:absolute;bottom:12px;right:12px;z-index:10;width:44px;height:44px;border-radius:9999px;background:rgba(0,0,0,.52);color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+    .cvx-mute:active{background:rgba(0,0,0,.72)}
+</style>
+    <section id="voices" class="cvx">
+        <div class="cvx-in">
+            <div class="cvx-eyebrow">Client Voices</div>
+            <h2 class="cvx-h2">สิ่งที่ลูกค้า<span>พูดถึงเรา</span></h2>
+            <div class="cvx-stage">
+                <button id="cvxPrev" type="button" aria-label="คลิปก่อนหน้า" class="cvx-arrow cvx-prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 5l-7 7 7 7"/></svg></button>
+                <button id="cvxNext" type="button" aria-label="คลิปถัดไป" class="cvx-arrow cvx-next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+                <div class="cvx-vp">
+                    <div id="cvxTrack" class="cvx-track">
+                    <div class="cvx-slide">
+                        <figure class="cvx-card">
+                            <div class="cvx-vid">
+                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-chaba.jpg"><source src="/assets/review-chaba.mp4" type="video/mp4"></video>
+                            </div>
+                            <figcaption class="cvx-body">
+                                <div class="cvx-mark">&ldquo;</div>
+                                <blockquote class="cvx-quote">คอนเทนต์ออกมาดูพรีเมียมขึ้นมาก และมีคนทักเข้ามาสอบถามเยอะขึ้นชัดเจน</blockquote>
+                                <div class="cvx-attr"><span class="cvx-name">Chaba Clinic</span><span class="cvx-role">คลินิกความงาม</span></div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="cvx-slide">
+                        <figure class="cvx-card">
+                            <div class="cvx-vid">
+                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-drfern.jpg"><source src="/assets/review-drfern.mp4" type="video/mp4"></video>
+                            </div>
+                            <figcaption class="cvx-body">
+                                <div class="cvx-mark">&ldquo;</div>
+                                <blockquote class="cvx-quote">CYN เข้าใจคลินิกความงามจริง ๆ ทำงานไว ตอบโจทย์ และช่วยให้ภาพลักษณ์แบรนด์ดูดีขึ้น</blockquote>
+                                <div class="cvx-attr"><span class="cvx-name">Dr. Fern</span><span class="cvx-role">คลินิกความงาม</span></div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="cvx-slide">
+                        <figure class="cvx-card">
+                            <div class="cvx-vid">
+                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-samitivej.jpg"><source src="/assets/review-samitivej.mp4" type="video/mp4"></video>
+                            </div>
+                            <figcaption class="cvx-body">
+                                <div class="cvx-mark">&ldquo;</div>
+                                <blockquote class="cvx-quote">ทีม CYN ทำงานเป็นมืออาชีพ เข้าใจงานสายการแพทย์ และดูแลคอนเทนต์ให้เราได้อย่างน่าเชื่อถือ</blockquote>
+                                <div class="cvx-attr"><span class="cvx-name">Healthspan+</span><span class="cvx-role">ศูนย์ Healthspan Plus</span><span class="cvx-role">โรงพยาบาลสมิติเวช ธนบุรี</span></div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="cvx-slide">
+                        <figure class="cvx-card">
+                            <div class="cvx-vid">
+                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-punsmile.jpg"><source src="/assets/review-punsmile.mp4" type="video/mp4"></video>
+                            </div>
+                            <figcaption class="cvx-body">
+                                <div class="cvx-mark">&ldquo;</div>
+                                <blockquote class="cvx-quote">ดูแลเพจและโฆษณาให้สม่ำเสมอ คนไข้รู้จักคลินิกมากขึ้น และทักเข้ามานัดเองมากขึ้น</blockquote>
+                                <div class="cvx-attr"><span class="cvx-name">Pun Smile</span><span class="cvx-role">คลินิกทันตกรรม</span></div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cvxDots" class="cvx-dots"></div>
+        </div>
+    </section>
+
     <!-- RESULT NUMBERS (real, attributed) -->
     <section class="py-24 lg:py-28 bg-ink-50">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -392,115 +502,6 @@
         </div>
     </section>
 
-    <!-- CLIENT VOICES — real client testimonial videos (ported from homepage). -->
-<style>
-    /* Client Voices video carousel (self-contained; ported from homepage) */
-    .cvx{background:#F7F8FB;padding:5.5rem 0}
-    @media(min-width:1024px){.cvx{padding:7.5rem 0}}
-    .cvx-in{max-width:1400px;margin:0 auto;padding:0 1.5rem}
-    @media(min-width:1024px){.cvx-in{padding:0 2.5rem}}
-    .cvx-eyebrow{font-family:'Inter','Kanit',sans-serif;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#2D4DB1;margin:0 0 1.1rem}
-    .cvx-h2{font-family:'Cormorant Garamond','Kanit',sans-serif;font-weight:500;color:#0F1B30;line-height:1.1;letter-spacing:-.01em;font-size:2.25rem;margin:0 0 3rem}
-    @media(min-width:768px){.cvx-h2{font-size:3rem}}
-    @media(min-width:1024px){.cvx-h2{font-size:3.75rem;margin-bottom:3.5rem}}
-    .cvx-h2 span{color:#2D4DB1}
-    .cvx-stage{position:relative}
-    .cvx-vp{overflow:hidden}
-    .cvx-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-    .cvx-slide{flex:0 0 100%;padding:0 .5rem;box-sizing:border-box}
-    @media(min-width:768px){.cvx-slide{flex:0 0 50%;padding:0 .75rem}}
-    .cvx-card{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(217,223,233,.7);border-radius:1rem;overflow:hidden;box-shadow:0 30px 60px -40px rgba(15,27,48,.25);height:100%}
-    @media(min-width:768px){.cvx-card{flex-direction:row}}
-    .cvx-vid{position:relative;width:100%;background:#070F1E;aspect-ratio:9/16}
-    @media(min-width:768px){.cvx-vid{width:50%;flex:0 0 50%}}
-    .cvx-vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-    .cvx-body{flex:1;padding:1.25rem;display:flex;flex-direction:column;justify-content:center;text-align:center}
-    @media(min-width:768px){.cvx-body{padding:1.5rem;text-align:left}}
-    @media(min-width:1024px){.cvx-body{padding:2rem}}
-    .cvx-mark{display:none;font-family:'Cormorant Garamond',serif;font-size:2.25rem;color:#B9C4E4;line-height:.4;margin-bottom:1rem}
-    @media(min-width:768px){.cvx-mark{display:block}}
-    .cvx-quote{display:none;color:#1F2D44;line-height:1.625;margin:0 0 1.25rem;font-size:1rem}
-    @media(min-width:768px){.cvx-quote{display:block}}
-    @media(min-width:1024px){.cvx-quote{font-size:1.125rem}}
-    .cvx-attr{margin-top:auto}
-    .cvx-name{display:block;font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-size:1.125rem;color:#0F1B30;line-height:1.2}
-    @media(min-width:768px){.cvx-name{font-size:1.5rem}}
-    .cvx-role{display:block;font-size:.75rem;color:#536685;margin-top:.15rem}
-    @media(min-width:768px){.cvx-role{font-size:.875rem}}
-    .cvx-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:20;width:2.75rem;height:2.75rem;border-radius:9999px;background:hsla(0,0%,100%,.95);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 8px 24px -8px rgba(15,27,48,.45);border:1px solid #D9DFE9;color:#1F2D44;display:none;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
-    @media(min-width:768px){.cvx-arrow{display:flex}}
-    .cvx-arrow:hover{background:#0F1B30;color:#fff;border-color:#0F1B30}
-    .cvx-prev{left:.25rem}.cvx-next{right:.25rem}
-    @media(min-width:1024px){.cvx-prev{left:-1rem}.cvx-next{right:-1rem}}
-    .cvx-dots{display:flex;justify-content:center;gap:.5rem;margin-top:2.5rem}
-    .cvx-dot{width:8px;height:8px;border-radius:9999px;background:#D9DFE9;border:0;padding:0;cursor:pointer;transition:all .3s}
-    .cvx-dot.on{background:#2D4DB1;width:22px}
-    .cvx-mute{position:absolute;bottom:12px;right:12px;z-index:10;width:44px;height:44px;border-radius:9999px;background:rgba(0,0,0,.52);color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
-    .cvx-mute:active{background:rgba(0,0,0,.72)}
-</style>
-    <section id="voices" class="cvx">
-        <div class="cvx-in">
-            <div class="cvx-eyebrow">Client Voices</div>
-            <h2 class="cvx-h2">สิ่งที่ลูกค้า<span>พูดถึงเรา</span></h2>
-            <div class="cvx-stage">
-                <button id="cvxPrev" type="button" aria-label="คลิปก่อนหน้า" class="cvx-arrow cvx-prev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 5l-7 7 7 7"/></svg></button>
-                <button id="cvxNext" type="button" aria-label="คลิปถัดไป" class="cvx-arrow cvx-next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
-                <div class="cvx-vp">
-                    <div id="cvxTrack" class="cvx-track">
-                    <div class="cvx-slide">
-                        <figure class="cvx-card">
-                            <div class="cvx-vid">
-                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-chaba.jpg"><source src="/assets/review-chaba.mp4" type="video/mp4"></video>
-                            </div>
-                            <figcaption class="cvx-body">
-                                <div class="cvx-mark">&ldquo;</div>
-                                <blockquote class="cvx-quote">คอนเทนต์ออกมาดูพรีเมียมขึ้นมาก และมีคนทักเข้ามาสอบถามเยอะขึ้นชัดเจน</blockquote>
-                                <div class="cvx-attr"><span class="cvx-name">Chaba Clinic</span><span class="cvx-role">คลินิกความงาม</span></div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="cvx-slide">
-                        <figure class="cvx-card">
-                            <div class="cvx-vid">
-                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-drfern.jpg"><source src="/assets/review-drfern.mp4" type="video/mp4"></video>
-                            </div>
-                            <figcaption class="cvx-body">
-                                <div class="cvx-mark">&ldquo;</div>
-                                <blockquote class="cvx-quote">CYN เข้าใจคลินิกความงามจริง ๆ ทำงานไว ตอบโจทย์ และช่วยให้ภาพลักษณ์แบรนด์ดูดีขึ้น</blockquote>
-                                <div class="cvx-attr"><span class="cvx-name">Dr. Fern</span><span class="cvx-role">คลินิกความงาม</span></div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="cvx-slide">
-                        <figure class="cvx-card">
-                            <div class="cvx-vid">
-                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-samitivej.jpg"><source src="/assets/review-samitivej.mp4" type="video/mp4"></video>
-                            </div>
-                            <figcaption class="cvx-body">
-                                <div class="cvx-mark">&ldquo;</div>
-                                <blockquote class="cvx-quote">ทีม CYN ทำงานเป็นมืออาชีพ เข้าใจงานสายการแพทย์ และดูแลคอนเทนต์ให้เราได้อย่างน่าเชื่อถือ</blockquote>
-                                <div class="cvx-attr"><span class="cvx-name">Healthspan+</span><span class="cvx-role">ศูนย์ Healthspan Plus</span><span class="cvx-role">โรงพยาบาลสมิติเวช ธนบุรี</span></div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="cvx-slide">
-                        <figure class="cvx-card">
-                            <div class="cvx-vid">
-                                <video autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-punsmile.jpg"><source src="/assets/review-punsmile.mp4" type="video/mp4"></video>
-                            </div>
-                            <figcaption class="cvx-body">
-                                <div class="cvx-mark">&ldquo;</div>
-                                <blockquote class="cvx-quote">ดูแลเพจและโฆษณาให้สม่ำเสมอ คนไข้รู้จักคลินิกมากขึ้น และทักเข้ามานัดเองมากขึ้น</blockquote>
-                                <div class="cvx-attr"><span class="cvx-name">Pun Smile</span><span class="cvx-role">คลินิกทันตกรรม</span></div>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    </div>
-                </div>
-            </div>
-            <div id="cvxDots" class="cvx-dots"></div>
-        </div>
-    </section>
 
     <!-- OFFER -->
     <section id="offer" class="py-24 lg:py-32 bg-ink-50">

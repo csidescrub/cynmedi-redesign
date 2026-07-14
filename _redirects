@@ -1,3 +1,7 @@
+# Google Search Console verification: serve the .html path as 200 (not the
+# default .html->clean-URL 308) so Google's file check passes on the exact URL.
+/googlec9eea2e5b5563bf7.html   /googlec9eea2e5b5563bf7   200
+
 # Old v3 preview links -> now live at root
 /v3/*            /:splat   301
 # Retired v2 site -> root

@@ -127,8 +127,14 @@
             .hero-v2-glow{inset:-2.5rem}
             .hero-v2-h1{font-size:46px}
         }
-        /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset */
-        .dash-wrap{position:relative;width:100%;aspect-ratio:11/8}
+        /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset
+           .dash-inner is laid out at a fixed 560x407.3px reference size, then uniformly
+           scaled to fill .dash-wrap via container-query transform. This keeps every card's
+           internal proportions (fonts, padding, chart sizes) identical at every viewport —
+           tuned to fit once at the reference size, they can't re-overflow when the graphic
+           shrinks, since a uniform scale can't change relative proportions. */
+        .dash-wrap{position:relative;width:100%;aspect-ratio:11/8;overflow:hidden;container-type:inline-size}
+        .dash-inner{position:absolute;inset:0;width:560px;height:407.3px;transform:scale(calc(100cqi / 560px));transform-origin:top left}
         .dash-wrap *{box-sizing:border-box}
         .dash-side{display:none}
 
@@ -148,37 +154,39 @@
         .dmn-row{display:flex;align-items:center;gap:8px}
 
         /* right-side dashboard cards */
-        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:.85cqw 1.1cqw;overflow:hidden;container-type:inline-size}
-        .dash-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6%}
+        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:8px 1.1cqw;overflow:hidden;container-type:inline-size;line-height:1.15}
+        .dash-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
         .dash-card-title{font-size:11px;font-weight:600;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
         .dash-icons{display:flex;gap:4px}
         .dash-icons svg{width:14px;height:14px}
-        .dash-stat-row{display:flex;justify-content:space-between;gap:4%;margin-bottom:6%}
+        .dash-stat-row{display:flex;justify-content:space-between;gap:4%;margin-bottom:4px}
         .dash-stat{flex:1;min-width:0}
-        .dash-stat-label{font-size:8px;color:#7F8DA8;text-transform:uppercase;letter-spacing:.03em;font-family:'Inter','Kanit',sans-serif;white-space:nowrap}
-        .dash-stat-val{font-size:15px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;transition:color .4s;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
-        .dash-delta{font-size:9px;font-weight:600;color:#16A34A;background:#EAF7EE;border-radius:999px;padding:1px 6px;display:inline-block;margin-top:2px;font-variant-numeric:tabular-nums;transition:opacity .3s}
+        .dash-stat-label{font-size:8px;color:#7F8DA8;text-transform:uppercase;letter-spacing:.03em;font-family:'Inter','Kanit',sans-serif;white-space:nowrap;line-height:1.15}
+        .dash-stat-val{font-size:15px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;transition:color .4s;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
+        .dash-delta{font-size:9px;font-weight:600;color:#16A34A;background:#EAF7EE;border-radius:999px;padding:1px 6px;display:inline-block;margin-top:2px;font-variant-numeric:tabular-nums;transition:opacity .3s;line-height:1.3}
         .dash-chart-svg{width:100%;display:block}
+        .dash-chart-svg.dash-chart-lg{height:44px}
+        .dash-chart-svg.dash-chart-sm{height:18px}
         .dash-chart-svg path.line{fill:none;stroke:#2C4CAA;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:d .6s cubic-bezier(.4,0,.2,1)}
         .dash-chart-svg path.area{fill:url(#dashGrad);opacity:.8;transition:d .6s cubic-bezier(.4,0,.2,1)}
         .dash-bars{display:flex;align-items:flex-end;gap:5%;height:100%}
         .dash-bar{flex:1;background:#2C4CAA;border-radius:3px 3px 0 0;transition:height .45s cubic-bezier(.4,0,.2,1)}
-        .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums}
-        .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
+        .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums;margin-bottom:2px}
+        .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
 
         /* calendar/booking-detail card */
         .dash-cal-wrap{display:flex;gap:6%;height:100%}
         .dash-cal{flex:1.05;min-width:0}
-        .dash-cal-hd{display:flex;align-items:center;justify-content:space-between;font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:5%;font-family:'Inter','Kanit',sans-serif}
+        .dash-cal-hd{display:flex;align-items:center;justify-content:space-between;font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:5%;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
         .dash-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:7px;text-align:center;color:#7F8DA8;font-family:'Inter',sans-serif}
         .dash-cal-grid span{padding:1.5px 0}
         .dash-cal-grid .sel{background:#2C4CAA;color:#fff;border-radius:50%;font-weight:700}
         .dash-cal-detail{flex:1;min-width:0;border-left:1px solid #EEF1F6;padding-left:6%;display:flex;flex-direction:column;justify-content:space-between}
-        .dash-cal-date{font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:2%;font-family:'Inter','Kanit',sans-serif}
-        .dash-cal-time{display:inline-block;background:#EAF0FE;color:#2C4CAA;font-size:8.5px;font-weight:600;border-radius:6px;padding:1.5px 6px;margin-bottom:3%}
-        .dash-cal-label{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
-        .dash-cal-val{font-size:9px;color:#0F1B30;font-weight:500;margin-bottom:2%;font-family:'Inter','Kanit',sans-serif}
-        .dash-cal-btn{background:#2C4CAA;color:#fff;font-size:8.5px;font-weight:600;border-radius:999px;padding:5px 0;text-align:center;font-family:'Inter','Kanit',sans-serif;flex-shrink:0}
+        .dash-cal-date{font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
+        .dash-cal-time{display:inline-block;background:#EAF0FE;color:#2C4CAA;font-size:8.5px;font-weight:600;border-radius:6px;padding:1.5px 6px;margin-bottom:3px;line-height:1.15}
+        .dash-cal-label{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
+        .dash-cal-val{font-size:9px;color:#0F1B30;font-weight:500;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
+        .dash-cal-btn{background:#2C4CAA;color:#fff;font-size:8.5px;font-weight:600;border-radius:999px;padding:5px 0;text-align:center;font-family:'Inter','Kanit',sans-serif;flex-shrink:0;line-height:1.15}
 
         @media(max-width:767px){
             .hero-v2-img-wrap{display:none}
@@ -213,6 +221,7 @@
             <div class="hero-v2-img-wrap">
                 <div class="hero-v2-glow"></div>
                 <div class="dash-wrap" role="img" aria-label="Mockup ของแดชบอร์ดการตลาด CYN แสดง Reach, Engagement, Lead และ ROAS สำหรับคลินิกความงาม">
+                <div class="dash-inner">
 
                     <!-- floating bubbles -->
                     <div class="dash-bubble dash-side" style="left:0%;top:2%">
@@ -289,7 +298,7 @@
                                 <span class="dash-delta" id="dashApptDelta">+67%</span>
                             </div>
                         </div>
-                        <svg class="dash-chart-svg" viewBox="0 0 300 78" preserveAspectRatio="none">
+                        <svg class="dash-chart-svg dash-chart-lg" viewBox="0 0 300 78" preserveAspectRatio="none">
                             <defs><linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2C4CAA" stop-opacity=".22"/><stop offset="100%" stop-color="#2C4CAA" stop-opacity="0"/></linearGradient></defs>
                             <path class="area" id="dashChart1Area" d="" />
                             <path class="line" id="dashChart1Path" d="" />
@@ -302,11 +311,11 @@
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
                         <div class="dash-big-num" id="dashLeads">+528</div>
-                        <div style="display:flex;align-items:center;gap:5px;margin:2px 0 8%">
+                        <div style="display:flex;align-items:center;gap:5px;margin:2px 0 4px">
                             <span class="dash-mini-label">Lead Conversion</span>
                             <span class="dash-delta" id="dashLeadsDelta">+67%</span>
                         </div>
-                        <div class="dash-bars" id="dashBars" style="height:38%">
+                        <div class="dash-bars" id="dashBars" style="height:26%">
                             <div class="dash-bar" style="height:35%"></div>
                             <div class="dash-bar" style="height:42%"></div>
                             <div class="dash-bar" style="height:28%"></div>
@@ -333,9 +342,9 @@
                                 <div class="dash-stat-val" id="dashRevenue" style="color:#16A34A">+315%</div>
                             </div>
                         </div>
-                        <div class="dash-mini-label" style="margin-top:6%">Cost per Lead</div>
+                        <div class="dash-mini-label" style="margin-top:3px">Cost per Lead</div>
                         <div class="dash-stat-val" id="dashCostPerLead" style="color:#16A34A">-38%</div>
-                        <svg class="dash-chart-svg" viewBox="0 0 220 46" preserveAspectRatio="none" style="margin-top:4%">
+                        <svg class="dash-chart-svg dash-chart-sm" viewBox="0 0 220 46" preserveAspectRatio="none" style="margin-top:3px">
                             <path class="line" id="dashChart3Path" d="" />
                         </svg>
                     </div>
@@ -360,6 +369,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

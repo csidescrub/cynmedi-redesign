@@ -126,13 +126,18 @@
         .hero-v2-left{container-type:inline-size}
         h1.hero-v2-h1{font-size:clamp(26px,8cqi,58px);line-height:1.18;letter-spacing:-0.005em;font-weight:500;white-space:nowrap}
         /* PHONE 3D REEL — fully coded mockup (no stock photo), same "no photo asset"
-           pattern as .dash-wrap on the right. The whole phone (bezel+screen+video) is
+           pattern as the rest of .dash-wrap. The whole phone (bezel+screen+video) is
            one flat DOM tree rotated ONCE via rotateY/X on .phone3d — every child inherits
            that rotation for free because they share its 3D containing block, so the
            video plane simply appears embedded in the tilted screen with no per-element
-           warping/matrix3d math needed. */
-        .phone3d-wrap{margin:2.25rem 0;display:flex;perspective:1400px}
-        .phone3d{position:relative;width:clamp(160px,36cqi,224px);aspect-ratio:9/19.5;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg) rotateZ(-1.5deg);flex-shrink:0}
+           warping/matrix3d math needed. Lives centered inside .dash-inner's 560x407.3
+           reference frame (fixed px, not cqi) so it scales as ONE unit with every other
+           card via .dash-inner's single transform — sizing it in cqi here would double-
+           scale it (once via cqi, once via the ancestor transform). It's placed FIRST
+           among the overlapping elements in DOM order so the notification/stat cards
+           (added after it) naturally paint on top where they crop into its edges. */
+        .phone3d-wrap{position:absolute;left:50%;top:50%;width:29%;transform:translate(-50%,-50%);perspective:1400px}
+        .phone3d{position:relative;width:100%;aspect-ratio:9/19.5;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg) rotateZ(-1.5deg)}
         .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(155deg,#f2f3f5 0%,#c9ccd2 35%,#888c95 70%,#c9ccd2 100%);box-shadow:0 34px 54px -18px rgba(15,27,48,.4),0 10px 22px -10px rgba(15,27,48,.3),inset 0 0 0 1px rgba(255,255,255,.5);padding:7px}
         .phone3d-screen{position:relative;width:100%;height:100%;border-radius:16px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
         .phone3d-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
@@ -247,91 +252,6 @@
                 </h1>
                 <p class="mt-8 text-lg text-ink-600 body-th max-w-xl">เราเชี่ยวชาญด้านการตลาดสำหรับธุรกิจการแพทย์และคลินิกโดยเฉพาะ ช่วยให้แบรนด์ของคุณบรรลุเป้าหมายได้อย่างมีประสิทธิภาพ ด้วยบริการแบบครบวงจร</p>
 
-                <!-- PHONE 3D REEL — coded mockup (no stock photo), auto-cycling real client
-                     clips from the /work case-study pages, 2 clips x 6 brands. -->
-                <div class="phone3d-wrap">
-                    <div class="phone3d">
-                        <span class="phone3d-btn" style="left:-2px;top:19%;width:2px;height:6%"></span>
-                        <span class="phone3d-btn" style="left:-2px;top:28%;width:2px;height:9%"></span>
-                        <span class="phone3d-btn" style="left:-2px;top:39%;width:2px;height:9%"></span>
-                        <span class="phone3d-btn right" style="right:-2px;top:24%;width:2px;height:11%"></span>
-                        <div class="phone3d-bezel">
-                            <div class="phone3d-screen">
-                                <div class="phone3d-notch"></div>
-                                <div class="phone3d-track" id="p3dTrack">
-                                    <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" data-avatar="V" data-avatar-bg="#2D4DB1" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="1247" data-comments="32" data-shares="318">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-asmr-testimonial.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" data-avatar="V" data-avatar-bg="#2D4DB1" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="2103" data-comments="58" data-shares="540">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-dr-on-trends.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-1.mp4" data-avatar="F" data-avatar-bg="#2F8F6B" data-caption="ผลลัพธ์ที่มองเห็นได้จริง" data-likes="876" data-comments="21" data-shares="204">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-1.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-2.mp4" data-avatar="F" data-avatar-bg="#2F8F6B" data-caption="ผลลัพธ์ที่มองเห็นได้จริง" data-likes="1490" data-comments="44" data-shares="389">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-2.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-1.mp4" data-avatar="C" data-avatar-bg="#C2427A" data-caption="ดูแลใกล้ชิดทุกเคส 🌸" data-likes="2540" data-comments="91" data-shares="612">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-1.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-2.mp4" data-avatar="C" data-avatar-bg="#C2427A" data-caption="ดูแลใกล้ชิดทุกเคส 🌸" data-likes="1988" data-comments="67" data-shares="455">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-2.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-1.mp4" data-avatar="K" data-avatar-bg="#2596BE" data-caption="ผิวใส มั่นใจขึ้นทุกวัน" data-likes="1120" data-comments="29" data-shares="276">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-1.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-2.mp4" data-avatar="K" data-avatar-bg="#2596BE" data-caption="ผิวใส มั่นใจขึ้นทุกวัน" data-likes="1675" data-comments="52" data-shares="401">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-2.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-1.mp4" data-avatar="L" data-avatar-bg="#7C5CC4" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="3260" data-comments="104" data-shares="788">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-1.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-2.mp4" data-avatar="L" data-avatar-bg="#7C5CC4" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="2287" data-comments="73" data-shares="520">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-2.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-1.mp4" data-avatar="J" data-avatar-bg="#D9714E" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="958" data-comments="18" data-shares="165">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-1.jpg"></video>
-                                    </div>
-                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-2.mp4" data-avatar="J" data-avatar-bg="#D9714E" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="1362" data-comments="37" data-shares="297">
-                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-2.jpg"></video>
-                                    </div>
-                                </div>
-                                <div class="phone3d-gloss"></div>
-                                <div class="p3d-ui" id="p3dUi">
-                                    <div class="p3d-rail">
-                                        <span class="p3d-rail-item">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
-                                            <span id="p3dLikes">1.2K</span>
-                                        </span>
-                                        <span class="p3d-rail-item">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 8 19l-4.5 1.5L5 16a8.4 8.4 0 0 1-1.4-4.7A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
-                                            <span id="p3dComments">32</span>
-                                        </span>
-                                        <span class="p3d-rail-item">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 3 3 10.5l7.5 3L14 21l7-18Z"/></svg>
-                                            <span id="p3dShares">318</span>
-                                        </span>
-                                        <span class="p3d-rail-disc">
-                                            <svg viewBox="0 0 24 24" fill="#fff"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-                                        </span>
-                                    </div>
-                                    <div class="p3d-bottom">
-                                        <a class="p3d-creator" id="p3dCreator" href="/work/varinpat">
-                                            <span class="p3d-avatar" id="p3dAvatar" style="background:#2D4DB1">V</span>
-                                            <span class="p3d-uname">
-                                                <span id="p3dName">Varinpat</span>
-                                                <svg class="p3d-verified" width="11" height="11" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.6 2.3.4 2.7-2.7.4-1.6 2.3-2.5-.9-2.5.9-1.6-2.3-2.7-.4.4-2.7-1.6-2.3 1.3-2.4-.4-2.7 1.3-2.4L9.3 2.9z"/><path d="M9 12.5l2 2 4-4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                            </span>
-                                            <span class="p3d-follow">Follow</span>
-                                        </a>
-                                        <div class="p3d-caption" id="p3dCaption">ลูกค้าจริง รีวิวจริง ✨</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="mt-9 flex flex-wrap gap-3">
                     <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" data-cta="line-hero" class="pill-btn-th pill-cobalt">ขอแผนการตลาดคลินิก ฟรี
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -352,6 +272,92 @@
                     <div class="dash-bubble dash-side" style="left:16%;top:2%">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
                         <span id="dashSearch">320</span>
+                    </div>
+
+                    <!-- PHONE 3D REEL — coded mockup (no stock photo), auto-cycling real client
+                         clips from the /work case-study pages, 2 clips x 6 brands. Centered
+                         behind the notification/stat cards so they crop into its edges. -->
+                    <div class="phone3d-wrap dash-side">
+                        <div class="phone3d">
+                            <span class="phone3d-btn" style="left:-2px;top:19%;width:2px;height:6%"></span>
+                            <span class="phone3d-btn" style="left:-2px;top:28%;width:2px;height:9%"></span>
+                            <span class="phone3d-btn" style="left:-2px;top:39%;width:2px;height:9%"></span>
+                            <span class="phone3d-btn right" style="right:-2px;top:24%;width:2px;height:11%"></span>
+                            <div class="phone3d-bezel">
+                                <div class="phone3d-screen">
+                                    <div class="phone3d-notch"></div>
+                                    <div class="phone3d-track" id="p3dTrack">
+                                        <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" data-avatar="V" data-avatar-bg="#2D4DB1" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="1247" data-comments="32" data-shares="318">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-asmr-testimonial.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" data-avatar="V" data-avatar-bg="#2D4DB1" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="2103" data-comments="58" data-shares="540">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-dr-on-trends.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-1.mp4" data-avatar="F" data-avatar-bg="#2F8F6B" data-caption="ผลลัพธ์ที่มองเห็นได้จริง" data-likes="876" data-comments="21" data-shares="204">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-1.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-2.mp4" data-avatar="F" data-avatar-bg="#2F8F6B" data-caption="ผลลัพธ์ที่มองเห็นได้จริง" data-likes="1490" data-comments="44" data-shares="389">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-2.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-1.mp4" data-avatar="C" data-avatar-bg="#C2427A" data-caption="ดูแลใกล้ชิดทุกเคส 🌸" data-likes="2540" data-comments="91" data-shares="612">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-1.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-2.mp4" data-avatar="C" data-avatar-bg="#C2427A" data-caption="ดูแลใกล้ชิดทุกเคส 🌸" data-likes="1988" data-comments="67" data-shares="455">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-2.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-1.mp4" data-avatar="K" data-avatar-bg="#2596BE" data-caption="ผิวใส มั่นใจขึ้นทุกวัน" data-likes="1120" data-comments="29" data-shares="276">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-1.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-2.mp4" data-avatar="K" data-avatar-bg="#2596BE" data-caption="ผิวใส มั่นใจขึ้นทุกวัน" data-likes="1675" data-comments="52" data-shares="401">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-2.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-1.mp4" data-avatar="L" data-avatar-bg="#7C5CC4" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="3260" data-comments="104" data-shares="788">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-1.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-2.mp4" data-avatar="L" data-avatar-bg="#7C5CC4" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="2287" data-comments="73" data-shares="520">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-2.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-1.mp4" data-avatar="J" data-avatar-bg="#D9714E" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="958" data-comments="18" data-shares="165">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-1.jpg"></video>
+                                        </div>
+                                        <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-2.mp4" data-avatar="J" data-avatar-bg="#D9714E" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="1362" data-comments="37" data-shares="297">
+                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-2.jpg"></video>
+                                        </div>
+                                    </div>
+                                    <div class="phone3d-gloss"></div>
+                                    <div class="p3d-ui" id="p3dUi">
+                                        <div class="p3d-rail">
+                                            <span class="p3d-rail-item">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
+                                                <span id="p3dLikes">1.2K</span>
+                                            </span>
+                                            <span class="p3d-rail-item">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 8 19l-4.5 1.5L5 16a8.4 8.4 0 0 1-1.4-4.7A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+                                                <span id="p3dComments">32</span>
+                                            </span>
+                                            <span class="p3d-rail-item">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 3 3 10.5l7.5 3L14 21l7-18Z"/></svg>
+                                                <span id="p3dShares">318</span>
+                                            </span>
+                                            <span class="p3d-rail-disc">
+                                                <svg viewBox="0 0 24 24" fill="#fff"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                            </span>
+                                        </div>
+                                        <div class="p3d-bottom">
+                                            <a class="p3d-creator" id="p3dCreator" href="/work/varinpat">
+                                                <span class="p3d-avatar" id="p3dAvatar" style="background:#2D4DB1">V</span>
+                                                <span class="p3d-uname">
+                                                    <span id="p3dName">Varinpat</span>
+                                                    <svg class="p3d-verified" width="11" height="11" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.6 2.3.4 2.7-2.7.4-1.6 2.3-2.5-.9-2.5.9-1.6-2.3-2.7-.4.4-2.7-1.6-2.3 1.3-2.4-.4-2.7 1.3-2.4L9.3 2.9z"/><path d="M9 12.5l2 2 4-4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                </span>
+                                                <span class="p3d-follow">Follow</span>
+                                            </a>
+                                            <div class="p3d-caption" id="p3dCaption">ลูกค้าจริง รีวิวจริง ✨</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- New Inquiry -->

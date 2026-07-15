@@ -139,19 +139,28 @@
         .phone3d-wrap{position:absolute;left:280px;top:204px;width:162px;transform:translate(-50%,-50%) scale(1.5);perspective:1400px;animation:floatPhone 6.8s ease-in-out infinite;animation-delay:-2.6s}
         @keyframes floatPhone{0%,100%{transform:translate(-50%,-50%) scale(1.5) translateY(0)}50%{transform:translate(-50%,-50%) scale(1.5) translateY(-9px)}}
         @media(prefers-reduced-motion:reduce){.phone3d-wrap{animation:none}}
-        .phone3d{position:relative;width:100%;aspect-ratio:9/19.5;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg) rotateZ(-1.5deg)}
+        /* body ratio + thickness from a real iPhone 15 Pro: 70.6 x 146.6 x 8.25mm —
+           9/19.5 is the SCREEN ratio, the body is proportionally wider; using it for
+           the body made the whole phone read subtly wrong. */
+        .phone3d{position:relative;width:100%;aspect-ratio:70.6/146.6;transform-style:preserve-3d;transform:rotateY(-22deg) rotateX(3deg) rotateZ(-1deg)}
         /* cast shadow — a flat (unrotated) blurred ellipse sitting on the "ground",
            sibling of .phone3d rather than a child of it, since .phone3d carries the
            3D tilt and a shadow rotating WITH the phone would look wrong; this one
            stays flat like a real product-photography floor shadow. */
         .phone3d-cast{position:absolute;left:6%;right:10%;bottom:-7%;height:16%;background:radial-gradient(50% 100% at 50% 50%,rgba(8,12,22,.4),rgba(8,12,22,0) 70%);filter:blur(5px);pointer-events:none}
-        .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(152deg,#f8f5ef 0%,#ded9cd 20%,#aaa497 42%,#847e70 56%,#8f897b 64%,#cdc8bb 84%,#f4f1e9 100%);box-shadow:0 40px 64px -20px rgba(15,27,48,.45),0 14px 26px -12px rgba(15,27,48,.35),inset 0 0 0 1px hsla(45,30%,96%,.6),inset 1px 0 0 hsla(45,30%,96%,.55),inset -1px 0 0 rgba(0,0,0,.14);padding:7px}
-        /* extruded side face — a real box-side built with rotateY+translateZ (not just a
-           flat rotated rectangle), so the phone reads as an object with actual depth
-           instead of a photo-thin card floating in 3D space. */
-        .phone3d-edge{position:absolute;top:3%;bottom:3%;width:24px;left:100%;transform-origin:left center;transform:rotateY(90deg);border-radius:0 6px 6px 0;background:linear-gradient(90deg,#726c5e 0%,#cec8b9 30%,#f4f1e9 48%,#a49e8f 62%,#5c5748 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
-        .phone3d-screen{position:relative;width:100%;height:100%;border-radius:16px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
-        .phone3d-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
+        /* front = black glass, screen nearly edge-to-edge, with only a THIN titanium
+           rim (the 2px ring). The previous 7px warm-metal front frame merged with the
+           side slab into one fat beige plank — real phones show metal on the outline
+           and side band only, never as a wide front bezel. */
+        .phone3d-bezel{position:absolute;inset:0;border-radius:24px;background:#0b0c10;box-shadow:0 40px 64px -20px rgba(15,27,48,.45),0 14px 26px -12px rgba(15,27,48,.35),inset 0 0 0 2px #c9c3b4,inset 0 0 0 3px rgba(0,0,0,.55);padding:6px}
+        /* extruded side band — the box side extends BACKWARD from the front plane via
+           rotateY(90deg) about its left edge. Width 19px = real thickness ratio
+           (8.25mm side on a 70.6mm-wide body ≈ 11.7% of the 162px body). Front corners
+           stay square so it joins the front face seamlessly; back corners rounded to
+           suggest the body's curvature. Gradient runs front(light)→back(dark). */
+        .phone3d-edge{position:absolute;top:10px;bottom:10px;width:19px;left:100%;transform-origin:left center;transform:rotateY(90deg);border-radius:0 9px 9px 0;background:linear-gradient(90deg,#dcd6c7 0%,#c2bcae 26%,#a19b8c 55%,#767061 100%);box-shadow:inset 0 1px 0 hsla(0,0%,100%,.35),inset 0 -1px 0 rgba(0,0,0,.2)}
+        .phone3d-screen{position:relative;width:100%;height:100%;border-radius:19px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 1px rgba(0,0,0,.6)}
+        .phone3d-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
         .phone3d-lens{position:absolute;top:50%;right:14%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#3a5a8a,#0d1420 62%,#000 100%);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
         .phone3d-slide{position:absolute;inset:0;transform:translateY(100%);transition:transform .7s cubic-bezier(.65,0,.35,1)}
         .phone3d-slide.is-active{transform:translateY(0);z-index:2}
@@ -181,7 +190,7 @@
         .p3d-uname{font-size:6.3px;font-weight:700;color:#fff;display:flex;align-items:center;gap:2px;text-shadow:0 1px 2px rgba(0,0,0,.55)}
         .p3d-follow{font-size:5.5px;font-weight:700;color:#fff;border:.7px solid hsla(0,0%,100%,.85);border-radius:4px;padding:1px 4px;margin-left:1px;background:hsla(0,0%,100%,.08);flex-shrink:0}
         .p3d-caption{font-size:5.5px;line-height:1.35;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55)}
-        .phone3d-btn{position:absolute;background:linear-gradient(90deg,#93979f,#c9ccd2);border-radius:2px 0 0 2px}
+        .phone3d-btn{position:absolute;background:linear-gradient(90deg,#a19b8c,#d6d0c1);border-radius:2px 0 0 2px}
         .phone3d-btn.right{border-radius:0 2px 2px 0}
         @media(prefers-reduced-motion:reduce){.phone3d-slide{transition:none}}
         @media(min-width:1024px){

@@ -125,7 +125,28 @@
            per breakpoint that can re-wrap into 3-4 lines when the column narrows. */
         .hero-v2-left{container-type:inline-size}
         h1.hero-v2-h1{font-size:clamp(26px,8cqi,58px);line-height:1.18;letter-spacing:-0.005em;font-weight:500;white-space:nowrap}
-        .hero-v2-phone-slot{margin:2rem 0;min-height:220px;border:1px dashed rgba(45,77,177,.35);border-radius:1rem;display:flex;align-items:center;justify-content:center;color:#8593AD;font-size:12px;font-family:'Inter','Kanit',sans-serif}
+        /* PHONE 3D REEL — fully coded mockup (no stock photo), same "no photo asset"
+           pattern as .dash-wrap on the right. The whole phone (bezel+screen+video) is
+           one flat DOM tree rotated ONCE via rotateY/X on .phone3d — every child inherits
+           that rotation for free because they share its 3D containing block, so the
+           video plane simply appears embedded in the tilted screen with no per-element
+           warping/matrix3d math needed. */
+        .phone3d-wrap{margin:2.25rem 0;display:flex;perspective:1400px}
+        .phone3d{position:relative;width:clamp(160px,36cqi,224px);aspect-ratio:9/19.5;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg) rotateZ(-1.5deg);flex-shrink:0}
+        .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(155deg,#f2f3f5 0%,#c9ccd2 35%,#888c95 70%,#c9ccd2 100%);box-shadow:0 34px 54px -18px rgba(15,27,48,.4),0 10px 22px -10px rgba(15,27,48,.3),inset 0 0 0 1px rgba(255,255,255,.5);padding:7px}
+        .phone3d-screen{position:relative;width:100%;height:100%;border-radius:16px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
+        .phone3d-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
+        .phone3d-slide{position:absolute;inset:0;transform:translateY(100%);transition:transform .7s cubic-bezier(.65,0,.35,1)}
+        .phone3d-slide.is-active{transform:translateY(0);z-index:2}
+        .phone3d-slide.is-prev{transform:translateY(-100%)}
+        .phone3d-slide video,.phone3d-slide img{width:100%;height:100%;object-fit:cover;display:block;background:#111}
+        .phone3d-gloss{position:absolute;inset:0;background:linear-gradient(115deg,hsla(0,0%,100%,.18) 0%,hsla(0,0%,100%,0) 24%,hsla(0,0%,100%,0) 76%,hsla(0,0%,100%,.08) 100%);pointer-events:none;z-index:9}
+        .phone3d-tag{position:absolute;left:10px;bottom:10px;z-index:9;display:flex;align-items:center;gap:5px;padding:4px 10px 4px 7px;border-radius:999px;background:rgba(8,10,16,.68);box-shadow:0 0 0 1px hsla(0,0%,100%,.14),0 4px 12px -4px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:9.5px;font-weight:600;font-family:'Inter','Kanit',sans-serif;text-decoration:none;letter-spacing:.01em;opacity:1;transition:opacity .25s}
+        .phone3d-tag.is-dim{opacity:0}
+        .phone3d-tag-dot{width:5px;height:5px;border-radius:50%;background:#4ADE80;flex-shrink:0}
+        .phone3d-btn{position:absolute;background:linear-gradient(90deg,#93979f,#c9ccd2);border-radius:2px 0 0 2px}
+        .phone3d-btn.right{border-radius:0 2px 2px 0}
+        @media(prefers-reduced-motion:reduce){.phone3d-slide{transition:none}}
         @media(min-width:1024px){
             .hero-v2-wrap{padding-top:6rem}
             .hero-v2-grid{grid-template-columns:1fr 1fr;gap:4rem;padding:6rem 2.5rem}
@@ -214,8 +235,63 @@
                 </h1>
                 <p class="mt-8 text-lg text-ink-600 body-th max-w-xl">เราเชี่ยวชาญด้านการตลาดสำหรับธุรกิจการแพทย์และคลินิกโดยเฉพาะ ช่วยให้แบรนด์ของคุณบรรลุเป้าหมายได้อย่างมีประสิทธิภาพ ด้วยบริการแบบครบวงจร</p>
 
-                <!-- reserved slot for a phone mockup image (coming later) -->
-                <div class="hero-v2-phone-slot">รูปมือถือ (จะใส่ทีหลัง)</div>
+                <!-- PHONE 3D REEL — coded mockup (no stock photo), auto-cycling real client
+                     clips from the /work case-study pages, 2 clips x 6 brands. -->
+                <div class="phone3d-wrap">
+                    <div class="phone3d">
+                        <span class="phone3d-btn" style="left:-2px;top:19%;width:2px;height:6%"></span>
+                        <span class="phone3d-btn" style="left:-2px;top:28%;width:2px;height:9%"></span>
+                        <span class="phone3d-btn" style="left:-2px;top:39%;width:2px;height:9%"></span>
+                        <span class="phone3d-btn right" style="right:-2px;top:24%;width:2px;height:11%"></span>
+                        <div class="phone3d-bezel">
+                            <div class="phone3d-screen">
+                                <div class="phone3d-notch"></div>
+                                <div class="phone3d-track" id="p3dTrack">
+                                    <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-asmr-testimonial.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-dr-on-trends.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-1.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-1.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-2.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-2.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-1.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-1.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-2.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-2.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-1.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-1.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-2.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-2.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-1.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-1.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-2.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-2.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-1.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-1.jpg"></video>
+                                    </div>
+                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-2.mp4">
+                                        <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-2.jpg"></video>
+                                    </div>
+                                </div>
+                                <div class="phone3d-gloss"></div>
+                                <a class="phone3d-tag" id="p3dTag" href="/work/varinpat">
+                                    <span class="phone3d-tag-dot"></span><span id="p3dTagName">Varinpat</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="mt-9 flex flex-wrap gap-3">
                     <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" data-cta="line-hero" class="pill-btn-th pill-cobalt">ขอแผนการตลาดคลินิก ฟรี
@@ -525,6 +601,60 @@
         }
         renderCalendar();
         setInterval(renderCalendar, 60000); // catches the midnight rollover for pages left open
+    })();
+    </script>
+
+    <script>
+    (function(){
+        var track = document.getElementById('p3dTrack');
+        if (!track) return;
+        var slides = Array.prototype.slice.call(track.querySelectorAll('.phone3d-slide'));
+        var tag = document.getElementById('p3dTag');
+        var tagName = document.getElementById('p3dTagName');
+        var cur = 0;
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function loadSlide(i){
+            var slide = slides[i];
+            var video = slide.querySelector('video');
+            if (video && !video.src) {
+                video.src = slide.getAttribute('data-src');
+                video.load();
+            }
+            return video;
+        }
+        function playSlide(i){
+            var video = loadSlide(i);
+            if (video) video.play().catch(function(){});
+        }
+        function pauseSlide(i){
+            var video = slides[i].querySelector('video');
+            if (video && video.src) video.pause();
+        }
+        function setTag(i){
+            tag.href = slides[i].getAttribute('data-href');
+            tagName.textContent = slides[i].getAttribute('data-name');
+        }
+        function goTo(next){
+            slides[cur].classList.remove('is-active');
+            slides[cur].classList.add('is-prev');
+            pauseSlide(cur);
+            loadSlide((next + 1) % slides.length); // preload the one after next
+            slides[next].classList.remove('is-prev');
+            slides[next].classList.add('is-active');
+            playSlide(next);
+            tag.classList.add('is-dim');
+            setTimeout(function(){ setTag(next); tag.classList.remove('is-dim'); }, 260);
+            cur = next;
+        }
+
+        playSlide(0);
+        setTag(0);
+        loadSlide(1);
+
+        if (!reduced) {
+            setInterval(function(){ goTo((cur + 1) % slides.length); }, 4200);
+        }
     })();
     </script>
 

@@ -130,7 +130,7 @@
            one flat DOM tree rotated ONCE via rotateY/X on .phone3d — every child inherits
            that rotation for free because they share its 3D containing block, so the
            video plane simply appears embedded in the tilted screen with no per-element
-           warping/matrix3d math needed. Lives centered inside .dash-inner's 560x407.3
+           warping/matrix3d math needed. Lives centered inside .dash-inner's 560x490
            reference frame (fixed px, not cqi) so it scales as ONE unit with every other
            card via .dash-inner's single transform — sizing it in cqi here would double-
            scale it (once via cqi, once via the ancestor transform). It's placed FIRST
@@ -195,19 +195,24 @@
         @media(prefers-reduced-motion:reduce){.phone3d-slide{transition:none}}
         @media(min-width:1024px){
             .hero-v2-wrap{padding-top:6rem}
-            .hero-v2-grid{grid-template-columns:1fr 1fr;gap:4rem;padding:6rem 2.5rem}
+            /* align-items:start (not center): the graphic column is much taller than the
+               text, and centering left the headline hanging low with dead space above.
+               The small padding-top optically levels the eyebrow with the graphic's top
+               card row. */
+            .hero-v2-grid{grid-template-columns:1fr 1fr;gap:4rem;padding:4rem 2.5rem 5rem;align-items:start}
+            .hero-v2-left{padding-top:2.5rem}
             .hero-v2-glow{inset:-2.5rem}
         }
         /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset
-           .dash-inner is laid out at a fixed 560x407.3px reference size, then uniformly
+           .dash-inner is laid out at a fixed 560x490px reference size, then uniformly
            scaled to fill .dash-wrap via container-query transform. This keeps every card's
            internal proportions (fonts, padding, chart sizes) identical at every viewport —
            tuned to fit once at the reference size, they can't re-overflow when the graphic
            shrinks, since a uniform scale can't change relative proportions. */
         /* overflow intentionally visible (not hidden): the enlarged phone3d and the
            bubbles are sized/positioned to deliberately extend past this box's edges. */
-        .dash-wrap{position:relative;width:100%;aspect-ratio:560/670;container-type:inline-size}
-        .dash-inner{position:absolute;inset:0;width:560px;height:670px;transform:scale(calc(100cqi / 560px));transform-origin:top left}
+        .dash-wrap{position:relative;width:100%;aspect-ratio:560/490;container-type:inline-size}
+        .dash-inner{position:absolute;inset:0;width:560px;height:490px;transform:scale(calc(100cqi / 560px));transform-origin:top left}
         .dash-wrap *{box-sizing:border-box}
         .dash-side{display:none}
 
@@ -442,7 +447,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side dash-float dash-float-2" style="left:381px;top:224px;width:134px;height:118px">
+                    <div class="dash-card dash-side dash-float dash-float-2" style="left:374px;top:184px;width:134px;height:118px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -464,7 +469,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card dash-side dash-float dash-float-3" style="left:73px;top:244px;width:134px;height:118px">
+                    <div class="dash-card dash-side dash-float dash-float-3" style="left:83px;top:180px;width:134px;height:118px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -486,7 +491,7 @@
                     </div>
 
                     <!-- Card 5: Google Ads Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-7" style="left:20px;top:382px;width:168px;height:132px">
+                    <div class="dash-card dash-side dash-float dash-float-7" style="left:56px;top:342px;width:168px;height:132px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Google Ads Performance</span>
                             <span class="dash-icons">
@@ -518,7 +523,7 @@
                     </div>
 
                     <!-- Card 6: Google Reviews -->
-                    <div class="dash-card dash-side dash-float dash-float-8" style="left:376px;top:362px;width:164px;height:128px">
+                    <div class="dash-card dash-side dash-float dash-float-8" style="left:368px;top:346px;width:164px;height:128px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Google Reviews</span>
                             <span class="dash-icons">
@@ -534,7 +539,7 @@
                     </div>
 
                     <!-- Card 4: live calendar (today's date) + booking detail -->
-                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-22px;top:8px;width:280px;height:122px">
+                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-22px;top:14px;width:280px;height:122px">
                         <div class="dash-cal-wrap">
                             <div class="dash-cal">
                                 <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>

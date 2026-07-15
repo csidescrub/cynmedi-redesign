@@ -247,7 +247,9 @@
         }
 
         /* right-side dashboard cards */
-        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:8px 1.1cqw;overflow:hidden;container-type:inline-size;line-height:1.15}
+        /* card sizes below are grown to match this padding — the interior content area
+           stays the same, so the padding change can't re-clip the tuned card layouts. */
+        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:13px 15px;overflow:hidden;container-type:inline-size;line-height:1.15}
         .dash-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
         .dash-card-title{font-size:11px;font-weight:600;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
         .dash-icons{display:flex;gap:4px}
@@ -414,7 +416,7 @@
                     </div>
 
                     <!-- Card 1: Social Media Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-1" style="left:358px;top:0px;width:280px;height:147px">
+                    <div class="dash-card dash-side dash-float dash-float-1" style="left:358px;top:0px;width:302px;height:159px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Social Media Performance</span>
                             <span class="dash-icons">
@@ -447,7 +449,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side dash-float dash-float-2" style="left:374px;top:184px;width:134px;height:118px">
+                    <div class="dash-card dash-side dash-float dash-float-2" style="left:374px;top:184px;width:156px;height:130px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -469,7 +471,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card dash-side dash-float dash-float-3" style="left:83px;top:180px;width:134px;height:118px">
+                    <div class="dash-card dash-side dash-float dash-float-3" style="left:65px;top:180px;width:156px;height:130px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -491,7 +493,7 @@
                     </div>
 
                     <!-- Card 5: Google Ads Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-7" style="left:56px;top:342px;width:168px;height:132px">
+                    <div class="dash-card dash-side dash-float dash-float-7" style="left:38px;top:342px;width:190px;height:144px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Google Ads Performance</span>
                             <span class="dash-icons">
@@ -523,7 +525,7 @@
                     </div>
 
                     <!-- Card 6: Google Reviews -->
-                    <div class="dash-card dash-side dash-float dash-float-8" style="left:368px;top:346px;width:164px;height:128px">
+                    <div class="dash-card dash-side dash-float dash-float-8" style="left:368px;top:346px;width:186px;height:140px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Google Reviews</span>
                             <span class="dash-icons">
@@ -539,7 +541,7 @@
                     </div>
 
                     <!-- Card 4: live calendar (today's date) + booking detail -->
-                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-22px;top:14px;width:280px;height:122px">
+                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-39px;top:14px;width:302px;height:134px">
                         <div class="dash-cal-wrap">
                             <div class="dash-cal">
                                 <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>

@@ -140,7 +140,12 @@
         @keyframes floatPhone{0%,100%{transform:translate(-50%,-50%) scale(1.5) translateY(0)}50%{transform:translate(-50%,-50%) scale(1.5) translateY(-9px)}}
         @media(prefers-reduced-motion:reduce){.phone3d-wrap{animation:none}}
         .phone3d{position:relative;width:100%;aspect-ratio:9/19.5;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg) rotateZ(-1.5deg)}
-        .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(155deg,#f2f3f5 0%,#c9ccd2 35%,#888c95 70%,#c9ccd2 100%);box-shadow:0 34px 54px -18px rgba(15,27,48,.4),0 10px 22px -10px rgba(15,27,48,.3),inset 0 0 0 1px rgba(255,255,255,.5);padding:7px}
+        /* cast shadow — a flat (unrotated) blurred ellipse sitting on the "ground",
+           sibling of .phone3d rather than a child of it, since .phone3d carries the
+           3D tilt and a shadow rotating WITH the phone would look wrong; this one
+           stays flat like a real product-photography floor shadow. */
+        .phone3d-cast{position:absolute;left:6%;right:10%;bottom:-7%;height:16%;background:radial-gradient(50% 100% at 50% 50%,rgba(8,12,22,.4),rgba(8,12,22,0) 70%);filter:blur(5px);pointer-events:none}
+        .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(150deg,#fafbfc 0%,#e2e4e8 22%,#aeb2ba 48%,#7d818a 62%,#c4c7cd 82%,#eef0f2 100%);box-shadow:0 40px 64px -20px rgba(15,27,48,.45),0 14px 26px -12px rgba(15,27,48,.35),inset 0 0 0 1px hsla(0,0%,100%,.55),inset 1px 0 0 hsla(0,0%,100%,.5),inset -1px 0 0 rgba(0,0,0,.12);padding:7px}
         .phone3d-screen{position:relative;width:100%;height:100%;border-radius:16px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
         .phone3d-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
         .phone3d-slide{position:absolute;inset:0;transform:translateY(100%);transition:transform .7s cubic-bezier(.65,0,.35,1)}
@@ -152,22 +157,25 @@
            text/counts/avatar on every transition so we don't duplicate this markup 12x. */
         .p3d-ui{position:absolute;inset:0;z-index:9;transition:opacity .25s}
         .p3d-ui.is-dim{opacity:0}
-        .p3d-rail{position:absolute;right:7px;bottom:58px;display:flex;flex-direction:column;align-items:center;gap:12px}
-        .p3d-rail-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;font-size:8.5px;font-weight:600;font-family:'Inter','Kanit',sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.55)}
-        .p3d-rail-item svg{width:17px;height:17px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
-        .p3d-rail-disc{width:19px;height:19px;border-radius:50%;background:linear-gradient(155deg,#3a3d44,#101216);border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;margin-top:2px}
-        .p3d-rail-disc svg{width:9px;height:9px}
-        .p3d-bottom{position:absolute;left:9px;right:38px;bottom:10px}
-        .p3d-creator{display:flex;align-items:center;gap:5px;margin-bottom:4px;text-decoration:none}
-        .p3d-avatar{width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;background:#fff;border:1.3px solid hsla(0,0%,100%,.85);flex-shrink:0;font-family:'Inter','Kanit',sans-serif;overflow:hidden}
-        .p3d-avatar img{width:100%;height:100%;object-fit:contain;padding:3px;box-sizing:border-box}
+        /* Reels chrome sized at ~0.6x its original size — matches the actual icon/
+           avatar/button-to-screen-width ratio of a real Instagram/TikTok Reels UI
+           (was ~12-14% of screen width, real apps run ~7-9%). */
+        .p3d-rail{position:absolute;right:4px;bottom:35px;display:flex;flex-direction:column;align-items:center;gap:7px}
+        .p3d-rail-item{display:flex;flex-direction:column;align-items:center;gap:1px;color:#fff;font-size:5.5px;font-weight:600;font-family:'Inter','Kanit',sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+        .p3d-rail-item svg{width:10px;height:10px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.5))}
+        .p3d-rail-disc{width:11px;height:11px;border-radius:50%;background:linear-gradient(155deg,#3a3d44,#101216);border:1px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;margin-top:1px}
+        .p3d-rail-disc svg{width:5px;height:5px}
+        .p3d-bottom{position:absolute;left:5px;right:23px;bottom:6px}
+        .p3d-creator{display:flex;align-items:center;gap:3px;margin-bottom:2px;text-decoration:none}
+        .p3d-avatar{width:13px;height:13px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:5.5px;font-weight:700;background:#fff;border:.8px solid hsla(0,0%,100%,.85);flex-shrink:0;font-family:'Inter','Kanit',sans-serif;overflow:hidden}
+        .p3d-avatar img{width:100%;height:100%;object-fit:contain;padding:1.5px;box-sizing:border-box}
         .p3d-avatar-fallback{display:none}
         .p3d-avatar.is-fallback{color:#1F2D44;background:#EEF1F6}
         .p3d-avatar.is-fallback img{display:none}
         .p3d-avatar.is-fallback .p3d-avatar-fallback{display:block}
-        .p3d-uname{font-size:10.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:3px;text-shadow:0 1px 2px rgba(0,0,0,.55)}
-        .p3d-follow{font-size:8.5px;font-weight:700;color:#fff;border:1px solid hsla(0,0%,100%,.85);border-radius:6px;padding:2px 7px;margin-left:2px;background:hsla(0,0%,100%,.08);flex-shrink:0}
-        .p3d-caption{font-size:9px;line-height:1.35;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+        .p3d-uname{font-size:6.3px;font-weight:700;color:#fff;display:flex;align-items:center;gap:2px;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+        .p3d-follow{font-size:5.5px;font-weight:700;color:#fff;border:.7px solid hsla(0,0%,100%,.85);border-radius:4px;padding:1px 4px;margin-left:1px;background:hsla(0,0%,100%,.08);flex-shrink:0}
+        .p3d-caption{font-size:5.5px;line-height:1.35;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55)}
         .phone3d-btn{position:absolute;background:linear-gradient(90deg,#93979f,#c9ccd2);border-radius:2px 0 0 2px}
         .phone3d-btn.right{border-radius:0 2px 2px 0}
         @media(prefers-reduced-motion:reduce){.phone3d-slide{transition:none}}
@@ -237,14 +245,14 @@
         .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
 
         /* calendar/booking-detail card */
-        .dash-cal-wrap{display:flex;gap:6%;height:100%}
+        .dash-cal-wrap{display:flex;gap:8%;height:100%}
         .dash-cal{flex:1.05;min-width:0}
         .dash-cal-hd{display:flex;align-items:center;justify-content:space-between;font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:5%;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
-        .dash-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:7px;text-align:center;color:#7F8DA8;font-family:'Inter',sans-serif}
-        .dash-cal-grid span{padding:1.5px 0}
+        .dash-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:6.5px;text-align:center;color:#7F8DA8;font-family:'Inter',sans-serif}
+        .dash-cal-grid span{padding:1.2px 0}
         .dash-cal-grid .sel{background:#2C4CAA;color:#fff;border-radius:50%;font-weight:700}
         .dash-cal-detail{flex:1;min-width:0;border-left:1px solid #EEF1F6;padding-left:6%;display:flex;flex-direction:column;justify-content:space-between}
-        .dash-cal-date{font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
+        .dash-cal-date{font-size:8.6px;font-weight:600;color:#0F1B30;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15;white-space:nowrap}
         .dash-cal-time{display:inline-block;background:#EAF0FE;color:#2C4CAA;font-size:8.5px;font-weight:600;border-radius:6px;padding:1.5px 6px;margin-bottom:3px;line-height:1.15}
         .dash-cal-label{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
         .dash-cal-val{font-size:9px;color:#0F1B30;font-weight:500;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
@@ -298,6 +306,7 @@
                          clips from the /work case-study pages, 2 clips x 6 brands. Centered
                          behind the notification/stat cards so they crop into its edges. -->
                     <div class="phone3d-wrap dash-side">
+                        <div class="phone3d-cast"></div>
                         <div class="phone3d">
                             <span class="phone3d-btn" style="left:-2px;top:19%;width:2px;height:6%"></span>
                             <span class="phone3d-btn" style="left:-2px;top:28%;width:2px;height:9%"></span>
@@ -368,7 +377,7 @@
                                                 <span class="p3d-avatar" id="p3dAvatar"><img id="p3dAvatarImg" src="/assets/logos/varinpat.webp" alt=""><span class="p3d-avatar-fallback" id="p3dAvatarFallback"></span></span>
                                                 <span class="p3d-uname">
                                                     <span id="p3dName">Varinpat</span>
-                                                    <svg class="p3d-verified" width="11" height="11" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.6 2.3.4 2.7-2.7.4-1.6 2.3-2.5-.9-2.5.9-1.6-2.3-2.7-.4.4-2.7-1.6-2.3 1.3-2.4-.4-2.7 1.3-2.4L9.3 2.9z"/><path d="M9 12.5l2 2 4-4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                    <svg class="p3d-verified" width="7" height="7" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.6 2.3.4 2.7-2.7.4-1.6 2.3-2.5-.9-2.5.9-1.6-2.3-2.7-.4.4-2.7-1.6-2.3 1.3-2.4-.4-2.7 1.3-2.4L9.3 2.9z"/><path d="M9 12.5l2 2 4-4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
                                                 </span>
                                                 <span class="p3d-follow">Follow</span>
                                             </a>
@@ -414,7 +423,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side dash-float dash-float-2" style="left:73%;top:55%;width:24%;height:29%">
+                    <div class="dash-card dash-side dash-float dash-float-2" style="left:68%;top:55%;width:24%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -436,7 +445,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card dash-side dash-float dash-float-3" style="left:3%;top:60%;width:24%;height:29%">
+                    <div class="dash-card dash-side dash-float dash-float-3" style="left:13%;top:60%;width:24%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -467,7 +476,7 @@
                                 </div>
                             </div>
                             <div class="dash-cal-detail">
-                                <div class="dash-cal-date" id="dashCalDate">Monday, 27 May 2024</div>
+                                <div class="dash-cal-date" id="dashCalDate">Mon, 27 May 2024</div>
                                 <span class="dash-cal-time" id="dashCalTime">2:00 PM – 3:00 PM</span>
                                 <div class="dash-cal-label">Treatment</div>
                                 <div class="dash-cal-val">Skin Booster</div>
@@ -606,7 +615,7 @@
 
             var y = now.getFullYear(), m = now.getMonth(), today = now.getDate();
             $('dashCalMonth').textContent = MONTHS[m] + ' ' + y;
-            $('dashCalDate').textContent = WEEKDAYS[now.getDay()] + ', ' + today + ' ' + MONTHS[m] + ' ' + y;
+            $('dashCalDate').textContent = WEEKDAYS[now.getDay()].slice(0,3) + ', ' + today + ' ' + MONTHS[m].slice(0,3) + ' ' + y;
             if ($('dashApptDate')) $('dashApptDate').innerHTML = WEEKDAYS[now.getDay()].slice(0,3) + ', ' + today + ' ' + MONTHS[m].slice(0,3) + ' ' + y + '<br/>2:00 PM';
 
             var firstDow = new Date(y, m, 1).getDay();

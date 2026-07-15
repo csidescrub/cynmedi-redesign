@@ -423,23 +423,18 @@
                         </svg>
                     </div>
 
-                    <!-- Card 4: May 2024 calendar + booking detail -->
+                    <!-- Card 4: live calendar (today's date) + booking detail -->
                     <div class="dash-card dash-side" style="left:58%;top:71%;width:42%;height:27%">
                         <div class="dash-cal-wrap">
                             <div class="dash-cal">
-                                <div class="dash-cal-hd"><span>May 2024</span><span>›</span></div>
-                                <div class="dash-cal-grid">
+                                <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>
+                                <div class="dash-cal-grid" id="dashCalGrid">
                                     <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
-                                    <span></span><span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span>
-                                    <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
-                                    <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
-                                    <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
-                                    <span>26</span><span class="sel">27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span>
                                 </div>
                             </div>
                             <div class="dash-cal-detail">
-                                <div class="dash-cal-date">Monday, 27 May 2024</div>
-                                <span class="dash-cal-time">2:00 PM – 3:00 PM</span>
+                                <div class="dash-cal-date" id="dashCalDate">Monday, 27 May 2024</div>
+                                <span class="dash-cal-time" id="dashCalTime">2:00 PM – 3:00 PM</span>
                                 <div class="dash-cal-label">Treatment</div>
                                 <div class="dash-cal-val">Skin Booster</div>
                                 <div class="dash-cal-label">Location</div>
@@ -564,6 +559,38 @@
         setInterval(tickCard2, 3100);
         setInterval(tickCard3, 3600);
         setInterval(tickPhone, 2900);
+
+        // ---- Card 4: calendar — always shows today's real date ----
+        var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+        var WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+        var renderedDay = null;
+        function renderCalendar(){
+            var now = new Date();
+            if (renderedDay === now.getDate()) return;
+            renderedDay = now.getDate();
+
+            var y = now.getFullYear(), m = now.getMonth(), today = now.getDate();
+            $('dashCalMonth').textContent = MONTHS[m] + ' ' + y;
+            $('dashCalDate').textContent = WEEKDAYS[now.getDay()] + ', ' + today + ' ' + MONTHS[m] + ' ' + y;
+
+            var firstDow = new Date(y, m, 1).getDay();
+            var daysInMonth = new Date(y, m + 1, 0).getDate();
+            var grid = $('dashCalGrid');
+            grid.querySelectorAll('.cal-cell').forEach(function(c){ c.remove(); });
+            for (var i = 0; i < firstDow; i++){
+                var blank = document.createElement('span');
+                blank.className = 'cal-cell';
+                grid.appendChild(blank);
+            }
+            for (var d = 1; d <= daysInMonth; d++){
+                var cell = document.createElement('span');
+                cell.className = 'cal-cell' + (d === today ? ' sel' : '');
+                cell.textContent = d;
+                grid.appendChild(cell);
+            }
+        }
+        renderCalendar();
+        setInterval(renderCalendar, 60000); // catches the midnight rollover for pages left open
     })();
     </script>
 

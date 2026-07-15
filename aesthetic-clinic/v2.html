@@ -128,40 +128,10 @@
             .hero-v2-h1{font-size:46px}
         }
         /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset */
-        .dash-wrap{position:relative;width:100%;aspect-ratio:21/19}
+        .dash-wrap{position:relative;width:100%;aspect-ratio:11/8}
         .dash-wrap *{box-sizing:border-box}
         .dash-side{display:none}
 
-        /* phone mockup */
-        .dph{position:absolute;left:31%;top:4%;width:27%;height:82%;background:#0F1B30;border-radius:15px;padding:3%;box-shadow:0 30px 60px -20px rgba(15,27,48,.35);container-type:inline-size}
-        .dph-screen{position:relative;width:100%;height:100%;background:#fff;border-radius:11px;overflow:hidden;display:flex;flex-direction:column}
-        .dph-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:32cqw;height:4.5cqw;background:#0F1B30;border-radius:0 0 3cqw 3cqw;z-index:3}
-        .dph-status{display:flex;align-items:center;justify-content:space-between;padding:2.8cqw 4.5cqw .5cqw;font-size:3.4cqw;font-weight:600;color:#0F1B30;font-family:'Inter',sans-serif}
-        .dph-head{display:flex;align-items:center;justify-content:space-between;padding:2cqw 3.5cqw;font-size:3.3cqw;font-weight:600;color:#0F1B30;font-family:'Inter',sans-serif}
-        .dph-head svg{width:3.6cqw;height:3.6cqw;flex-shrink:0}
-        .dph-handle{display:flex;align-items:center;gap:1cqw}
-        .dph-profile{display:flex;align-items:center;gap:3cqw;padding:0 4cqw 2.2cqw}
-        .dph-avatar{width:15cqw;height:15cqw;border-radius:50%;background:conic-gradient(from 180deg,#F5D6BA,#E48B8B,#8E9CF0,#2C4CAA,#F5D6BA);padding:1.1cqw;flex-shrink:0}
-        .dph-avatar-in{width:100%;height:100%;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#2C4CAA;font-size:6cqw}
-        .dph-stats{display:flex;gap:4.5cqw}
-        .dph-stat{text-align:center}
-        .dph-stat-num{font-size:3.6cqw;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;transition:color .4s}
-        .dph-stat-lbl{font-size:2.5cqw;color:#7F8DA8}
-        .dph-bio{padding:0 4cqw 2.4cqw;font-size:2.9cqw;line-height:1.45;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
-        .dph-bio b{display:block;font-weight:700;font-size:3.1cqw}
-        .dph-btns{display:flex;gap:1.6cqw;padding:0 4cqw 2.4cqw}
-        .dph-btn{flex:1;text-align:center;font-size:2.7cqw;font-weight:600;padding:1.7cqw 0;border-radius:6cqw;font-family:'Inter','Kanit',sans-serif}
-        .dph-btn.f{background:#2C4CAA;color:#fff}
-        .dph-btn.o{background:#F0F2F7;color:#1F2D44}
-        .dph-tabs{display:flex;justify-content:space-around;padding:0 2cqw 2cqw;border-bottom:1px solid #EEF1F6}
-        .dph-tab{display:flex;flex-direction:column;align-items:center;gap:.8cqw}
-        .dph-tab-ico{width:7.5cqw;height:7.5cqw;border-radius:50%;background:#EEF1F6}
-        .dph-tab-lbl{font-size:2.2cqw;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
-        .dph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7cqw;padding:.7cqw;flex:1}
-        .dph-tile{position:relative;border-radius:2px}
-        .dph-tile-play{position:absolute;left:3.5cqw;bottom:2.5cqw;color:#fff;font-size:2.3cqw;font-weight:600;display:flex;align-items:center;gap:.6cqw;text-shadow:0 1px 3px rgba(0,0,0,.55)}
-        .dph-navbar{display:flex;justify-content:space-around;align-items:center;padding:2cqw 0;border-top:1px solid #EEF1F6}
-        .dph-navbar svg{width:4.2cqw;height:4.2cqw;color:#0F1B30}
 
         /* floating bubbles (left) */
         .dash-bubble{position:absolute;background:#fff;border-radius:999px;box-shadow:0 14px 28px -12px rgba(15,27,48,.20);display:flex;align-items:center;gap:6px;padding:7px 14px;font-size:12px;font-weight:600;color:#0F1B30;font-family:'Inter','Kanit',sans-serif;white-space:nowrap;transition:color .4s}
@@ -244,71 +214,18 @@
                 <div class="hero-v2-glow"></div>
                 <div class="dash-wrap" role="img" aria-label="Mockup ของแดชบอร์ดการตลาด CYN แสดง Reach, Engagement, Lead และ ROAS สำหรับคลินิกความงาม">
 
-                    <!-- phone mockup -->
-                    <div class="dph">
-                        <div class="dph-screen">
-                            <div class="dph-notch"></div>
-                            <div class="dph-status"><span>9:41</span><span>📶 🔋</span></div>
-                            <div class="dph-head">
-                                <span class="dph-handle">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
-                                    aesthetic.clinic
-                                    <svg viewBox="0 0 24 24" fill="#2C4CAA"><path d="M12 2l2.4 1.2 2.6-.6 1.4 2.3 2.3 1.4-.6 2.6L21.3 11l-1.2 2.4.6 2.6-2.3 1.4-1.4 2.3-2.6-.6L12 21.3l-2.4-1.2-2.6.6-1.4-2.3-2.3-1.4.6-2.6L2.7 11l1.2-2.4-.6-2.6 2.3-1.4L6.9 2.3l2.6.6z"/><path d="M8.5 12l2.3 2.3 4.7-4.7" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </span>
-                                <svg viewBox="0 0 24 24" fill="#0F1B30"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
-                            </div>
-                            <div class="dph-profile">
-                                <div class="dph-avatar"><div class="dph-avatar-in">
-                                    <svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#2C4CAA" stroke-width="1.6"><path d="M12 3c-2 3-2 5 0 7 2-2 2-4 0-7z"/><path d="M12 10c-3 1-5 3-5 6 0 2 2 4 5 4s5-2 5-4c0-3-2-5-5-6z"/></svg>
-                                </div></div>
-                                <div class="dph-stats">
-                                    <div class="dph-stat"><div class="dph-stat-num" id="dphPosts">128K</div><div class="dph-stat-lbl">Posts</div></div>
-                                    <div class="dph-stat"><div class="dph-stat-num" id="dphFollowers">128K</div><div class="dph-stat-lbl">Followers</div></div>
-                                    <div class="dph-stat"><div class="dph-stat-num">280</div><div class="dph-stat-lbl">Following</div></div>
-                                </div>
-                            </div>
-                            <div class="dph-bio"><b>Aesthetic Clinic</b>Enhance your natural beauty<br/>Book your appointment today</div>
-                            <div class="dph-btns">
-                                <span class="dph-btn f">Follow</span>
-                                <span class="dph-btn o">Message</span>
-                                <span class="dph-btn o">Contact</span>
-                            </div>
-                            <div class="dph-tabs">
-                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Treatment</span></div>
-                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Reviews</span></div>
-                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Results</span></div>
-                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Q&amp;A</span></div>
-                            </div>
-                            <div class="dph-grid">
-                                <div class="dph-tile" style="background:linear-gradient(135deg,#F3E4D8,#E8C9B4)"><span class="dph-tile-play">▶ 12K</span></div>
-                                <div class="dph-tile" style="background:linear-gradient(135deg,#E9EEFB,#C9D4F2)"><span class="dph-tile-play">▶ 9.2K</span></div>
-                                <div class="dph-tile" style="background:linear-gradient(135deg,#F6E0E4,#EBC1CA)"><span class="dph-tile-play">▶ 7.8K</span></div>
-                                <div class="dph-tile" style="background:linear-gradient(135deg,#EFE7F5,#D9C7EA)"><span class="dph-tile-play">▶ 11K</span></div>
-                                <div class="dph-tile" style="background:linear-gradient(135deg,#E4F0EC,#C3E0D6)"><span class="dph-tile-play">▶ 8.1K</span></div>
-                                <div class="dph-tile" style="background:linear-gradient(135deg,#FBEAD6,#F0CFA0)"><span class="dph-tile-play">▶ 10K</span></div>
-                            </div>
-                            <div class="dph-navbar">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- floating bubbles -->
-                    <div class="dash-bubble dash-side" style="left:2%;top:16%">
+                    <div class="dash-bubble dash-side" style="left:0%;top:2%">
                         <svg viewBox="0 0 24 24" fill="#E11D48"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
                         <span id="dashLikes">2.5K</span>
                     </div>
-                    <div class="dash-bubble dash-side" style="left:-1%;top:25%">
+                    <div class="dash-bubble dash-side" style="left:16%;top:2%">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
                         <span id="dashSearch">320</span>
                     </div>
 
                     <!-- New Inquiry -->
-                    <div class="dash-mini dash-side" style="left:-1%;top:37%;width:27%">
+                    <div class="dash-mini dash-side" style="left:0%;top:14%;width:46%">
                         <div class="dmn-hd">
                             <span class="dmn-ico" style="background:#00B2FF">
                                 <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.47 5.48 3.78 7.17V22l3.45-1.9c.9.25 1.85.38 2.77.38 5.52 0 10-4.13 10-9.28S17.52 2 12 2z"/></svg>
@@ -320,7 +237,7 @@
                     </div>
 
                     <!-- Appointment Confirmed -->
-                    <div class="dash-mini dash-side" style="left:-1%;top:57%;width:25%">
+                    <div class="dash-mini dash-side" style="left:0%;top:38%;width:44%">
                         <div class="dmn-hd">
                             <span class="dmn-ico" style="background:#DCFCE7;color:#16A34A">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>
@@ -335,7 +252,7 @@
                     </div>
 
                     <!-- Booking Confirmed toast -->
-                    <div class="dash-mini dash-side" style="left:21%;top:87%;width:27%">
+                    <div class="dash-mini dash-side" style="left:0%;top:61%;width:46%">
                         <div class="dmn-hd">
                             <span class="dmn-ico" style="background:#DCFCE7;color:#16A34A">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>
@@ -347,7 +264,7 @@
                     </div>
 
                     <!-- Card 1: Social Media Performance -->
-                    <div class="dash-card dash-side" style="left:58%;top:0;width:42%;height:36%">
+                    <div class="dash-card dash-side" style="left:50%;top:0;width:50%;height:36%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Social Media Performance</span>
                             <span class="dash-icons">
@@ -380,7 +297,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side" style="left:58%;top:39%;width:20%;height:29%">
+                    <div class="dash-card dash-side" style="left:50%;top:39%;width:24%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -402,7 +319,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card dash-side" style="left:80%;top:39%;width:20%;height:29%">
+                    <div class="dash-card dash-side" style="left:76%;top:39%;width:24%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -424,7 +341,7 @@
                     </div>
 
                     <!-- Card 4: live calendar (today's date) + booking detail -->
-                    <div class="dash-card dash-side" style="left:58%;top:71%;width:42%;height:27%">
+                    <div class="dash-card dash-side" style="left:50%;top:71%;width:50%;height:27%">
                         <div class="dash-cal-wrap">
                             <div class="dash-cal">
                                 <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>

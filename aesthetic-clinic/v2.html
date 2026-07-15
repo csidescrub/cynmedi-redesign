@@ -141,9 +141,21 @@
         .phone3d-slide.is-prev{transform:translateY(-100%)}
         .phone3d-slide video,.phone3d-slide img{width:100%;height:100%;object-fit:cover;display:block;background:#111}
         .phone3d-gloss{position:absolute;inset:0;background:linear-gradient(115deg,hsla(0,0%,100%,.18) 0%,hsla(0,0%,100%,0) 24%,hsla(0,0%,100%,0) 76%,hsla(0,0%,100%,.08) 100%);pointer-events:none;z-index:9}
-        .phone3d-tag{position:absolute;left:10px;bottom:10px;z-index:9;display:flex;align-items:center;gap:5px;padding:4px 10px 4px 7px;border-radius:999px;background:rgba(8,10,16,.68);box-shadow:0 0 0 1px hsla(0,0%,100%,.14),0 4px 12px -4px rgba(0,0,0,.5);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:9.5px;font-weight:600;font-family:'Inter','Kanit',sans-serif;text-decoration:none;letter-spacing:.01em;opacity:1;transition:opacity .25s}
-        .phone3d-tag.is-dim{opacity:0}
-        .phone3d-tag-dot{width:5px;height:5px;border-radius:50%;background:#4ADE80;flex-shrink:0}
+        /* Reels-style chrome overlay — persistent (not per-slide), JS updates its
+           text/counts/avatar on every transition so we don't duplicate this markup 12x. */
+        .p3d-ui{position:absolute;inset:0;z-index:9;transition:opacity .25s}
+        .p3d-ui.is-dim{opacity:0}
+        .p3d-rail{position:absolute;right:7px;bottom:58px;display:flex;flex-direction:column;align-items:center;gap:12px}
+        .p3d-rail-item{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;font-size:8.5px;font-weight:600;font-family:'Inter','Kanit',sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+        .p3d-rail-item svg{width:17px;height:17px;filter:drop-shadow(0 1px 2px rgba(0,0,0,.5))}
+        .p3d-rail-disc{width:19px;height:19px;border-radius:50%;background:linear-gradient(155deg,#3a3d44,#101216);border:1.5px solid rgba(255,255,255,.75);display:flex;align-items:center;justify-content:center;margin-top:2px}
+        .p3d-rail-disc svg{width:9px;height:9px}
+        .p3d-bottom{position:absolute;left:9px;right:38px;bottom:10px}
+        .p3d-creator{display:flex;align-items:center;gap:5px;margin-bottom:4px;text-decoration:none}
+        .p3d-avatar{width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;border:1.3px solid hsla(0,0%,100%,.85);flex-shrink:0;font-family:'Inter','Kanit',sans-serif}
+        .p3d-uname{font-size:10.5px;font-weight:700;color:#fff;display:flex;align-items:center;gap:3px;text-shadow:0 1px 2px rgba(0,0,0,.55)}
+        .p3d-follow{font-size:8.5px;font-weight:700;color:#fff;border:1px solid hsla(0,0%,100%,.85);border-radius:6px;padding:2px 7px;margin-left:2px;background:hsla(0,0%,100%,.08);flex-shrink:0}
+        .p3d-caption{font-size:9px;line-height:1.35;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.55)}
         .phone3d-btn{position:absolute;background:linear-gradient(90deg,#93979f,#c9ccd2);border-radius:2px 0 0 2px}
         .phone3d-btn.right{border-radius:0 2px 2px 0}
         @media(prefers-reduced-motion:reduce){.phone3d-slide{transition:none}}
@@ -247,47 +259,74 @@
                             <div class="phone3d-screen">
                                 <div class="phone3d-notch"></div>
                                 <div class="phone3d-track" id="p3dTrack">
-                                    <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4">
+                                    <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" data-avatar="V" data-avatar-bg="#2D4DB1" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="1247" data-comments="32" data-shares="318">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-asmr-testimonial.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4">
+                                    <div class="phone3d-slide" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" data-avatar="V" data-avatar-bg="#2D4DB1" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="2103" data-comments="58" data-shares="540">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-dr-on-trends.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-1.mp4">
+                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-1.mp4" data-avatar="F" data-avatar-bg="#2F8F6B" data-caption="ผลลัพธ์ที่มองเห็นได้จริง" data-likes="876" data-comments="21" data-shares="204">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-1.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-2.mp4">
+                                    <div class="phone3d-slide" data-name="Dr. Fern" data-href="/work/dr-fern" data-src="/assets/client/aesthetic/dr-fern/reel-2.mp4" data-avatar="F" data-avatar-bg="#2F8F6B" data-caption="ผลลัพธ์ที่มองเห็นได้จริง" data-likes="1490" data-comments="44" data-shares="389">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-dr-fern-reel-2.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-1.mp4">
+                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-1.mp4" data-avatar="C" data-avatar-bg="#C2427A" data-caption="ดูแลใกล้ชิดทุกเคส 🌸" data-likes="2540" data-comments="91" data-shares="612">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-1.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-2.mp4">
+                                    <div class="phone3d-slide" data-name="Chaba Clinic" data-href="/work/chaba" data-src="/assets/client/aesthetic/chaba/reel-2.mp4" data-avatar="C" data-avatar-bg="#C2427A" data-caption="ดูแลใกล้ชิดทุกเคส 🌸" data-likes="1988" data-comments="67" data-shares="455">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-chaba-reel-2.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-1.mp4">
+                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-1.mp4" data-avatar="K" data-avatar-bg="#2596BE" data-caption="ผิวใส มั่นใจขึ้นทุกวัน" data-likes="1120" data-comments="29" data-shares="276">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-1.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-2.mp4">
+                                    <div class="phone3d-slide" data-name="Klear Clinic" data-href="/work/klear" data-src="/assets/client/aesthetic/klear/reel-2.mp4" data-avatar="K" data-avatar-bg="#2596BE" data-caption="ผิวใส มั่นใจขึ้นทุกวัน" data-likes="1675" data-comments="52" data-shares="401">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-klear-reel-2.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-1.mp4">
+                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-1.mp4" data-avatar="L" data-avatar-bg="#7C5CC4" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="3260" data-comments="104" data-shares="788">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-1.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-2.mp4">
+                                    <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-2.mp4" data-avatar="L" data-avatar-bg="#7C5CC4" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="2287" data-comments="73" data-shares="520">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-2.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-1.mp4">
+                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-1.mp4" data-avatar="J" data-avatar-bg="#D9714E" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="958" data-comments="18" data-shares="165">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-1.jpg"></video>
                                     </div>
-                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-2.mp4">
+                                    <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-2.mp4" data-avatar="J" data-avatar-bg="#D9714E" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="1362" data-comments="37" data-shares="297">
                                         <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-2.jpg"></video>
                                     </div>
                                 </div>
                                 <div class="phone3d-gloss"></div>
-                                <a class="phone3d-tag" id="p3dTag" href="/work/varinpat">
-                                    <span class="phone3d-tag-dot"></span><span id="p3dTagName">Varinpat</span>
-                                </a>
+                                <div class="p3d-ui" id="p3dUi">
+                                    <div class="p3d-rail">
+                                        <span class="p3d-rail-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 20.5s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
+                                            <span id="p3dLikes">1.2K</span>
+                                        </span>
+                                        <span class="p3d-rail-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-8.9 8.4A9 9 0 0 1 8 19l-4.5 1.5L5 16a8.4 8.4 0 0 1-1.4-4.7A8.4 8.4 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+                                            <span id="p3dComments">32</span>
+                                        </span>
+                                        <span class="p3d-rail-item">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><path d="M21 3 3 10.5l7.5 3L14 21l7-18Z"/></svg>
+                                            <span id="p3dShares">318</span>
+                                        </span>
+                                        <span class="p3d-rail-disc">
+                                            <svg viewBox="0 0 24 24" fill="#fff"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                                        </span>
+                                    </div>
+                                    <div class="p3d-bottom">
+                                        <a class="p3d-creator" id="p3dCreator" href="/work/varinpat">
+                                            <span class="p3d-avatar" id="p3dAvatar" style="background:#2D4DB1">V</span>
+                                            <span class="p3d-uname">
+                                                <span id="p3dName">Varinpat</span>
+                                                <svg class="p3d-verified" width="11" height="11" viewBox="0 0 24 24" fill="#4DA6FF"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.6 2.3.4 2.7-2.7.4-1.6 2.3-2.5-.9-2.5.9-1.6-2.3-2.7-.4.4-2.7-1.6-2.3 1.3-2.4-.4-2.7 1.3-2.4L9.3 2.9z"/><path d="M9 12.5l2 2 4-4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                            </span>
+                                            <span class="p3d-follow">Follow</span>
+                                        </a>
+                                        <div class="p3d-caption" id="p3dCaption">ลูกค้าจริง รีวิวจริง ✨</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -609,8 +648,14 @@
         var track = document.getElementById('p3dTrack');
         if (!track) return;
         var slides = Array.prototype.slice.call(track.querySelectorAll('.phone3d-slide'));
-        var tag = document.getElementById('p3dTag');
-        var tagName = document.getElementById('p3dTagName');
+        var ui = document.getElementById('p3dUi');
+        var creator = document.getElementById('p3dCreator');
+        var avatar = document.getElementById('p3dAvatar');
+        var nameEl = document.getElementById('p3dName');
+        var captionEl = document.getElementById('p3dCaption');
+        var likesEl = document.getElementById('p3dLikes');
+        var commentsEl = document.getElementById('p3dComments');
+        var sharesEl = document.getElementById('p3dShares');
         var cur = 0;
         var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -631,9 +676,20 @@
             var video = slides[i].querySelector('video');
             if (video && video.src) video.pause();
         }
-        function setTag(i){
-            tag.href = slides[i].getAttribute('data-href');
-            tagName.textContent = slides[i].getAttribute('data-name');
+        function setMeta(i){
+            var s = slides[i];
+            creator.href = s.getAttribute('data-href');
+            avatar.textContent = s.getAttribute('data-avatar');
+            avatar.style.background = s.getAttribute('data-avatar-bg');
+            nameEl.textContent = s.getAttribute('data-name');
+            captionEl.textContent = s.getAttribute('data-caption');
+            likesEl.textContent = formatCount(s.getAttribute('data-likes'));
+            commentsEl.textContent = s.getAttribute('data-comments');
+            sharesEl.textContent = s.getAttribute('data-shares');
+        }
+        function formatCount(n){
+            n = parseInt(n, 10);
+            return n >= 1000 ? (n / 1000).toFixed(1) + 'K' : String(n);
         }
         function goTo(next){
             slides[cur].classList.remove('is-active');
@@ -643,13 +699,13 @@
             slides[next].classList.remove('is-prev');
             slides[next].classList.add('is-active');
             playSlide(next);
-            tag.classList.add('is-dim');
-            setTimeout(function(){ setTag(next); tag.classList.remove('is-dim'); }, 260);
+            ui.classList.add('is-dim');
+            setTimeout(function(){ setMeta(next); ui.classList.remove('is-dim'); }, 260);
             cur = next;
         }
 
         playSlide(0);
-        setTag(0);
+        setMeta(0);
         loadSlide(1);
 
         if (!reduced) {

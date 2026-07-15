@@ -136,7 +136,7 @@
            scale it (once via cqi, once via the ancestor transform). It's placed FIRST
            among the overlapping elements in DOM order so the notification/stat cards
            (added after it) naturally paint on top where they crop into its edges. */
-        .phone3d-wrap{position:absolute;left:50%;top:50%;width:29%;transform:translate(-50%,-50%) scale(1.5);perspective:1400px;animation:floatPhone 6.8s ease-in-out infinite;animation-delay:-2.6s}
+        .phone3d-wrap{position:absolute;left:280px;top:204px;width:162px;transform:translate(-50%,-50%) scale(1.5);perspective:1400px;animation:floatPhone 6.8s ease-in-out infinite;animation-delay:-2.6s}
         @keyframes floatPhone{0%,100%{transform:translate(-50%,-50%) scale(1.5) translateY(0)}50%{transform:translate(-50%,-50%) scale(1.5) translateY(-9px)}}
         @media(prefers-reduced-motion:reduce){.phone3d-wrap{animation:none}}
         .phone3d{position:relative;width:100%;aspect-ratio:9/19.5;transform-style:preserve-3d;transform:rotateY(-24deg) rotateX(4deg) rotateZ(-1.5deg)}
@@ -145,13 +145,14 @@
            3D tilt and a shadow rotating WITH the phone would look wrong; this one
            stays flat like a real product-photography floor shadow. */
         .phone3d-cast{position:absolute;left:6%;right:10%;bottom:-7%;height:16%;background:radial-gradient(50% 100% at 50% 50%,rgba(8,12,22,.4),rgba(8,12,22,0) 70%);filter:blur(5px);pointer-events:none}
-        .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(150deg,#fafbfc 0%,#e2e4e8 22%,#aeb2ba 48%,#7d818a 62%,#c4c7cd 82%,#eef0f2 100%);box-shadow:0 40px 64px -20px rgba(15,27,48,.45),0 14px 26px -12px rgba(15,27,48,.35),inset 0 0 0 1px hsla(0,0%,100%,.55),inset 1px 0 0 hsla(0,0%,100%,.5),inset -1px 0 0 rgba(0,0,0,.12);padding:7px}
+        .phone3d-bezel{position:absolute;inset:0;border-radius:22px;background:linear-gradient(152deg,#f8f5ef 0%,#ded9cd 20%,#aaa497 42%,#847e70 56%,#8f897b 64%,#cdc8bb 84%,#f4f1e9 100%);box-shadow:0 40px 64px -20px rgba(15,27,48,.45),0 14px 26px -12px rgba(15,27,48,.35),inset 0 0 0 1px hsla(45,30%,96%,.6),inset 1px 0 0 hsla(45,30%,96%,.55),inset -1px 0 0 rgba(0,0,0,.14);padding:7px}
         /* extruded side face — a real box-side built with rotateY+translateZ (not just a
            flat rotated rectangle), so the phone reads as an object with actual depth
            instead of a photo-thin card floating in 3D space. */
-        .phone3d-edge{position:absolute;top:3%;bottom:3%;width:24px;left:100%;transform-origin:left center;transform:rotateY(90deg);border-radius:0 6px 6px 0;background:linear-gradient(90deg,#75787f 0%,#c6c9cf 30%,#eef0f2 48%,#95999b 62%,#5f6167 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+        .phone3d-edge{position:absolute;top:3%;bottom:3%;width:24px;left:100%;transform-origin:left center;transform:rotateY(90deg);border-radius:0 6px 6px 0;background:linear-gradient(90deg,#726c5e 0%,#cec8b9 30%,#f4f1e9 48%,#a49e8f 62%,#5c5748 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
         .phone3d-screen{position:relative;width:100%;height:100%;border-radius:16px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 2px rgba(0,0,0,.5)}
         .phone3d-notch{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
+        .phone3d-lens{position:absolute;top:50%;right:14%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#3a5a8a,#0d1420 62%,#000 100%);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
         .phone3d-slide{position:absolute;inset:0;transform:translateY(100%);transition:transform .7s cubic-bezier(.65,0,.35,1)}
         .phone3d-slide.is-active{transform:translateY(0);z-index:2}
         .phone3d-slide.is-prev{transform:translateY(-100%)}
@@ -196,8 +197,8 @@
            shrinks, since a uniform scale can't change relative proportions. */
         /* overflow intentionally visible (not hidden): the enlarged phone3d and the
            bubbles are sized/positioned to deliberately extend past this box's edges. */
-        .dash-wrap{position:relative;width:100%;aspect-ratio:11/8;container-type:inline-size}
-        .dash-inner{position:absolute;inset:0;width:560px;height:407.3px;transform:scale(calc(100cqi / 560px));transform-origin:top left}
+        .dash-wrap{position:relative;width:100%;aspect-ratio:560/670;container-type:inline-size}
+        .dash-inner{position:absolute;inset:0;width:560px;height:670px;transform:scale(calc(100cqi / 560px));transform-origin:top left}
         .dash-wrap *{box-sizing:border-box}
         .dash-side{display:none}
 
@@ -222,6 +223,10 @@
         .dash-float-4{animation-duration:6.1s;animation-delay:-4.2s}
         .dash-float-5{animation-duration:5.3s;animation-delay:-2s}
         .dash-float-6{animation-duration:6.7s;animation-delay:-4.8s}
+        .dash-float-7{animation-duration:5.9s;animation-delay:-2.3s}
+        .dash-float-8{animation-duration:6.5s;animation-delay:-3.6s}
+        .dash-stars{color:#F5A524;font-size:11px;letter-spacing:1px}
+        .dash-quote{font-size:8px;color:#5B6B85;line-height:1.35;margin-top:4px;font-family:'Inter','Kanit',sans-serif}
         @media(prefers-reduced-motion:reduce){
             .dash-float{animation:none}
             .dash-card.dash-float{transform:scale(.8)}
@@ -297,11 +302,11 @@
                 <div class="dash-inner">
 
                     <!-- floating bubbles -->
-                    <div class="dash-bubble dash-side dash-float dash-float-5" style="left:2%;top:-9%">
+                    <div class="dash-bubble dash-side dash-float dash-float-5" style="left:11px;top:-37px">
                         <svg viewBox="0 0 24 24" fill="#E11D48"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
                         <span id="dashLikes">2.5K</span>
                     </div>
-                    <div class="dash-bubble dash-side dash-float dash-float-6" style="left:19%;top:-9%">
+                    <div class="dash-bubble dash-side dash-float dash-float-6" style="left:106px;top:-37px">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
                         <span id="dashSearch">320</span>
                     </div>
@@ -319,7 +324,7 @@
                             <div class="phone3d-edge"></div>
                             <div class="phone3d-bezel">
                                 <div class="phone3d-screen">
-                                    <div class="phone3d-notch"></div>
+                                    <div class="phone3d-notch"><div class="phone3d-lens"></div></div>
                                     <div class="phone3d-track" id="p3dTrack">
                                         <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/asmr-testimonial.mp4" data-avatar="V" data-logo="/assets/logos/varinpat.webp" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="1247" data-comments="32" data-shares="318">
                                             <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-asmr-testimonial.jpg"></video>
@@ -395,7 +400,7 @@
                     </div>
 
                     <!-- Card 1: Social Media Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-1" style="left:64%;top:0%;width:50%;height:36%">
+                    <div class="dash-card dash-side dash-float dash-float-1" style="left:358px;top:0px;width:280px;height:147px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Social Media Performance</span>
                             <span class="dash-icons">
@@ -428,7 +433,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side dash-float dash-float-2" style="left:68%;top:55%;width:24%;height:29%">
+                    <div class="dash-card dash-side dash-float dash-float-2" style="left:381px;top:224px;width:134px;height:118px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -450,7 +455,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card dash-side dash-float dash-float-3" style="left:13%;top:60%;width:24%;height:29%">
+                    <div class="dash-card dash-side dash-float dash-float-3" style="left:73px;top:244px;width:134px;height:118px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -471,8 +476,56 @@
                         </svg>
                     </div>
 
+                    <!-- Card 5: Google Ads Performance -->
+                    <div class="dash-card dash-side dash-float dash-float-7" style="left:20px;top:382px;width:168px;height:132px">
+                        <div class="dash-card-hd">
+                            <span class="dash-card-title">Google Ads Performance</span>
+                            <span class="dash-icons">
+                                <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            </span>
+                        </div>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">Clicks</div>
+                                <div class="dash-stat-val" id="dashGClicks">8.7K</div>
+                                <span class="dash-delta" id="dashGClicksDelta">+36%</span>
+                            </div>
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">Conversions</div>
+                                <div class="dash-stat-val" id="dashGConv">287</div>
+                                <span class="dash-delta" id="dashGConvDelta">+58%</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-top:6%">
+                            <div>
+                                <div class="dash-mini-label">Total Spend</div>
+                                <div class="dash-stat-val" style="font-size:12px" id="dashGSpend">฿52,340</div>
+                            </div>
+                            <div style="text-align:right">
+                                <div class="dash-mini-label">ROAS</div>
+                                <div class="dash-stat-val" style="font-size:12px;color:#16A34A" id="dashGRoas">12.4x</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Google Reviews -->
+                    <div class="dash-card dash-side dash-float dash-float-8" style="left:376px;top:362px;width:164px;height:128px">
+                        <div class="dash-card-hd">
+                            <span class="dash-card-title">Google Reviews</span>
+                            <span class="dash-icons">
+                                <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+                            </span>
+                        </div>
+                        <div style="display:flex;align-items:baseline;gap:6px">
+                            <div class="dash-big-num" style="font-size:19px">4.9</div>
+                            <div class="dash-stars" aria-hidden="true">★★★★★</div>
+                        </div>
+                        <div class="dash-mini-label" style="margin-top:2px">326 Reviews</div>
+                        <div class="dash-quote">"คุณหมอมือเบามาก ประทับใจค่ะ"</div>
+                    </div>
+
                     <!-- Card 4: live calendar (today's date) + booking detail -->
-                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-4%;top:2%;width:50%;height:30%">
+                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-22px;top:8px;width:280px;height:122px">
                         <div class="dash-cal-wrap">
                             <div class="dash-cal">
                                 <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>

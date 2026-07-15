@@ -127,12 +127,58 @@
             .hero-v2-glow{inset:-2.5rem}
             .hero-v2-h1{font-size:46px}
         }
-        /* LIVE DASHBOARD GRAPHIC */
-        .dash-mobile-fallback{position:relative;width:100%;height:auto;border-radius:1rem;display:block}
-        .dash-wrap{display:none;position:relative;width:100%;aspect-ratio:1/1.05}
-        .dash-photo{position:absolute;left:0;top:0;width:44%;height:100%;border-radius:14px;overflow:hidden;box-shadow:0 24px 50px -20px rgba(15,27,48,.22)}
-        .dash-photo img{width:100%;height:100%;object-fit:cover;object-position:18% center;display:block}
-        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:.85cqw 1.1cqw;box-sizing:border-box;overflow:hidden;container-type:inline-size}
+        /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset */
+        .dash-wrap{position:relative;width:100%;aspect-ratio:21/19}
+        .dash-wrap *{box-sizing:border-box}
+        .dash-side{display:none}
+
+        /* phone mockup */
+        .dph{position:absolute;left:31%;top:4%;width:27%;height:82%;background:#0F1B30;border-radius:15px;padding:3%;box-shadow:0 30px 60px -20px rgba(15,27,48,.35);container-type:inline-size}
+        .dph-screen{position:relative;width:100%;height:100%;background:#fff;border-radius:11px;overflow:hidden;display:flex;flex-direction:column}
+        .dph-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:32cqw;height:4.5cqw;background:#0F1B30;border-radius:0 0 3cqw 3cqw;z-index:3}
+        .dph-status{display:flex;align-items:center;justify-content:space-between;padding:2.8cqw 4.5cqw .5cqw;font-size:3.4cqw;font-weight:600;color:#0F1B30;font-family:'Inter',sans-serif}
+        .dph-head{display:flex;align-items:center;justify-content:space-between;padding:2cqw 3.5cqw;font-size:3.3cqw;font-weight:600;color:#0F1B30;font-family:'Inter',sans-serif}
+        .dph-head svg{width:3.6cqw;height:3.6cqw;flex-shrink:0}
+        .dph-handle{display:flex;align-items:center;gap:1cqw}
+        .dph-profile{display:flex;align-items:center;gap:3cqw;padding:0 4cqw 2.2cqw}
+        .dph-avatar{width:15cqw;height:15cqw;border-radius:50%;background:conic-gradient(from 180deg,#F5D6BA,#E48B8B,#8E9CF0,#2C4CAA,#F5D6BA);padding:1.1cqw;flex-shrink:0}
+        .dph-avatar-in{width:100%;height:100%;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;color:#2C4CAA;font-size:6cqw}
+        .dph-stats{display:flex;gap:4.5cqw}
+        .dph-stat{text-align:center}
+        .dph-stat-num{font-size:3.6cqw;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;transition:color .4s}
+        .dph-stat-lbl{font-size:2.5cqw;color:#7F8DA8}
+        .dph-bio{padding:0 4cqw 2.4cqw;font-size:2.9cqw;line-height:1.45;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
+        .dph-bio b{display:block;font-weight:700;font-size:3.1cqw}
+        .dph-btns{display:flex;gap:1.6cqw;padding:0 4cqw 2.4cqw}
+        .dph-btn{flex:1;text-align:center;font-size:2.7cqw;font-weight:600;padding:1.7cqw 0;border-radius:6cqw;font-family:'Inter','Kanit',sans-serif}
+        .dph-btn.f{background:#2C4CAA;color:#fff}
+        .dph-btn.o{background:#F0F2F7;color:#1F2D44}
+        .dph-tabs{display:flex;justify-content:space-around;padding:0 2cqw 2cqw;border-bottom:1px solid #EEF1F6}
+        .dph-tab{display:flex;flex-direction:column;align-items:center;gap:.8cqw}
+        .dph-tab-ico{width:7.5cqw;height:7.5cqw;border-radius:50%;background:#EEF1F6}
+        .dph-tab-lbl{font-size:2.2cqw;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
+        .dph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7cqw;padding:.7cqw;flex:1}
+        .dph-tile{position:relative;border-radius:2px}
+        .dph-tile-play{position:absolute;left:3.5cqw;bottom:2.5cqw;color:#fff;font-size:2.3cqw;font-weight:600;display:flex;align-items:center;gap:.6cqw;text-shadow:0 1px 3px rgba(0,0,0,.55)}
+        .dph-navbar{display:flex;justify-content:space-around;align-items:center;padding:2cqw 0;border-top:1px solid #EEF1F6}
+        .dph-navbar svg{width:4.2cqw;height:4.2cqw;color:#0F1B30}
+
+        /* floating bubbles (left) */
+        .dash-bubble{position:absolute;background:#fff;border-radius:999px;box-shadow:0 14px 28px -12px rgba(15,27,48,.20);display:flex;align-items:center;gap:6px;padding:7px 14px;font-size:12px;font-weight:600;color:#0F1B30;font-family:'Inter','Kanit',sans-serif;white-space:nowrap;transition:color .4s}
+        .dash-bubble svg{width:14px;height:14px;flex-shrink:0}
+
+        /* mini notification cards (left + bottom) */
+        .dash-mini{position:absolute;background:#fff;border-radius:12px;box-shadow:0 18px 36px -16px rgba(15,27,48,.18);padding:9px 11px;font-family:'Inter','Kanit',sans-serif;container-type:inline-size}
+        .dmn-hd{display:flex;align-items:center;gap:6px;margin-bottom:5px}
+        .dmn-ico{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .dmn-ico svg{width:11px;height:11px}
+        .dmn-title{font-size:10.5px;font-weight:600;color:#0F1B30}
+        .dmn-body{font-size:9.5px;color:#7F8DA8;line-height:1.4}
+        .dmn-link{font-size:9.5px;color:#2C4CAA;font-weight:600;margin-top:5px}
+        .dmn-row{display:flex;align-items:center;gap:8px}
+
+        /* right-side dashboard cards */
+        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:.85cqw 1.1cqw;overflow:hidden;container-type:inline-size}
         .dash-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6%}
         .dash-card-title{font-size:11px;font-weight:600;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
         .dash-icons{display:flex;gap:4px}
@@ -149,16 +195,27 @@
         .dash-bar{flex:1;background:#2C4CAA;border-radius:3px 3px 0 0;transition:height .8s cubic-bezier(.4,0,.2,1)}
         .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums}
         .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
-        .dash-booking{display:flex;align-items:center;gap:8px;height:100%}
-        .dash-booking-ico{width:15%;aspect-ratio:1;min-width:26px;border-radius:50%;background:#EAF0FE;color:#2C4CAA;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .dash-booking-ico svg{width:52%;height:52%}
-        .dash-booking-title{font-size:11px;font-weight:600;color:#0F1B30;font-family:'Inter','Kanit',sans-serif}
-        .dash-booking-sub{font-size:9px;color:#7F8DA8;margin-top:2px;font-family:'Inter','Kanit',sans-serif}
-        .dash-booking-btn{margin-left:auto;background:#2C4CAA;color:#fff;font-size:9px;font-weight:600;border-radius:999px;padding:5px 10px;white-space:nowrap;font-family:'Inter','Kanit',sans-serif;flex-shrink:0}
-        @media(min-width:768px){
-            .dash-mobile-fallback{display:none}
-            .dash-wrap{display:block}
+
+        /* calendar/booking-detail card */
+        .dash-cal-wrap{display:flex;gap:6%;height:100%}
+        .dash-cal{flex:1.05;min-width:0}
+        .dash-cal-hd{display:flex;align-items:center;justify-content:space-between;font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:5%;font-family:'Inter','Kanit',sans-serif}
+        .dash-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:7px;text-align:center;color:#7F8DA8;font-family:'Inter',sans-serif}
+        .dash-cal-grid span{padding:1.5px 0}
+        .dash-cal-grid .sel{background:#2C4CAA;color:#fff;border-radius:50%;font-weight:700}
+        .dash-cal-detail{flex:1;min-width:0;border-left:1px solid #EEF1F6;padding-left:6%;display:flex;flex-direction:column}
+        .dash-cal-date{font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:4%;font-family:'Inter','Kanit',sans-serif}
+        .dash-cal-time{display:inline-block;background:#EAF0FE;color:#2C4CAA;font-size:8.5px;font-weight:600;border-radius:6px;padding:2px 6px;margin-bottom:5%}
+        .dash-cal-label{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
+        .dash-cal-val{font-size:9px;color:#0F1B30;font-weight:500;margin-bottom:4%;font-family:'Inter','Kanit',sans-serif}
+        .dash-cal-btn{margin-top:auto;background:#2C4CAA;color:#fff;font-size:8.5px;font-weight:600;border-radius:999px;padding:5px 0;text-align:center;font-family:'Inter','Kanit',sans-serif}
+
+        @media(max-width:767px){
+            .dash-wrap{aspect-ratio:9/17;max-width:220px;margin:0 auto}
+            .dph{left:0;top:0;width:100%;height:100%}
+            .dash-side{display:none!important}
         }
+        @media(min-width:768px){ .dash-side{display:block} }
         @media(prefers-reduced-motion:reduce){
             .dash-chart-svg path{transition:none}
             .dash-bar{transition:none}
@@ -184,19 +241,115 @@
                     </a>
                 </div>
             </div>
-            <!-- RIGHT — live dashboard graphic -->
+            <!-- RIGHT — live dashboard graphic (fully coded, no photo asset) -->
             <div class="hero-v2-img-wrap">
                 <div class="hero-v2-glow"></div>
-                <!-- mobile: static composite (cards baked in, keeps it legible at small sizes) -->
-                <img src="/assets/aesthetic-banner-v2.webp" width="1254" height="1254" alt="CYN dashboard — social media reach, lead conversion, ROAS สำหรับคลินิกความงาม" class="dash-mobile-fallback" />
-                <!-- desktop: cropped photo + live animated stat cards -->
-                <div class="dash-wrap" aria-hidden="true">
-                    <div class="dash-photo">
-                        <img src="/assets/aesthetic-banner-v2.webp" alt="" />
+                <div class="dash-wrap" role="img" aria-label="Mockup ของแดชบอร์ดการตลาด CYN แสดง Reach, Engagement, Lead และ ROAS สำหรับคลินิกความงาม">
+
+                    <!-- phone mockup -->
+                    <div class="dph">
+                        <div class="dph-screen">
+                            <div class="dph-notch"></div>
+                            <div class="dph-status"><span>9:41</span><span>📶 🔋</span></div>
+                            <div class="dph-head">
+                                <span class="dph-handle">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><path d="M15 18l-6-6 6-6"/></svg>
+                                    aesthetic.clinic
+                                    <svg viewBox="0 0 24 24" fill="#2C4CAA"><path d="M12 2l2.4 1.2 2.6-.6 1.4 2.3 2.3 1.4-.6 2.6L21.3 11l-1.2 2.4.6 2.6-2.3 1.4-1.4 2.3-2.6-.6L12 21.3l-2.4-1.2-2.6.6-1.4-2.3-2.3-1.4.6-2.6L2.7 11l1.2-2.4-.6-2.6 2.3-1.4L6.9 2.3l2.6.6z"/><path d="M8.5 12l2.3 2.3 4.7-4.7" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <svg viewBox="0 0 24 24" fill="#0F1B30"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+                            </div>
+                            <div class="dph-profile">
+                                <div class="dph-avatar"><div class="dph-avatar-in">
+                                    <svg viewBox="0 0 24 24" width="60%" height="60%" fill="none" stroke="#2C4CAA" stroke-width="1.6"><path d="M12 3c-2 3-2 5 0 7 2-2 2-4 0-7z"/><path d="M12 10c-3 1-5 3-5 6 0 2 2 4 5 4s5-2 5-4c0-3-2-5-5-6z"/></svg>
+                                </div></div>
+                                <div class="dph-stats">
+                                    <div class="dph-stat"><div class="dph-stat-num" id="dphPosts">128K</div><div class="dph-stat-lbl">Posts</div></div>
+                                    <div class="dph-stat"><div class="dph-stat-num" id="dphFollowers">128K</div><div class="dph-stat-lbl">Followers</div></div>
+                                    <div class="dph-stat"><div class="dph-stat-num">280</div><div class="dph-stat-lbl">Following</div></div>
+                                </div>
+                            </div>
+                            <div class="dph-bio"><b>Aesthetic Clinic</b>Enhance your natural beauty<br/>Book your appointment today</div>
+                            <div class="dph-btns">
+                                <span class="dph-btn f">Follow</span>
+                                <span class="dph-btn o">Message</span>
+                                <span class="dph-btn o">Contact</span>
+                            </div>
+                            <div class="dph-tabs">
+                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Treatment</span></div>
+                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Reviews</span></div>
+                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Results</span></div>
+                                <div class="dph-tab"><div class="dph-tab-ico"></div><span class="dph-tab-lbl">Q&amp;A</span></div>
+                            </div>
+                            <div class="dph-grid">
+                                <div class="dph-tile" style="background:linear-gradient(135deg,#F3E4D8,#E8C9B4)"><span class="dph-tile-play">▶ 12K</span></div>
+                                <div class="dph-tile" style="background:linear-gradient(135deg,#E9EEFB,#C9D4F2)"><span class="dph-tile-play">▶ 9.2K</span></div>
+                                <div class="dph-tile" style="background:linear-gradient(135deg,#F6E0E4,#EBC1CA)"><span class="dph-tile-play">▶ 7.8K</span></div>
+                                <div class="dph-tile" style="background:linear-gradient(135deg,#EFE7F5,#D9C7EA)"><span class="dph-tile-play">▶ 11K</span></div>
+                                <div class="dph-tile" style="background:linear-gradient(135deg,#E4F0EC,#C3E0D6)"><span class="dph-tile-play">▶ 8.1K</span></div>
+                                <div class="dph-tile" style="background:linear-gradient(135deg,#FBEAD6,#F0CFA0)"><span class="dph-tile-play">▶ 10K</span></div>
+                            </div>
+                            <div class="dph-navbar">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- floating bubbles -->
+                    <div class="dash-bubble dash-side" style="left:2%;top:16%">
+                        <svg viewBox="0 0 24 24" fill="#E11D48"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
+                        <span id="dashLikes">2.5K</span>
+                    </div>
+                    <div class="dash-bubble dash-side" style="left:-1%;top:25%">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+                        <span id="dashSearch">320</span>
+                    </div>
+
+                    <!-- New Inquiry -->
+                    <div class="dash-mini dash-side" style="left:-1%;top:37%;width:27%">
+                        <div class="dmn-hd">
+                            <span class="dmn-ico" style="background:#00B2FF">
+                                <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.47 5.48 3.78 7.17V22l3.45-1.9c.9.25 1.85.38 2.77.38 5.52 0 10-4.13 10-9.28S17.52 2 12 2z"/></svg>
+                            </span>
+                            <span class="dmn-title">New Inquiry</span>
+                        </div>
+                        <div class="dmn-body">Hi! I'm interested in Skin Booster treatment.</div>
+                        <div class="dmn-link">View Message ⌄</div>
+                    </div>
+
+                    <!-- Appointment Confirmed -->
+                    <div class="dash-mini dash-side" style="left:-1%;top:57%;width:25%">
+                        <div class="dmn-hd">
+                            <span class="dmn-ico" style="background:#DCFCE7;color:#16A34A">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>
+                            </span>
+                            <span class="dmn-title">Appointment Confirmed</span>
+                        </div>
+                        <div class="dmn-row">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7F8DA8" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg>
+                            <span class="dmn-body">Mon, 27 May 2024<br/>2:00 PM</span>
+                        </div>
+                        <div class="dmn-link">View Booking ⌄</div>
+                    </div>
+
+                    <!-- Booking Confirmed toast -->
+                    <div class="dash-mini dash-side" style="left:21%;top:87%;width:27%">
+                        <div class="dmn-hd">
+                            <span class="dmn-ico" style="background:#DCFCE7;color:#16A34A">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3"><path d="M5 12l4 4L19 6"/></svg>
+                            </span>
+                            <span class="dmn-title">Booking Confirmed</span>
+                        </div>
+                        <div class="dmn-body">Your appointment is confirmed!</div>
+                        <div class="dmn-link">Add to Calendar</div>
                     </div>
 
                     <!-- Card 1: Social Media Performance -->
-                    <div class="dash-card" style="left:38%;top:0;width:62%;height:38%">
+                    <div class="dash-card dash-side" style="left:58%;top:0;width:42%;height:36%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Social Media Performance</span>
                             <span class="dash-icons">
@@ -229,7 +382,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card" style="left:38%;top:42%;width:29%;height:32%">
+                    <div class="dash-card dash-side" style="left:58%;top:39%;width:20%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -251,7 +404,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card" style="left:69%;top:42%;width:31%;height:32%">
+                    <div class="dash-card dash-side" style="left:80%;top:39%;width:20%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -272,15 +425,29 @@
                         </svg>
                     </div>
 
-                    <!-- Card 4: Booking -->
-                    <div class="dash-card" style="left:38%;top:78%;width:62%;height:19%">
-                        <div class="dash-booking">
-                            <span class="dash-booking-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg></span>
-                            <div style="min-width:0">
-                                <div class="dash-booking-title">Booking Confirmed</div>
-                                <div class="dash-booking-sub">Mon, 27 May · 2:00–3:00 PM · Skin Booster</div>
+                    <!-- Card 4: May 2024 calendar + booking detail -->
+                    <div class="dash-card dash-side" style="left:58%;top:71%;width:42%;height:27%">
+                        <div class="dash-cal-wrap">
+                            <div class="dash-cal">
+                                <div class="dash-cal-hd"><span>May 2024</span><span>›</span></div>
+                                <div class="dash-cal-grid">
+                                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                                    <span></span><span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span>
+                                    <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
+                                    <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+                                    <span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+                                    <span>26</span><span class="sel">27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span>
+                                </div>
                             </div>
-                            <span class="dash-booking-btn">View Booking</span>
+                            <div class="dash-cal-detail">
+                                <div class="dash-cal-date">Monday, 27 May 2024</div>
+                                <span class="dash-cal-time">2:00 PM – 3:00 PM</span>
+                                <div class="dash-cal-label">Treatment</div>
+                                <div class="dash-cal-val">Skin Booster</div>
+                                <div class="dash-cal-label">Location</div>
+                                <div class="dash-cal-val">Aesthetic Clinic</div>
+                                <span class="dash-cal-btn">View Booking</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -377,6 +544,18 @@
             $('dashChart3Path').setAttribute('d', pathFromPoints(chart3Cur, 220, 46, 46));
         }
 
+        // ---- phone: likes / search / followers ----
+        var likes = 2500, search = 320, followers = 128000;
+        function tickPhone(){
+            likes = Math.round(jitter(likes, 40, 2200, 2900));
+            search = Math.round(jitter(search, 8, 280, 380));
+            followers = jitter(followers, 350, 126000, 131000);
+            if ($('dashLikes')) $('dashLikes').textContent = formatK(likes);
+            if ($('dashSearch')) $('dashSearch').textContent = Math.round(search);
+            if ($('dphFollowers')) $('dphFollowers').textContent = formatK(followers);
+            [$('dashLikes'), $('dashSearch'), $('dphFollowers')].forEach(function(el){ if(el) pulse(el); });
+        }
+
         // init charts before first paint tick
         $('dashChart1Path').setAttribute('d', pathFromPoints(chart1Cur, 300, 78, 80));
         $('dashChart1Area').setAttribute('d', areaPathFromPoints(chart1Cur, 300, 78, 80));
@@ -386,6 +565,7 @@
         setInterval(tickChart1, 2600);
         setInterval(tickCard2, 3100);
         setInterval(tickCard3, 3600);
+        setInterval(tickPhone, 2900);
     })();
     </script>
 

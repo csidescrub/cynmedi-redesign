@@ -381,7 +381,7 @@
                     </div>
 
                     <!-- Card 1: Social Media Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-1" style="left:58%;top:2%;width:50%;height:36%">
+                    <div class="dash-card dash-side dash-float dash-float-1" style="left:64%;top:0%;width:50%;height:36%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Social Media Performance</span>
                             <span class="dash-icons">
@@ -414,7 +414,7 @@
                     </div>
 
                     <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side dash-float dash-float-2" style="left:68%;top:55%;width:24%;height:29%">
+                    <div class="dash-card dash-side dash-float dash-float-2" style="left:73%;top:55%;width:24%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Monthly Leads</span>
                         </div>
@@ -436,7 +436,7 @@
                     </div>
 
                     <!-- Card 3: Marketing ROI -->
-                    <div class="dash-card dash-side dash-float dash-float-3" style="left:9%;top:60%;width:24%;height:29%">
+                    <div class="dash-card dash-side dash-float dash-float-3" style="left:3%;top:60%;width:24%;height:29%">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Marketing ROI</span>
                         </div>
@@ -458,7 +458,7 @@
                     </div>
 
                     <!-- Card 4: live calendar (today's date) + booking detail -->
-                    <div class="dash-card dash-side dash-float dash-float-4" style="left:0%;top:2%;width:50%;height:30%">
+                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-4%;top:2%;width:50%;height:30%">
                         <div class="dash-cal-wrap">
                             <div class="dash-cal">
                                 <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>
@@ -648,11 +648,17 @@
         var cur = 0;
         var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+        // every source clip opens with a ~3-4s stylized blur/title-card transition;
+        // since a slide is only on screen for ~4.2s, without this it's ALL viewers
+        // ever see. Skip straight to the sharp footage (posters are pre-cut from the
+        // same timestamp, so the loading placeholder matches what plays).
+        var CLIP_START = 4.5;
         function loadSlide(i){
             var slide = slides[i];
             var video = slide.querySelector('video');
             if (video && !video.src) {
                 video.src = slide.getAttribute('data-src');
+                video.addEventListener('loadedmetadata', function(){ video.currentTime = CLIP_START; }, {once:true});
                 video.load();
             }
             return video;

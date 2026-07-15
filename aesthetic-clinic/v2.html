@@ -119,13 +119,17 @@
         .hero-v2-img-wrap{position:relative}
         .hero-v2-glow{position:absolute;inset:-1.5rem;border-radius:2rem;background:radial-gradient(60% 60% at 60% 35%,rgba(45,77,177,.10),transparent 70%)}
         .hero-v2-img{position:relative;width:100%;height:auto;border-radius:1rem;display:block}
-        h1.hero-v2-h1{font-size:42px;line-height:1.18;letter-spacing:-0.005em;font-weight:500}
-        @media(min-width:768px){h1.hero-v2-h1{font-size:50px}}
+        /* left column is a container so the H1 can size itself in cqi (% of ITS OWN
+           column width) — this keeps the two <br/>-separated lines each on exactly
+           one line (white-space:nowrap) at any viewport, instead of a fixed px size
+           per breakpoint that can re-wrap into 3-4 lines when the column narrows. */
+        .hero-v2-left{container-type:inline-size}
+        h1.hero-v2-h1{font-size:clamp(26px,8cqi,58px);line-height:1.18;letter-spacing:-0.005em;font-weight:500;white-space:nowrap}
+        .hero-v2-phone-slot{margin:2rem 0;min-height:220px;border:1px dashed rgba(45,77,177,.35);border-radius:1rem;display:flex;align-items:center;justify-content:center;color:#8593AD;font-size:12px;font-family:'Inter','Kanit',sans-serif}
         @media(min-width:1024px){
             .hero-v2-wrap{padding-top:6rem}
             .hero-v2-grid{grid-template-columns:1fr 1fr;gap:4rem;padding:6rem 2.5rem}
             .hero-v2-glow{inset:-2.5rem}
-            h1.hero-v2-h1{font-size:56px}
         }
         /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset
            .dash-inner is laid out at a fixed 560x407.3px reference size, then uniformly
@@ -200,7 +204,7 @@
     <section class="hero-v2-wrap">
         <div class="hero-v2-grid">
             <!-- LEFT — text -->
-            <div>
+            <div class="hero-v2-left">
                 <div class="mb-3">
                     <span class="label text-ink-600" style="text-transform:none;letter-spacing:.04em;font-size:13px">เอเจนซี่การตลาดคลินิก<span class="whitespace-nowrap">ความงาม</span>โดยเฉพาะ</span>
                 </div>
@@ -209,6 +213,9 @@
                     เอเจนซี่รับทำการตลาดออนไลน์<br/>ด้านการแพทย์<span class="text-cobalt">แบบครบวงจร</span>
                 </h1>
                 <p class="mt-8 text-lg text-ink-600 body-th max-w-xl">เราเชี่ยวชาญด้านการตลาดสำหรับธุรกิจการแพทย์และคลินิกโดยเฉพาะ ช่วยให้แบรนด์ของคุณบรรลุเป้าหมายได้อย่างมีประสิทธิภาพ ด้วยบริการแบบครบวงจร</p>
+
+                <!-- reserved slot for a phone mockup image (coming later) -->
+                <div class="hero-v2-phone-slot">รูปมือถือ (จะใส่ทีหลัง)</div>
 
                 <div class="mt-9 flex flex-wrap gap-3">
                     <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" data-cta="line-hero" class="pill-btn-th pill-cobalt">ขอแผนการตลาดคลินิก ฟรี

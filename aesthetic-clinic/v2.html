@@ -127,6 +127,42 @@
             .hero-v2-glow{inset:-2.5rem}
             .hero-v2-h1{font-size:46px}
         }
+        /* LIVE DASHBOARD GRAPHIC */
+        .dash-mobile-fallback{position:relative;width:100%;height:auto;border-radius:1rem;display:block}
+        .dash-wrap{display:none;position:relative;width:100%;aspect-ratio:1/1.05}
+        .dash-photo{position:absolute;left:0;top:0;width:44%;height:100%;border-radius:14px;overflow:hidden;box-shadow:0 24px 50px -20px rgba(15,27,48,.22)}
+        .dash-photo img{width:100%;height:100%;object-fit:cover;object-position:18% center;display:block}
+        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:.85cqw 1.1cqw;box-sizing:border-box;overflow:hidden;container-type:inline-size}
+        .dash-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:6%}
+        .dash-card-title{font-size:11px;font-weight:600;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
+        .dash-icons{display:flex;gap:4px}
+        .dash-icons svg{width:14px;height:14px}
+        .dash-stat-row{display:flex;justify-content:space-between;gap:4%;margin-bottom:6%}
+        .dash-stat{flex:1;min-width:0}
+        .dash-stat-label{font-size:8px;color:#7F8DA8;text-transform:uppercase;letter-spacing:.03em;font-family:'Inter','Kanit',sans-serif;white-space:nowrap}
+        .dash-stat-val{font-size:15px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;transition:color .4s;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
+        .dash-delta{font-size:9px;font-weight:600;color:#16A34A;background:#EAF7EE;border-radius:999px;padding:1px 6px;display:inline-block;margin-top:2px;font-variant-numeric:tabular-nums;transition:opacity .3s}
+        .dash-chart-svg{width:100%;display:block}
+        .dash-chart-svg path.line{fill:none;stroke:#2C4CAA;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:d 1.1s cubic-bezier(.4,0,.2,1)}
+        .dash-chart-svg path.area{fill:url(#dashGrad);opacity:.8;transition:d 1.1s cubic-bezier(.4,0,.2,1)}
+        .dash-bars{display:flex;align-items:flex-end;gap:5%;height:100%}
+        .dash-bar{flex:1;background:#2C4CAA;border-radius:3px 3px 0 0;transition:height .8s cubic-bezier(.4,0,.2,1)}
+        .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums}
+        .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
+        .dash-booking{display:flex;align-items:center;gap:8px;height:100%}
+        .dash-booking-ico{width:15%;aspect-ratio:1;min-width:26px;border-radius:50%;background:#EAF0FE;color:#2C4CAA;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .dash-booking-ico svg{width:52%;height:52%}
+        .dash-booking-title{font-size:11px;font-weight:600;color:#0F1B30;font-family:'Inter','Kanit',sans-serif}
+        .dash-booking-sub{font-size:9px;color:#7F8DA8;margin-top:2px;font-family:'Inter','Kanit',sans-serif}
+        .dash-booking-btn{margin-left:auto;background:#2C4CAA;color:#fff;font-size:9px;font-weight:600;border-radius:999px;padding:5px 10px;white-space:nowrap;font-family:'Inter','Kanit',sans-serif;flex-shrink:0}
+        @media(min-width:768px){
+            .dash-mobile-fallback{display:none}
+            .dash-wrap{display:block}
+        }
+        @media(prefers-reduced-motion:reduce){
+            .dash-chart-svg path{transition:none}
+            .dash-bar{transition:none}
+        }
     </style>
     <section class="hero-v2-wrap">
         <div class="hero-v2-grid">
@@ -148,13 +184,210 @@
                     </a>
                 </div>
             </div>
-            <!-- RIGHT — banner image -->
+            <!-- RIGHT — live dashboard graphic -->
             <div class="hero-v2-img-wrap">
                 <div class="hero-v2-glow"></div>
-                <img src="/assets/aesthetic-banner-v2.webp" width="1254" height="1254" alt="CYN dashboard — social media reach, lead conversion, ROAS สำหรับคลินิกความงาม" class="hero-v2-img" />
+                <!-- mobile: static composite (cards baked in, keeps it legible at small sizes) -->
+                <img src="/assets/aesthetic-banner-v2.webp" width="1254" height="1254" alt="CYN dashboard — social media reach, lead conversion, ROAS สำหรับคลินิกความงาม" class="dash-mobile-fallback" />
+                <!-- desktop: cropped photo + live animated stat cards -->
+                <div class="dash-wrap" aria-hidden="true">
+                    <div class="dash-photo">
+                        <img src="/assets/aesthetic-banner-v2.webp" alt="" />
+                    </div>
+
+                    <!-- Card 1: Social Media Performance -->
+                    <div class="dash-card" style="left:38%;top:0;width:62%;height:38%">
+                        <div class="dash-card-hd">
+                            <span class="dash-card-title">Social Media Performance</span>
+                            <span class="dash-icons">
+                                <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#E4405F" stroke-width="2"/><circle cx="12" cy="12" r="4.2" stroke="#E4405F" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.1" fill="#E4405F"/></svg>
+                                <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.02 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96H15.83c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.09 24 12.07z"/></svg>
+                            </span>
+                        </div>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">Reach</div>
+                                <div class="dash-stat-val" id="dashReach">182K</div>
+                                <span class="dash-delta" id="dashReachDelta">+42%</span>
+                            </div>
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">Engagement</div>
+                                <div class="dash-stat-val" id="dashEngagement">14.8K</div>
+                                <span class="dash-delta" id="dashEngDelta">+31%</span>
+                            </div>
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">Appointments</div>
+                                <div class="dash-stat-val" id="dashAppointments">528</div>
+                                <span class="dash-delta" id="dashApptDelta">+67%</span>
+                            </div>
+                        </div>
+                        <svg class="dash-chart-svg" viewBox="0 0 300 78" preserveAspectRatio="none">
+                            <defs><linearGradient id="dashGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2C4CAA" stop-opacity=".22"/><stop offset="100%" stop-color="#2C4CAA" stop-opacity="0"/></linearGradient></defs>
+                            <path class="area" id="dashChart1Area" d="" />
+                            <path class="line" id="dashChart1Path" d="" />
+                        </svg>
+                    </div>
+
+                    <!-- Card 2: Monthly Leads -->
+                    <div class="dash-card" style="left:38%;top:42%;width:29%;height:32%">
+                        <div class="dash-card-hd">
+                            <span class="dash-card-title">Monthly Leads</span>
+                        </div>
+                        <div class="dash-big-num" id="dashLeads">+528</div>
+                        <div style="display:flex;align-items:center;gap:5px;margin:2px 0 8%">
+                            <span class="dash-mini-label">Lead Conversion</span>
+                            <span class="dash-delta" id="dashLeadsDelta">+67%</span>
+                        </div>
+                        <div class="dash-bars" id="dashBars" style="height:38%">
+                            <div class="dash-bar" style="height:35%"></div>
+                            <div class="dash-bar" style="height:42%"></div>
+                            <div class="dash-bar" style="height:28%"></div>
+                            <div class="dash-bar" style="height:58%"></div>
+                            <div class="dash-bar" style="height:46%"></div>
+                            <div class="dash-bar" style="height:72%"></div>
+                            <div class="dash-bar" style="height:82%"></div>
+                            <div class="dash-bar" style="height:96%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Marketing ROI -->
+                    <div class="dash-card" style="left:69%;top:42%;width:31%;height:32%">
+                        <div class="dash-card-hd">
+                            <span class="dash-card-title">Marketing ROI</span>
+                        </div>
+                        <div class="dash-stat-row">
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">ROAS</div>
+                                <div class="dash-stat-val" id="dashRoas">12.4x</div>
+                            </div>
+                            <div class="dash-stat">
+                                <div class="dash-stat-label">Revenue</div>
+                                <div class="dash-stat-val" id="dashRevenue" style="color:#16A34A">+315%</div>
+                            </div>
+                        </div>
+                        <div class="dash-mini-label" style="margin-top:6%">Cost per Lead</div>
+                        <div class="dash-stat-val" id="dashCostPerLead" style="color:#16A34A">-38%</div>
+                        <svg class="dash-chart-svg" viewBox="0 0 220 46" preserveAspectRatio="none" style="margin-top:4%">
+                            <path class="line" id="dashChart3Path" d="" />
+                        </svg>
+                    </div>
+
+                    <!-- Card 4: Booking -->
+                    <div class="dash-card" style="left:38%;top:78%;width:62%;height:19%">
+                        <div class="dash-booking">
+                            <span class="dash-booking-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12l4 4L19 6"/></svg></span>
+                            <div style="min-width:0">
+                                <div class="dash-booking-title">Booking Confirmed</div>
+                                <div class="dash-booking-sub">Mon, 27 May · 2:00–3:00 PM · Skin Booster</div>
+                            </div>
+                            <span class="dash-booking-btn">View Booking</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <script>
+    (function(){
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var $ = function(id){ return document.getElementById(id); };
+
+        function formatK(n){
+            var k = n/1000;
+            return (k >= 100 ? Math.round(k) : k.toFixed(1)) + 'K';
+        }
+        function pulse(el){
+            el.style.color = '#2C4CAA';
+            setTimeout(function(){ el.style.color = ''; }, 400);
+        }
+        function jitter(v, amt, min, max){
+            var nv = v + (Math.random()*2-1)*amt;
+            return Math.max(min, Math.min(max, nv));
+        }
+
+        // ---- Card 1: reach / engagement / appointments ----
+        var reach = 182400, engagement = 14800, appt = 528;
+        var reachDelta = 42, engDelta = 31, apptDelta = 67;
+        function tickCard1(){
+            reach = jitter(reach, 900, 175000, 196000);
+            engagement = jitter(engagement, 90, 13800, 16200);
+            appt = Math.round(jitter(appt, 4, 500, 560));
+            reachDelta = jitter(reachDelta, 1.2, 30, 55);
+            engDelta = jitter(engDelta, 1, 22, 40);
+            apptDelta = jitter(apptDelta, 1.5, 55, 80);
+            $('dashReach').textContent = formatK(reach);
+            $('dashEngagement').textContent = formatK(engagement);
+            $('dashAppointments').textContent = Math.round(appt);
+            $('dashReachDelta').textContent = '+' + Math.round(reachDelta) + '%';
+            $('dashEngDelta').textContent = '+' + Math.round(engDelta) + '%';
+            $('dashApptDelta').textContent = '+' + Math.round(apptDelta) + '%';
+            [$('dashReach'), $('dashEngagement'), $('dashAppointments')].forEach(pulse);
+        }
+
+        // ---- Card 1 chart: 12-month upward trend ----
+        var chart1Base = [18,24,22,30,34,31,40,46,52,58,64,72]; // 0-80 scale
+        var chart1Cur = chart1Base.slice();
+        function pathFromPoints(pts, w, h, max){
+            var n = pts.length, step = w/(n-1);
+            return pts.map(function(v,i){
+                var x = (i*step).toFixed(1);
+                var y = (h - (v/max)*h).toFixed(1);
+                return (i===0?'M':'L') + x + ' ' + y;
+            }).join(' ');
+        }
+        function areaPathFromPoints(pts, w, h, max){
+            return pathFromPoints(pts, w, h, max) + ' L' + w + ' ' + h + ' L0 ' + h + ' Z';
+        }
+        function tickChart1(){
+            chart1Cur = chart1Cur.map(function(v,i){ return jitter(v, 3, chart1Base[i]-8, chart1Base[i]+8); });
+            $('dashChart1Path').setAttribute('d', pathFromPoints(chart1Cur, 300, 78, 80));
+            $('dashChart1Area').setAttribute('d', areaPathFromPoints(chart1Cur, 300, 78, 80));
+        }
+
+        // ---- Card 2: leads + bars ----
+        var leads = 528, leadsDelta = 67;
+        var barsBase = [35,42,28,58,46,72,82,96];
+        function tickCard2(){
+            leads = Math.round(jitter(leads, 5, 500, 560));
+            leadsDelta = jitter(leadsDelta, 1.5, 55, 80);
+            $('dashLeads').textContent = '+' + leads;
+            $('dashLeadsDelta').textContent = '+' + Math.round(leadsDelta) + '%';
+            pulse($('dashLeads'));
+            var bars = document.querySelectorAll('#dashBars .dash-bar');
+            bars.forEach(function(b, i){
+                var h = jitter(barsBase[i], 6, Math.max(15,barsBase[i]-14), Math.min(98,barsBase[i]+10));
+                b.style.height = h + '%';
+            });
+        }
+
+        // ---- Card 3: ROI ----
+        var roas = 12.4, revenue = 315, cpl = -38;
+        var chart3Base = [22,18,28,24,34,30,40,38];
+        var chart3Cur = chart3Base.slice();
+        function tickCard3(){
+            roas = jitter(roas, 0.3, 10.5, 14.5);
+            revenue = jitter(revenue, 6, 260, 360);
+            cpl = jitter(cpl, 2, -48, -25);
+            $('dashRoas').textContent = roas.toFixed(1) + 'x';
+            $('dashRevenue').textContent = (revenue>=0?'+':'') + Math.round(revenue) + '%';
+            $('dashCostPerLead').textContent = Math.round(cpl) + '%';
+            [$('dashRoas'), $('dashRevenue'), $('dashCostPerLead')].forEach(pulse);
+            chart3Cur = chart3Cur.map(function(v,i){ return jitter(v, 3, chart3Base[i]-8, chart3Base[i]+8); });
+            $('dashChart3Path').setAttribute('d', pathFromPoints(chart3Cur, 220, 46, 46));
+        }
+
+        // init charts before first paint tick
+        $('dashChart1Path').setAttribute('d', pathFromPoints(chart1Cur, 300, 78, 80));
+        $('dashChart1Area').setAttribute('d', areaPathFromPoints(chart1Cur, 300, 78, 80));
+        $('dashChart3Path').setAttribute('d', pathFromPoints(chart3Cur, 220, 46, 46));
+
+        setInterval(tickCard1, 2600);
+        setInterval(tickChart1, 2600);
+        setInterval(tickCard2, 3100);
+        setInterval(tickCard3, 3600);
+    })();
+    </script>
 
     <!-- TRUST / CLIENT WALL -->
     <section class="py-16 lg:py-20 bg-white border-b border-ink-100">

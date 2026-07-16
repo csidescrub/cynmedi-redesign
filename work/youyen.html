@@ -6,16 +6,16 @@
     <meta name="description" content="Youyen — เวลเนสคลินิก ที่เราสร้างคอนเทนต์ podcast และรีวิวให้เข้าถึงกลุ่มลูกค้าที่ใส่ใจสุขภาพ">
     <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/tailwind.css" />
     <style>
         html{scroll-behavior:smooth}
-        body{font-family:'Kanit','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;-webkit-font-smoothing:antialiased}
-        .font-display{font-family:'Cormorant Garamond','Kanit',serif;letter-spacing:-0.015em;font-weight:400}
+        body{font-family:'Poppins','Kanit','Inter',system-ui,sans-serif;background:#FFF;color:#0F1B30;-webkit-font-smoothing:antialiased}
+        .font-display{font-family:'Poppins','Kanit',sans-serif;letter-spacing:-0.015em;font-weight:400}
         .italic-serif{font-family:'Cormorant Garamond','Kanit',serif;font-style:italic;font-weight:400}
         /* Thai accent — Kanit (loopless), NEVER italic-serif (serif fallback = looped Thai) */
-        .accent-th{font-family:'Kanit',sans-serif;font-style:normal;font-weight:500}
-        .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Inter',sans-serif}
+        .accent-th{font-family:'Poppins','Kanit',sans-serif;font-style:normal;font-weight:500}
+        .label{font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-family:'Poppins','Kanit',sans-serif}
         .serif-num{font-family:'Cormorant Garamond',serif;font-variant-numeric:tabular-nums lining-nums;font-weight:500;letter-spacing:-0.01em}
         .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;padding:.95rem 1.7rem;border-radius:9999px;font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;transition:all .3s}
         .pill-dark{background:#0F1B30;color:#FFF}.pill-dark:hover{background:#1F2D44}
@@ -64,10 +64,10 @@
         .ba-head{display:flex;align-items:center;gap:9px;margin-bottom:12px}
         .ba-dot{width:8px;height:8px;border-radius:50%;background:#c3cad8;flex:0 0 auto}
         .ba-after .ba-dot{background:#2D4DB1}
-        .ba-tag{font-family:'Kanit',sans-serif;font-weight:600;font-size:15px;color:#46506f;line-height:1}
+        .ba-tag{font-family:'Poppins','Kanit',sans-serif;font-weight:600;font-size:15px;color:#46506f;line-height:1}
         .ba-after .ba-tag{color:#23408F}
         .ba-en{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#b8bfce;margin-left:auto}
-        .ba-text{font-family:'Kanit',sans-serif;font-size:14px;line-height:1.65;color:#5a6376;margin:0}
+        .ba-text{font-family:'Poppins','Kanit',sans-serif;font-size:14px;line-height:1.65;color:#5a6376;margin:0}
         .ba-after .ba-text{color:#3a4358}
         .ba-arrow{display:none;align-items:center;justify-content:center;color:#2D4DB1}
         @media(min-width:640px){.ba-arrow{display:flex}}
@@ -172,7 +172,7 @@
                     <span class="text-white/85">Youyen</span>
                 </nav>
                 <div class="label text-royal-300 mb-5">Wellness Clinic · Content & Ads</div>
-                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white"><span class="italic-serif" style="color:#94A6DB">Youyen</span> </h1>
+                <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white" style="font-family:'Cormorant Garamond','Kanit',serif"><span class="italic-serif" style="color:#94A6DB">Youyen</span> </h1>
                 <p class="mt-5 text-white/65 max-w-md text-[15px] leading-relaxed">เวลเนสคลินิก ที่เราสร้างคอนเทนต์ podcast และรีวิวให้เข้าถึงกลุ่มลูกค้าที่ใส่ใจสุขภาพ</p>
                 <div class="hero-stats"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
                     <span class="hero-stat-num">1M</span><span class="txt">total views</span>

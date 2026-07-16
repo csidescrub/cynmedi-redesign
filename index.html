@@ -23,12 +23,12 @@
     <link rel="icon" type="image/webp" href="/assets/cyn-logo.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" /><noscript><link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" media="print" onload="this.media='all'" /><noscript><link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" /></noscript>
     <link rel="stylesheet" href="/assets/tailwind.css" />
     <style>@font-face{font-family:'NumSans';src:local('Inter'),local('Helvetica Neue'),local('Arial');unicode-range:U+0030-0039,U+002B,U+0025,U+002E,U+002C} .usfx{font-family:'Inter','Kanit',system-ui,sans-serif !important;font-style:normal !important;font-variant-numeric:tabular-nums lining-nums} .num{font-family:'Inter','Kanit',system-ui,sans-serif;font-weight:500;letter-spacing:-0.02em;font-variant-numeric:tabular-nums lining-nums}
-        html{scroll-behavior:smooth} body{font-family:'Kanit','Inter',system-ui,sans-serif;background:#FFFFFF;color:#0F1B30;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'kern' 1,'liga' 1,'calt' 1;text-rendering:optimizeLegibility}
+        html{scroll-behavior:smooth} body{font-family:'Poppins','Kanit','Inter',system-ui,sans-serif;background:#FFFFFF;color:#0F1B30;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'kern' 1,'liga' 1,'calt' 1;text-rendering:optimizeLegibility}
         /* display headings: match LP — functional English/Thai = Kanit (loopless, ห้ามมีหัว); serif reserved for .italic-serif accents only */
-        body .font-display{font-family:'NumSans','Kanit','Cormorant Garamond','Kanit',sans-serif;letter-spacing:-0.01em;font-weight:500;font-feature-settings:'kern' 1,'liga' 1}
+        body .font-display{font-family:'NumSans','Poppins','Kanit',sans-serif;letter-spacing:-0.01em;font-weight:500;font-feature-settings:'kern' 1,'liga' 1}
         body .italic-serif{font-family:'NumSans','Cormorant Garamond','Kanit','Kanit',sans-serif;font-style:italic;font-weight:500;letter-spacing:0}
         /* emphasis = bold (ข้อความที่เน้นทำตัวหนา) */
         b,strong,.font-semibold,.font-bold{font-weight:700}
@@ -39,7 +39,7 @@
         .rounded-r-2xl{border-top-right-radius:1rem;border-bottom-right-radius:1rem}
         @media (min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:w-1\/2{width:50%}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:flex{display:flex}.cv-vid-w{width:50%;flex-basis:50%}}
         @media (max-width:767px){.pill-btn{font-size:.875rem;padding:.72rem 1.4rem}}
-        .label{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:'Inter','Kanit',sans-serif;line-height:1.4}
+        .label{font-size:11px;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-family:'Poppins','Kanit',sans-serif;line-height:1.4}
         .en-serif{font-family:'Cormorant Garamond','Kanit',sans-serif;font-weight:500;font-style:normal}
         .body-th{line-height:1.85;word-spacing:.02em} .body-th-sm{line-height:1.75;word-spacing:.02em}
         .cv-dot{width:8px;height:8px;border-radius:9999px;background:#D9DFE9;border:0;padding:0;cursor:pointer;transition:all .3s ease}
@@ -52,7 +52,7 @@
         .cv-mute-btn:active{background:rgba(0,0,0,.72)}
         @media(min-width:768px){.cv-mute-btn{display:none}}
         /* CTA buttons — style per CYN-Home-v1 example: normal case, 16px/600, 1.5px border, hover lift + shadow */
-        .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.875rem 1.75rem;border-radius:9999px;font-size:1rem;font-weight:600;line-height:1.2;letter-spacing:0;text-transform:none;border:1.5px solid transparent;white-space:nowrap;cursor:pointer;transition:all .2s ease;font-family:'Kanit','Inter',system-ui,sans-serif}
+        .pill-btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.875rem 1.75rem;border-radius:9999px;font-size:1rem;font-weight:600;line-height:1.2;letter-spacing:0;text-transform:none;border:1.5px solid transparent;white-space:nowrap;cursor:pointer;transition:all .2s ease;font-family:'Poppins','Kanit','Inter',system-ui,sans-serif}
         .pill-btn svg{transition:transform .2s ease}
         .pill-btn:hover svg{transform:translateX(3px)}
         .pill-dark{background:#0F1B30;color:#FFF}

@@ -228,6 +228,10 @@
         @keyframes floatPlain{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
         @keyframes floatCard{0%,100%{transform:scale(.8) translateY(0)}50%{transform:scale(.8) translateY(-8px)}}
         .dash-card.dash-float{animation-name:floatCard;transform-origin:top left}
+        /* -lg cards skip the .8 shrink: full-scale variant enlarges the whole card
+           (text, rows, paddings) uniformly with zero internal re-layout. */
+        @keyframes floatCardLg{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        .dash-card-lg.dash-float{animation-name:floatCardLg}
         .dash-bubble.dash-float{animation-name:floatPlain}
         .dash-float-1{animation-duration:6.4s;animation-delay:-1.1s}
         .dash-float-2{animation-duration:5.6s;animation-delay:-3.4s}
@@ -255,6 +259,7 @@
         @media(prefers-reduced-motion:reduce){
             .dash-float{animation:none}
             .dash-card.dash-float{transform:scale(.8)}
+            .dash-card-lg.dash-float{transform:none}
         }
 
         /* right-side dashboard cards */
@@ -280,19 +285,18 @@
         .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums;margin-bottom:2px}
         .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
 
-        /* calendar/booking-detail card */
-        .dash-cal-wrap{display:flex;gap:8%;height:100%}
-        .dash-cal{flex:1.05;min-width:0}
-        .dash-cal-hd{display:flex;align-items:center;justify-content:space-between;font-size:9.5px;font-weight:600;color:#0F1B30;margin-bottom:5%;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
-        .dash-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;font-size:6.5px;text-align:center;color:#7F8DA8;font-family:'Inter',sans-serif}
-        .dash-cal-grid span{padding:1.2px 0}
-        .dash-cal-grid .sel{background:#2C4CAA;color:#fff;border-radius:50%;font-weight:700}
-        .dash-cal-detail{flex:1;min-width:0;border-left:1px solid #EEF1F6;padding-left:6%;display:flex;flex-direction:column;justify-content:space-between}
-        .dash-cal-date{font-size:8.6px;font-weight:600;color:#0F1B30;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15;white-space:nowrap}
-        .dash-cal-time{display:inline-block;background:#EAF0FE;color:#2C4CAA;font-size:8.5px;font-weight:600;border-radius:6px;padding:1.5px 6px;margin-bottom:3px;line-height:1.15}
-        .dash-cal-label{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
-        .dash-cal-val{font-size:9px;color:#0F1B30;font-weight:500;margin-bottom:2px;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
-        .dash-cal-btn{background:#2C4CAA;color:#fff;font-size:8.5px;font-weight:600;border-radius:999px;padding:5px 0;text-align:center;font-family:'Inter','Kanit',sans-serif;flex-shrink:0;line-height:1.15}
+        /* chat order-confirm card — Messenger-style: customer's transfer-slip bubble on
+           the left, admin's reply bubble on the right, closing the story the New Leads
+           card starts (lead comes in → deposit paid → order confirmed in chat). */
+        .chat-row{display:flex;margin-top:7px}
+        .chat-row.is-me{justify-content:flex-end}
+        .chat-slip{background:#F0F2F6;border-radius:12px 12px 12px 3px;padding:8px 12px;display:flex;align-items:center;gap:9px}
+        .chat-slip-check{width:18px;height:18px;border-radius:50%;background:#16A34A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .chat-slip-check svg{width:10px;height:10px}
+        .chat-slip-title{font-size:8px;font-weight:700;color:#16A34A;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
+        .chat-slip-amt{font-size:14px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;font-family:'Inter','Kanit',sans-serif;line-height:1.25}
+        .chat-slip-note{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
+        .chat-bubble-me{background:#2C4CAA;color:#fff;font-size:9px;font-weight:500;border-radius:12px 12px 3px 12px;padding:6px 10px;line-height:1.55;max-width:82%}
 
         @media(max-width:767px){
             .hero-v2-img-wrap{display:none}
@@ -515,7 +519,7 @@
 
 
                     <!-- New Leads — 7 incoming messages, 3 visible, auto-slides up -->
-                    <div class="dash-card dash-side dash-float dash-float-9" style="left:4px;top:158px;width:232px;height:178px">
+                    <div class="dash-card dash-card-lg dash-side dash-float dash-float-9" style="left:4px;top:150px;width:232px;height:178px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">New Leads</span>
                             <span class="dash-icons"><svg viewBox="0 0 24 24" width="14" height="14" fill="#06C755"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.47 5.48 3.78 7.17V22l3.45-1.9c.9.25 1.85.38 2.77.38 5.52 0 10-4.13 10-9.28S17.52 2 12 2z"/></svg></span>
@@ -533,7 +537,7 @@
                     </div>
 
                     <!-- Top Content Performance — 7 real client clips, 3 visible, auto-slides up -->
-                    <div class="dash-card dash-side dash-float dash-float-10" style="left:370px;top:316px;width:220px;height:178px">
+                    <div class="dash-card dash-card-lg dash-side dash-float dash-float-10" style="left:352px;top:308px;width:220px;height:178px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Top Content Performance</span>
                         </div>
@@ -549,24 +553,26 @@
                         <div class="dash-link">View All Content →</div>
                     </div>
 
-                    <!-- Card 4: live calendar (today's date) + booking detail -->
-                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-45px;top:8px;width:302px;height:134px">
-                        <div class="dash-cal-wrap">
-                            <div class="dash-cal">
-                                <div class="dash-cal-hd"><span id="dashCalMonth">May 2024</span><span>›</span></div>
-                                <div class="dash-cal-grid" id="dashCalGrid">
-                                    <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+                    <!-- Card 4: chat order-confirm — deposit slip + admin reply in Messenger style -->
+                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-45px;top:8px;width:302px;height:150px">
+                        <div class="dash-card-hd">
+                            <span class="dash-card-title">Order Confirmed</span>
+                            <span class="dash-icons">
+                                <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#0084FF" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.15.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.53-.04.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2z"/><path fill="#fff" d="m6 14.66 2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75c.21.16.5.16.72 0l3.16-2.4c.42-.32.97.18.69.63l-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.76a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.17-.69-.62z"/></svg>
+                            </span>
+                        </div>
+                        <div class="chat-row">
+                            <div class="chat-slip">
+                                <span class="chat-slip-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
+                                <div>
+                                    <div class="chat-slip-title">โอนเงินสำเร็จ</div>
+                                    <div class="chat-slip-amt">฿500.00</div>
+                                    <div class="chat-slip-note">มัดจำร้อยไหม · 19:53</div>
                                 </div>
                             </div>
-                            <div class="dash-cal-detail">
-                                <div class="dash-cal-date" id="dashCalDate">Mon, 27 May 2024</div>
-                                <span class="dash-cal-time" id="dashCalTime">2:00 PM – 3:00 PM</span>
-                                <div class="dash-cal-label">Treatment</div>
-                                <div class="dash-cal-val">Skin Booster</div>
-                                <div class="dash-cal-label">Location</div>
-                                <div class="dash-cal-val">Aesthetic Clinic</div>
-                                <span class="dash-cal-btn">View Booking</span>
-                            </div>
+                        </div>
+                        <div class="chat-row is-me">
+                            <div class="chat-bubble-me">แอดมินได้รับยอดเรียบร้อยค่ะคุณผู้หญิง 🙏💕 ขอบคุณมากนะคะ</div>
                         </div>
                     </div>
                 </div>
@@ -669,39 +675,6 @@
         setInterval(tickChart1, 1100);
         setInterval(tickCard2, 1300);
         setInterval(tickPhone, 1200);
-
-        // ---- Card 4: calendar — always shows today's real date ----
-        var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-        var WEEKDAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-        var renderedDay = null;
-        function renderCalendar(){
-            var now = new Date();
-            if (renderedDay === now.getDate()) return;
-            renderedDay = now.getDate();
-
-            var y = now.getFullYear(), m = now.getMonth(), today = now.getDate();
-            $('dashCalMonth').textContent = MONTHS[m] + ' ' + y;
-            $('dashCalDate').textContent = WEEKDAYS[now.getDay()].slice(0,3) + ', ' + today + ' ' + MONTHS[m].slice(0,3) + ' ' + y;
-            if ($('dashApptDate')) $('dashApptDate').innerHTML = WEEKDAYS[now.getDay()].slice(0,3) + ', ' + today + ' ' + MONTHS[m].slice(0,3) + ' ' + y + '<br/>2:00 PM';
-
-            var firstDow = new Date(y, m, 1).getDay();
-            var daysInMonth = new Date(y, m + 1, 0).getDate();
-            var grid = $('dashCalGrid');
-            grid.querySelectorAll('.cal-cell').forEach(function(c){ c.remove(); });
-            for (var i = 0; i < firstDow; i++){
-                var blank = document.createElement('span');
-                blank.className = 'cal-cell';
-                grid.appendChild(blank);
-            }
-            for (var d = 1; d <= daysInMonth; d++){
-                var cell = document.createElement('span');
-                cell.className = 'cal-cell' + (d === today ? ' sel' : '');
-                cell.textContent = d;
-                grid.appendChild(cell);
-            }
-        }
-        renderCalendar();
-        setInterval(renderCalendar, 60000); // catches the midnight rollover for pages left open
     })();
     </script>
 

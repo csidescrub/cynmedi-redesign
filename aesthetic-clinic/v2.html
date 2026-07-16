@@ -355,7 +355,7 @@
                                 <div class="phone3d-screen">
                                     <div class="phone3d-notch"><div class="phone3d-lens"></div></div>
                                     <div class="phone3d-track" id="p3dTrack">
-                                        <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" data-avatar="V" data-logo="/assets/logos/varinpat.webp" data-caption="การร้อยไหมแบบจีน 🇨🇳✨" data-likes="1247" data-comments="32" data-shares="318">
+                                        <div class="phone3d-slide is-active" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" data-start="9" data-avatar="V" data-logo="/assets/logos/varinpat.webp" data-caption="การร้อยไหมแบบจีน 🇨🇳✨" data-likes="1247" data-comments="32" data-shares="318">
                                             <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-varinpat-secret-slim-face.jpg"></video>
                                         </div>
                                         <div class="phone3d-slide" data-name="Varinpat" data-href="/work/varinpat" data-src="/assets/client/aesthetic/varinpat/dr-on-trends.mp4" data-avatar="V" data-logo="/assets/logos/varinpat.webp" data-caption="ลูกค้าจริง รีวิวจริง ✨" data-likes="2103" data-comments="58" data-shares="540">
@@ -725,24 +725,46 @@
         var cur = 0;
         var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        // every source clip opens with a ~3-4s stylized blur/title-card transition;
-        // since a slide is only on screen for ~4.2s, without this it's ALL viewers
-        // ever see. Skip straight to the sharp footage (posters are pre-cut from the
-        // same timestamp, so the loading placeholder matches what plays).
-        var CLIP_START = 4.5;
+        // The source clips contain stylized blur/title-card segments (a ~3-4s intro on
+        // every clip, plus mid-clip topic cards on some). Each slide therefore plays a
+        // hand-vetted sharp window: from data-start (default 4.5s) for the 5s the slide
+        // is on screen. Posters are pre-cut from the same timestamp so the placeholder
+        // matches what plays.
+        function clipStart(slide){
+            return parseFloat(slide.getAttribute('data-start')) || 4.5;
+        }
         function loadSlide(i){
             var slide = slides[i];
             var video = slide.querySelector('video');
             if (video && !video.src) {
                 video.src = slide.getAttribute('data-src');
-                video.addEventListener('loadedmetadata', function(){ video.currentTime = CLIP_START; }, {once:true});
+                video.addEventListener('loadedmetadata', function(){ video.currentTime = clipStart(slide); }, {once:true});
                 video.load();
             }
             return video;
         }
         function playSlide(i){
             var video = loadSlide(i);
-            if (video) video.play().catch(function(){});
+            if (!video) return;
+            var start = clipStart(slides[i]);
+            // rewind to the vetted window on every lap — resuming from the pause point
+            // would drift each revisit into the unvetted (often blurred) parts.
+            if (video.readyState >= 1) video.currentTime = start;
+            video.play().catch(function(){});
+            // a browser that suspended the element (backgrounded tab, mobile memory
+            // pressure) reloads it on play and silently drops seeks — including ones
+            // issued from a single 'playing' handler, since the reload can reset the
+            // position again afterwards. Keep correcting on timeupdate until the seek
+            // actually sticks, then detach.
+            if (video._seekGuard) video.removeEventListener('timeupdate', video._seekGuard);
+            var tries = 0;
+            video._seekGuard = function(){
+                if (video.currentTime >= start - .25 || tries >= 5) {
+                    video.removeEventListener('timeupdate', video._seekGuard);
+                    video._seekGuard = null;
+                } else { tries++; video.currentTime = start; }
+            };
+            video.addEventListener('timeupdate', video._seekGuard);
         }
         function pauseSlide(i){
             var video = slides[i].querySelector('video');

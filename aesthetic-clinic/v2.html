@@ -195,12 +195,10 @@
         @media(prefers-reduced-motion:reduce){.phone3d-slide{transition:none}}
         @media(min-width:1024px){
             .hero-v2-wrap{padding-top:6rem}
-            /* align-items:start (not center): the graphic column is much taller than the
-               text, and centering left the headline hanging low with dead space above.
-               The small padding-top optically levels the eyebrow with the graphic's top
-               card row. */
-            .hero-v2-grid{grid-template-columns:1fr 1fr;gap:4rem;padding:4rem 2.5rem 5rem;align-items:start}
-            .hero-v2-left{padding-top:2.5rem}
+            /* align-items:center so the shorter text column centers against the taller
+               graphic column, and equal top/bottom padding balances the section instead
+               of the graphic bleeding closer to the bottom edge than the top gap. */
+            .hero-v2-grid{grid-template-columns:1fr 1fr;gap:4rem;padding:5rem 2.5rem;align-items:center}
             .hero-v2-glow{inset:-2.5rem}
         }
         /* LIVE DASHBOARD GRAPHIC — fully coded, no photo asset

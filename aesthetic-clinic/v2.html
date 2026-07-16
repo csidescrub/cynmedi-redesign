@@ -214,10 +214,6 @@
         .dash-wrap *{box-sizing:border-box}
         .dash-side{display:none}
 
-        /* floating bubbles */
-        .dash-bubble{position:absolute;background:#fff;border-radius:999px;box-shadow:0 14px 28px -12px rgba(15,27,48,.20);display:flex;align-items:center;gap:6px;padding:7px 14px;font-size:12px;font-weight:600;color:#0F1B30;font-family:'Inter','Kanit',sans-serif;white-space:nowrap;transition:color .4s}
-        .dash-bubble svg{width:14px;height:14px;flex-shrink:0}
-
         /* idle float — every floating element gets a slow asynchronous bob so the whole
            graphic reads as "alive", not just the number-ticking/video. Each element's
            EXISTING position/scale transform is baked into its own keyframe (that part
@@ -225,23 +221,19 @@
            a CSS animation fully replaces `transform` at each keyframe — it can't be
            layered on top of a separate static transform declaration. */
         .dash-float{animation-timing-function:ease-in-out;animation-iteration-count:infinite}
-        @keyframes floatPlain{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
         @keyframes floatCard{0%,100%{transform:scale(.8) translateY(0)}50%{transform:scale(.8) translateY(-8px)}}
         .dash-card.dash-float{animation-name:floatCard;transform-origin:top left}
         /* -lg cards skip the .8 shrink: full-scale variant enlarges the whole card
            (text, rows, paddings) uniformly with zero internal re-layout. */
         @keyframes floatCardLg{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
         .dash-card-lg.dash-float{animation-name:floatCardLg}
-        .dash-bubble.dash-float{animation-name:floatPlain}
         .dash-float-1{animation-duration:6.4s;animation-delay:-1.1s}
         .dash-float-2{animation-duration:5.6s;animation-delay:-3.4s}
         .dash-float-4{animation-duration:6.1s;animation-delay:-4.2s}
-        .dash-float-5{animation-duration:5.3s;animation-delay:-2s}
-        .dash-float-6{animation-duration:6.7s;animation-delay:-4.8s}
         .dash-float-7{animation-duration:5.9s;animation-delay:-2.3s}
         .dash-float-9{animation-duration:6.2s;animation-delay:-1.7s}
         .dash-float-10{animation-duration:5.7s;animation-delay:-4.4s}
-        /* list cards (New Leads / Top Content) — 7 rows, 3 visible, JS steps the track
+        /* list cards (New Leads / Top Content / Order Confirmed) — 7 rows, 3 visible, JS steps the track
            up one fixed-height row at a time; first 3 rows are cloned to the tail so the
            wrap-around is seamless. */
         .dash-list-vp{overflow:hidden;height:114px}
@@ -285,18 +277,10 @@
         .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums;margin-bottom:2px}
         .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
 
-        /* chat order-confirm card — Messenger-style: customer's transfer-slip bubble on
-           the left, admin's reply bubble on the right, closing the story the New Leads
-           card starts (lead comes in → deposit paid → order confirmed in chat). */
-        .chat-row{display:flex;margin-top:7px}
-        .chat-row.is-me{justify-content:flex-end}
-        .chat-slip{background:#F0F2F6;border-radius:12px 12px 12px 3px;padding:8px 12px;display:flex;align-items:center;gap:9px}
-        .chat-slip-check{width:18px;height:18px;border-radius:50%;background:#16A34A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .chat-slip-check svg{width:10px;height:10px}
-        .chat-slip-title{font-size:8px;font-weight:700;color:#16A34A;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
-        .chat-slip-amt{font-size:14px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;font-family:'Inter','Kanit',sans-serif;line-height:1.25}
-        .chat-slip-note{font-size:7.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
-        .chat-bubble-me{background:#2C4CAA;color:#fff;font-size:9px;font-weight:500;border-radius:12px 12px 3px 12px;padding:6px 10px;line-height:1.55;max-width:82%}
+        /* order-confirm card — sliding feed of paid deposit slips (same 7-rows/3-visible
+           track pattern as New Leads), closing the story that card starts:
+           lead comes in → deposit paid → order confirmed in chat. */
+        .order-amt{font-size:9.5px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
 
         @media(max-width:767px){
             .hero-v2-img-wrap{display:none}
@@ -331,16 +315,6 @@
                 <div class="hero-v2-glow"></div>
                 <div class="dash-wrap" role="img" aria-label="Mockup ของแดชบอร์ดการตลาด CYN แสดง Reach, Engagement, Lead และ ROAS สำหรับคลินิกความงาม">
                 <div class="dash-inner">
-
-                    <!-- floating bubbles -->
-                    <div class="dash-bubble dash-side dash-float dash-float-5" style="left:11px;top:-37px">
-                        <svg viewBox="0 0 24 24" fill="#E11D48"><path d="M12 21s-7.5-4.6-10-9.3C.5 8 2 4.5 5.4 3.7 8 3 10.3 4.3 12 6.7c1.7-2.4 4-3.7 6.6-3 3.4.8 4.9 4.3 3.4 8-2.5 4.7-10 9.3-10 9.3z"/></svg>
-                        <span id="dashLikes">2.5K</span>
-                    </div>
-                    <div class="dash-bubble dash-side dash-float dash-float-6" style="left:106px;top:-37px">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#0F1B30" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-                        <span id="dashSearch">320</span>
-                    </div>
 
                     <!-- PHONE 3D REEL — coded mockup (no stock photo), auto-cycling real client
                          clips from the /work case-study pages, 2 clips x 6 brands. Centered
@@ -553,27 +527,24 @@
                         <div class="dash-link">View All Content →</div>
                     </div>
 
-                    <!-- Card 4: chat order-confirm — deposit slip + admin reply in Messenger style -->
-                    <div class="dash-card dash-side dash-float dash-float-4" style="left:-45px;top:8px;width:302px;height:150px">
+                    <!-- Card 4: Order Confirmed — 7 paid deposit slips, 3 visible, auto-slides up -->
+                    <div class="dash-card dash-card-lg dash-side dash-float dash-float-4" style="left:-45px;top:-40px;width:240px;height:178px">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Order Confirmed</span>
                             <span class="dash-icons">
                                 <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#0084FF" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.15.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.53-.04.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2z"/><path fill="#fff" d="m6 14.66 2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75c.21.16.5.16.72 0l3.16-2.4c.42-.32.97.18.69.63l-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.76a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.17-.69-.62z"/></svg>
                             </span>
                         </div>
-                        <div class="chat-row">
-                            <div class="chat-slip">
-                                <span class="chat-slip-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span>
-                                <div>
-                                    <div class="chat-slip-title">โอนเงินสำเร็จ</div>
-                                    <div class="chat-slip-amt">฿500.00</div>
-                                    <div class="chat-slip-note">มัดจำร้อยไหม · 19:53</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat-row is-me">
-                            <div class="chat-bubble-me">แอดมินได้รับยอดเรียบร้อยค่ะคุณผู้หญิง 🙏💕 ขอบคุณมากนะคะ</div>
-                        </div>
+                        <div class="dash-list-vp"><div class="dash-list-track" id="dashOrdersTrack">
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿500.00</div><div class="lead-time">มัดจำร้อยไหม · 10:47</div></div><span class="lead-new">Paid</span></div>
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿1,000.00</div><div class="lead-time">มัดจำโบท็อกซ์ · 10:31</div></div><span class="lead-new">Paid</span></div>
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿500.00</div><div class="lead-time">มัดจำฟิลเลอร์ปาก · 10:02</div></div><span class="lead-new">Paid</span></div>
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿2,000.00</div><div class="lead-time">มัดจำเลเซอร์หน้าใส · 09:40</div></div><span class="lead-new">Paid</span></div>
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿500.00</div><div class="lead-time">มัดจำ Skin Booster · 09:23</div></div><span class="lead-new">Paid</span></div>
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿1,500.00</div><div class="lead-time">มัดจำทำตาสองชั้น · 09:15</div></div><span class="lead-new">Paid</span></div>
+                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿1,000.00</div><div class="lead-time">มัดจำโปรแกรมผิว · 08:58</div></div><span class="lead-new">Paid</span></div>
+                        </div></div>
+                        <div class="dash-link">View All Orders →</div>
                     </div>
                 </div>
                 </div>
@@ -655,18 +626,6 @@
         }
 
 
-        // ---- phone: likes / search / followers ----
-        var likes = 2500, search = 320, followers = 128000;
-        function tickPhone(){
-            likes = Math.round(jitter(likes, 40, 2200, 2900));
-            search = Math.round(jitter(search, 8, 280, 380));
-            followers = jitter(followers, 350, 126000, 131000);
-            if ($('dashLikes')) $('dashLikes').textContent = formatK(likes);
-            if ($('dashSearch')) $('dashSearch').textContent = Math.round(search);
-            if ($('dphFollowers')) $('dphFollowers').textContent = formatK(followers);
-            [$('dashLikes'), $('dashSearch'), $('dphFollowers')].forEach(function(el){ if(el) pulse(el); });
-        }
-
         // init charts before first paint tick
         $('dashChart1Path').setAttribute('d', pathFromPoints(chart1Cur, 300, 78, 80));
         $('dashChart1Area').setAttribute('d', areaPathFromPoints(chart1Cur, 300, 78, 80));
@@ -674,7 +633,6 @@
         setInterval(tickCard1, 1100);
         setInterval(tickChart1, 1100);
         setInterval(tickCard2, 1300);
-        setInterval(tickPhone, 1200);
     })();
     </script>
 
@@ -817,6 +775,7 @@
         }
         cycle('dashLeadsTrack', 0);
         cycle('dashContentTrack', 1300);
+        cycle('dashOrdersTrack', 650);
     })();
     </script>
 

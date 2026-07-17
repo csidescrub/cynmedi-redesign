@@ -842,12 +842,14 @@
         // reads as a live system rather than a static collage. Each card keeps its
         // own permanently-tuned .dash-slot position; this only toggles .is-visible.
         //
-        // Story order traces the funnel end to end: an ad converts into a Messenger
-        // lead (metaads, messenger), which is backed by channel-performance proof
-        // (social, googleads), which comes from content that performs (content),
-        // which compounds into growth (growth) — then loops. Any 3 consecutive
-        // entries in this order are always on screen together.
-        var CARD_ORDER = ['metaads', 'messenger', 'social', 'googleads', 'content', 'growth'];
+        // Order alternates between two position sets so the visible trio always
+        // spans top/middle/bottom on alternating sides and never clusters:
+        //   set A — metaads (top-left), growth (right-middle), googleads (bottom-left)
+        //   set B — social (top-right), messenger (left-middle), content (bottom-right)
+        // The initial pop-in shows set A; one-at-a-time rotation then walks the
+        // screen to set B and back (A1→B1, A2→B2, A3→B3, B1→A1, ...), each swap
+        // landing on the mirrored side of the card it replaces.
+        var CARD_ORDER = ['metaads', 'growth', 'googleads', 'social', 'messenger', 'content'];
         var wrap = document.querySelector('.dash-wrap');
         if (!wrap) return;
         var slots = CARD_ORDER.map(function(key){ return wrap.querySelector('.dash-slot[data-card="' + key + '"]'); });

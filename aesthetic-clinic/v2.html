@@ -214,6 +214,16 @@
         .dash-wrap *{box-sizing:border-box}
         .dash-side{display:none}
 
+        /* ROTATING DASHBOARD — only 3 of the 6 cards are visible at once, JS swaps
+           one card at a time on a timer (see the rotation-engine script). Each card
+           keeps its own permanently-tuned position/size (unchanged from before); this
+           wrapper owns ONLY the show/hide motion (opacity+translateY+scale via
+           transition) so it never fights the card's own float-bob keyframe animation —
+           two different elements, two independent `transform`s. */
+        .dash-slot{position:absolute;transition:opacity .6s cubic-bezier(0,0,.2,1),transform .6s cubic-bezier(0,0,.2,1);opacity:0;transform:translateY(20px) scale(.96);pointer-events:none}
+        .dash-slot.is-visible{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+        @media(prefers-reduced-motion:reduce){.dash-slot{transition:none}}
+
         /* idle float — every floating element gets a slow asynchronous bob so the whole
            graphic reads as "alive", not just the number-ticking/video. Each element's
            EXISTING position/scale transform is baked into its own keyframe (that part
@@ -233,7 +243,7 @@
         .dash-float-7{animation-duration:5.9s;animation-delay:-2.3s}
         .dash-float-9{animation-duration:6.2s;animation-delay:-1.7s}
         .dash-float-10{animation-duration:5.7s;animation-delay:-4.4s}
-        /* list cards (New Leads / Top Content / Order Confirmed) — 7 rows, 3 visible, JS steps the track
+        /* list cards (Messenger Leads / Top Content) — 7 rows, 3 visible, JS steps the track
            up one fixed-height row at a time; first 3 rows are cloned to the tail so the
            wrap-around is seamless. */
         .dash-list-vp{overflow:hidden;height:114px}
@@ -256,8 +266,11 @@
 
         /* right-side dashboard cards */
         /* card sizes below are grown to match this padding — the interior content area
-           stays the same, so the padding change can't re-clip the tuned card layouts. */
-        .dash-card{position:absolute;background:#fff;border-radius:14px;box-shadow:0 20px 44px -18px rgba(15,27,48,.20);padding:13px 15px;overflow:hidden;container-type:inline-size;line-height:1.15}
+           stays the same, so the padding change can't re-clip the tuned card layouts.
+           Position/width/height now live on the wrapping .dash-slot; this element
+           fills its slot via inset:0. Glassmorphism: translucent + blurred so the
+           phone/video reads through at the card's edges. */
+        .dash-card{position:absolute;inset:0;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);border-radius:24px;box-shadow:0 24px 48px -20px rgba(15,27,48,.22),0 2px 10px -4px rgba(15,27,48,.12);padding:13px 15px;overflow:hidden;container-type:inline-size;line-height:1.15}
         .dash-card-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
         .dash-card-title{font-size:11px;font-weight:600;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
         .dash-icons{display:flex;gap:4px}
@@ -277,10 +290,29 @@
         .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums;margin-bottom:2px}
         .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
 
-        /* order-confirm card — sliding feed of paid deposit slips (same 7-rows/3-visible
-           track pattern as New Leads), closing the story that card starts:
-           lead comes in → deposit paid → order confirmed in chat. */
-        .order-amt{font-size:9.5px;font-weight:700;color:#0F1B30;font-variant-numeric:tabular-nums;font-family:'Inter','Kanit',sans-serif;line-height:1.3}
+        /* Meta Ads Conversion card — styled after Meta Ads Manager / Messenger, not an
+           ecommerce receipt: narrates one lead's Ads → Messenger → Appointment →
+           Deposit journey. .ma-convo (message + status rows, the part that changes
+           per scenario) fades independently of the static customer row below it. */
+        .meta-badge{width:16px;height:16px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .meta-badge svg{width:12px;height:12px}
+        .ma-body{display:flex;flex-direction:column;gap:7px;margin-top:2px}
+        .ma-customer{display:flex;align-items:center;gap:6px}
+        .ma-avatar{width:22px;height:22px;border-radius:50%;background:#EEF1F6;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .ma-avatar svg{width:13px;height:13px}
+        .ma-cname{font-size:10px;font-weight:600;color:#1F2D44;font-family:'Inter','Kanit',sans-serif}
+        .ma-convo{display:flex;flex-direction:column;gap:6px;transition:opacity .35s}
+        .ma-convo.is-swapping{opacity:0}
+        .ma-bubble{background:#EEF1F6;border-radius:4px 12px 12px 12px;padding:6px 10px;font-size:9.5px;color:#1F2D44;line-height:1.4;align-self:flex-start;max-width:94%}
+        .ma-status{display:flex;flex-direction:column;gap:4px}
+        .ma-status-row{display:flex;align-items:center;gap:6px;font-size:9.5px;color:#1F2D44;font-weight:500;font-family:'Inter','Kanit',sans-serif}
+        .ma-status-row b{color:#16A34A;font-weight:700}
+        .ma-check{width:14px;height:14px;border-radius:50%;background:#16A34A;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .ma-check svg{width:8px;height:8px}
+        .ma-foot{display:flex;align-items:center;justify-content:space-between;margin-top:7px;padding-top:6px;border-top:1px solid rgba(15,27,48,.08)}
+        .ma-time{font-size:8.5px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif}
+        .ma-verified-pill{display:inline-flex;align-items:center;gap:3px;font-size:8px;font-weight:700;color:#0866FF;background:rgba(8,102,255,.10);border-radius:999px;padding:2px 8px;font-family:'Inter','Kanit',sans-serif}
+        .ma-verified-pill svg{width:8px;height:8px}
 
         @media(max-width:767px){
             .hero-v2-img-wrap{display:none}
@@ -404,10 +436,11 @@
                         </div>
                     </div>
 
-                    <!-- Card 1: Social Media Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-1" style="left:358px;top:0px;width:302px;height:159px">
+                    <!-- Card 1: Social Performance -->
+                    <div class="dash-slot dash-side" data-card="social" style="left:358px;top:0px;width:302px;height:159px">
+                    <div class="dash-card dash-float dash-float-1">
                         <div class="dash-card-hd">
-                            <span class="dash-card-title">Social Media Performance</span>
+                            <span class="dash-card-title">Social Performance</span>
                             <span class="dash-icons">
                                 <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5" stroke="#E4405F" stroke-width="2"/><circle cx="12" cy="12" r="4.2" stroke="#E4405F" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.1" fill="#E4405F"/></svg>
                                 <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.41 0 12.07c0 6.02 4.39 11.02 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.96H15.83c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8V24C19.61 23.09 24 18.09 24 12.07z"/></svg>
@@ -436,11 +469,13 @@
                             <path class="line" id="dashChart1Path" d="" />
                         </svg>
                     </div>
+                    </div>
 
-                    <!-- Card 2: Monthly Leads -->
-                    <div class="dash-card dash-side dash-float dash-float-2" style="left:374px;top:169px;width:156px;height:130px">
+                    <!-- Card 2: Monthly Growth -->
+                    <div class="dash-slot dash-side" data-card="growth" style="left:374px;top:169px;width:156px;height:130px">
+                    <div class="dash-card dash-float dash-float-2">
                         <div class="dash-card-hd">
-                            <span class="dash-card-title">Monthly Leads</span>
+                            <span class="dash-card-title">Monthly Growth</span>
                         </div>
                         <div class="dash-big-num" id="dashLeads">+528</div>
                         <div style="display:flex;align-items:center;gap:5px;margin:2px 0 4px">
@@ -458,9 +493,11 @@
                             <div class="dash-bar" style="height:96%"></div>
                         </div>
                     </div>
+                    </div>
 
                     <!-- Card 5: Google Ads Performance -->
-                    <div class="dash-card dash-side dash-float dash-float-7" style="left:38px;top:343px;width:190px;height:144px">
+                    <div class="dash-slot dash-side" data-card="googleads" style="left:38px;top:343px;width:190px;height:144px">
+                    <div class="dash-card dash-float dash-float-7">
                         <div class="dash-card-hd">
                             <span class="dash-card-title">Google Ads Performance</span>
                             <span class="dash-icons">
@@ -490,12 +527,14 @@
                             </div>
                         </div>
                     </div>
+                    </div>
 
 
-                    <!-- New Leads — 7 incoming messages, 3 visible, auto-slides up -->
-                    <div class="dash-card dash-card-lg dash-side dash-float dash-float-9" style="left:4px;top:150px;width:232px;height:178px">
+                    <!-- Messenger Leads — 7 incoming messages, 3 visible, auto-slides up -->
+                    <div class="dash-slot dash-side" data-card="messenger" style="left:4px;top:150px;width:232px;height:178px">
+                    <div class="dash-card dash-card-lg dash-float dash-float-9">
                         <div class="dash-card-hd">
-                            <span class="dash-card-title">New Leads</span>
+                            <span class="dash-card-title">Messenger Leads</span>
                             <span class="dash-icons"><svg viewBox="0 0 24 24" width="14" height="14" fill="#06C755"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></span>
                         </div>
                         <div class="dash-list-vp"><div class="dash-list-track" id="dashLeadsTrack">
@@ -509,11 +548,13 @@
                         </div></div>
                         <div class="dash-link">View All Leads →</div>
                     </div>
+                    </div>
 
-                    <!-- Top Content Performance — 7 real client clips, 3 visible, auto-slides up -->
-                    <div class="dash-card dash-card-lg dash-side dash-float dash-float-10" style="left:352px;top:308px;width:220px;height:178px">
+                    <!-- Top Content — 7 real client clips, 3 visible, auto-slides up -->
+                    <div class="dash-slot dash-side" data-card="content" style="left:352px;top:308px;width:220px;height:178px">
+                    <div class="dash-card dash-card-lg dash-float dash-float-10">
                         <div class="dash-card-hd">
-                            <span class="dash-card-title">Top Content Performance</span>
+                            <span class="dash-card-title">Top Content</span>
                         </div>
                         <div class="dash-list-vp"><div class="dash-list-track" id="dashContentTrack">
                             <div class="lead-row"><img class="content-thumb" src="/assets/client/_phone3d-posters/aesthetic-varinpat-asmr-testimonial.jpg" alt="" loading="lazy"><div><div class="content-title">รีวิวลูกค้า Varinpat</div><div class="content-views">1.2M Views</div></div><span class="dash-delta" style="margin-left:auto;flex-shrink:0">+128%</span></div>
@@ -526,25 +567,41 @@
                         </div></div>
                         <div class="dash-link">View All Content →</div>
                     </div>
+                    </div>
 
-                    <!-- Card 4: Order Confirmed — 7 paid deposit slips, 3 visible, auto-slides up -->
-                    <div class="dash-card dash-card-lg dash-side dash-float dash-float-4" style="left:-45px;top:-40px;width:240px;height:178px">
+                    <!-- Card 4: Meta Ads Conversion — Meta/Messenger-styled (not a receipt): one
+                         lead's Ads → Messenger → Appointment → Deposit journey. JS cycles the
+                         treatment/amount through a few scenarios so it reads as a live feed of
+                         conversions rather than a single static example. -->
+                    <div class="dash-slot dash-side" data-card="metaads" style="left:-45px;top:-40px;width:240px;height:178px">
+                    <div class="dash-card dash-card-lg dash-float dash-float-4">
                         <div class="dash-card-hd">
-                            <span class="dash-card-title">Order Confirmed</span>
+                            <span class="dash-card-title" style="display:flex;align-items:center;gap:5px">
+                                <span class="meta-badge"><svg viewBox="0 0 24 24"><defs><linearGradient id="metaGrad" x1="0" x2="24" y1="0" y2="24"><stop offset="0%" stop-color="#0064E0"/><stop offset="100%" stop-color="#0081FB"/></linearGradient></defs><path fill="url(#metaGrad)" d="M4 12c0-3 1.6-5.4 4-5.4 1.7 0 2.9 1.1 4 2.8 1.1-1.7 2.3-2.8 4-2.8 2.4 0 4 2.4 4 5.4s-1.6 5.4-4 5.4c-1.7 0-2.9-1.1-4-2.8-1.1 1.7-2.3 2.8-4 2.8-2.4 0-4-2.4-4-5.4z"/></svg></span>
+                                Meta Ads Conversion
+                            </span>
                             <span class="dash-icons">
                                 <svg viewBox="0 0 24 24" width="14" height="14"><path fill="#0084FF" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.15.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.53-.04.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2z"/><path fill="#fff" d="m6 14.66 2.94-4.66c.47-.74 1.47-.93 2.17-.4l2.34 1.75c.21.16.5.16.72 0l3.16-2.4c.42-.32.97.18.69.63l-2.94 4.66c-.47.74-1.47.93-2.17.4l-2.34-1.76a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.17-.69-.62z"/></svg>
                             </span>
                         </div>
-                        <div class="dash-list-vp"><div class="dash-list-track" id="dashOrdersTrack">
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿500.00</div><div class="lead-time">มัดจำร้อยไหม · 10:47</div></div><span class="lead-new">Paid</span></div>
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿1,000.00</div><div class="lead-time">มัดจำโบท็อกซ์ · 10:31</div></div><span class="lead-new">Paid</span></div>
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿500.00</div><div class="lead-time">มัดจำฟิลเลอร์ปาก · 10:02</div></div><span class="lead-new">Paid</span></div>
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿2,000.00</div><div class="lead-time">มัดจำเลเซอร์หน้าใส · 09:40</div></div><span class="lead-new">Paid</span></div>
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿500.00</div><div class="lead-time">มัดจำ Skin Booster · 09:23</div></div><span class="lead-new">Paid</span></div>
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿1,500.00</div><div class="lead-time">มัดจำทำตาสองชั้น · 09:15</div></div><span class="lead-new">Paid</span></div>
-                            <div class="lead-row"><span class="lead-ico" style="background:#16A34A"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><div><div class="order-amt">฿1,000.00</div><div class="lead-time">มัดจำโปรแกรมผิว · 08:58</div></div><span class="lead-new">Paid</span></div>
-                        </div></div>
-                        <div class="dash-link">View All Orders →</div>
+                        <div class="ma-body">
+                            <div class="ma-customer">
+                                <span class="ma-avatar"><svg viewBox="0 0 24 24" fill="#7F8DA8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>
+                                <span class="ma-cname">Customer</span>
+                            </div>
+                            <div class="ma-convo" id="maConvo">
+                                <div class="ma-bubble">Interested in <span id="maTreatment">Botox</span> Consultation</div>
+                                <div class="ma-status">
+                                    <div class="ma-status-row"><span class="ma-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> Appointment Confirmed</div>
+                                    <div class="ma-status-row"><span class="ma-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> Deposit Received <b id="maAmt">฿1,000</b></div>
+                                </div>
+                            </div>
+                            <div class="ma-foot">
+                                <span class="ma-time" id="maTime">Just now</span>
+                                <span class="ma-verified-pill"><svg viewBox="0 0 24 24" fill="#0866FF"><path d="M12 2l2.4 1.3 2.7-.4 1.3 2.4 2.4 1.3-.4 2.7 1.3 2.4-1.6 2.3.4 2.7-2.7.4-1.6 2.3-2.5-.9-2.5.9-1.6-2.3-2.7-.4.4-2.7-1.6-2.3 1.3-2.4-.4-2.7 1.3-2.4L9.3 2.9z"/><path d="M9 12.5l2 2 4-4.5" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified</span>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 </div>
@@ -775,7 +832,122 @@
         }
         cycle('dashLeadsTrack', 0);
         cycle('dashContentTrack', 1300);
-        cycle('dashOrdersTrack', 650);
+    })();
+    </script>
+
+    <script>
+    (function(){
+        // HERO DASHBOARD ROTATION — declutters the 6 cards to 3 visible at a time,
+        // swapping exactly one card per tick (never the whole set) so the graphic
+        // reads as a live system rather than a static collage. Each card keeps its
+        // own permanently-tuned .dash-slot position; this only toggles .is-visible.
+        //
+        // Story order traces the funnel end to end: an ad converts into a Messenger
+        // lead (metaads, messenger), which is backed by channel-performance proof
+        // (social, googleads), which comes from content that performs (content),
+        // which compounds into growth (growth) — then loops. Any 3 consecutive
+        // entries in this order are always on screen together.
+        var CARD_ORDER = ['metaads', 'messenger', 'social', 'googleads', 'content', 'growth'];
+        var wrap = document.querySelector('.dash-wrap');
+        if (!wrap) return;
+        var slots = CARD_ORDER.map(function(key){ return wrap.querySelector('.dash-slot[data-card="' + key + '"]'); });
+        if (slots.indexOf(null) !== -1) return; // markup mismatch — bail rather than half-run
+
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var POP_DELAY = 800, POP_STAGGER = 350, HOLD_BEFORE_ROTATE = 4500, ROTATE_INTERVAL = 4500;
+
+        // round-robin state: which CARD_ORDER index each of the 3 "slots" currently
+        // shows, which card index enters next, and which of the 3 rotates next.
+        var visible = [0, 1, 2];
+        var nextPtr = 3;
+        var rotSlot = 0;
+        var rotateTimer = null;
+
+        function showInitial(){
+            visible.forEach(function(i){ slots[i].classList.add('is-visible'); });
+        }
+        function tick(){
+            var outIdx = visible[rotSlot];
+            var inIdx = nextPtr % CARD_ORDER.length;
+            slots[outIdx].classList.remove('is-visible');
+            slots[inIdx].classList.add('is-visible');
+            visible[rotSlot] = inIdx;
+            nextPtr = (nextPtr + 1) % CARD_ORDER.length;
+            rotSlot = (rotSlot + 1) % 3;
+        }
+        function startRotation(){
+            if (reduced || rotateTimer) return;
+            rotateTimer = setInterval(tick, ROTATE_INTERVAL);
+        }
+        function stopRotation(){
+            clearInterval(rotateTimer);
+            rotateTimer = null;
+        }
+
+        if (reduced) {
+            showInitial(); // declutter to 3, but no entrance/rotation motion
+            return;
+        }
+
+        setTimeout(function(){
+            slots[visible[0]].classList.add('is-visible');
+            setTimeout(function(){ slots[visible[1]].classList.add('is-visible'); }, POP_STAGGER);
+            setTimeout(function(){ slots[visible[2]].classList.add('is-visible'); }, POP_STAGGER * 2);
+            setTimeout(startRotation, POP_STAGGER * 2 + HOLD_BEFORE_ROTATE);
+        }, POP_DELAY);
+
+        // pause on hover — the rotation is "nice to have" atmosphere, shouldn't
+        // fight a visitor actually trying to read a card.
+        wrap.addEventListener('mouseenter', stopRotation);
+        wrap.addEventListener('mouseleave', startRotation);
+    })();
+    </script>
+
+    <script>
+    (function(){
+        // Meta Ads Conversion card — cycles the customer's treatment/deposit through
+        // a few scenarios so the single conversation reads as a live feed of
+        // conversions. Time label is a short symbolic clock (resets to "Just now" on
+        // every scenario swap), consistent with the rest of this hero graphic being a
+        // fully coded, no-real-data mockup.
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var treatmentEl = document.getElementById('maTreatment');
+        var amountEl = document.getElementById('maAmt');
+        var timeEl = document.getElementById('maTime');
+        var convoEl = document.getElementById('maConvo');
+        if (!treatmentEl || !amountEl || !timeEl) return;
+
+        var scenarios = [
+            {treatment: 'Botox', amount: '฿1,000'},
+            {treatment: 'Thread Lift', amount: '฿500'},
+            {treatment: 'Lip Filler', amount: '฿500'},
+            {treatment: 'Laser Facial', amount: '฿2,000'},
+            {treatment: 'Skin Booster', amount: '฿500'}
+        ];
+        var timeLabels = ['Just now', '1 min ago', '2 min ago'];
+        var idx = 0, tick = 0;
+
+        function render(){
+            treatmentEl.textContent = scenarios[idx].treatment;
+            amountEl.textContent = scenarios[idx].amount;
+            timeEl.textContent = timeLabels[0];
+        }
+        render();
+        if (reduced) return;
+
+        setInterval(function(){
+            tick = (tick + 1) % 3;
+            if (tick === 0) {
+                idx = (idx + 1) % scenarios.length;
+                if (convoEl) convoEl.classList.add('is-swapping');
+                setTimeout(function(){
+                    render();
+                    if (convoEl) convoEl.classList.remove('is-swapping');
+                }, 350);
+            } else {
+                timeEl.textContent = timeLabels[tick];
+            }
+        }, 1400);
     })();
     </script>
 

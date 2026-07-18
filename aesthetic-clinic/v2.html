@@ -314,8 +314,24 @@
         .ma-verified-pill{display:inline-flex;align-items:center;gap:3px;font-size:8px;font-weight:700;color:#0866FF;background:rgba(8,102,255,.10);border-radius:999px;padding:2px 8px;font-family:'Inter','Kanit',sans-serif}
         .ma-verified-pill svg{width:8px;height:8px}
 
+        /* MOBILE HERO — phone front and center (boosted; float animation off since
+           its keyframes bake the desktop transform) with only the Meta Ads story
+           card top-left and Monthly Growth bottom-right. The other four slots stay
+           hidden and the rotation JS swaps to a static pop-in on this breakpoint.
+           Card boosts counter the container's ~0.61 mobile scale for readability. */
         @media(max-width:767px){
-            .hero-v2-img-wrap{display:none}
+            /* width:100% + justify-self (NOT margin:auto — auto margins stop a grid
+               item from stretching, and with only absolute/percent children its
+               shrink-to-fit width collapses to 0, taking 100cqi down with it) */
+            .hero-v2-img-wrap{display:block;width:100%;max-width:420px;justify-self:center;margin-top:3.2rem}
+            .dash-wrap .phone3d-wrap{display:block;animation:none;transform:translate(-50%,-50%) scale(1.9)}
+            .dash-slot{display:none}
+            .dash-slot[data-card="metaads"],.dash-slot[data-card="growth"]{display:block}
+            .dash-slot[data-card="metaads"]{left:-20px !important;top:-24px !important}
+            .dash-slot[data-card="growth"]{left:330px !important;top:352px !important}
+            .dash-card.dash-float{animation:none;transform:scale(.8);transform-origin:top left}
+            .dash-slot[data-card="metaads"] .dash-card{transform:scale(1.4)}
+            .dash-slot[data-card="growth"] .dash-card{transform:scale(1.16)}
         }
         @media(min-width:768px){ .dash-side{display:block} }
         @media(prefers-reduced-motion:reduce){
@@ -590,7 +606,7 @@
                                 <span class="ma-cname">Customer</span>
                             </div>
                             <div class="ma-convo" id="maConvo">
-                                <div class="ma-bubble">Interested in <span id="maTreatment">Botox</span> Consultation</div>
+                                <div class="ma-bubble">สนใจปรึกษา<span id="maTreatment">โบท็อกซ์</span>ค่ะ</div>
                                 <div class="ma-status">
                                     <div class="ma-status-row"><span class="ma-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> Appointment Confirmed</div>
                                     <div class="ma-status-row"><span class="ma-check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span> Deposit Received <b id="maAmt">฿1,000</b></div>
@@ -891,6 +907,16 @@
             return;
         }
 
+        // mobile breakpoint shows a static pair (Meta Ads + Growth — the only two
+        // slots its CSS displays): pop them in, then no rotation.
+        if (window.matchMedia('(max-width:767px)').matches) {
+            setTimeout(function(){
+                slots[0].classList.add('is-visible');
+                setTimeout(function(){ slots[1].classList.add('is-visible'); }, POP_STAGGER);
+            }, POP_DELAY);
+            return;
+        }
+
         setTimeout(function(){
             slots[visible[0]].classList.add('is-visible');
             setTimeout(function(){ slots[visible[1]].classList.add('is-visible'); }, POP_STAGGER);
@@ -920,11 +946,11 @@
         if (!treatmentEl || !amountEl || !timeEl) return;
 
         var scenarios = [
-            {treatment: 'Botox', amount: '฿1,000'},
-            {treatment: 'Thread Lift', amount: '฿500'},
-            {treatment: 'Lip Filler', amount: '฿500'},
-            {treatment: 'Laser Facial', amount: '฿2,000'},
-            {treatment: 'Skin Booster', amount: '฿500'}
+            {treatment: 'โบท็อกซ์', amount: '฿1,000'},
+            {treatment: 'ร้อยไหม', amount: '฿500'},
+            {treatment: 'ฟิลเลอร์ปาก', amount: '฿500'},
+            {treatment: 'เลเซอร์หน้าใส', amount: '฿2,000'},
+            {treatment: ' Skin Booster ', amount: '฿500'}
         ];
         var timeLabels = ['Just now', '1 min ago', '2 min ago'];
         var idx = 0, tick = 0;

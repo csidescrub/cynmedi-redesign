@@ -155,10 +155,15 @@
         .phone3d-bezel{position:absolute;inset:0;border-radius:24px;background:#0b0c10;box-shadow:0 40px 64px -20px rgba(15,27,48,.45),0 14px 26px -12px rgba(15,27,48,.35),inset 0 0 0 2px #c9c3b4,inset 0 0 0 3px rgba(0,0,0,.55);padding:6px}
         /* extruded side band — the box side extends BACKWARD from the front plane via
            rotateY(90deg) about its left edge. Width 19px = real thickness ratio
-           (8.25mm side on a 70.6mm-wide body ≈ 11.7% of the 162px body). Front corners
-           stay square so it joins the front face seamlessly; back corners rounded to
-           suggest the body's curvature. Gradient runs front(light)→back(dark). */
-        .phone3d-edge{position:absolute;top:10px;bottom:10px;width:19px;left:100%;transform-origin:left center;transform:rotateY(90deg);border-radius:0 9px 9px 0;background:linear-gradient(90deg,#dcd6c7 0%,#c2bcae 26%,#a19b8c 55%,#767061 100%);box-shadow:inset 0 1px 0 hsla(0,0%,100%,.35),inset 0 -1px 0 rgba(0,0,0,.2)}
+           (8.25mm side on a 70.6mm-wide body ≈ 11.7% of the 162px body). Runs the
+           FULL height (top:0/bottom:0) flush with .phone3d-bezel — a prior 10px
+           top/bottom inset left the corners with no thickness fill at all (visible
+           as the body seeming to "cut off" before the top/bottom edge). A small
+           front-corner radius (4px) softens the seam into the bezel's curve instead
+           of butting a hard square corner against it; the back corners keep a
+           bigger radius (10px) to suggest the body's curvature. Gradient runs
+           front(light)→back(dark). */
+        .phone3d-edge{position:absolute;top:0;bottom:0;width:19px;left:100%;transform-origin:left center;transform:rotateY(90deg);border-radius:4px 10px 10px 4px;background:linear-gradient(90deg,#dcd6c7 0%,#c2bcae 26%,#a19b8c 55%,#767061 100%);box-shadow:inset 0 1px 0 hsla(0,0%,100%,.35),inset 0 -1px 0 rgba(0,0,0,.2)}
         .phone3d-screen{position:relative;width:100%;height:100%;border-radius:19px;overflow:hidden;background:#0b0c10;box-shadow:inset 0 0 0 1px rgba(0,0,0,.6)}
         .phone3d-notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:32%;height:15px;background:#05060a;border-radius:10px;z-index:8}
         .phone3d-lens{position:absolute;top:50%;right:14%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#3a5a8a,#0d1420 62%,#000 100%);box-shadow:0 0 0 1px rgba(255,255,255,.06)}
@@ -327,11 +332,14 @@
             .dash-wrap .phone3d-wrap{display:block;animation:none;transform:translate(-50%,-50%) scale(1.9)}
             .dash-slot{display:none}
             .dash-slot[data-card="metaads"],.dash-slot[data-card="growth"]{display:block}
-            .dash-slot[data-card="metaads"]{left:-20px !important;top:-24px !important}
-            .dash-slot[data-card="growth"]{left:330px !important;top:352px !important}
+            .dash-slot[data-card="metaads"]{left:-32px !important;top:-52px !important}
+            .dash-slot[data-card="growth"]{left:358px !important;top:378px !important}
             .dash-card.dash-float{animation:none;transform:scale(.8);transform-origin:top left}
-            .dash-slot[data-card="metaads"] .dash-card{transform:scale(1.4)}
-            .dash-slot[data-card="growth"] .dash-card{transform:scale(1.16)}
+            /* smaller boost + pulled further into the margins than the old 1.4/1.16
+               (which draped the cards deep over the phone's face) — now they clip
+               just the corner tip, reading as an accent instead of a cover. */
+            .dash-slot[data-card="metaads"] .dash-card{transform:scale(1.05)}
+            .dash-slot[data-card="growth"] .dash-card{transform:scale(.92)}
         }
         @media(min-width:768px){ .dash-side{display:block} }
         @media(prefers-reduced-motion:reduce){

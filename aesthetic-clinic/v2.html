@@ -283,10 +283,10 @@
         .dash-chart-svg{width:100%;display:block}
         .dash-chart-svg.dash-chart-lg{height:44px}
         .dash-chart-svg.dash-chart-sm{height:18px}
-        .dash-chart-svg path.line{fill:none;stroke:#2C4CAA;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:d .6s cubic-bezier(.4,0,.2,1)}
-        .dash-chart-svg path.area{fill:url(#dashGrad);opacity:.8;transition:d .6s cubic-bezier(.4,0,.2,1)}
+        .dash-chart-svg path.line{fill:none;stroke:#2C4CAA;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:d .5s cubic-bezier(.4,0,.2,1)}
+        .dash-chart-svg path.area{fill:url(#dashGrad);opacity:.8;transition:d .5s cubic-bezier(.4,0,.2,1)}
         .dash-bars{display:flex;align-items:flex-end;gap:5%;height:100%}
-        .dash-bar{flex:1;background:#2C4CAA;border-radius:3px 3px 0 0;transition:height .45s cubic-bezier(.4,0,.2,1)}
+        .dash-bar{flex:1;background:#2C4CAA;border-radius:3px 3px 0 0;transition:height .35s cubic-bezier(.4,0,.2,1)}
         .dash-big-num{font-size:22px;font-weight:700;color:#0F1B30;line-height:1;transition:color .4s;font-variant-numeric:tabular-nums;margin-bottom:2px}
         .dash-mini-label{font-size:9px;color:#7F8DA8;font-family:'Inter','Kanit',sans-serif;line-height:1.15}
 
@@ -636,29 +636,50 @@
         }
         function pulse(el){
             el.style.color = '#2C4CAA';
-            setTimeout(function(){ el.style.color = ''; }, 400);
+            setTimeout(function(){ el.style.color = ''; }, 300);
         }
         function jitter(v, amt, min, max){
             var nv = v + (Math.random()*2-1)*amt;
             return Math.max(min, Math.min(max, nv));
         }
+        // rolling count-up: tween the displayed value to its new target every frame
+        // (ease-out cubic) instead of snapping, so the digits visibly spin. Each
+        // element keeps its own rAF handle — a new tick cancels the previous tween
+        // mid-flight and continues from wherever the number currently is.
+        function tween(el, to, fmt){
+            var from = el._val !== undefined ? el._val : to;
+            if (el._tw) cancelAnimationFrame(el._tw);
+            var t0 = performance.now(), DUR = 420;
+            function frame(now){
+                var p = Math.min(1, (now - t0) / DUR);
+                var e = 1 - Math.pow(1 - p, 3);
+                var v = from + (to - from) * e;
+                el._val = v;
+                el.textContent = fmt(v);
+                if (p < 1) el._tw = requestAnimationFrame(frame); else el._tw = null;
+            }
+            el._tw = requestAnimationFrame(frame);
+        }
+        var intF = function(v){ return String(Math.round(v)); };
+        var plusF = function(v){ return '+' + Math.round(v); };
+        var pctF = function(v){ return '+' + Math.round(v) + '%'; };
 
         // ---- Card 1: reach / engagement / appointments ----
         var reach = 182400, engagement = 14800, appt = 528;
         var reachDelta = 42, engDelta = 31, apptDelta = 67;
         function tickCard1(){
-            reach = jitter(reach, 900, 175000, 196000);
-            engagement = jitter(engagement, 90, 13800, 16200);
-            appt = Math.round(jitter(appt, 4, 500, 560));
-            reachDelta = jitter(reachDelta, 1.2, 30, 55);
-            engDelta = jitter(engDelta, 1, 22, 40);
-            apptDelta = jitter(apptDelta, 1.5, 55, 80);
-            $('dashReach').textContent = formatK(reach);
-            $('dashEngagement').textContent = formatK(engagement);
-            $('dashAppointments').textContent = Math.round(appt);
-            $('dashReachDelta').textContent = '+' + Math.round(reachDelta) + '%';
-            $('dashEngDelta').textContent = '+' + Math.round(engDelta) + '%';
-            $('dashApptDelta').textContent = '+' + Math.round(apptDelta) + '%';
+            reach = jitter(reach, 1400, 175000, 196000);
+            engagement = jitter(engagement, 140, 13800, 16200);
+            appt = Math.round(jitter(appt, 6, 500, 560));
+            reachDelta = jitter(reachDelta, 1.6, 30, 55);
+            engDelta = jitter(engDelta, 1.4, 22, 40);
+            apptDelta = jitter(apptDelta, 2, 55, 80);
+            tween($('dashReach'), reach, formatK);
+            tween($('dashEngagement'), engagement, formatK);
+            tween($('dashAppointments'), appt, intF);
+            tween($('dashReachDelta'), reachDelta, pctF);
+            tween($('dashEngDelta'), engDelta, pctF);
+            tween($('dashApptDelta'), apptDelta, pctF);
             [$('dashReach'), $('dashEngagement'), $('dashAppointments')].forEach(pulse);
         }
 
@@ -677,7 +698,7 @@
             return pathFromPoints(pts, w, h, max) + ' L' + w + ' ' + h + ' L0 ' + h + ' Z';
         }
         function tickChart1(){
-            chart1Cur = chart1Cur.map(function(v,i){ return jitter(v, 3, chart1Base[i]-8, chart1Base[i]+8); });
+            chart1Cur = chart1Cur.map(function(v,i){ return jitter(v, 4.5, chart1Base[i]-9, chart1Base[i]+9); });
             $('dashChart1Path').setAttribute('d', pathFromPoints(chart1Cur, 300, 78, 80));
             $('dashChart1Area').setAttribute('d', areaPathFromPoints(chart1Cur, 300, 78, 80));
         }
@@ -686,26 +707,48 @@
         var leads = 528, leadsDelta = 67;
         var barsBase = [35,42,28,58,46,72,82,96];
         function tickCard2(){
-            leads = Math.round(jitter(leads, 5, 500, 560));
-            leadsDelta = jitter(leadsDelta, 1.5, 55, 80);
-            $('dashLeads').textContent = '+' + leads;
-            $('dashLeadsDelta').textContent = '+' + Math.round(leadsDelta) + '%';
+            leads = Math.round(jitter(leads, 7, 500, 560));
+            leadsDelta = jitter(leadsDelta, 2, 55, 80);
+            tween($('dashLeads'), leads, plusF);
+            tween($('dashLeadsDelta'), leadsDelta, pctF);
             pulse($('dashLeads'));
             var bars = document.querySelectorAll('#dashBars .dash-bar');
             bars.forEach(function(b, i){
-                var h = jitter(barsBase[i], 6, Math.max(15,barsBase[i]-14), Math.min(98,barsBase[i]+10));
+                var h = jitter(barsBase[i], 9, Math.max(15,barsBase[i]-14), Math.min(98,barsBase[i]+10));
                 b.style.height = h + '%';
             });
         }
 
+        // ---- Google Ads card: clicks / conversions / spend / ROAS ----
+        var gClicks = 8700, gConv = 287, gSpend = 52340, gRoas = 12.4;
+        var gClicksDelta = 36, gConvDelta = 58;
+        function tickGoogle(){
+            if (!$('dashGClicks')) return;
+            gClicks = jitter(gClicks, 90, 8300, 9200);
+            gConv = Math.round(jitter(gConv, 5, 268, 305));
+            gSpend = jitter(gSpend, 220, 51200, 53600);
+            gRoas = jitter(gRoas, .2, 11.6, 13.1);
+            gClicksDelta = jitter(gClicksDelta, 1.4, 28, 44);
+            gConvDelta = jitter(gConvDelta, 1.6, 48, 68);
+            tween($('dashGClicks'), gClicks, formatK);
+            tween($('dashGConv'), gConv, intF);
+            tween($('dashGSpend'), gSpend, function(v){ return '฿' + Math.round(v).toLocaleString('en-US'); });
+            tween($('dashGRoas'), gRoas, function(v){ return v.toFixed(1) + 'x'; });
+            tween($('dashGClicksDelta'), gClicksDelta, pctF);
+            tween($('dashGConvDelta'), gConvDelta, pctF);
+            [$('dashGClicks'), $('dashGConv')].forEach(pulse);
+        }
 
         // init charts before first paint tick
         $('dashChart1Path').setAttribute('d', pathFromPoints(chart1Cur, 300, 78, 80));
         $('dashChart1Area').setAttribute('d', areaPathFromPoints(chart1Cur, 300, 78, 80));
 
-        setInterval(tickCard1, 1100);
-        setInterval(tickChart1, 1100);
-        setInterval(tickCard2, 1300);
+        // cadence ~2x the old 1100/1300ms — with 420ms tweens the numbers are in
+        // visible motion most of the time, which is the "live" feel we want.
+        setInterval(tickCard1, 700);
+        setInterval(tickChart1, 700);
+        setInterval(tickCard2, 800);
+        setInterval(tickGoogle, 900);
     })();
     </script>
 

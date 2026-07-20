@@ -959,27 +959,10 @@
             rotateTimer = null;
         }
 
-        var isMobile = window.matchMedia('(max-width:767px)').matches;
-
-        // Mobile shows the ENTIRE dashboard — all 6 cards at once (they tile as two
-        // clean columns flanking the phone with no overlap at this scale), rather than
-        // desktop's 3-at-a-time rotation. On a small screen a rotating card the user
-        // can barely read reads as "cards are missing"; showing every card static is
-        // the clearer "full dashboard" impression.
-        function showAll(stagger){
-            slots.forEach(function(s, i){
-                if (stagger) setTimeout(function(){ s.classList.add('is-visible'); }, POP_DELAY + i * (POP_STAGGER / 1.5));
-                else s.classList.add('is-visible');
-            });
-        }
-
+        // Mobile uses the SAME behaviour as desktop: 3 cards visible, rotating one at a
+        // time through all 6. (The whole graphic is just scaled down to fit.)
         if (reduced) {
-            if (isMobile) showAll(false); else showInitial();
-            return;
-        }
-
-        if (isMobile) {
-            showAll(true); // all 6, staggered entrance, no rotation
+            showInitial(); // declutter to 3, no entrance/rotation motion
             return;
         }
 

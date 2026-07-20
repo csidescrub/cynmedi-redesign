@@ -138,6 +138,10 @@
            (added after it) naturally paint on top where they crop into its edges. */
         .phone3d-wrap{position:absolute;left:280px;top:258px;width:162px;transform:translate(-50%,-50%) scale(1.5);perspective:1400px;animation:floatPhone 6.8s ease-in-out infinite;animation-delay:-2.6s}
         @keyframes floatPhone{0%,100%{transform:translate(-50%,-50%) scale(1.5) translateY(0)}50%{transform:translate(-50%,-50%) scale(1.5) translateY(-9px)}}
+        /* mobile enlarges the phone (scale 2 vs 1.5) so the clip reads clearly at the
+           small container size; cards keep their positions and crop into the bigger
+           phone's edges the same way desktop does. */
+        @keyframes floatPhoneMobile{0%,100%{transform:translate(-50%,-50%) scale(2) translateY(0)}50%{transform:translate(-50%,-50%) scale(2) translateY(-8px)}}
         @media(prefers-reduced-motion:reduce){.phone3d-wrap{animation:none}}
         /* body ratio + thickness from a real iPhone 15 Pro: 70.6 x 146.6 x 8.25mm —
            9/19.5 is the SCREEN ratio, the body is proportionally wider; using it for
@@ -339,6 +343,9 @@
                min-width:768px, so the phone + all cards must be re-shown here or the
                whole graphic renders blank on mobile. */
             .dash-side{display:block}
+            /* bigger phone on mobile (both the float keyframe and the static reduced-
+               motion transform use scale 2) */
+            .dash-wrap .phone3d-wrap{transform:translate(-50%,-50%) scale(2);animation-name:floatPhoneMobile}
         }
         /* tablet band (single column, graphic not yet in the 2-col right slot): cap the
            graphic width + center it so the outer cards don't bleed off the viewport and
@@ -422,12 +429,6 @@
                                         </div>
                                         <div class="phone3d-slide" data-name="La Claire" data-href="/work/la-clair" data-src="/assets/client/aesthetic/la-clair/reel-2.mp4" data-avatar="L" data-logo="/assets/logos/la-claire.webp" data-caption="หน้าเรียว ดูเป็นธรรมชาติ" data-likes="2287" data-comments="73" data-shares="520">
                                             <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-la-clair-reel-2.jpg"></video>
-                                        </div>
-                                        <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-1.mp4" data-avatar="J" data-logo="" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="958" data-comments="18" data-shares="165">
-                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-1.jpg"></video>
-                                        </div>
-                                        <div class="phone3d-slide" data-name="Jil Wink" data-href="/work/jil-wink" data-src="/assets/client/aesthetic/jil-wink/reel-2.mp4" data-avatar="J" data-logo="" data-caption="ตาสองชั้น ดูสวยเป็นธรรมชาติ 👁" data-likes="1362" data-comments="37" data-shares="297">
-                                            <video muted loop playsinline poster="/assets/client/_phone3d-posters/aesthetic-jil-wink-reel-2.jpg"></video>
                                         </div>
                                     </div>
                                     <div class="phone3d-gloss"></div>

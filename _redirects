@@ -6,6 +6,9 @@
 /v3/*            /:splat   301
 # Retired v2 site -> root
 /v2/*            /         301
+# aesthetic-clinic v2 promoted to be the main page -> old /v2 URL now points there
+/aesthetic-clinic/v2      /aesthetic-clinic/    301
+/aesthetic-clinic/v2.html /aesthetic-clinic/    301
 # Landing pages moved to root: /lp/* -> /*
 /lp/aesthetic-clinic/*    /aesthetic-clinic/    301
 /lp/aesthetic-clinic      /aesthetic-clinic/    301

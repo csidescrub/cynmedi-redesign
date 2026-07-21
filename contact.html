@@ -124,7 +124,15 @@
                         <h2 class="font-display text-4xl md:text-[48px] leading-[1.0] tracking-[-0.025em] text-ink-800 mb-10">
                             บอกเราเกี่ยวกับ<br/><span class="italic-serif text-cobalt">คลินิกของคุณ</span>
                         </h2>
-                        <form class="space-y-5" action="mailto:cynmedical@gmail.com" method="post" enctype="text/plain">
+                        <form id="contactForm" class="space-y-5">
+                            <!-- ▼▼ SETUP (one time, ~30s, ไม่ต้องสมัครสมาชิก): เข้า https://web3forms.com
+                                 กรอกอีเมล cynmedical@gmail.com กด Create Access Key แล้วเอา key ที่ได้
+                                 มาวางแทน REPLACE_WITH_WEB3FORMS_ACCESS_KEY ด้านล่าง — เท่านี้ฟอร์มส่งเข้าอีเมลจริงทันที ▲▲ -->
+                            <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
+                            <input type="hidden" name="subject" value="ลูกค้าใหม่จากเว็บ cynmedi.com — Contact Form" />
+                            <input type="hidden" name="from_name" value="CYN Website" />
+                            <!-- honeypot (กันบอท) -->
+                            <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important" aria-hidden="true" />
                             <div class="grid sm:grid-cols-2 gap-5">
                                 <div>
                                     <label class="form-label">ชื่อ-นามสกุล <span class="text-cobalt">*</span></label>
@@ -176,8 +184,21 @@
                                 ส่งข้อความ
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                             </button>
+                            <p id="contactError" class="hidden text-sm text-center" style="color:#DC2626">ส่งไม่สำเร็จ กรุณาลองใหม่อีกครั้ง หรือทักผ่าน LINE — เราพร้อมช่วยเสมอ</p>
                             <p class="text-xs text-ink-400 text-center">เราจะติดต่อกลับภายใน 24 ชั่วโมง · ข้อมูลของคุณถูกเก็บเป็นความลับ</p>
                         </form>
+                        <!-- success state (shown after a successful submit) -->
+                        <div id="contactSuccess" class="hidden text-center py-12">
+                            <div class="w-16 h-16 rounded-full bg-cobalt/10 flex items-center justify-center mx-auto mb-6">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2C4CAA" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>
+                            </div>
+                            <h3 class="font-display text-2xl md:text-3xl text-ink-800 mb-3">ขอบคุณที่ติดต่อเข้ามาค่ะ</h3>
+                            <p class="text-ink-500 body-th text-[15px] max-w-md mx-auto leading-relaxed">ทีม CYN ได้รับข้อความของคุณเรียบร้อยแล้ว เราจะติดต่อกลับภายใน 24 ชั่วโมงในเวลาทำการ — หากต้องการพูดคุยด่วน ทักผ่าน LINE ได้เลย</p>
+                            <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-cobalt mt-8">
+                                ทักผ่าน LINE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- RIGHT: hours + certs + social -->
@@ -313,6 +334,59 @@
             });
         }, {threshold: 0.1});
         els.forEach(function(el){ io.observe(el); });
+    })();
+    </script>
+
+    <!-- Contact form → Web3Forms (real email delivery) + success state -->
+    <script>
+    (function(){
+        var form = document.getElementById('contactForm');
+        if(!form) return;
+        var btn = form.querySelector('button[type="submit"]');
+        var errEl = document.getElementById('contactError');
+        var successEl = document.getElementById('contactSuccess');
+        var key = form.querySelector('input[name="access_key"]');
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            if(errEl) errEl.classList.add('hidden');
+
+            // access key not configured yet → don't fake a success, guide to LINE
+            if(!key || key.value.indexOf('REPLACE_WITH') === 0){
+                if(errEl){ errEl.textContent = 'ระบบฟอร์มกำลังเปิดใช้งาน — ระหว่างนี้รบกวนทักผ่าน LINE ได้เลย เราตอบไว'; errEl.classList.remove('hidden'); }
+                console.warn('[CYN] Web3Forms access_key ยังไม่ได้ตั้งค่า — ดูคอมเมนต์ใน <form> ของ contact.html');
+                return;
+            }
+
+            var orig = btn.innerHTML;
+            btn.disabled = true;
+            btn.style.opacity = '.7';
+            btn.textContent = 'กำลังส่ง...';
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: new FormData(form)
+            })
+            .then(function(r){ return r.json(); })
+            .then(function(json){
+                if(json.success){
+                    form.style.display = 'none';
+                    if(successEl){
+                        successEl.classList.remove('hidden');
+                        successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                } else {
+                    throw new Error(json.message || 'submit failed');
+                }
+            })
+            .catch(function(){
+                btn.disabled = false;
+                btn.style.opacity = '';
+                btn.innerHTML = orig;
+                if(errEl) errEl.classList.remove('hidden');
+            });
+        });
     })();
     </script>
 

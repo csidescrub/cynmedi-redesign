@@ -84,6 +84,29 @@
         .reveal-delay-2{transition-delay:.24s}
         .reveal-delay-3{transition-delay:.36s}
         @media(prefers-reduced-motion:reduce){.logo-track,.stats-track{animation:none;flex-wrap:wrap;justify-content:center}.hero-video{transition:none}.reveal{opacity:1;transform:none}}
+
+        /* ABOUT HERO — same light treatment as the homepage (Fraunces display over a
+           faint 3-clip wall behind a light scrim). Reuses the homepage's clips and
+           posters, so anyone arriving from the homepage downloads nothing new. */
+        @font-face{font-family:'Fraunces';src:url('/assets/fonts/Fraunces-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+        .ab-hero{position:relative;min-height:74vh;min-height:74svh;overflow:hidden;background:#F5F6FA;color:#1F2D44;display:flex;align-items:center}
+        .ab-wall{position:absolute;inset:0;z-index:0;display:flex}
+        .ab-col{position:relative;flex:1 1 0;height:100%;overflow:hidden}
+        .ab-col video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#F5F6FA}
+        .ab-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(102deg,rgba(245,246,250,.97) 0%,rgba(244,245,250,.93) 34%,rgba(243,245,250,.84) 66%,rgba(242,244,251,.74) 100%)}
+        .ab-scrim::after{content:"";position:absolute;inset:0;background:radial-gradient(100% 85% at 18% 32%,rgba(245,246,250,.6) 0%,rgba(245,246,250,0) 52%)}
+        .ab-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;padding:7.5rem 1.5rem 4rem}
+        @media(min-width:1024px){.ab-inner{padding:8rem 2.5rem 5rem}}
+        .ab-copy{max-width:750px;container-type:inline-size}
+        .ab-eyebrow{font-family:'Poppins','Kanit',sans-serif;font-size:clamp(.95rem,1.15vw,1.12rem);font-weight:500;letter-spacing:.05em;color:#5A6577;margin:0 0 .4rem}
+        .ab-kicker{font-family:'Poppins','Kanit',sans-serif;font-size:13px;font-weight:500;color:#52607A;margin:0}
+        h1.ab-h1{font-family:'Fraunces','Cormorant Garamond',serif;font-weight:540;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;color:#1F2D44;font-size:clamp(2.5rem,8.5cqi,4.6rem);line-height:1.04;letter-spacing:-.015em;margin:12px 0}
+        .ab-sub{margin-top:1.4rem;max-width:33rem;font-size:clamp(.95rem,1.15vw,1.1rem);line-height:1.75;color:#52607A}
+        .ab-sub b{color:#1F2D44;font-weight:600}
+        .ab-facts{margin-top:2.3rem;display:flex;flex-wrap:wrap;gap:1.4rem 2.8rem}
+        .ab-fact-n{font-family:'Inter','Kanit',sans-serif;font-size:1.7rem;font-weight:600;color:#1F2D44;line-height:1;letter-spacing:-.02em}
+        .ab-fact-l{font-size:.8rem;color:#7F8DA8;margin-top:.4rem}
+        @media(max-width:767px){.ab-col:first-child,.ab-col:nth-child(3){display:none}.ab-col:nth-child(2){flex-basis:100%}}
     
         body .text-cobalt{color:#23408F}
     </style>
@@ -111,37 +134,29 @@
 
     <main>
 
-        <!-- HERO — full-screen dark video -->
-        <section class="relative min-h-[600px] lg:min-h-[700px] flex items-center justify-center overflow-hidden bg-ink-900 text-center text-white">
-            <div class="absolute inset-0 z-0">
-                <video class="hero-video is-active" autoplay muted playsinline preload="auto" poster="/assets/hero-aesthetic-poster.webp">
-                    <source src="/assets/hero-aesthetic.mp4" type="video/mp4" />
-                </video>
-                <video class="hero-video" autoplay muted playsinline preload="auto" poster="/assets/hero-dental-poster.webp">
-                    <source src="/assets/hero-dental.mp4" type="video/mp4" />
-                </video>
+        <!-- HERO — light, matches the homepage -->
+        <section class="ab-hero">
+            <div class="ab-wall" aria-hidden="true">
+                <div class="ab-col"><video poster="/assets/herobg-sami1.jpg" data-src="/assets/client/wellness/samitivej/reel-1.mp4" muted loop playsinline preload="none"></video></div>
+                <div class="ab-col"><video poster="/assets/herobg-vpssf.jpg" data-src="/assets/client/aesthetic/varinpat/secret-slim-face.mp4" muted loop playsinline preload="none"></video></div>
+                <div class="ab-col"><video poster="/assets/herobg-lc1.jpg" data-src="/assets/client/aesthetic/la-clair/reel-1.mp4" muted loop playsinline preload="none"></video></div>
             </div>
-            <!-- same overlay gradient as homepage -->
-            <div class="absolute inset-0 z-10" style="background:linear-gradient(180deg,rgba(4,7,14,0.72),rgba(6,9,18,0.60) 50%,rgba(2,4,9,0.82))"></div>
-            <!-- bottom fade into stats bar -->
-            <div class="absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-ink-900 to-transparent"></div>
+            <div class="ab-scrim"></div>
 
-            <div class="relative z-20 max-w-[1180px] mx-auto px-6 pt-28 lg:pt-32 pb-20">
-                <div class="flex items-center justify-center gap-4 mb-6">
-                    <span class="h-px w-10 bg-white/35"></span>
-                    <span class="label text-white/70">About CYN</span>
-                    <span class="h-px w-10 bg-white/35"></span>
+            <div class="ab-inner">
+                <div class="ab-copy">
+                    <p class="ab-eyebrow">About CYN</p>
+                    <p class="ab-kicker body-th">เอเจนซี่<span class="whitespace-nowrap">คอนเทนต์</span><span class="whitespace-nowrap">วิดีโอ</span>และโฆษณาออนไลน์ สายการแพทย์</p>
+                    <h1 class="ab-h1">Trust Is the Product</h1>
+                    <p class="ab-sub body-th">
+                        <span class="whitespace-nowrap">คนไข้</span>เลือกคลินิกจากความมั่นใจ ไม่ใช่ราคา — เราทำ<b><span class="whitespace-nowrap">คอนเทนต์</span><span class="whitespace-nowrap">วิดีโอ</span></b>และดูแล<b>โฆษณา</b>ให้คลินิกมา <b>6 ปี</b> ทีมถ่าย-<span class="whitespace-nowrap">ตัดต่อ</span>เองทั้งหมด และทุกชิ้นตรวจตามกฎ อย./สบส. ก่อนขึ้นจริง
+                    </p>
+                    <div class="ab-facts">
+                        <div><div class="ab-fact-n">6+</div><div class="ab-fact-l body-th">ปีในสายการแพทย์</div></div>
+                        <div><div class="ab-fact-n">50+</div><div class="ab-fact-l body-th">คลินิกและแบรนด์สุขภาพ</div></div>
+                        <div><div class="ab-fact-n">0</div><div class="ab-fact-l body-th">งานส่งต่อฟรีแลนซ์</div></div>
+                    </div>
                 </div>
-                <p class="text-white/70 text-[11px] md:text-xs tracking-[0.28em] uppercase mb-7">Medical Digital Agency</p>
-                <h1 class="hero-copy font-display text-5xl md:text-7xl lg:text-[96px] leading-[0.98] tracking-[-0.02em]"
-                    style="font-family:'Cormorant Garamond','Kanit',sans-serif;font-weight:500">
-                    Built for brands<br class="hidden md:block" />
-                    where trust is<br class="hidden md:block" />
-                    <span class="italic-serif text-royal-200">the product</span>
-                </h1>
-                <p class="mt-8 max-w-3xl mx-auto text-white/72 body-th text-base md:text-lg">
-                    CYN คือทีมการตลาดดิจิทัลที่ดูแลแบรนด์สุขภาพ คลินิก โรงพยาบาล wellness และ lifestyle โดยเฉพาะ — เราช่วยให้แบรนด์เติบโตอย่างมีระดับ น่าเชื่อถือ และวัดผลได้จริง
-                </p>
             </div>
         </section>
 
@@ -199,17 +214,17 @@
                     <div class="bg-white/[0.04] border border-white/8 rounded-2xl p-8 lg:p-10 reveal">
                         <div class="num text-[88px] leading-none text-white/8 font-bold mb-6 -ml-1">01</div>
                         <h3 class="font-display text-2xl lg:text-[28px] leading-tight mb-5">Understand<br />before creating</h3>
-                        <p class="text-white/55 body-th text-sm leading-relaxed">เราเริ่มจากการทำความเข้าใจตลาด คู่แข่ง กลุ่มคนไข้ ทีมขาย และเงื่อนไขของบริการจริง ก่อนตัดสินใจว่าจะสื่อสารอะไร วางแผนโฆษณาอย่างไร และสร้างภาพจำแบบไหน</p>
+                        <p class="text-white/55 body-th text-sm leading-relaxed">ก่อนถ่ายคลิปแรก เราขอดูก่อนว่าเคสไหนทำกำไรให้คลินิกจริง คนไข้ถามอะไรซ้ำ ๆ ก่อนตัดสินใจ และคู่แข่งในรัศมีเดียวกันสื่อสารแบบไหน แล้วค่อยเลือกว่าจะเล่าเรื่องอะไร</p>
                     </div>
                     <div class="bg-cobalt/[0.12] border border-cobalt/25 rounded-2xl p-8 lg:p-10 md:mt-10 reveal reveal-delay-1">
                         <div class="num text-[88px] leading-none text-cobalt/25 font-bold mb-6 -ml-1">02</div>
                         <h3 class="font-display text-2xl lg:text-[28px] leading-tight mb-5">Design<br />with restraint</h3>
-                        <p class="text-white/55 body-th text-sm leading-relaxed">ภาพ ภาษา และข้อเสนอควรมีน้ำหนักที่พอดี — ดูพรีเมียมแต่เข้าถึงง่าย น่าสนใจแต่ไม่เกินจริง และคงความเป็นมืออาชีพของแบรนด์ไว้ในทุกช่องทาง</p>
+                        <p class="text-white/55 body-th text-sm leading-relaxed">คลินิกไม่ได้แข่งกันที่ใครโพสต์ถี่กว่า เราจึงตัดสิ่งที่ไม่จำเป็นออก เหลือคอนเทนต์ที่ตอบคำถามในหัวคนไข้จริง ๆ และไม่ใช้คำเกินจริงที่ทำให้แบรนด์ดูราคาถูกลง</p>
                     </div>
                     <div class="bg-white/[0.04] border border-white/8 rounded-2xl p-8 lg:p-10 reveal reveal-delay-2">
                         <div class="num text-[88px] leading-none text-white/8 font-bold mb-6 -ml-1">03</div>
                         <h3 class="font-display text-2xl lg:text-[28px] leading-tight mb-5">Measure what<br />changes the business</h3>
-                        <p class="text-white/55 body-th text-sm leading-relaxed">เราวัดผลจากสิ่งที่กระทบธุรกิจจริง เช่น คุณภาพของ lead, ยอดจอง, conversion และต้นทุนต่อผลลัพธ์ ไม่ใช่เพียงตัวเลขที่ดูสวยในรายงาน</p>
+                        <p class="text-white/55 body-th text-sm leading-relaxed">เราดูว่ามีคนทักเข้ามากี่ราย เป็นเคสที่คลินิกอยากได้ไหม ต้นทุนต่อหนึ่งคนทักเท่าไหร่ และคอนเทนต์ตัวไหนที่ทำให้คนกล้าทัก — ไม่ใช่แค่ยอดไลก์</p>
                     </div>
                 </div>
             </div>
@@ -312,7 +327,7 @@
                             รู้กฎก่อน<br /><span class="italic-serif text-cobalt">สร้างคอนเทนต์</span>
                         </h2>
                         <p class="mt-6 text-ink-500 body-th text-base leading-relaxed">
-                            ทุกชิ้นงานที่ออกจาก CYN ผ่านการตรวจให้สอดคล้องกับกฎหมายโฆษณาทางการแพทย์ของไทยก่อนเสมอ — เพราะเราเชื่อว่าการตลาดที่ดีต้องอยู่บนความถูกต้องและความรับผิดชอบ
+                            คอนเทนต์สายการแพทย์พลาดคำเดียวมีสิทธิ์โดนปรับ หรือโดนแบนโฆษณาทั้งบัญชี ทุกชิ้นที่ออกจาก CYN จึงผ่านการตรวจตามกฎหมายโฆษณาทางการแพทย์ก่อนขึ้นเสมอ
                         </p>
                         <p class="mt-4 text-ink-500 body-th text-base leading-relaxed">
                             ด้วยประสบการณ์ดูแลคลินิกและโรงพยาบาลมากกว่า 6 ปี เราจึงเข้าใจรายละเอียดเฉพาะทางของวงการนี้เป็นอย่างดี — ตั้งแต่ขอบเขตของข้อความที่สื่อสารได้ ไปจนถึงการดูแลข้อมูล lead ของคนไข้อย่างเหมาะสม
@@ -383,7 +398,7 @@
                 <h2 class="font-display text-4xl md:text-5xl lg:text-[64px] leading-[0.94] tracking-[-0.025em]">
                     Make health brands<br />grow without losing<br /><span class="italic-serif text-royal-200">their authority.</span>
                 </h2>
-                <p class="mt-10 text-white/60 body-th text-xl max-w-xl mx-auto leading-relaxed">ภารกิจของ CYN คือการช่วยให้แบรนด์ที่มีความไว้วางใจเป็นหัวใจสำคัญ มีภาพลักษณ์ที่ชัดเจน คอนเทนต์ที่ถูกต้อง และผลลัพธ์ที่ต่อยอดสู่ยอดจองได้จริง</p>
+                <p class="mt-10 text-white/60 body-th text-xl max-w-xl mx-auto leading-relaxed">เราอยากให้คลินิกโตโดยไม่ต้องลดตัวลงไปแข่งราคา — ทำให้คนไข้เห็น จำได้ และเชื่อใจพอที่จะทักเข้ามาเอง ส่วนการปิดเคส เราส่งต่อให้ทีมของคุณที่ทำได้ดีกว่า</p>
             </div>
         </section>
 
@@ -440,27 +455,20 @@
     </footer>
     <!-- /include:footer -->
 
-    <!-- Hero video crossfade sequencer -->
+    <!-- Hero background wall — lazy clips (poster shows instantly, video follows) -->
     <script>
     (function () {
-        var vids = Array.from(document.querySelectorAll('.hero-video'));
-        if (vids.length < 2) return;
-        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            vids[0].classList.add('is-active');
-            return;
+        var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function start() {
+            document.querySelectorAll('.ab-col video').forEach(function (v) {
+                if (v.dataset.src && !v.src) { v.src = v.dataset.src; v.load(); }
+                // reduced motion: keep the poster still, don't loop-play (WCAG 2.2.2)
+                if (!reduced) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+            });
         }
-        vids.forEach(function (v) { v.loop = false; });
-        var active = 0;
-        function start(i) {
-            vids.forEach(function (v, idx) { v.classList.toggle('is-active', idx === i); });
-            try { vids[i].currentTime = 0; } catch (e) {}
-            var p = vids[i].play();
-            if (p && p.catch) p.catch(function () {});
-        }
-        vids.forEach(function (v, i) {
-            v.addEventListener('ended', function () { start((i + 1) % vids.length); });
-        });
-        start(0);
+        // after load so the clips never delay first paint
+        if (document.readyState === 'complete') setTimeout(start, 150);
+        else window.addEventListener('load', function () { setTimeout(start, 150); });
     })();
     </script>
 

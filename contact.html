@@ -68,6 +68,29 @@
         details[open] .faq-ico{transform:rotate(45deg)}
     
         body .text-cobalt{color:#23408F}
+    
+        /* MOBILE NAV — hamburger + slide-down panel. Desktop keeps the inline <nav>;
+           below lg the nav is hidden, so without this the header had no way to reach
+           Work / Services / About / Contact at all. */
+        .mnav-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-right:-8px;border-radius:12px;background:transparent;border:0;cursor:pointer;color:#1F2D44;-webkit-tap-highlight-color:transparent}
+        @media(min-width:1024px){.mnav-btn{display:none}}
+        .mnav-btn .bars{display:flex;flex-direction:column;gap:5px;align-items:center}
+        .mnav-btn i{display:block;width:21px;height:2px;background:currentColor;border-radius:2px;transition:transform .28s cubic-bezier(.16,.84,.44,1),opacity .18s}
+        .mnav-btn[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .mnav-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+        .mnav-btn[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .mnav{position:fixed;inset:80px 0 0;z-index:45;background:#fff;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .26s ease,transform .3s cubic-bezier(.16,.84,.44,1),visibility .3s}
+        .mnav.is-open{opacity:1;visibility:visible;transform:none}
+        @media(min-width:1024px){.mnav{display:none}}
+        .mnav-inner{padding:1.4rem 1.5rem 2.6rem}
+        .mnav-link{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.05rem .15rem;font-family:'Poppins','Kanit',sans-serif;font-size:1.3rem;font-weight:500;color:#1F2D44;text-decoration:none;border-bottom:1px solid rgba(15,27,48,.08)}
+        .mnav-link svg{opacity:.3;flex-shrink:0}
+        .mnav-link:active{color:#2D4DB1}
+        .mnav-cta{margin-top:1.7rem}
+        .mnav-cta .pill-btn{width:100%}
+        .mnav-meta{margin-top:1.4rem;font-size:.8rem;color:#7F8DA8}
+        body.mnav-open{overflow:hidden}
+        @media(prefers-reduced-motion:reduce){.mnav,.mnav-btn i{transition:none}}
     </style>
 </head>
 <body class="antialiased">
@@ -86,9 +109,21 @@
                 <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-dark pill-sm mobile-hide">Consultation
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                 </a>
+                <button type="button" id="mnavBtn" class="mnav-btn" aria-label="เปิดเมนู" aria-expanded="false" aria-controls="mnavPanel"><span class="bars"><i></i><i></i><i></i></span></button>
             </div>
         </div>
     </header>
+
+    <div id="mnavPanel" class="mnav" aria-hidden="true">
+        <div class="mnav-inner">
+            <a class="mnav-link" href="/work">Our Work <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a class="mnav-link" href="/services">Our Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a class="mnav-link" href="/about">About <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <a class="mnav-link" href="/contact">Contact <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+            <div class="mnav-cta"><a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-dark">Consultation <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
+            <p class="mnav-meta">cynmedical@gmail.com</p>
+        </div>
+    </div>
 
     <main>
 
@@ -389,5 +424,26 @@
     })();
     </script>
 
+
+    <!-- Mobile nav -->
+    <script>
+    (function(){
+        var btn=document.getElementById('mnavBtn'), panel=document.getElementById('mnavPanel');
+        if(!btn||!panel) return;
+        var open=false;
+        function set(v){
+            open=v;
+            btn.setAttribute('aria-expanded', v?'true':'false');
+            btn.setAttribute('aria-label', v?'\u0e1b\u0e34\u0e14\u0e40\u0e21\u0e19\u0e39':'\u0e40\u0e1b\u0e34\u0e14\u0e40\u0e21\u0e19\u0e39');
+            panel.classList.toggle('is-open', v);
+            panel.setAttribute('aria-hidden', v?'false':'true');
+            document.body.classList.toggle('mnav-open', v);
+        }
+        btn.addEventListener('click', function(){ set(!open); });
+        panel.addEventListener('click', function(e){ if(e.target.closest('a')) set(false); });
+        document.addEventListener('keydown', function(e){ if(e.key==='Escape' && open){ set(false); btn.focus(); } });
+        window.addEventListener('resize', function(){ if(open && window.innerWidth>=1024) set(false); }, {passive:true});
+    })();
+    </script>
 </body>
 </html>

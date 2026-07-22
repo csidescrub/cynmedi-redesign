@@ -35,6 +35,9 @@
         b,strong,.font-semibold,.font-bold{font-weight:700}
         .gap-x-12{-moz-column-gap:3rem;column-gap:3rem}
         .gap-y-8{row-gap:2rem}
+        /* not in the partial tailwind.css build — without this the dark CYN Way cards
+           fall back to the default light-grey border instead of white @ 8% */
+        .border-white\/8{border-color:rgba(255,255,255,.08)}
         .border-l-4{border-left-width:4px}
         .rounded-r-2xl{border-top-right-radius:1rem;border-bottom-right-radius:1rem}
         @media (min-width:768px){.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:w-1\/2{width:50%}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}.md\:flex{display:flex}}

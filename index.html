@@ -229,6 +229,10 @@
     ============================================================ -->
     <style>
         :root{--ease-cine:cubic-bezier(.16,.84,.44,1);--ease-soft:cubic-bezier(.22,.61,.36,1)}
+        /* Fraunces — self-hosted variable serif for the English hero headline (OFL,
+           licence shipped alongside in /assets/fonts/). English-only display face, so
+           it deliberately does NOT take the Poppins-first stack. */
+        @font-face{font-family:'Fraunces';src:url('/assets/fonts/Fraunces-Variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
 
         /* ---------- Preloader (Sequence 1) ---------- */
         /* PRELOADER — a soft lavender curtain that reveals the page by sliding straight
@@ -259,11 +263,19 @@
         .hero-kicker span.rule{width:34px;height:1px;background:rgba(15,27,48,.25)}
         .k-thai{font-family:'Poppins','Kanit',sans-serif;font-size:13px;font-weight:500;letter-spacing:.02em;color:#52607A}
         .k-eyebrow{font-family:'Poppins','Kanit',sans-serif;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:#8A97AC;margin:0 0 1.1rem}
+        /* top line of the lockup — smaller than the H1 but kept heavy + dark so it reads
+           as a statement of what CYN is, not as a faint caption */
+        .hero-agency-line{font-family:'Poppins','Kanit',sans-serif;font-size:clamp(.95rem,1.15vw,1.12rem);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#1F2D44;margin:0 0 .5rem;white-space:nowrap}
         /* size H1 in cqi (% of its OWN column width) so the long first line
            "เอเจนซี่รับทำการตลาดออนไลน์" always fits on ONE line → the H1 stays 2 lines
            at every width, same technique as the aesthetic-clinic hero. */
-        h1.hero-cine-h1{font-family:'NumSans','Poppins','Kanit',sans-serif;font-weight:600;color:#1F2D44;font-size:clamp(1.5rem,7.6cqi,3.1rem);line-height:1.22;letter-spacing:-.005em;margin:0;white-space:nowrap}
+        h1.hero-cine-h1{font-family:'Fraunces','Cormorant Garamond',serif;font-weight:540;font-variation-settings:"opsz" 144,"SOFT" 0,"WONK" 0;color:#1F2D44;font-size:clamp(2.1rem,9.4cqi,4rem);line-height:1.06;letter-spacing:-.015em;margin:0;white-space:nowrap}
         h1.hero-cine-h1 .accent{color:#2D4DB1}
+        /* rotating headline word + typewriter caret */
+        h1.hero-cine-h1 .rot{color:#2D4DB1}
+        .hcaret{display:inline-block;width:.055em;height:.82em;background:#2D4DB1;margin-left:.07em;vertical-align:-.06em;animation:caretBlink 1.05s steps(1,end) infinite}
+        @keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+        @media(prefers-reduced-motion:reduce){.hcaret{animation:none}}
         .hero-cine-sub{margin-top:1.6rem;max-width:33rem;font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.7;color:#52607A}
         .hero-cine-sub b{color:#1F2D44;font-weight:600}
         .hero-cine-cta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem}
@@ -419,11 +431,11 @@
             <!-- LEFT copy (staggered) -->
             <div class="hero-cine-left">
                 <div class="hero-anim" style="transition-delay:1.0s">
-                    <div class="hero-kicker"><span class="rule"></span><span class="k-thai body-th">เอเจนซี่การตลาดคลินิกความงามโดยเฉพาะ</span></div>
-                    <p class="k-eyebrow">Digital Marketing Agency for Aesthetic Clinics</p>
+                    <p class="hero-agency-line">Medical Content &amp; Ads Agency</p>
+                    <div class="hero-kicker"><span class="k-thai body-th"><span class="whitespace-nowrap">คอนเทนต์</span><span class="whitespace-nowrap">วิดีโอ</span> + ยิงแอด สำหรับคลินิก <span class="whitespace-nowrap">ทันตกรรม</span> และธุรกิจสุขภาพ</span></div>
                 </div>
-                <h1 class="hero-cine-h1 body-th hero-anim-blur" style="transition-delay:1.08s">เอเจนซี่รับทำการตลาดออนไลน์<br/>ด้านการแพทย์<span class="accent">แบบครบวงจร</span></h1>
-                <p class="hero-cine-sub body-th hero-anim" style="transition-delay:1.22s">เราเชี่ยวชาญด้านการตลาดสำหรับธุรกิจการแพทย์และคลินิกโดยเฉพาะ ช่วยให้แบรนด์ของคุณบรรลุเป้าหมายได้อย่างมีประสิทธิภาพ ด้วยบริการแบบครบวงจร</p>
+                <h1 class="hero-cine-h1 hero-anim-blur" style="transition-delay:1.08s">Content That Builds<br/><span class="rot" id="heroRot">Trust</span><span class="hcaret" aria-hidden="true"></span></h1>
+                <p class="hero-cine-sub body-th hero-anim" style="transition-delay:1.22s">เราทำ<b><span class="whitespace-nowrap">คอนเทนต์</span><span class="whitespace-nowrap">วิดีโอ</span></b>และ<b>ยิงแอด</b>ให้<b>คลินิกโดยเฉพาะ</b> — เข้าใจกฎโฆษณา อย./สบส. ทำให้<span class="whitespace-nowrap">คนไข้</span>เห็น รู้จัก และทักเข้ามาเอง</p>
                 <div class="hero-cine-cta hero-anim" style="transition-delay:1.36s">
                     <a href="https://line.me/R/ti/p/@139yrwpi" target="_blank" rel="noopener" class="pill-btn pill-dark">Schedule Consultation
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -944,7 +956,7 @@
                 <div class="group bg-white rounded-2xl border border-ink-200 p-8 hover:border-cobalt/40 hover:shadow-[0_24px_60px_-24px_rgba(45,77,177,0.28)] transition-all duration-300">
                     <div class="font-display italic-serif text-3xl text-cobalt/70 mb-5 group-hover:text-cobalt/50 transition-colors">01</div>
                     <h3 class="en-serif text-2xl text-ink-800 mb-3 tracking-tight">Social Media Content</h3>
-                    <p class="text-sm text-ink-600 body-th-sm leading-relaxed"><span class="whitespace-nowrap">คอนเทนต์</span><span class="whitespace-nowrap">วิดีโอ</span>ลง Facebook / Instagram — วิจัย + วางแผน<span class="whitespace-nowrap">คอนเทนต์</span> · ถ่าย-<span class="whitespace-nowrap">ตัดต่อ</span><span class="whitespace-nowrap">วิดีโอ</span> · เขียน<span class="whitespace-nowrap">แคปชั่น</span> · โพสต์<span class="whitespace-nowrap">คอนเทนต์</span>ให้ รายเดือน</p>
+                    <p class="text-sm text-ink-600 body-th-sm leading-relaxed">รับทำ<span class="whitespace-nowrap">คอนเทนต์</span><span class="whitespace-nowrap">วิดีโอ</span>ลง Facebook / Instagram — วิจัย + วางแผน<span class="whitespace-nowrap">คอนเทนต์</span> · ถ่าย-<span class="whitespace-nowrap">ตัดต่อ</span><span class="whitespace-nowrap">วิดีโอ</span> · เขียน<span class="whitespace-nowrap">แคปชั่น</span> · โพสต์<span class="whitespace-nowrap">คอนเทนต์</span>ให้ รายเดือน</p>
                 </div>
                 <div class="group bg-white rounded-2xl border border-ink-200 p-8 hover:border-cobalt/40 hover:shadow-[0_24px_60px_-24px_rgba(45,77,177,0.28)] transition-all duration-300">
                     <div class="font-display italic-serif text-3xl text-cobalt/70 mb-5 group-hover:text-cobalt/50 transition-colors">02</div>
@@ -1454,6 +1466,45 @@
             pre.addEventListener('animationend', function(e){ if(e.animationName==='preloaderOut' && pre.parentNode) pre.remove(); });
             setTimeout(function(){ if(pre && pre.parentNode) pre.remove(); }, 2600);   // safety
         }
+    })();
+    </script>
+
+    <!-- ===== HERO HEADLINE — typewriter word rotation ("We Grow ___") ===== -->
+    <script>
+    (function(){
+        var el=document.getElementById('heroRot');
+        if(!el) return;
+        // What the clinic's patients do with the content. Deliberately stops at
+        // attention/trust — CYN gets people to see, trust and message the clinic; the
+        // clinic's own admin closes. Never rotate in Bookings/Cases/Revenue, which
+        // would claim the close.
+        var words=['Trust','Awareness','Authority','Reputation','Loyalty'];
+        // reduced motion: leave the first word standing, no typing, no caret churn
+        if(window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+
+        var i=0, ch=words[0].length, deleting=true;
+        function tick(){
+            var w=words[i];
+            if(deleting){
+                ch--;
+                if(ch<=0){
+                    ch=0; deleting=false;
+                    i=(i+1)%words.length;
+                    el.textContent='';
+                    return setTimeout(tick, 280);          // beat before the next word
+                }
+            } else {
+                ch++;
+                if(ch>=w.length){
+                    ch=w.length; deleting=true;
+                    el.textContent=w;
+                    return setTimeout(tick, 1900);         // hold the finished word
+                }
+            }
+            el.textContent=w.slice(0,ch);
+            setTimeout(tick, deleting?45:85);
+        }
+        setTimeout(tick, 2800);   // start only once the hero has settled
     })();
     </script>
 

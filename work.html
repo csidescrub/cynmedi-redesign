@@ -43,6 +43,25 @@
         .work-tab:hover:not(.is-active){border-color:#0F1B30;color:#0F1B30}
         /* work card scrim */
         .work-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,27,48,.15),rgba(15,27,48,.05) 45%,rgba(15,27,48,.82))}
+        /* Linked cards only. Cards without a case-study page stay <div> and get
+           none of this, so the pointer cursor + arrow row is the visible signal
+           of which cards actually navigate. */
+        a.work-card{text-decoration:none;color:inherit;cursor:pointer}
+        .work-card-name{transition:transform .35s var(--ease-soft,cubic-bezier(.22,.61,.36,1))}
+        .work-card-cta{display:inline-flex;align-items:center;gap:.4rem;margin-top:.45rem;font-family:'Poppins','Kanit',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.16em;color:#fff;opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
+        .work-card-cta svg{transition:transform .3s ease}
+        a.work-card:hover .work-card-cta,a.work-card:focus-visible .work-card-cta{opacity:.95;transform:none}
+        a.work-card:hover .work-card-cta svg,a.work-card:focus-visible .work-card-cta svg{transform:translateX(3px)}
+        a.work-card:hover .work-card-name,a.work-card:focus-visible .work-card-name{transform:translateY(-2px)}
+        a.work-card:hover .work-scrim,a.work-card:focus-visible .work-scrim{background:linear-gradient(180deg,rgba(15,27,48,.3),rgba(15,27,48,.16) 42%,rgba(15,27,48,.92))}
+        a.work-card:focus-visible{outline:none}
+        /* card is overflow-hidden, so a normal outline would be clipped */
+        a.work-card:focus-visible::after{content:"";position:absolute;inset:0;z-index:5;pointer-events:none;box-shadow:inset 0 0 0 3px #94A6DB,inset 0 0 0 6px rgba(7,15,30,.65)}
+        a.work-card:focus-visible video,a.work-card:focus-visible .zoom-img{transform:scale(1.05)}
+        /* Touch has no hover, so the arrow must be permanently visible there —
+           otherwise nothing on a phone distinguishes a linked card from a plain one. */
+        @media(hover:none){.work-card-cta{opacity:.85;transform:none}}
+        @media(prefers-reduced-motion:reduce){.work-card-name,.work-card-cta,.work-card-cta svg,a.work-card video,a.work-card .zoom-img{transition:none}}
         @keyframes slowZoom{0%{transform:scale(1)}100%{transform:scale(1.08)}}
         .zoom-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slowZoom 12s ease-in-out infinite alternate}
         /* client voices */
@@ -142,46 +161,46 @@
             </div>
 
             <div id="work-grid" class="grid grid-cols-2 md:grid-cols-4">
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                    <a href="/work/varinpat" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน Varinpat">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/varinpat.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Varinpat</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Varinpat</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/astell.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Astell</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                    <a href="/work/the-bloom" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน The Bloom">
                         <img src="/assets/the-bloom.jpg" alt="The Bloom Clinic" class="zoom-img" loading="lazy"/>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">The Bloom</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">The Bloom</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/klear" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน Klear Clinic">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/klear-clinic.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Klear Clinic</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Klear Clinic</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/parapin" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน Parapin">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/parapin-clinic.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Parapin</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Parapin</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/la-clair" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน La Claire">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/la-claire.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">La Claire</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">La Claire</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/so-on" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน So On">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/so-on.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">So On</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">So On</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/chaba" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน Chaba">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/chaba.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Chaba</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Chaba</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/qis.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
@@ -197,41 +216,41 @@
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Rancha Clinic</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                    <a href="/work/dr-fern" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน Dr. Fern">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/dr-fern.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Dr. Fern</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Dr. Fern</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/madam" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="aesthetics" aria-label="ดูผลงาน Madam Clinic">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/aesthetic/madam-clinic.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Madam Clinic</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Madam Clinic</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/pun-smile" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน Pun Smile">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/punsmile.mp4?v=2" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Pun Smile</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Pun Smile</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/craft-dental" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน Craft Dental Care">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/craft-dental.mp4?v=3" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Craft Dental Care</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Craft Dental Care</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/bangkok-dental" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน Bangkok Dental">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/bangkok-dental.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Bangkok Dental</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Bangkok Dental</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/double-b" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน Double B">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/double-b.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Double B</div></div>
-                    </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Double B</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
+                    <a href="/work/youyen" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน YOUYEN">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/wellness/youyen.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">YOUYEN</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">YOUYEN</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/wellness/dr-supparuk-clinic.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
@@ -242,21 +261,21 @@
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Premier Ultrasound Clinic</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                    <a href="/work/samitivej" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน Samitivej">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/wellness/samitivej.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Samitivej</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Samitivej</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/wellness/medispine.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Medispine</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
+                    <a href="/work/ms-rehab" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness" aria-label="ดูผลงาน MS Rehab">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/wellness/ms-rehab.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">MS Rehab</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">MS Rehab</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="wellness">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/other/mental-matters.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
@@ -267,21 +286,21 @@
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Cside</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other">
+                    <a href="/work/jil-wink" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other" aria-label="ดูผลงาน Jil Wink">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/other/jil-wink.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Jil Wink</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Jil Wink</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/supersup.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Supersup</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other">
+                    <a href="/work/blink-babe" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other" aria-label="ดูผลงาน Blink Babe">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/other/blink-babe.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">Blink Babe</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">Blink Babe</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="metadata"><source src="/assets/zendori.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
@@ -297,11 +316,11 @@
                         <div class="work-scrim"></div>
                         <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">MedNinja</div></div>
                     </div>
-                    <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other">
+                    <a href="/work/the-attic" class="work-card is-linked group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other" aria-label="ดูผลงาน The Attic">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/other/the-attic.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>
-                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1">The Attic</div></div>
-                    </div>
+                        <div class="absolute inset-x-0 bottom-0 p-6 text-center text-white"><div class="font-display italic-serif text-3xl lg:text-4xl mb-1 work-card-name">The Attic</div><span class="work-card-cta" aria-hidden="true">ดูผลงาน<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></div>
+                    </a>
                     <div class="work-card group block relative h-[58vh] md:h-[85vh] overflow-hidden" data-cat="other">
                         <video class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" autoplay muted loop playsinline preload="none"><source src="/assets/client/other/lambiance-cafe.mp4" type="video/mp4"></video>
                         <div class="work-scrim"></div>

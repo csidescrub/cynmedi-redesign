@@ -29,10 +29,6 @@
         .hero-banner video{width:100%;height:100%;object-fit:cover}
         .hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(4,7,14,.68),rgba(6,9,18,.55) 42%,rgba(2,4,9,.99))}
         .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end}
-        .hero-stats{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:24px}
-        .hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.7rem);color:#fff;line-height:1;font-variant-numeric:lining-nums}
-        .hero-stats .sep{color:rgba(148,166,219,.45)}
-        .hero-stats .txt{color:rgba(255,255,255,.72);font-size:14px}
 
         /* ── Scroll reveal (clip-path unfold + fade) ── */
         .reveal{opacity:0;transform:translateY(26px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
@@ -99,11 +95,6 @@
         .sec-feature{padding-top:clamp(6rem,11vw,9.5rem);padding-bottom:clamp(6rem,11vw,9.5rem);overflow-x:hidden;overflow-x:clip}
 
         /* ── Result stats (list layout + count-up) ── */
-        .result-grid{display:grid;grid-template-columns:1fr;border-top:1px solid #E5E9F0}
-        .result-cell{padding:1.75rem 0;border-bottom:1px solid #E5E9F0}
-        @media(min-width:640px){.result-grid{grid-template-columns:repeat(3,1fr);column-gap:clamp(1.75rem,3.5vw,3rem);border-bottom:1px solid #E5E9F0}.result-cell{padding:2rem 0;border-bottom:0}}
-        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(2.25rem,3.6vw,3rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
-        .result-cap{color:#536685;font-size:14px;line-height:1.6;margin-top:.65rem}
 
         /* ── CTA glow ── */
         .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
@@ -175,10 +166,6 @@
                 <div class="label text-royal-300 mb-5">Wellness Clinic · Content & Ads</div>
                 <h1 class="font-display text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-[-0.02em] text-white" style="font-family:'Cormorant Garamond','Kanit',serif"><span class="italic-serif" style="color:#94A6DB">Samitivej</span> </h1>
                 <p class="mt-5 text-white/65 max-w-md text-[15px] leading-relaxed">เวลเนสคลินิก ที่เราสร้างคอนเทนต์เชิงลึกด้าน longevity ให้เข้าถึงกลุ่มลูกค้าพรีเมียม</p>
-                <div class="hero-stats"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
-                    <span class="hero-stat-num">1.4M</span><span class="txt">total views</span>
-                    <span class="sep">·</span><span class="txt">+80% engagement</span>
-                </div>
             </div>
         </div>
     </section>
@@ -268,31 +255,6 @@
         </div>
     </section>
 
-    <!-- RESULTS -->
-    <section class="sec bg-white">
-        <div class="max-w-[1000px] mx-auto px-6 lg:px-10">
-            <div class="reveal" style="margin-bottom:clamp(2.5rem,4vw,3.75rem)">
-                <div class="label text-cobalt mb-6">Results</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
-            </div>
-            <div class="reveal reveal-d1 result-grid"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
-                <div class="result-cell">
-                    <div class="result-num">1.4M</div>
-                    <p class="result-cap">ยอดวิวรวมจากทุกแพลตฟอร์ม</p>
-                </div>
-                <div class="result-cell">
-                    <div class="result-num" style="color:#2D4DB1">+80%</div>
-                    <p class="result-cap">เพิ่มขึ้นเมื่อเทียบก่อนเริ่มงาน</p>
-                </div>
-                <div class="result-cell">
-                    <div class="result-num">1.9×</div>
-                    <p class="result-cap">การจองออนไลน์เพิ่มขึ้น</p>
-                </div>
-            </div>
-            <p class="mt-16 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน</p>
-        </div>
-    </section>
-
     <!-- ════════════════ TRUSTED BY ════════════════ -->
     <section class="sec bg-white border-t border-ink-100">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10 text-center mb-12 lg:mb-14 reveal">
@@ -335,7 +297,7 @@
             <div class="flex items-end justify-between mb-12 reveal">
                 <div>
                     <div class="label text-cobalt mb-4">More Work</div>
-                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 tracking-tight">ผลงานคลินิก<span class="accent-th text-cobalt"> อื่นๆ</span></h2>
+                    <h2 class="font-display text-4xl lg:text-5xl text-ink-800 tracking-tight">ผลงานอื่นๆ<span class="accent-th text-cobalt"> ที่เราดูแล</span></h2>
                 </div>
                 <div class="scroll-arrows hidden sm:flex">
                     <button type="button" class="scroll-arrow" data-dir="-1" aria-label="เลื่อนซ้าย"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 19l-7-7 7-7"/></svg></button>
@@ -537,30 +499,6 @@
         sync();
     })();
 
-    // Count-up animation for result numbers
-    var countObs = new IntersectionObserver(function(entries){
-        entries.forEach(function(e){
-            if(!e.isIntersecting || e.target.dataset.counted) return;
-            e.target.dataset.counted = '1';
-            var el = e.target;
-            var target = parseFloat(el.dataset.count);
-            var prefix = el.dataset.prefix || '';
-            var suffix = el.dataset.suffix || '';
-            var isAbbr = el.dataset.format === 'abbr';
-            var duration = 1800, start = performance.now();
-            function step(now){
-                var t = Math.min((now - start) / duration, 1);
-                t = 1 - Math.pow(1 - t, 3); // ease-out cubic
-                var val = target * t;
-                if(isAbbr){ el.textContent = prefix + (val/1e6).toFixed(1) + 'M' + suffix; }
-                else if(target % 1 !== 0){ el.textContent = prefix + val.toFixed(1) + suffix; }
-                else { el.textContent = prefix + Math.round(val) + suffix; }
-                if(t < 1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-        });
-    }, {threshold:.3});
-    document.querySelectorAll('.result-num[data-count]').forEach(function(el){ countObs.observe(el); });
 
     function toggleOne(card){
         var v = card.querySelector('video');

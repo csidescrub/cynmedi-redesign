@@ -96,13 +96,14 @@
         /* ── Section rhythm (real CSS — Tailwind py-40/py-36 not compiled) ── */
         .sec{padding-top:clamp(4.5rem,8vw,7rem);padding-bottom:clamp(4.5rem,8vw,7rem)}
         .sec-tight-b{padding-bottom:clamp(3rem,5vw,4.5rem)}
-        .sec-feature{padding-top:clamp(6rem,11vw,9.5rem);padding-bottom:clamp(6rem,11vw,9.5rem)}
+        .sec-feature{padding-top:clamp(6rem,11vw,9.5rem);padding-bottom:clamp(6rem,11vw,9.5rem);overflow-x:hidden;overflow-x:clip}
 
         /* ── Result stats (list layout + count-up) ── */
-        .result-row{display:flex;flex-direction:column;gap:.6rem;border-top:1px solid #E5E9F0;padding:2.5rem 0}
-        @media(min-width:768px){.result-row{flex-direction:row;align-items:baseline;gap:3rem}.result-row>.result-num{flex:0 0 clamp(180px,20vw,240px)}.result-row>p{max-width:42ch}}
-        .result-row:last-child{border-bottom:1px solid #E5E9F0}
-        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(3rem,5.5vw,5rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
+        .result-grid{display:grid;grid-template-columns:1fr;border-top:1px solid #E5E9F0}
+        .result-cell{padding:1.75rem 0;border-bottom:1px solid #E5E9F0}
+        @media(min-width:640px){.result-grid{grid-template-columns:repeat(3,1fr);column-gap:clamp(1.75rem,3.5vw,3rem);border-bottom:1px solid #E5E9F0}.result-cell{padding:2rem 0;border-bottom:0}}
+        .result-num{font-family:'Cormorant Garamond','Kanit',serif;font-size:clamp(2.25rem,3.6vw,3rem);font-weight:400;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:#0F1B30}
+        .result-cap{color:#536685;font-size:14px;line-height:1.6;margin-top:.65rem}
 
         /* ── CTA glow ── */
         .cta-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(45,77,177,.14),transparent 70%);top:50%;right:-8%;transform:translateY(-50%);pointer-events:none}
@@ -209,31 +210,6 @@
         </div>
     </section>
 
-    <!-- RESULTS -->
-    <section class="sec bg-white">
-        <div class="max-w-[1000px] mx-auto px-6 lg:px-10">
-            <div class="reveal" style="margin-bottom:clamp(2.5rem,4vw,3.75rem)">
-                <div class="label text-cobalt mb-6">Results</div>
-                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
-            </div>
-            <div class="reveal reveal-d1"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
-                <div class="result-row">
-                    <div class="result-num">1M</div>
-                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">ยอดวิวรวมจากทุกแพลตฟอร์ม</p>
-                </div>
-                <div class="result-row">
-                    <div class="result-num" style="color:#2D4DB1">+80%</div>
-                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">เพิ่มขึ้นเมื่อเทียบก่อนเริ่มงาน</p>
-                </div>
-                <div class="result-row">
-                    <div class="result-num">2×</div>
-                    <p class="text-ink-500 text-[15px] leading-relaxed mt-3 md:mt-0">การจองออนไลน์เพิ่มขึ้น</p>
-                </div>
-            </div>
-            <p class="mt-16 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน</p>
-        </div>
-    </section>
-
     <!-- APPROACH -->
     <section class="sec sec-feature" style="background:#F9F8F6">
         <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -286,6 +262,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section class="sec bg-white">
+        <div class="max-w-[1000px] mx-auto px-6 lg:px-10">
+            <div class="reveal" style="margin-bottom:clamp(2.5rem,4vw,3.75rem)">
+                <div class="label text-cobalt mb-6">Results</div>
+                <h2 class="font-display text-4xl lg:text-5xl text-ink-800 leading-tight tracking-tight">ตัวเลขที่<span class="accent-th text-cobalt"> พูดแทนทุกอย่าง</span></h2>
+            </div>
+            <div class="reveal reveal-d1 result-grid"><!-- ⚠ PLACEHOLDER METRIC — replace with real data -->
+                <div class="result-cell">
+                    <div class="result-num">1M</div>
+                    <p class="result-cap">ยอดวิวรวมจากทุกแพลตฟอร์ม</p>
+                </div>
+                <div class="result-cell">
+                    <div class="result-num" style="color:#2D4DB1">+80%</div>
+                    <p class="result-cap">เพิ่มขึ้นเมื่อเทียบก่อนเริ่มงาน</p>
+                </div>
+                <div class="result-cell">
+                    <div class="result-num">2×</div>
+                    <p class="result-cap">การจองออนไลน์เพิ่มขึ้น</p>
+                </div>
+            </div>
+            <p class="mt-16 text-xs text-ink-300 reveal" style="letter-spacing:.04em">ที่มา: Meta &amp; TikTok Analytics · เทียบช่วงก่อน–หลังเริ่มงาน</p>
         </div>
     </section>
 

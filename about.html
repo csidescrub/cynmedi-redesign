@@ -112,6 +112,10 @@
         .mnav-meta{margin-top:1.4rem;font-size:.8rem;color:#7F8DA8}
         body.mnav-open{overflow:hidden}
         @media(prefers-reduced-motion:reduce){.mnav,.mnav-btn i{transition:none}}
+            /* Thai accent: Cormorant has no Thai glyphs, so Thai inside .italic-serif
+           fell through to Kanit and the browser synthesised a fake oblique.
+           Thai accents use the Poppins-first stack upright; colour carries the accent. */
+        .accent-th{font-family:'Poppins','Kanit',sans-serif;font-style:normal;font-weight:500}
     </style>
 </head>
 <body class="antialiased">
@@ -267,7 +271,7 @@
             <div class="max-w-[700px] mx-auto px-6 text-center mb-16 reveal">
                 <div class="label text-cobalt mb-5">Behind Every Project</div>
                 <h2 class="font-display text-4xl md:text-5xl lg:text-[56px] leading-[0.96] tracking-[-0.025em] text-ink-800">
-                    เบื้องหลัง<br /><span class="italic-serif text-cobalt">ทุกผลงาน</span>
+                    เบื้องหลัง<br /><span class="accent-th text-cobalt">ทุกผลงาน</span>
                 </h2>
                 <p class="mt-7 text-ink-500 body-th text-lg leading-relaxed">
                     ทุกขั้นตอนดูแลโดยทีม CYN เองทั้งหมด — ตั้งแต่วางกลยุทธ์ ครีเอทีฟ โปรดักชัน ไปจนถึงการดูแลผลลัพธ์ โดยไม่ส่งต่องานให้ฟรีแลนซ์หรือทีมภายนอก
@@ -356,7 +360,7 @@
                     <div class="reveal">
                         <div class="label text-cobalt mb-5">Medical Expertise</div>
                         <h2 class="font-display text-3xl md:text-4xl lg:text-[48px] leading-[1.0] tracking-[-0.025em] text-ink-800">
-                            รู้กฎก่อน<br /><span class="italic-serif text-cobalt">สร้างคอนเทนต์</span>
+                            รู้กฎก่อน<br /><span class="accent-th text-cobalt">สร้างคอนเทนต์</span>
                         </h2>
                         <p class="mt-6 text-ink-500 body-th text-base leading-relaxed">
                             คอนเทนต์สายการแพทย์พลาดเพียงคำเดียวอาจถูกปรับ หรือถูกระงับโฆษณาทั้งบัญชี ทุกชิ้นที่ออกจาก CYN จึงผ่านการตรวจตามกฎหมายโฆษณาทางการแพทย์ก่อนขึ้นเสมอ
@@ -440,7 +444,7 @@
             <div class="max-w-[760px] mx-auto px-6 lg:px-10 text-center reveal">
                 <div class="label text-cobalt mb-6">เริ่มต้นกับ CYN</div>
                 <h2 class="font-display text-4xl md:text-5xl lg:text-[60px] leading-[0.96] tracking-[-0.025em] text-ink-800">
-                    ให้เราวิเคราะห์การตลาด<br />คลินิกของคุณ<span class="italic-serif text-cobalt">ฟรี</span>
+                    ให้เราวิเคราะห์การตลาด<br />คลินิกของคุณ<span class="accent-th text-cobalt">ฟรี</span>
                 </h2>
                 <p class="mt-8 text-ink-500 body-th text-lg max-w-lg mx-auto leading-relaxed">
                     ทีม CYN จะช่วยดูเพจ โฆษณา และภาพรวมออนไลน์ของคลินิกคุณ แล้วให้คำแนะนำอย่างตรงไปตรงมาว่าควรเริ่มปรับจุดไหนก่อน — ใช้เวลาประมาณ 30 นาที ไม่มีค่าใช้จ่าย และไม่มีข้อผูกมัด

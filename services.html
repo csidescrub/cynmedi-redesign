@@ -99,6 +99,10 @@
         .mnav-meta{margin-top:1.4rem;font-size:.8rem;color:#7F8DA8}
         body.mnav-open{overflow:hidden}
         @media(prefers-reduced-motion:reduce){.mnav,.mnav-btn i{transition:none}}
+            /* Thai accent: Cormorant has no Thai glyphs, so Thai inside .italic-serif
+           fell through to Kanit and the browser synthesised a fake oblique.
+           Thai accents use the Poppins-first stack upright; colour carries the accent. */
+        .accent-th{font-family:'Poppins','Kanit',sans-serif;font-style:normal;font-weight:500}
     </style>
 </head>
 <body class="antialiased">
@@ -153,7 +157,7 @@
                 <div class="max-w-[900px] mb-14 reveal reveal-delay-1">
                     <h1 class="font-display text-5xl md:text-6xl lg:text-[5.5rem] leading-[1.02] text-white">
                         บริการครบวงจร<br/>
-                        สำหรับ<span class="italic-serif text-royal-300"> ธุรกิจการแพทย์</span>
+                        สำหรับ<span class="accent-th text-royal-300"> ธุรกิจการแพทย์</span>
                     </h1>
                     <p class="mt-6 text-[15px] text-white/60 leading-relaxed max-w-xl body-th">เลือกบริการที่ตรงเป้าหมายของคลินิก/แบรนด์ ตั้งแต่ Social Media Content และยิงแอด ไปจนถึง TikTok, Website และ Branding — ดูแลโดยทีมที่เชี่ยวชาญธุรกิจการแพทย์โดยเฉพาะ</p>
                 </div>
@@ -265,7 +269,7 @@
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <div class="lg:col-span-7">
                         <div class="label text-cobalt mb-3">Social Media Content</div>
-                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">คอนเทนต์รายเดือน<br/>ที่คลินิก<span class="italic-serif text-cobalt"> ไม่ต้องทำเอง</span></h2>
+                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">คอนเทนต์รายเดือน<br/>ที่คลินิก<span class="accent-th text-cobalt"> ไม่ต้องทำเอง</span></h2>
                         <p class="text-[15px] text-ink-600 body-th mb-7">ทีมดูแลครบวงจร ตั้งแต่ Market research → Content strategy → ถ่ายและตัดต่อวิดีโอ → เขียนแคปชัน → โพสต์ลง Facebook/Instagram ตามแผน</p>
                         <div class="overflow-hidden rounded-xl border border-ink-200">
                             <table class="w-full text-sm border-collapse">
@@ -325,7 +329,7 @@
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <div class="lg:col-span-7">
                         <div class="label text-cobalt mb-3">Ads Optimization</div>
-                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">ยิงโฆษณาที่<br/><span class="italic-serif text-cobalt">วัดผลได้จริง</span></h2>
+                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">ยิงโฆษณาที่<br/><span class="accent-th text-cobalt">วัดผลได้จริง</span></h2>
                         <p class="text-[15px] text-ink-600 body-th mb-6">วางแคมเปญ, monitor, test scaling บน Meta · Google · TikTok Ads รายงานทุกสัปดาห์ ดูแลโดยทีมที่รู้กฎ Healthcare ชัดเจน</p>
                         <div class="grid grid-cols-2 gap-3 mb-7">
                             <div class="bg-white border border-ink-200 rounded-xl p-4 text-center">
@@ -394,7 +398,7 @@
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <div class="lg:col-span-7">
                         <div class="label text-cobalt mb-3">Growth Consultant</div>
-                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">วางระบบเติบโต<br/><span class="italic-serif text-cobalt">ครบวงจร</span></h2>
+                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">วางระบบเติบโต<br/><span class="accent-th text-cobalt">ครบวงจร</span></h2>
                         <p class="text-[15px] text-ink-600 body-th mb-7">ที่ปรึกษากลยุทธ์เฉพาะธุรกิจการแพทย์ — ตั้งแต่ business audit, วาง 90-day roadmap, ติดตาม KPI เลือกแบบครั้งเดียวหรือรายเดือน</p>
                         <div class="overflow-hidden rounded-xl border border-ink-200">
                             <table class="w-full text-sm border-collapse">
@@ -453,7 +457,7 @@
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <div class="lg:col-span-7">
                         <div class="label text-cobalt mb-3">Branding</div>
-                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">สร้างแบรนด์ใหม่<br/>หรือ <span class="italic-serif text-cobalt">รีแบรนด์</span></h2>
+                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">สร้างแบรนด์ใหม่<br/>หรือ <span class="accent-th text-cobalt">รีแบรนด์</span></h2>
                         <p class="text-[15px] text-ink-600 body-th mb-7">2 แพ็คเกจตามเป้าหมาย — Re-Branding สำหรับคลินิกที่อยากยกระดับแบรนด์เดิม และ Branding Package สำหรับแบรนด์ใหม่ครบวงจรพร้อม guidelines ฉบับเต็ม</p>
                         <div class="overflow-hidden rounded-xl border border-ink-200">
                             <table class="w-full text-sm border-collapse">
@@ -508,7 +512,7 @@
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <div class="lg:col-span-7">
                         <div class="label text-cobalt mb-3">Website Development</div>
-                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">เว็บไซต์ที่ดี<br/>คือ <span class="italic-serif text-cobalt">ความน่าเชื่อถือที่เปิด 24 ชม.</span></h2>
+                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">เว็บไซต์ที่ดี<br/>คือ <span class="accent-th text-cobalt">ความน่าเชื่อถือที่เปิด 24 ชม.</span></h2>
                         <p class="text-[15px] text-ink-600 body-th mb-7">ออกแบบและพัฒนาเว็บไซต์สวยงาม Responsive SEO-ready ตั้งแต่ Business SME ไปจนถึง E-Commerce เต็มระบบ</p>
                         <div class="overflow-hidden rounded-xl border border-ink-200">
                             <table class="w-full text-sm border-collapse">
@@ -565,7 +569,7 @@
                 <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                     <div class="lg:col-span-7">
                         <div class="label text-cobalt mb-3">TikTok Content</div>
-                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">TikTok คือ Channel<br/>ที่ <span class="italic-serif text-cobalt">ทรงพลัง</span> ที่สุด</h2>
+                        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-ink-800 mb-5">TikTok คือ Channel<br/>ที่ <span class="accent-th text-cobalt">ทรงพลัง</span> ที่สุด</h2>
                         <p class="text-[15px] text-ink-600 body-th mb-7">ผลิตคลิป viral-ready ตั้งแต่ strategy → script → ถ่าย-ตัดต่อ → โพสต์ พร้อมรายงานผลรายเดือน</p>
                         <div class="overflow-hidden rounded-xl border border-ink-200">
                             <table class="w-full text-sm border-collapse">
@@ -605,7 +609,7 @@
                                 <div class="absolute bottom-0 left-0 right-0 p-3"><div class="text-white text-[11px] font-semibold leading-tight">Zendori</div><div class="text-[10px] mt-0.5" style="color:rgba(255,255,255,.5)">TikTok</div></div>
                             </div>
                             <div class="relative rounded-xl overflow-hidden" style="aspect-ratio:9/16;background:#0F1B30">
-                                <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline><source src="/assets/review-madam.mp4" type="video/mp4"></video>
+                                <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline><source src="/assets/review-mental-matters.mp4" type="video/mp4"></video>
                                 <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(15,27,48,.85) 0%,transparent 55%);pointer-events:none"></div>
                                 <div class="absolute bottom-0 left-0 right-0 p-3"><div class="text-white text-[11px] font-semibold leading-tight">Madam Clinic</div><div class="text-[10px] mt-0.5" style="color:rgba(255,255,255,.5)">TikTok</div></div>
                             </div>
@@ -620,7 +624,7 @@
             <div class="max-w-[1400px] mx-auto px-6 lg:px-10">
                 <div class="mb-10 lg:mb-14 reveal text-center">
                     <div class="label text-royal-300 mb-4 text-center">ทำไมต้องเลือก</div>
-                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-white">CYN <span class="italic-serif text-royal-300">แตกต่างอย่างไร</span></h2>
+                    <h2 class="font-display text-3xl md:text-4xl lg:text-5xl leading-[1.05] text-white">CYN <span class="accent-th text-royal-300">แตกต่างอย่างไร</span></h2>
                     <p class="text-white/50 text-sm body-th mt-3">เทียบชัดๆ ระหว่าง CYN Medical Digital กับ General Agency ทั่วไป</p>
                 </div>
 
@@ -803,7 +807,7 @@
             <div class="relative max-w-[1400px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
                 <div class="grid lg:grid-cols-12 gap-8 items-center relative z-10">
                     <div class="lg:col-span-7 reveal">
-                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-white">พร้อมเริ่ม<span class="italic-serif text-royal-300">วางระบบ</span><br/>การตลาดให้คลินิกของคุณ?</h2>
+                        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-white">พร้อมเริ่ม<span class="accent-th text-royal-300">วางระบบ</span><br/>การตลาดให้คลินิกของคุณ?</h2>
                         <p class="mt-6 text-white/65 max-w-md leading-relaxed body-th">ปรึกษาฟรี ทีมจะวิเคราะห์ความเหมาะสมและเสนอแพ็คเกจที่ตรงเป้าหมายของคุณ</p>
                     </div>
                     <div class="lg:col-span-5 flex lg:justify-end reveal reveal-delay-1">

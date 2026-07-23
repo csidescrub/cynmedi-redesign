@@ -99,6 +99,10 @@
         .mnav-meta{margin-top:1.4rem;font-size:.8rem;color:#7F8DA8}
         body.mnav-open{overflow:hidden}
         @media(prefers-reduced-motion:reduce){.mnav,.mnav-btn i{transition:none}}
+            /* Thai accent: Cormorant has no Thai glyphs, so Thai inside .italic-serif
+           fell through to Kanit and the browser synthesised a fake oblique.
+           Thai accents use the Poppins-first stack upright; colour carries the accent. */
+        .accent-th{font-family:'Poppins','Kanit',sans-serif;font-style:normal;font-weight:500}
     </style>
 </head>
 <body class="antialiased">
@@ -143,7 +147,7 @@
                 <div class="label text-royal-300 mb-6">Our Work</div>
                 <h1 class="font-display text-5xl md:text-6xl lg:text-[80px] leading-none tracking-[-0.02em]">
                     ผลงานที่สร้าง<span class="text-royal-200">ความเชื่อใจ</span><br />
-                    <span class="italic-serif text-royal-200">ให้ทุกแบรนด์</span>
+                    <span class="accent-th text-royal-200">ให้ทุกแบรนด์</span>
                 </h1>
                 <p class="mt-6 text-white/70 body-th text-lg max-w-2xl">จาก aesthetic clinic, dental, wellness ไปจนถึง lifestyle brands — คลิปและผลงานจริงจากแบรนด์ที่เราดูแลในประเทศไทย</p>
             </div>
@@ -456,7 +460,7 @@
                         <div class="cv-slide shrink-0 w-full md:w-1/2 px-2 md:px-3">
                             <figure class="bg-white border border-ink-200/70 rounded-2xl overflow-hidden shadow-[0_30px_60px_-40px_rgba(15,27,48,0.25)] flex flex-col md:flex-row h-full">
                                 <div class="relative w-full mx-auto md:mx-0 cv-vid-w shrink-0 bg-ink-900 aspect-[9/16]">
-                                    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-madam.jpg"><source src="/assets/review-madam.mp4" type="video/mp4"></video>
+                                    <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline controls preload="none" poster="/assets/poster-review-mental-matters.jpg"><source src="/assets/review-mental-matters.mp4" type="video/mp4"></video>
                                 </div>
                                 <figcaption class="flex-1 p-6 lg:p-10 flex flex-col justify-center">
                                     <div class="font-display text-4xl text-royal-200 leading-[0.4] mb-5">&ldquo;</div>
